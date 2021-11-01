@@ -1,0 +1,129 @@
+/*
+  Localizable.strings
+  ACRT
+        _         ____
+       / \      |  __  \
+      / _ \     | |   \ \      ____     _______
+     / / \ \    | |___/ /    /  ___ \ / __   __ \
+    / /___\ \   |  ___ \    / /          / /
+   / /     \ \  | |   \ \   \ \ ___     / /
+  / /       \ \ | |    \ \   \ ____ /  / /          Team
+
+  Created by ARCT_ZJU_Lab509 on 2021/7/20.
+
+  Copyright © 2021 Augmented City Reality Toolkit. All Right Reserved.
+ */
+
+
+/* 欢迎界面 localizable string */
+"Augmented" = "增强";
+"City" = "城市";
+"Reality" = "现实";
+"Toolkit" = "工具集";
+
+/* 请求服务 localizable string */
+"Location Services is off" = "定位服务未开启";
+"Turn On in Settings" = "在设置里打开定位服务";
+"Keep it that way" = "保持当前状态";
+"You'll get a brunch of featues improved when you turn on the Location Services for ACRT" = "当你为ACRT打开定位服务后你将能使用更多优化的功能，如厘米级定位、城市创作功能等";
+"ACRT works best with Location Services turned on" = "ACRT在定位服务打开下能获得最佳体验";
+
+/* 首次登陆sheet界面 localizable string */
+"Understand" = "了解啦";
+"Finish" = "完成";
+"Introduce " = "介绍一下 ";
+"A represents the Augmented Reality which enhanced the version of the real physical world, achieved through our iPhone and iPad." = "字母A代表增强现实，通过iPhone和iPad增强真实世界场景，带去不一样的体验";
+"C represents the city. This app will bring augmented reality into your city, allowing people to discover different magic in familiar cities." = "字母C代表城市，这个应用将增强现实技术带入城市，让您在熟悉的城市中发现奇幻的际遇";
+"R stands for the reality. When virtual and reality mixed up, all familiar objects and scenes will become a whole new experience." = "字母R代表现实。 当虚拟与现实融合，一切熟悉的物和景都将拥有全新的、不一样的体验";
+"T stands for the toolkit. Give people wonderful tools, and they'll do wonderful things." = "字母T代表工具集，极致的工具为用户提供创造无限的可能";
+
+/* 用户登陆界面 localizable string */
+"Not now" = "暂不登陆";
+"Email Account" = "账户邮箱";
+"Password" = "密码";
+"Account" = "邮箱账号";
+"Required" = "必填";
+"Log in" = "登陆";
+"Log out" = "注销";
+"Sign in" = "使用账号密码登陆";
+"Sign up" = "注册";
+"Forget account or password?" = "忘记邮箱账号或密码？";
+"Phone Number" = "手机号码";
+"Recived Code" = "验证码";
+"Send" = "发送";
+
+"Apologize" = "抱歉" ;
+"Empty email is not acceptable" = "请输入邮箱账号";
+"Empty password is not acceptable" = "请输入密码";
+"Got it" = "好的";
+/* 更新提示 localization string*/
+"What's new" = "最近更新";
+"MAIC 2021" = "移动应用创新赛";
+"Come and join the 6th MAIC match in Zhejiang University!" = "欢迎大家参加第六届移动应用创新赛！";
+"City Badges" = "城市徽章";
+"We have launched the first batch of 3 city badges!" = "首发三枚城市徽章等你来获得！";
+"Today" = "今天";
+"Yesterday" = "昨天";
+/* 准备界面 localizable string*/
+"Are you ready?" = "准备好了吗？";
+"Launch Requests" = "运行要求";
+"Recommendations" = "建议";
+
+"Use Device with LiDAR" = "使用配备LiDAR的设备";
+"LiDAR enhance the ability of realized the world." = "LiDAR增强了对现实的理解能力";
+"iPhone 13 Pro series" = "iPhone 13 Pro系列";
+"iPhone 12 Pro series" = "iPhone 12 Pro系列";
+"iPad Pro 12.9-inch 4/5th-generation" = "12.9 英寸 iPad Pro 第四或五代";
+"iPad Pro 11-inch 2/3th-generation" = "11 英寸 iPad Pro 第二或三代";
+
+"Recommend devices include" = "建议使用的设备包括";
+"Open Location Service" = "开启定位服务";
+"ARCT will use your position to minimize the locate process time." = "ARCT将使用地理信息以加速定位速度";
+
+"Login with Account" = "登陆账号";
+"Log in to get full functionality experiences." = "登陆账号以获得全部的功能体验";
+"Logged-in user is capable of:" = "已登录用户可以进行:";
+"Tourist is capable of:" = "游客可以进行:";
+"Explore and Create" = "探索和创造";
+"Explore" = "探索";
+
+"Requirement not fullfill!" = "还有运行条件不满足！";
+"Check it again" = "再检查一下";
+
+"What is ACRT" = "ACRT是什么";
+
+"Into Augmented City Brain New World" = "进入城市新视界";
+
+"My ART Chest" = "我的艺术档案";
+/* 成就界面 localizable string*/
+"Special Event" = "特别活动";
+"Daily Event" = "每日活动";
+"LandMark" = "城市活动";
+/*  1. landmark 地标成就 */
+"Hangzhou" = "杭州";
+"Shanghai" = "上海";
+"Beijing" = "北京";
+"Shenzhen" = "深圳";
+"Guangzhou" = "广州";
+"Chengdu" = "成都";
+"Nanjing" = "南京";
+"Changsha" = "长沙";
+"Xiamen" = "厦门";
+"Dalian" = "大连";
+/* Will do */
+"Kunmin" = "昆明";
+"Tianjin" = "天津";
+"Jinan" = "济南";
+"Qingdao" = "青岛";
+"Nanning" = "南宁";
+"Wuxi" = "无锡";
+"Suzhou" = "苏州";
+"Zhenzhou" = "郑州";
+"Ningbo" = "宁波";
+"Fuzhou" = "福州";
+"Shenyang" = "沈阳";
+"Chongqin" = "重庆";
+/*  2. User 使用成就 */
+"MAIC" = "MAIC 2021";
+"Owl" = "夜猫子";
+"Morning" = "早起达人";
