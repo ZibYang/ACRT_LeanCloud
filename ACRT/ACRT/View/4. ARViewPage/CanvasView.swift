@@ -45,7 +45,7 @@ struct CanvasView: View {
         }.onAppear() {
             httpManager.statusLoc = 0
             DispatchQueue.global(qos: .background).async {
-                // sleep(1)
+                sleep(1)
                 while(httpManager.statusLoc != 1) {
                     if(httpManager.statusLoc == 0) {
                         arModel.RequestLocalization(manager: httpManager)

@@ -1,18 +1,9 @@
 //
 //  HttpAuth.swift
-//  ACRT
-
-//        _         ____
-//       / \      |  __  \
-//      / _ \     | |   \ \      ____     _______
-//     / / \ \    | |___/ /    /  ___ \ / __   __ \
-//    / /___\ \   |  ___ \    / /          / /
-//   / /     \ \  | |   \ \   \ \ ___     / /
-//  / /       \ \ | |    \ \   \ ____ /  / /          Team
- 
-//  Created by ARCT_ZJU_Lab509 on 2021/7/5.
-
-//  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
+//  RKDSLAM_new
+//
+//  Created by baochong on 2021/10/17.
+//
 
 import Foundation
 import Combine
@@ -21,18 +12,27 @@ import UIKit
 import VideoToolbox
 
 
+
+
 extension UIImage {
-    public convenience init?(pixelBuffer: CVPixelBuffer) {
-        var cgImage: CGImage?
-        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
+    func pixelData() -> [UInt8]? {
+        let size = self.size
+        let dataSize = size.width * size.height * 4
+        var pixelData = [UInt8](repeating: 0, count: Int(dataSize))
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let context = CGContext(data: &pixelData,
+                                width: Int(size.width),
+                                height: Int(size.height),
+                                bitsPerComponent: 8,
+                                bytesPerRow: 4 * Int(size.width),
+                                space: colorSpace,
+                                bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
+        guard let cgImage = self.cgImage else { return nil }
+        context?.draw(cgImage, in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
 
-        guard let cgImage = cgImage else {
-            return nil
-        }
-
-        self.init(cgImage: cgImage)
+        return pixelData
     }
-}
+ }
 
 
 struct ServerMessage : Decodable {
@@ -41,72 +41,57 @@ struct ServerMessage : Decodable {
     let rmatrix: [[Float]]
 }
 
+struct SensetimeServerMessage : Decodable {
+    let pose : [Float]
+    let x: Double
+    let y: Double
+    let z: Double
+    let status : String
+}
 
 class HttpAuth : ObservableObject {
-    @Published var statusLoc : Int = -2
+    var didChange = PassthroughSubject<HttpAuth, Never>()
+    
+    @Published var statusLoc : Int = 0
     
     var T_ci_w : simd_float4x4!
-    let url: String = "http://10.78.92.86:3000/loc1"
+    let qiuShiUrl: String = "http://arctbch.nat300.top/loc1"
+    let inTimeUrl : String = "http://w3hgqz.natappfree.cc/loc1"
+    let qiuShiUrlSensetime: String = "https://inception.sensetime.com/api/positioning/v1/sites/hz-lab/floors/jiangtang"
     
-    
-    func queryOffline() {
-        self.statusLoc = -1
-        guard let image = UIImage(named: "IMG_1193.jpeg") else {
-            print("DEBUG(BCH): Error: can not read image IMG_1193.jpg")
-            self.statusLoc = 0
-            return
-        }
-        print("DEBUG(BCH): Info: read image IMG_1193.jpg")
-        //Now use image to create into NSData format
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
-            self.statusLoc = 0
+    func queryOnline(url: String, strBase64 : String, width: Int, height:Int, intrinsic: simd_float3x3, isGrayScale: Bool, useRawData: Bool,extrinsic: simd_float4x4) {
+        
+        guard let body = makeBody(strBase64: strBase64 ,width:width, height: height, intrinsic: intrinsic, isGrayScale: isGrayScale, useRawData:useRawData, extrinsic: extrinsic) else {
+            return }
+        guard let request = makeRequest(url: url, body: body) else {
             return
         }
         
-        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-
-        let body:[String:Any] = ["is_grayscale":false,
-                    "image":strBase64,
-                    "intrinsic": ["model":"OPENCV",
-                                  "width": image.size.width,
-                                  "height": image.size.height,
-                                  "params": [975.316056, 975.316056, 580.000000, 592.500000, -0.006952,
-                                             0.0, 0.0, 0.0]
-                                 ]]
-        requestLocalization(body: body)
+        requestAndCallback(request: request)
     }
     
-    func queryOnline(image: UIImage, intrinsic: simd_float3x3, extrinsic: simd_float4x4) {
-        self.statusLoc = -1
-        //Now use image to create into NSData format
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
-            self.statusLoc = 0
-            return
-        }
+    func makeBody(strBase64 : String, width: Int, height:Int,  intrinsic: simd_float3x3, isGrayScale: Bool, useRawData: Bool, extrinsic: simd_float4x4) -> [String:Any]? {
         
-        let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
-
-        let body:[String:Any] = ["is_grayscale":false,
+        let body:[String:Any] = ["is_grayscale": isGrayScale,
                     "image":strBase64,
                     "intrinsic": ["model":"OPENCV",
-                                  "width": image.size.width,
-                                  "height": image.size.height,
+                                  "width": width,
+                                  "height": height,
                                   "params": [intrinsic.columns.0[0], intrinsic.columns.1[1], intrinsic.columns.2[0], intrinsic.columns.2[1],
                                              0.0, 0.0, 0.0, 0.0]
                                  ],
                      "extrinsic": [[extrinsic.columns.0[0], extrinsic.columns.1[0], extrinsic.columns.2[0], extrinsic.columns.3[0]],
                                   [extrinsic.columns.0[1], extrinsic.columns.1[1], extrinsic.columns.2[1], extrinsic.columns.3[1]],
                                   [extrinsic.columns.0[2], extrinsic.columns.1[2], extrinsic.columns.2[2], extrinsic.columns.3[2]],
-                                  [extrinsic.columns.0[3], extrinsic.columns.1[3], extrinsic.columns.2[3], extrinsic.columns.3[3]]]]
-        requestLocalization(body: body)
+                                  [extrinsic.columns.0[3], extrinsic.columns.1[3], extrinsic.columns.2[3], extrinsic.columns.3[3]]],
+                     "useRawData": useRawData]
+        return body
     }
 
-    
-    func requestLocalization(body: [String:Any]) {
+    func makeRequest(url : String , body: [String:Any]) -> URLRequest?{
         
         guard let url = URL(string: url) else {
-            self.statusLoc = 0
-            return
+            return nil
         }
 
         let finalBody = try! JSONSerialization.data(withJSONObject: body)
@@ -116,6 +101,13 @@ class HttpAuth : ObservableObject {
         request.httpBody = finalBody
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        return request
+    }
+    
+    func requestAndCallback(request : URLRequest) {
+        
+        self.statusLoc = -1
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data else {
@@ -163,6 +155,86 @@ class HttpAuth : ObservableObject {
                 self.T_ci_w = Tcw
             }
         }.resume()
+    }
     
+    func querySensetimeOnline(url: String, strBase64 : String, width: Int, height: Int,intrinsic: simd_float3x3) {
+        
+        guard let body = makeSensetimeBody(strBase64: strBase64 , width: width, height: height, intrinsic: intrinsic) else{
+            return
+        }
+        guard let request = makeRequest(url: url, body: body) else {
+            return
+        }
+        requestAndSensetimeCallback(request: request)
+    }
+    
+    func makeSensetimeBody(strBase64 : String, width: Int, height:Int, intrinsic: simd_float3x3) -> [String:Any]? {
+
+        
+        let body:[String:Any] = ["image":strBase64,
+                    "cameraConfig": [
+                                  "width": width,
+                                  "height": height,
+                                  "fx": intrinsic.columns.0[0],
+                                  "fy": intrinsic.columns.1[1],
+                                  "cx": intrinsic.columns.2[0],
+                                  "cy": intrinsic.columns.2[1],
+                                 ]
+                    ]
+        return body
+    }
+    
+    func requestAndSensetimeCallback(request : URLRequest) {
+        
+        self.statusLoc = -1
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard let data = data else {
+                print("DEBUG(BCHO): data is nil")
+                DispatchQueue.main.async {
+                    self.statusLoc = 0
+                }
+                return
+            }
+            if let httpResponse = response as? HTTPURLResponse {
+                if(httpResponse.statusCode != 200) {
+                    print("DEBUG(BCHO): statusCode of httpResponse is ", httpResponse.statusCode)
+                    DispatchQueue.main.async {
+                        self.statusLoc = 0
+                    }
+                    return
+                }
+            }
+            if error != nil{
+                print("Error \(String(describing: error))")
+                DispatchQueue.main.async {
+                    self.statusLoc = 0
+                }
+                return
+            }
+                        
+            print("DEBUG(BCH): data: ",data)
+            print("DEBUG(BCH): response: ",response)
+            print("DEBUG(BCH): error: ",error)
+            let finalData = try! JSONDecoder().decode(SensetimeServerMessage.self, from: data)
+            if finalData.status != "SUCCESS" {
+                print("Warning : BCH: localization failed because status is " , finalData.status)
+                DispatchQueue.main.async {
+                    self.statusLoc = 0
+                }
+                return
+            }
+            print("DEBUG(BCH): status " , finalData.status)
+
+            print("DEBUG(BCH): pos: " , finalData.x, finalData.y, finalData.z)
+            print("DEBUG(BCH): pose " , finalData.pose)
+
+            
+            DispatchQueue.main.async {
+//                self.statusLoc = 1
+//                self.T_ci_w = Tcw
+            }
+        }.resume()
     }
 }
