@@ -104,6 +104,10 @@
 "Into Augmented City Brain New World" = "进入城市新视界";
 
 "My ART Chest" = "我的艺术档案";
+
+/* AR界面 localizable string*/
+"Move Device to locate..." = "缓慢移动设备进行定位...";
+
 /* 成就界面 localizable string*/
 "Special Event" = "特别活动";
 "Daily Event" = "每日活动";

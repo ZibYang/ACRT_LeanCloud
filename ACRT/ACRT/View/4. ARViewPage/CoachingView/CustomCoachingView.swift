@@ -28,7 +28,7 @@ struct CustomCoachingView: View {
         ZStack {
             Color.clear
             VStack(spacing: 50) {
-                Text("Move Device to locate")
+                Text("Move Device to locate...")
                     .bold()
                     .font(.title2)
                     .foregroundColor(.gray)

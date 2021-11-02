@@ -10,10 +10,6 @@
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
 		27B3EC4A27316E7D00021DE1 /* USDZViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* USDZViewModel.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZViewModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZViewModel1.swift */; };
-		27B3EC5227316FD800021DE1 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */; };
-		27B3EC5327316FD800021DE1 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4F27316FD800021DE1 /* hello.usdz */; };
-		27B3EC5427316FD800021DE1 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5027316FD800021DE1 /* hello_1.usdz */; };
-		27B3EC5527316FD800021DE1 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5127316FD800021DE1 /* AppleHello.usdz */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
 		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
 		5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */; };
@@ -60,10 +56,6 @@
 		27B3EC4927316E7D00021DE1 /* USDZViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZViewModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZViewModel1.swift; sourceTree = "<group>"; };
 		27B3EC4D27316F4000021DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleLogo.usdz; sourceTree = "<group>"; };
-		27B3EC4F27316FD800021DE1 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello.usdz; sourceTree = "<group>"; };
-		27B3EC5027316FD800021DE1 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello_1.usdz; sourceTree = "<group>"; };
-		27B3EC5127316FD800021DE1 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleHello.usdz; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
 		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
 		5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailAndPasswordView.swift; sourceTree = "<group>"; };
@@ -128,17 +120,6 @@
 				BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		27B3EC5627316FE900021DE1 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				27B3EC5127316FD800021DE1 /* AppleHello.usdz */,
-				27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */,
-				27B3EC5027316FD800021DE1 /* hello_1.usdz */,
-				27B3EC4F27316FD800021DE1 /* hello.usdz */,
-			);
-			path = Resource;
 			sourceTree = "<group>";
 		};
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
@@ -254,7 +235,6 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
-				27B3EC5627316FE900021DE1 /* Resource */,
 				27B3EC4D27316F4000021DE1 /* Info.plist */,
 				5A3E1A6527310A8900B170B2 /* Model */,
 				5A56E929272F9C360062680E /* ViewModel */,
@@ -450,12 +430,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
-				27B3EC5327316FD800021DE1 /* hello.usdz in Resources */,
-				27B3EC5227316FD800021DE1 /* AppleLogo.usdz in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
-				27B3EC5427316FD800021DE1 /* hello_1.usdz in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
-				27B3EC5527316FD800021DE1 /* AppleHello.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 			);

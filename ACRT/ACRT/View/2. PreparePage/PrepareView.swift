@@ -60,12 +60,15 @@ struct PrepareView: View {
                 } // NavigationView
                 .navigationViewStyle(StackNavigationViewStyle())
             }
-            HStack{
-                Spacer()
-                UserCircleView()
-                    .padding(.top)
+            withAnimation(Animation.easeInOut(duration: 1.0)) {
+                HStack{
+                    Spacer()
+                    UserCircleView()
+                        .offset(x: httpManager.statusLoc == -1 || httpManager.statusLoc == 0 ? 70 : 0)
+                        .padding(.top)
+                }
+                .padding(.trailing)
             }
-            .padding(.trailing)
         } // ZStack
         .environmentObject(userModel)
         .environmentObject(arViewModel)
