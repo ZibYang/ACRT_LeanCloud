@@ -23,6 +23,7 @@ struct PrepareView: View {
     @StateObject var mapModel = MapViewModel()
     @StateObject var userModel = UserViewModel()
     @StateObject var arViewModel = ARViewModel()
+    @StateObject var httpManager = HttpAuth()
     
     @State var checkLocationRequest = false
     @State var checkLidarDeviceList = false
@@ -37,32 +38,38 @@ struct PrepareView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            NavigationView{
-                List{
-                    // MARK: Launch Request Section
-                    Section(header: Text(LocalizedStringKey("Launch Requests"))){
-                        locationRequest
-                    }
-                    // MARK: Recommendation
-                    Section(header: Text(LocalizedStringKey("Recommendations"))){
-                        useLidarDeviceRecommandation
-                        userLoginRecommandation
-                    }
-                    Section(footer: footerButton){
-                        intoARWorldButton
-                    }
-                } // List
-                .navigationTitle(LocalizedStringKey("Are you ready?"))
-            } // NavigationView
-            .navigationViewStyle(StackNavigationViewStyle())
+            if everythingSetted{
+                CanvasView(goBack: $everythingSetted)
+            }else {
+                NavigationView{
+                    List{
+                        // MARK: Launch Request Section
+                        Section(header: Text(LocalizedStringKey("Launch Requests"))){
+                            locationRequest
+                        }
+                        // MARK: Recommendation
+                        Section(header: Text(LocalizedStringKey("Recommendations"))){
+                            useLidarDeviceRecommandation
+                            userLoginRecommandation
+                        }
+                        Section(footer: footerButton){
+                            intoARWorldButton
+                        }
+                    } // List
+                    .navigationTitle(LocalizedStringKey("Are you ready?"))
+                } // NavigationView
+                .navigationViewStyle(StackNavigationViewStyle())
+            }
             HStack{
                 Spacer()
                 UserCircleView()
                     .padding(.top)
-                    .environmentObject(userModel)
             }
             .padding(.trailing)
         } // ZStack
+        .environmentObject(userModel)
+        .environmentObject(arViewModel)
+        .environmentObject(httpManager)
     }
     
     var locationRequest: some View{
@@ -108,13 +115,13 @@ struct PrepareView: View {
         DisclosureGroup(isExpanded: $checkUserCapability, content: {
             UserCapabilityView(labelImage: "checkmark.circle",
                                labelText: "Logged-in user can:",
-                               buttonText: "exproe and create",
+                               buttonText: "explore and create",
                                capabilityLevel: $userModel.capabilitySatisfied,
                                buttonTapped: $introduceExporeAndCreate)
                     
             UserCapabilityView(labelImage: "exclamationmark.circle",
                                labelText: "Tourist can:",
-                               buttonText: "exproe",
+                               buttonText: "explore",
                                capabilityLevel: $userModel.capabilitySatisfied,
                                buttonTapped: $introduceExporeAndCreate)
             

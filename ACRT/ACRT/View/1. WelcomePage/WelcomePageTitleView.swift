@@ -24,8 +24,12 @@ struct WelcomePageTitleView: View {
                     .bold()
                 Text("ACRT")
                     .bold()
-                    .gradientForeground(colors: [.blue, .purple])
+                    
             }
+            .gradientForeground(colors: [Color(red: 0.15, green: 0.39, blue: 0.94),
+                                         Color(red: 0.93, green: 0.54, blue: 0.15),
+                                         Color(red: 0.16, green: 0.91, blue: 0.66),
+                                         Color(red: 1.00, green: 0.39, blue: 0.49)])
         }
         
     }

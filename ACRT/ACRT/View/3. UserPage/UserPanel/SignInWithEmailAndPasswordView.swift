@@ -29,6 +29,8 @@ struct SignInWithEmailAndPasswordView: View {
     @State var emptyEmail = false
     @State var emptyPassword = false
     
+    @State var signUpNow = false
+    
     var body: some View {
         NavigationView {
             List{
@@ -61,28 +63,17 @@ struct SignInWithEmailAndPasswordView: View {
                 }
             }
             .toolbar{
-                Button(action:{
-                    dismissLoginSheet()
-                }){
-                    Text("Not now")
-                        .foregroundColor(.secondary)
+                ToolbarItem(placement: .navigationBarLeading){
+                    leadingTollBarItem
+                }
+                ToolbarItem(placement: .navigationBarTrailing){
+                    traillingTollBarItem
                 }
             }
-            
             .navigationTitle(Text("Log in"))
             .navigationBarTitleDisplayMode(.inline)
-
         } // navigation
-        .alert(isPresented: $emptyEmail){
-            Alert(title: Text("Apologize"),
-                  message: Text("Empty email is not acceptable"),
-                  dismissButton: .destructive(Text("Got it")))
-        }
-        .alert(isPresented: $emptyPassword){
-            Alert(title: Text("Apologize"),
-                  message: Text("Empty password is not acceptable"),
-                  dismissButton: .default(Text("Got it")))
-        }
+        
     }
         
     var emailSheet: some View{
@@ -95,6 +86,11 @@ struct SignInWithEmailAndPasswordView: View {
                 .textContentType(.emailAddress)
                 .submitLabel(.next)
         }
+        .alert(isPresented: $emptyEmail){
+            Alert(title: Text("Apologize"),
+                  message: Text("Empty email is not acceptable"),
+                  dismissButton: .destructive(Text("Got it")))
+        }
     }
     
     var passwordSheet: some View{
@@ -106,7 +102,13 @@ struct SignInWithEmailAndPasswordView: View {
                 .focused($focusedField, equals: .password)
                 .submitLabel(.join)
         }
+        .alert(isPresented: $emptyPassword){
+            Alert(title: Text("Apologize"),
+                  message: Text("Empty password is not acceptable"),
+                  dismissButton: .default(Text("Got it")))
+        }
     }
+    
     var fogetPasswordSheet: some View{
         HStack{
             Spacer()
@@ -124,6 +126,25 @@ struct SignInWithEmailAndPasswordView: View {
         }, label: {
             Text("Log in")
         })
+    }
+    
+    var leadingTollBarItem: some View{
+        Button(action: {
+            signUpNow.toggle()
+        }, label: {
+            Text("Sign up")
+        })
+        .sheet(isPresented: $signUpNow, content: {
+            SignUpView()
+        })
+    }
+    var traillingTollBarItem: some View{
+        Button(action:{
+            dismissLoginSheet()
+        }){
+            Text("Not now")
+                .foregroundColor(.secondary)
+        }
     }
     
     func checkAndLogIn(){

@@ -13,6 +13,16 @@
 		5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A6327310A6800B170B2 /* WhatIsNewView.swift */; };
 		5A3E1A6727310A9200B170B2 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A6627310A9200B170B2 /* Update.swift */; };
 		5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */; };
+		5A42159D27311B9D000C9F5B /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A42159C27311B9D000C9F5B /* SignUpView.swift */; };
+		5A4215A027312B2D000C9F5B /* TrackableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A42159F27312B2D000C9F5B /* TrackableScrollView.swift */; };
+		5A4215A227312BD9000C9F5B /* UserPhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215A127312BD9000C9F5B /* UserPhotoPickerView.swift */; };
+		5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A4215A7273149BF000C9F5B /* InfoPlist.strings */; };
+		5A4215AA27314E83000C9F5B /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215A927314E83000C9F5B /* CanvasView.swift */; };
+		5A4215AC273153FE000C9F5B /* ARWorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215AB273153FE000C9F5B /* ARWorldView.swift */; };
+		5A4215B027315E1D000C9F5B /* TopToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215AF27315E1D000C9F5B /* TopToolView.swift */; };
+		5A4215B227315EDE000C9F5B /* LeftToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B127315EDE000C9F5B /* LeftToolView.swift */; };
+		5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B3273161CC000C9F5B /* ToolView.swift */; };
+		5A4215B72731626A000C9F5B /* CustomCoachingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B62731626A000C9F5B /* CustomCoachingView.swift */; };
 		5A56E901272BF1FE0062680E /* ACRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E900272BF1FE0062680E /* ACRTApp.swift */; };
 		5A56E903272BF1FE0062680E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E902272BF1FE0062680E /* MainView.swift */; };
 		5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A56E904272BF1FF0062680E /* Assets.xcassets */; };
@@ -45,6 +55,16 @@
 		5A3E1A6327310A6800B170B2 /* WhatIsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsNewView.swift; sourceTree = "<group>"; };
 		5A3E1A6627310A9200B170B2 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsNewViewModel.swift; sourceTree = "<group>"; };
+		5A42159C27311B9D000C9F5B /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		5A42159F27312B2D000C9F5B /* TrackableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackableScrollView.swift; sourceTree = "<group>"; };
+		5A4215A127312BD9000C9F5B /* UserPhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPhotoPickerView.swift; sourceTree = "<group>"; };
+		5A4215A6273149BF000C9F5B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5A4215A927314E83000C9F5B /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		5A4215AB273153FE000C9F5B /* ARWorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARWorldView.swift; sourceTree = "<group>"; };
+		5A4215AF27315E1D000C9F5B /* TopToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopToolView.swift; sourceTree = "<group>"; };
+		5A4215B127315EDE000C9F5B /* LeftToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftToolView.swift; sourceTree = "<group>"; };
+		5A4215B3273161CC000C9F5B /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
+		5A4215B62731626A000C9F5B /* CustomCoachingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoachingView.swift; sourceTree = "<group>"; };
 		5A56E8FD272BF1FE0062680E /* ACRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A56E900272BF1FE0062680E /* ACRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRTApp.swift; sourceTree = "<group>"; };
 		5A56E902272BF1FE0062680E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -98,6 +118,7 @@
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
 			isa = PBXGroup;
 			children = (
+				5A3E1A592731080700B170B2 /* UserCircleView.swift */,
 				5A3E1A6127310A4C00B170B2 /* WhatIsNewView */,
 				5A3E1A5C2731096800B170B2 /* AwardView */,
 				5A3E1A5B2731095D00B170B2 /* UserPanel */,
@@ -108,9 +129,10 @@
 		5A3E1A5B2731095D00B170B2 /* UserPanel */ = {
 			isa = PBXGroup;
 			children = (
-				5A3E1A592731080700B170B2 /* UserCircleView.swift */,
+				5A42159E27312B0F000C9F5B /* CustomView */,
 				5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */,
 				5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */,
+				5A42159C27311B9D000C9F5B /* SignUpView.swift */,
 			);
 			path = UserPanel;
 			sourceTree = "<group>";
@@ -136,6 +158,52 @@
 				5A3E1A6627310A9200B170B2 /* Update.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		5A42159E27312B0F000C9F5B /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				5A42159F27312B2D000C9F5B /* TrackableScrollView.swift */,
+				5A4215A127312BD9000C9F5B /* UserPhotoPickerView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		5A4215A827314E68000C9F5B /* 4. ARViewPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A4215B52731625E000C9F5B /* CoachingView */,
+				5A4215AE273159CF000C9F5B /* ToolView */,
+				5A4215AD273159C6000C9F5B /* ARWorldView */,
+				5A4215A927314E83000C9F5B /* CanvasView.swift */,
+			);
+			path = "4. ARViewPage";
+			sourceTree = "<group>";
+		};
+		5A4215AD273159C6000C9F5B /* ARWorldView */ = {
+			isa = PBXGroup;
+			children = (
+				5A4215AB273153FE000C9F5B /* ARWorldView.swift */,
+			);
+			path = ARWorldView;
+			sourceTree = "<group>";
+		};
+		5A4215AE273159CF000C9F5B /* ToolView */ = {
+			isa = PBXGroup;
+			children = (
+				5A4215AF27315E1D000C9F5B /* TopToolView.swift */,
+				5A4215B127315EDE000C9F5B /* LeftToolView.swift */,
+				5A4215B3273161CC000C9F5B /* ToolView.swift */,
+			);
+			path = ToolView;
+			sourceTree = "<group>";
+		};
+		5A4215B52731625E000C9F5B /* CoachingView */ = {
+			isa = PBXGroup;
+			children = (
+				5A4215B62731626A000C9F5B /* CustomCoachingView.swift */,
+			);
+			path = CoachingView;
 			sourceTree = "<group>";
 		};
 		5A56E8F4272BF1FE0062680E = {
@@ -187,6 +255,7 @@
 				5A56E911272BFB260062680E /* 1. WelcomePage */,
 				5A56E91B272F9A250062680E /* 2. PreparePage */,
 				5A3E1A58273107CD00B170B2 /* 3. UserPage */,
+				5A4215A827314E68000C9F5B /* 4. ARViewPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				5A56E926272F9B6A0062680E /* Localizable.strings */,
+				5A4215A7273149BF000C9F5B /* InfoPlist.strings */,
 			);
 			path = LocalizationFiles;
 			sourceTree = "<group>";
@@ -352,6 +422,7 @@
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
+				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,34 +477,51 @@
 			files = (
 				5A56E913272BFB3B0062680E /* WelcomePage.swift in Sources */,
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
+				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
 				5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */,
 				5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */,
+				5A4215B027315E1D000C9F5B /* TopToolView.swift in Sources */,
 				5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */,
 				5A56E9382730DDCB0062680E /* WhatMeansExporeView.swift in Sources */,
 				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
 				5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */,
+				5A4215B227315EDE000C9F5B /* LeftToolView.swift in Sources */,
+				5A4215AC273153FE000C9F5B /* ARWorldView.swift in Sources */,
 				5A56E92F272F9D080062680E /* PermisionDeniedView.swift in Sources */,
 				5A56E91A272BFC5B0062680E /* ColorGradientText.swift in Sources */,
 				5A56E93A2730DDD50062680E /* WhatMeansCreateView.swift in Sources */,
 				5A56E901272BF1FE0062680E /* ACRTApp.swift in Sources */,
 				5A56E917272BFBAF0062680E /* WelcomePageDetail.swift in Sources */,
 				5A56E91D272F9A460062680E /* PrepareView.swift in Sources */,
+				5A42159D27311B9D000C9F5B /* SignUpView.swift in Sources */,
 				5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */,
 				5A56E915272BFB6C0062680E /* WelcomePageTitleView.swift in Sources */,
 				5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */,
 				5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */,
+				5A4215B72731626A000C9F5B /* CustomCoachingView.swift in Sources */,
+				5A4215A227312BD9000C9F5B /* UserPhotoPickerView.swift in Sources */,
+				5A4215AA27314E83000C9F5B /* CanvasView.swift in Sources */,
 				5A56E92D272F9CB50062680E /* MapView.swift in Sources */,
 				5A56E92B272F9C500062680E /* MapViewModel.swift in Sources */,
 				5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */,
 				5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */,
+				5A4215A027312B2D000C9F5B /* TrackableScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		5A4215A7273149BF000C9F5B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A4215A6273149BF000C9F5B /* zh-Hans */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		5A56E926272F9B6A0062680E /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -577,6 +665,9 @@
 				DEVELOPMENT_TEAM = JCR4BH3C45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is essential to set up the AR City View.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save the magical world into your album.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -607,6 +698,9 @@
 				DEVELOPMENT_TEAM = JCR4BH3C45;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is essential to set up the AR City View.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save the magical world into your album.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

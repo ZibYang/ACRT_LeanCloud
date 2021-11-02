@@ -56,12 +56,21 @@
 "Empty email is not acceptable" = "请输入邮箱账号";
 "Empty password is not acceptable" = "请输入密码";
 "Got it" = "好的";
+
+/* 注册 localization string*/
+"Finish" = "完成";
+"Cancel" = "取消";
+
 /* 更新提示 localization string*/
 "What's new" = "最近更新";
 "MAIC 2021" = "移动应用创新赛";
 "Come and join the 6th MAIC match in Zhejiang University!" = "欢迎大家参加第六届移动应用创新赛！";
 "City Badges" = "城市徽章";
 "We have launched the first batch of 3 city badges!" = "首发三枚城市徽章等你来获得！";
+"Wish we can meet in Apple Park one day." = "当您到访Apple Park，您将获得这枚精致的徽章，希望我们在Apple Park相见！";
+"Welcome to the historical Nanjin and Chendu." = "欢迎到访历史古都南京和熊猫故乡成都，来赢得相应的城市徽章吧";
+"Welcome to the beautiful Shenzhen and Guangzhou." = "欢迎到访美丽的广州和创新之城深圳，来赢得相应的城市徽章吧";
+
 "Today" = "今天";
 "Yesterday" = "昨天";
 /* 准备界面 localizable string*/
@@ -82,10 +91,10 @@
 
 "Login with Account" = "登陆账号";
 "Log in to get full functionality experiences." = "登陆账号以获得全部的功能体验";
-"Logged-in user is capable of:" = "已登录用户可以进行:";
-"Tourist is capable of:" = "游客可以进行:";
-"Explore and Create" = "探索和创造";
-"Explore" = "探索";
+"Logged-in user can:" = "已登录用户可以进行:";
+"Tourist can:" = "游客可以进行:";
+"explore and create" = "探索和创造";
+"explore" = "探索";
 
 "Requirement not fullfill!" = "还有运行条件不满足！";
 "Check it again" = "再检查一下";
