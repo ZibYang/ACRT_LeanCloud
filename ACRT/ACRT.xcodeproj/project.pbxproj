@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
+		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
+		5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */; };
+		5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A6327310A6800B170B2 /* WhatIsNewView.swift */; };
+		5A3E1A6727310A9200B170B2 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A6627310A9200B170B2 /* Update.swift */; };
+		5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */; };
 		5A56E901272BF1FE0062680E /* ACRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E900272BF1FE0062680E /* ACRTApp.swift */; };
 		5A56E903272BF1FE0062680E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E902272BF1FE0062680E /* MainView.swift */; };
 		5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A56E904272BF1FF0062680E /* Assets.xcassets */; };
@@ -21,10 +27,24 @@
 		5A56E92B272F9C500062680E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E92A272F9C500062680E /* MapViewModel.swift */; };
 		5A56E92D272F9CB50062680E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E92C272F9CB50062680E /* MapView.swift */; };
 		5A56E92F272F9D080062680E /* PermisionDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E92E272F9D080062680E /* PermisionDeniedView.swift */; };
+		5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E931272FC5D10062680E /* EquippedLiDARDevicesView.swift */; };
+		5A56E934272FD0920062680E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E933272FD0920062680E /* UserViewModel.swift */; };
+		5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E935272FD2720062680E /* UserCapabilityView.swift */; };
+		5A56E9382730DDCB0062680E /* WhatMeansExporeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E9372730DDCB0062680E /* WhatMeansExporeView.swift */; };
+		5A56E93A2730DDD50062680E /* WhatMeansCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E9392730DDD50062680E /* WhatMeansCreateView.swift */; };
+		5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93B2730E0740062680E /* ARViewModel.swift */; };
+		5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93D2730E0DE0062680E /* HttpAuthView.swift */; };
+		5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93F2730E2A60062680E /* IndicatorView.swift */; };
 		620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
+		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
+		5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailAndPasswordView.swift; sourceTree = "<group>"; };
+		5A3E1A6327310A6800B170B2 /* WhatIsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsNewView.swift; sourceTree = "<group>"; };
+		5A3E1A6627310A9200B170B2 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
+		5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsNewViewModel.swift; sourceTree = "<group>"; };
 		5A56E8FD272BF1FE0062680E /* ACRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A56E900272BF1FE0062680E /* ACRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRTApp.swift; sourceTree = "<group>"; };
 		5A56E902272BF1FE0062680E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -42,6 +62,14 @@
 		5A56E92A272F9C500062680E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		5A56E92C272F9CB50062680E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5A56E92E272F9D080062680E /* PermisionDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermisionDeniedView.swift; sourceTree = "<group>"; };
+		5A56E931272FC5D10062680E /* EquippedLiDARDevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquippedLiDARDevicesView.swift; sourceTree = "<group>"; };
+		5A56E933272FD0920062680E /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		5A56E935272FD2720062680E /* UserCapabilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCapabilityView.swift; sourceTree = "<group>"; };
+		5A56E9372730DDCB0062680E /* WhatMeansExporeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatMeansExporeView.swift; sourceTree = "<group>"; };
+		5A56E9392730DDD50062680E /* WhatMeansCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatMeansCreateView.swift; sourceTree = "<group>"; };
+		5A56E93B2730E0740062680E /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
+		5A56E93D2730E0DE0062680E /* HttpAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpAuthView.swift; sourceTree = "<group>"; };
+		5A56E93F2730E2A60062680E /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EA644E134854EEEBD6DAD6 /* Pods-ACRT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.release.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +95,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
+			isa = PBXGroup;
+			children = (
+				5A3E1A6127310A4C00B170B2 /* WhatIsNewView */,
+				5A3E1A5C2731096800B170B2 /* AwardView */,
+				5A3E1A5B2731095D00B170B2 /* UserPanel */,
+			);
+			path = "3. UserPage";
+			sourceTree = "<group>";
+		};
+		5A3E1A5B2731095D00B170B2 /* UserPanel */ = {
+			isa = PBXGroup;
+			children = (
+				5A3E1A592731080700B170B2 /* UserCircleView.swift */,
+				5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */,
+				5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */,
+			);
+			path = UserPanel;
+			sourceTree = "<group>";
+		};
+		5A3E1A5C2731096800B170B2 /* AwardView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AwardView;
+			sourceTree = "<group>";
+		};
+		5A3E1A6127310A4C00B170B2 /* WhatIsNewView */ = {
+			isa = PBXGroup;
+			children = (
+				5A3E1A6327310A6800B170B2 /* WhatIsNewView.swift */,
+			);
+			path = WhatIsNewView;
+			sourceTree = "<group>";
+		};
+		5A3E1A6527310A8900B170B2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5A3E1A6627310A9200B170B2 /* Update.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5A56E8F4272BF1FE0062680E = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +160,7 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
+				5A3E1A6527310A8900B170B2 /* Model */,
 				5A56E929272F9C360062680E /* ViewModel */,
 				5A56E921272F9B410062680E /* LocalizationFiles */,
 				5A56E918272BFC4B0062680E /* Extension */,
@@ -113,7 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				5A56E911272BFB260062680E /* 1. WelcomePage */,
-				5A56E91B272F9A250062680E /* 2. PrepareView */,
+				5A56E91B272F9A250062680E /* 2. PreparePage */,
+				5A3E1A58273107CD00B170B2 /* 3. UserPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,18 +209,21 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		5A56E91B272F9A250062680E /* 2. PrepareView */ = {
+		5A56E91B272F9A250062680E /* 2. PreparePage */ = {
 			isa = PBXGroup;
 			children = (
 				5A56E920272F9A6C0062680E /* RequirementesView */,
 				5A56E91C272F9A460062680E /* PrepareView.swift */,
 			);
-			path = "2. PrepareView";
+			path = "2. PreparePage";
 			sourceTree = "<group>";
 		};
 		5A56E91E272F9A530062680E /* WhatUserCanDoView */ = {
 			isa = PBXGroup;
 			children = (
+				5A56E935272FD2720062680E /* UserCapabilityView.swift */,
+				5A56E9372730DDCB0062680E /* WhatMeansExporeView.swift */,
+				5A56E9392730DDD50062680E /* WhatMeansCreateView.swift */,
 			);
 			path = WhatUserCanDoView;
 			sourceTree = "<group>";
@@ -164,8 +240,10 @@
 		5A56E920272F9A6C0062680E /* RequirementesView */ = {
 			isa = PBXGroup;
 			children = (
+				5A56E930272FC5BF0062680E /* LiDARDeviceView */,
 				5A56E91E272F9A530062680E /* WhatUserCanDoView */,
 				5A56E91F272F9A5F0062680E /* MapView */,
+				5A56E93F2730E2A60062680E /* IndicatorView.swift */,
 			);
 			path = RequirementesView;
 			sourceTree = "<group>";
@@ -182,8 +260,20 @@
 			isa = PBXGroup;
 			children = (
 				5A56E92A272F9C500062680E /* MapViewModel.swift */,
+				5A56E933272FD0920062680E /* UserViewModel.swift */,
+				5A56E93B2730E0740062680E /* ARViewModel.swift */,
+				5A56E93D2730E0DE0062680E /* HttpAuthView.swift */,
+				5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5A56E930272FC5BF0062680E /* LiDARDeviceView */ = {
+			isa = PBXGroup;
+			children = (
+				5A56E931272FC5D10062680E /* EquippedLiDARDevicesView.swift */,
+			);
+			path = LiDARDeviceView;
 			sourceTree = "<group>";
 		};
 		9907A9A3558B046F6858F6E7 /* Pods */ = {
@@ -315,15 +405,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A56E913272BFB3B0062680E /* WelcomePage.swift in Sources */,
+				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
+				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
+				5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */,
+				5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */,
+				5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */,
+				5A56E9382730DDCB0062680E /* WhatMeansExporeView.swift in Sources */,
+				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
+				5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */,
 				5A56E92F272F9D080062680E /* PermisionDeniedView.swift in Sources */,
 				5A56E91A272BFC5B0062680E /* ColorGradientText.swift in Sources */,
+				5A56E93A2730DDD50062680E /* WhatMeansCreateView.swift in Sources */,
 				5A56E901272BF1FE0062680E /* ACRTApp.swift in Sources */,
 				5A56E917272BFBAF0062680E /* WelcomePageDetail.swift in Sources */,
 				5A56E91D272F9A460062680E /* PrepareView.swift in Sources */,
+				5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */,
 				5A56E915272BFB6C0062680E /* WelcomePageTitleView.swift in Sources */,
+				5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */,
+				5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */,
 				5A56E92D272F9CB50062680E /* MapView.swift in Sources */,
 				5A56E92B272F9C500062680E /* MapViewModel.swift in Sources */,
+				5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */,
+				5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

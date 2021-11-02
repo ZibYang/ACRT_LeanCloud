@@ -15,6 +15,7 @@
 //  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 
 // [MapCoordinateFix] reference: https://cloud.tencent.com/developer/article/1524369?from=article.detail.1524393
+//
 
 import SwiftUI
 import MapKit
@@ -32,6 +33,11 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
     @Published var capabilitySatisfied = "requireNotDetermine"
     
+    //MARK: For prepareView
+    let indicatorImageName = "LocateRequire"
+    let indicatorTitle = "Open Map Service"
+    let indicatorDescription = "ARCT will use your position to minimize the locate process time."
+    
     // MARK: Coordinate Fix Section
     // WGS-84：international standard，GPS from Google Earth Apple Map
     // GCJ-02：Chinese standard，GPS from Google Map、Gaode、Tensen
@@ -40,8 +46,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     let  pi = 3.14159265358979324;
     let  xPi = .pi  * 3000.0 / 180.0;
     // WGS-84 -> GCJ-02
-    func transformFromWGSToGCJ(wgsLoc:CLLocationCoordinate2D)->CLLocationCoordinate2D
-    {
+    func transformFromWGSToGCJ(wgsLoc:CLLocationCoordinate2D)->CLLocationCoordinate2D{
         var adjustLoc=CLLocationCoordinate2D();
         if( isLocationOutOfChina(location: wgsLoc))
         {
