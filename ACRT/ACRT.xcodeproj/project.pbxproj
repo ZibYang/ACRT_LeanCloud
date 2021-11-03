@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
-		27B3EC4A27316E7D00021DE1 /* USDZViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* USDZViewModel.swift */; };
-		27B3EC4C27316E9700021DE1 /* USDZViewModel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZViewModel1.swift */; };
+		27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */; };
+		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
 		27B3EC5227316FD800021DE1 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */; };
 		27B3EC5327316FD800021DE1 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4F27316FD800021DE1 /* hello.usdz */; };
 		27B3EC5427316FD800021DE1 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5027316FD800021DE1 /* hello_1.usdz */; };
 		27B3EC5527316FD800021DE1 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5127316FD800021DE1 /* AppleHello.usdz */; };
+		27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */; };
+		27B3EC5A27325F7500021DE1 /* ARObjectLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
 		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
 		5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */; };
@@ -57,13 +59,15 @@
 
 /* Begin PBXFileReference section */
 		27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsViewModel.swift; sourceTree = "<group>"; };
-		27B3EC4927316E7D00021DE1 /* USDZViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZViewModel.swift; sourceTree = "<group>"; };
-		27B3EC4B27316E9700021DE1 /* USDZViewModel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZViewModel1.swift; sourceTree = "<group>"; };
+		27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectViewModel.swift; sourceTree = "<group>"; };
+		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
 		27B3EC4D27316F4000021DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleLogo.usdz; sourceTree = "<group>"; };
 		27B3EC4F27316FD800021DE1 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello.usdz; sourceTree = "<group>"; };
 		27B3EC5027316FD800021DE1 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello_1.usdz; sourceTree = "<group>"; };
 		27B3EC5127316FD800021DE1 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleHello.usdz; sourceTree = "<group>"; };
+		27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZLibraryViewModel.swift; sourceTree = "<group>"; };
+		27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectLibraryViewModel.swift; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
 		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
 		5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailAndPasswordView.swift; sourceTree = "<group>"; };
@@ -363,8 +367,10 @@
 				5A56E93D2730E0DE0062680E /* HttpAuthView.swift */,
 				5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */,
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
-				27B3EC4927316E7D00021DE1 /* USDZViewModel.swift */,
-				27B3EC4B27316E9700021DE1 /* USDZViewModel1.swift */,
+				27B3EC4B27316E9700021DE1 /* USDZModel.swift */,
+				27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */,
+				27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */,
+				27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				5A56E913272BFB3B0062680E /* WelcomePage.swift in Sources */,
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
 				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
+				27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
 				5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */,
@@ -523,6 +530,7 @@
 				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
 				5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */,
 				27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */,
+				27B3EC5A27325F7500021DE1 /* ARObjectLibraryViewModel.swift in Sources */,
 				5A4215B227315EDE000C9F5B /* LeftToolView.swift in Sources */,
 				5A4215AC273153FE000C9F5B /* ARWorldView.swift in Sources */,
 				5A56E92F272F9D080062680E /* PermisionDeniedView.swift in Sources */,
@@ -536,8 +544,8 @@
 				5A56E915272BFB6C0062680E /* WelcomePageTitleView.swift in Sources */,
 				5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */,
 				5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */,
-				27B3EC4C27316E9700021DE1 /* USDZViewModel1.swift in Sources */,
-				27B3EC4A27316E7D00021DE1 /* USDZViewModel.swift in Sources */,
+				27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */,
+				27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */,
 				5A4215B72731626A000C9F5B /* CustomCoachingView.swift in Sources */,
 				5A4215A227312BD9000C9F5B /* UserPhotoPickerView.swift in Sources */,
 				5A4215AA27314E83000C9F5B /* CanvasView.swift in Sources */,

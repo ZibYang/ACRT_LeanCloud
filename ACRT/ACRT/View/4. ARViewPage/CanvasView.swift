@@ -22,6 +22,7 @@ struct CanvasView: View {
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arModel: ARViewModel
     
+    
     @State private var showMesh = false
     @State var snapShot = false
     @State var requestNow = true
@@ -30,8 +31,9 @@ struct CanvasView: View {
     
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, httpStatus: $httpManager.statusLoc)
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
                 .environmentObject(arModel)
+                .environmentObject(httpManager)
                 .ignoresSafeArea()
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $httpManager.statusLoc)
             

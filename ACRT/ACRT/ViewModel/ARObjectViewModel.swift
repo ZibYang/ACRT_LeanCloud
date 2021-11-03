@@ -9,25 +9,25 @@
 import Foundation
 import RealityKit
 
-class USDZViewModel {
+class ARObjectViewModel {
     var modelName : String
-    var usdzModel : USDZModel1
     var anchorModelEntity: AnchorEntity
     var worldPos : simd_float3
     var worldRotation : simd_float3x3
     var worldScale : simd_float3
     var worldTransform : simd_float4x4  // T_w_model
     var isAdded: Bool
+    var isRendered : Bool
     
     init(modelName: String, worldPos: simd_float3, worldRotation: simd_float3x3, worldScale: simd_float3) {
         self.modelName = modelName
-        self.usdzModel = USDZModel1(modelName: modelName)
         self.anchorModelEntity = AnchorEntity(world: SIMD3(x:0, y:0, z:0))
         self.worldPos = worldPos
         self.worldRotation = worldRotation
         self.worldScale = worldScale
         self.worldTransform = matrix_identity_float4x4
         isAdded = false
+        isRendered = false
     }
 
     

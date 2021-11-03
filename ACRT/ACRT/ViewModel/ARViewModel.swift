@@ -33,9 +33,8 @@ class ARViewModel: ObservableObject{
     
     var poseARKitToW: simd_float4x4 = simd_float4x4()
     
-    let scale : Float = 1.0 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
+    let scale : Float = 0.21419 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
     
-    var modelList : [USDZViewModel] = []
     
     var isLiDAREqiped: Bool{
         return ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)
@@ -123,57 +122,37 @@ class ARViewModel: ObservableObject{
             print("DEBUG(BCHO): poseARKitToW", poseARKitToW)
             print("DEBUG(BCHO): srtARKitCToC", srtARKitCToC)
             print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
-
-
-            placeObj()
-
         }
-        
-        func initializeModels() -> [USDZViewModel] {
-    //        let worldUp =  simd_float3(0,-1,0) // = local y in world axis
-    //        let worldFront = simd_float3(0,0,-1) // = local z in world axis
-    //        let worldRight = normalize(cross(-1 * worldUp, -1 * worldFront))
-    // Qiushi
-    //        let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
-    //        let model1 = USDZViewModel(modelName: "hello", worldPos: simd_float3(12.4161, -1.48313, 9.02723), worldRotation: rotationMatrix, worldScale: simd_float3(1,1,1))
-    //
-    //        let model2 = USDZViewModel(modelName: "AppleLogo", worldPos: simd_float3(-8.45376, -2.92693, 9.33032), worldRotation: rotationMatrix, worldScale: simd_float3(1,1,1))
-    //
-    //        let model3 = USDZViewModel(modelName: "AppleLogo", worldPos: simd_float3(33.3995, -2.83004, 7.99316), worldRotation: rotationMatrix, worldScale: simd_float3(1,1,1))
-    //Shelf
-    //        let model1 = USDZViewModel(modelName: "hello", worldPos: simd_float3(0.341545, -0.727689, 5.92317), worldRotation: rotationMatrix, worldScale: simd_float3(0.2,0.2,0.2))
-    //
-    //        let model2 = USDZViewModel(modelName: "AppleLogo", worldPos: simd_float3(-3.38882, 0.0870665, 0.155429), worldRotation: rotationMatrix, worldScale: simd_float3(0.4,0.4,0.4))
-    //
-    //        let model3 = USDZViewModel(modelName: "AppleLogo", worldPos: simd_float3(4.05483, 0.582852, 0.191444), worldRotation: rotationMatrix, worldScale: simd_float3(0.4,0.4,0.4))
-            
-    //        return [model1, model2, model3]
-    //InTime
-            let worldUp =  simd_float3(0,-1,0) // = local y in world axis
-            let worldFront = simd_float3(-0.94613601,  0.26701994, -0.18310379) // = local z in world axis
-            let worldRight = normalize(cross(worldUp, worldFront))
-            let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
-            let model1 = USDZViewModel(modelName: "AppleLogo", worldPos: simd_float3(-4.87282, -16.316, 23.8932), worldRotation: rotationMatrix, worldScale: simd_float3(4,4,4))
-
-            return [model1]
-
-        }
-        
-        func placeObj() {
-            for model in modelList {
-                print("DEBUG(BCH) test model ", model.modelName)
-                if let usdzEntity = model.usdzModel.modelEntity {
-                    model.updateModelTransform(T_arkit_w: poseARKitToW)
-                    print("DEBUG(BCH) update model ", model.modelName)
-                    if model.isAdded == false {
-                        print("DEBUG(BCH) added pos ", model.anchorModelEntity.transform.translation)
-                        model.anchorModelEntity.addChild(usdzEntity.clone(recursive: true))
-                        arView.scene.anchors.append(model.anchorModelEntity)
-                        model.isAdded = true
-                    }
-                }
-
+    
+//    func placeInherentARObjects(arObjectLibrary: ARObjectLibraryViewModel) {
+//        for model in arObjectLibrary.inherentModelList {
+//            print("DEBUG(BCH) test model ", model.modelName)
+//            if let usdzEntity = arObjectLibrary.usdzInerentModelList.getUSDZModelEntity(modelName: model.modelName) {
+//                model.updateModelTransform(T_arkit_w: poseARKitToW)
+//                print("DEBUG(BCH) update model ", model.modelName)
+//                if model.isAdded == false {
+//                    print("DEBUG(BCH) added pos ", model.anchorModelEntity.transform.translation)
+//                    model.anchorModelEntity.addChild(usdzEntity.clone(recursive: true))
+//                    arView.scene.anchors.append(model.anchorModelEntity)
+//                    model.isAdded = true
+//                }
+//            }
+//
+//        }
+//
+//    }
+    
+    func placeInherentARObjects(arObjectLibrary: ARObjectLibraryViewModel) {
+        arObjectLibrary.updateInherentModels(poseARKitToW: poseARKitToW)
+        arObjectLibrary.pushUSDZIntoAnchor()
+        for model in arObjectLibrary.inherentModelList {
+            if model.isAdded == true && model.isRendered == false {
+                print("DEBUG(BCH) add model into arView")
+                arView.scene.anchors.append(model.anchorModelEntity)
+                model.isRendered = true
             }
-            
         }
+    }
+        
+        
 }

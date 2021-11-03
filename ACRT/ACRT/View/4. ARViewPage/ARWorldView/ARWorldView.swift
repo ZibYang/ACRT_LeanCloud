@@ -27,9 +27,10 @@ import SwiftUI
 
 struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var arViewModel: ARViewModel
+    @EnvironmentObject var httpManager: HttpAuth
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
-    @Binding var httpStatus: Int
+    @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()
@@ -72,9 +73,9 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        if (httpStatus == 1) {
-            // arViewModel.onLocalizationResult(manager: httpManager)
-            // TODO: placeObj()
+        if (httpManager.statusLoc == 1) {
+            arViewModel.onLocalizationResult(manager: httpManager)
+            arViewModel.placeInherentARObjects(arObjectLibrary: arObjectLibraryViewModel)
         }
         if showMesh {
             arViewModel.arView.debugOptions.insert(.showAnchorOrigins)

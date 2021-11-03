@@ -52,7 +52,7 @@ struct SensetimeServerMessage : Decodable {
 class HttpAuth : ObservableObject {
     var didChange = PassthroughSubject<HttpAuth, Never>()
     
-    @Published var statusLoc : Int = 0
+    @Published var statusLoc : Int = -2
     
     var T_ci_w : simd_float4x4!
     let qiuShiUrl: String = "http://arctbch.nat300.top/loc1"
