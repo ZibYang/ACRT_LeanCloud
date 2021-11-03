@@ -25,26 +25,30 @@ struct TopToolView: View {
         
         HStack(spacing: 10) {
 
-            // show mesh Button
+            // MARK: show mesh Button
             Button(action: {
                 showMesh.toggle()
-                print("pressed")
             }, label:{
-                Image(systemName: "gear")
+                Image(systemName: "square.grid.3x3.square")
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
             })
-            // share Button
+                .contextMenu{
+                    Label("Show mesh in reality", systemImage: "square.dashed")
+                }
+            // MARK: share Button
             Button(action: {
                 withAnimation(Animation.easeInOut(duration: 0.5)) {
                     showCamera.toggle()
                 }
-                print("pressed")
             }, label:{
                 Image(systemName: showCamera ?  "camera.fill" : "camera")
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
             })
+                .contextMenu{
+                    Label("Take a snap shot", systemImage: "camera.aperture")
+                }
         }
     }
 }

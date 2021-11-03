@@ -22,7 +22,13 @@ struct LeftToolView: View {
     var body: some View {
         VStack {
             exploreTool
+                .contextMenu{
+                    Label("Explore the magic world", systemImage: "lightbulb")
+                }
             createTool
+                .contextMenu{
+                    Label("Change the world now", systemImage: "gearshape.2")
+                }
         }
     }
     
@@ -60,5 +66,6 @@ struct LeftToolView: View {
 struct LeftsideToolView_Previews: PreviewProvider {
     static var previews: some View {
         LeftToolView()
+            .background(.ultraThinMaterial)
     }
 }

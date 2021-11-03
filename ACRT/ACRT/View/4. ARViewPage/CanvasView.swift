@@ -17,7 +17,6 @@
 import SwiftUI
 
 struct CanvasView: View {
-    // @EnvironmentObject var firebaseDB: FirebaseDB
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arModel: ARViewModel
@@ -61,6 +60,8 @@ struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
         CanvasView(goBack: .constant(false))
             .environmentObject(ARViewModel())
+            .environmentObject(HttpAuth())
+            .environmentObject(UserViewModel())
     }
 }
 

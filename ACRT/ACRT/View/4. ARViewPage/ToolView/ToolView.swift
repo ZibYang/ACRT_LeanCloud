@@ -32,73 +32,114 @@ struct ToolView: View {
             Color.white
                 .ignoresSafeArea()
                 .opacity(snapshotBackgroundOpacity)
-            VStack {
-                // MARK: Top tool
-                HStack {
-                    // quit Button
-                    Button(action: {
-                        withAnimation(Animation.easeInOut(duration: 1.0)){
-                            goBack.toggle()
-                        }
-                        print("pressed")
-                    }, label:{
-                        Image(systemName: "arrow.backward")
-                            .foregroundColor(.white)
-                            .frame(width: 40, height: 40)
-                    })
-                        .padding(.all, 6)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(10)
-                        .padding(.top, 10)
-                    TopToolView(showMesh: $showMesh, goBack: $goBack, showCamera: $showCameraButton)
-                        .padding(.all, 6)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(10)
-                        .padding(.top, 10)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.vertical, 5)
-                .offset(x: coaching != 1 ? -200 : 0)
-                Spacer()
-                
-                // MARK: Left center tool
-                HStack {
-                    LeftToolView()
-                        .padding(.all, 5)
-                        .background(.ultraThinMaterial)
-                        .cornerRadius(10)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .offset(x: coaching != 1 ? -150 : 0)
-                Spacer()
-                
-                // MARK: SnapShot button
-                Button(action: {
-                    snapshotBackgroundOpacity = 1.0
-                    withAnimation(Animation.easeInOut(duration: 1.0)){
-                        snapshotBackgroundOpacity = 0.0
-                    }
-                    snapShot.toggle()
-                    print("snapshort")
-                }, label: {
-                    Circle()
-                        .foregroundColor(.white)
-                        .frame(width: 80, height: 80, alignment: .center)
-                        .overlay(
-                            Circle()
-                                .stroke(Color.black.opacity(0.8), lineWidth: 2)
-                                .frame(width: 65, height: 65, alignment: .center)
-                        )
-                        .padding(.bottom)
-                })
-                .offset(y: showCameraButton ? 0 : 500)
-            }
+            
+            topToolGroup
+            
+            leftToolGroup
+                    
+            snapShotButton
         }
         
     }
+    var topToolGroup: some View{
+        VStack {
+            // MARK: Top tool
+            HStack {
+                // quit Button
+                Button(action: {
+                    withAnimation(Animation.easeInOut(duration: 1.0)){
+                        goBack.toggle()
+                    }
+                    print("pressed")
+                }, label:{
+                    Image(systemName: "arrow.backward")
+                        .foregroundColor(.white)
+                        .frame(width: 40, height: 40)
+                })
+                    .padding(.all, 6)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
+                    
+                TopToolView(showMesh: $showMesh, goBack: $goBack, showCamera: $showCameraButton)
+                    .padding(.all, 6)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
+                
+                Spacer()
+                
+                relocationButton
+                    .offset(x: coaching != 1 ? 400 : 0)
+            }
+            .padding(.top, 10)
+            .padding(.horizontal)
+            .padding(.vertical, 5)
+            .offset(x: coaching != 1 ? -200 : 0)
+            Spacer()
+        }
+    }
+    
+    var leftToolGroup: some View{
+        VStack{
+            Spacer()
+            // MARK: Left center tool
+            HStack {
+                LeftToolView()
+                    .padding(.all, 5)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
+                Spacer()
+            }
+            .padding(.horizontal)
+            .offset(x: coaching != 1 ? -150 : 0)
+            Spacer()
+        }
+    }
+    
+    var relocationButton: some View{
+        //MARK: relocation Button
+        Button(action: {
+            withAnimation(Animation.easeInOut(duration: 1.0)){
+                goBack.toggle()
+            }
+            print("pressed")
+        }, label:{
+            Image(systemName: "location.fill")
+                .foregroundColor(.white)
+                .frame(width: 40, height: 40)
+        })
+            .padding(.all, 6)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
+            .contextMenu{
+                Label("Locate again", systemImage: "location.circle.fill")
+            }
+    }
         
+    var snapShotButton: some View{
+        VStack{
+            Spacer()
+            // MARK: SnapShot button
+            Button(action: {
+                snapshotBackgroundOpacity = 1.0
+                withAnimation(Animation.easeInOut(duration: 1.0)){
+                    snapshotBackgroundOpacity = 0.0
+                }
+                snapShot.toggle()
+                print("snapshort")
+            }, label: {
+                Circle()
+                    .foregroundColor(.white)
+                    .frame(width: 80, height: 80, alignment: .center)
+                    .overlay(
+                        Circle()
+                            .stroke(Color.black.opacity(0.8), lineWidth: 2)
+                            .frame(width: 65, height: 65, alignment: .center)
+                    )
+                    .padding(.bottom)
+            })
+            .offset(y: showCameraButton ? 0 : 500)
+        }
+    }
 }
 
 struct ToolView_Previews: PreviewProvider {

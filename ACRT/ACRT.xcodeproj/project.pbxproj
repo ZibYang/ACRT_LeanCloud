@@ -26,6 +26,7 @@
 		5A4215B227315EDE000C9F5B /* LeftToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B127315EDE000C9F5B /* LeftToolView.swift */; };
 		5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B3273161CC000C9F5B /* ToolView.swift */; };
 		5A4215B72731626A000C9F5B /* CustomCoachingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B62731626A000C9F5B /* CustomCoachingView.swift */; };
+		5A4215BA27323698000C9F5B /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4215B927323698000C9F5B /* ModelPickerView.swift */; };
 		5A56E901272BF1FE0062680E /* ACRTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E900272BF1FE0062680E /* ACRTApp.swift */; };
 		5A56E903272BF1FE0062680E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E902272BF1FE0062680E /* MainView.swift */; };
 		5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A56E904272BF1FF0062680E /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		5A4215B127315EDE000C9F5B /* LeftToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftToolView.swift; sourceTree = "<group>"; };
 		5A4215B3273161CC000C9F5B /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		5A4215B62731626A000C9F5B /* CustomCoachingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCoachingView.swift; sourceTree = "<group>"; };
+		5A4215B927323698000C9F5B /* ModelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPickerView.swift; sourceTree = "<group>"; };
 		5A56E8FD272BF1FE0062680E /* ACRT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACRT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A56E900272BF1FE0062680E /* ACRTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACRTApp.swift; sourceTree = "<group>"; };
 		5A56E902272BF1FE0062680E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		5A4215A827314E68000C9F5B /* 4. ARViewPage */ = {
 			isa = PBXGroup;
 			children = (
+				5A4215B827323687000C9F5B /* ModelPickerView */,
 				5A4215B52731625E000C9F5B /* CoachingView */,
 				5A4215AE273159CF000C9F5B /* ToolView */,
 				5A4215AD273159C6000C9F5B /* ARWorldView */,
@@ -211,6 +214,14 @@
 				5A4215B62731626A000C9F5B /* CustomCoachingView.swift */,
 			);
 			path = CoachingView;
+			sourceTree = "<group>";
+		};
+		5A4215B827323687000C9F5B /* ModelPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				5A4215B927323698000C9F5B /* ModelPickerView.swift */,
+			);
+			path = ModelPickerView;
 			sourceTree = "<group>";
 		};
 		5A56E8F4272BF1FE0062680E = {
@@ -487,6 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A56E913272BFB3B0062680E /* WelcomePage.swift in Sources */,
+				5A4215BA27323698000C9F5B /* ModelPickerView.swift in Sources */,
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
 				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
