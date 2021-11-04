@@ -30,7 +30,6 @@ struct PrepareView: View {
     @State var checkUserCapability = false
     @State var introduceExporeAndCreate = false
     @State var introduceExpore = false
-    @State var localizing = false
     
     @State var everythingSetted = false
     @State var everythingIsNotSetYetWarning = false
@@ -40,7 +39,7 @@ struct PrepareView: View {
     var body: some View {
         ZStack(alignment: .top) {
             if everythingSetted{
-                CanvasView(goBack: $everythingSetted, localizing: $localizing)
+                CanvasView(goBack: $everythingSetted)
             }else {
                 NavigationView{
                     List{
@@ -65,7 +64,7 @@ struct PrepareView: View {
                 HStack{
                     Spacer()
                     UserCircleView()
-                        .offset(x: localizing ? 70 : 0)
+                        .offset(x: arViewModel.isCoaching ? 70 : 0)
                         .padding(.top)
                 }
                 .padding(.trailing)

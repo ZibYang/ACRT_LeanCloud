@@ -19,7 +19,7 @@ import SwiftUI
 struct CanvasView: View {
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var userModel: UserViewModel
-    @EnvironmentObject var arModel: ARViewModel
+    @EnvironmentObject var arViewModel: ARViewModel
     
     @State private var showMesh = false
     @State var snapShot = false
@@ -28,18 +28,17 @@ struct CanvasView: View {
     @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
    
     @Binding var goBack: Bool
-    @Binding var localizing: Bool
     
     var body: some View {
         ZStack{
             ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
-                .environmentObject(arModel)
+                .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(arObjectLibraryViewModel)
                 .ignoresSafeArea()
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $httpManager.statusLoc)
             
-            if arModel.isCoaching == true {
+            if arViewModel.isCoaching == true {
                 VStack {
                     CustomCoachingView()
                 }
@@ -47,12 +46,12 @@ struct CanvasView: View {
             }
             // TODO: localization Button
         }.onAppear() {
-            arModel.isCoaching = true
+            arViewModel.isCoaching = true
             DispatchQueue.global(qos: .background).async {
                 sleep(1)
                 while(httpManager.statusLoc != 1) {
                     if(httpManager.statusLoc == 0) {
-                        arModel.RequestLocalization(manager: httpManager)
+                        arViewModel.RequestLocalization(manager: httpManager)
                     }
                 }
                 
@@ -60,10 +59,11 @@ struct CanvasView: View {
                     sleep(1)
                 }
                 DispatchQueue.main.async {
-                    print("arModel isCoaching close")
-                    arModel.isCoaching = false
+                    print("arViewModel isCoaching close")
+                    arViewModel.isCoaching = false
                 }
             }
+            
         }
         
     }
@@ -71,7 +71,7 @@ struct CanvasView: View {
 
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
-        CanvasView(goBack: .constant(false), localizing: .constant(false))
+        CanvasView(goBack: .constant(false))
             .environmentObject(ARViewModel())
             .environmentObject(HttpAuth())
             .environmentObject(UserViewModel())
