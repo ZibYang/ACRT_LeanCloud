@@ -58,7 +58,7 @@ func convertCapturedImageToUIImage(pixelBuffer: CVPixelBuffer, transform : CGAff
 
     if transform != nil {
         let ciImage = CIImage(cgImage: cgImage)
-        var finalCIImage = ciImage.transformed(by: transform!)
+        let finalCIImage = ciImage.transformed(by: transform!)
         print("DEBUG(BCH): transform image")
         return UIImage(ciImage: finalCIImage)
     } else {
@@ -101,9 +101,6 @@ func processImage( image: UIImage, isGrayscale: Bool, useRawData: Bool)->String?
             return nil
         }
         strBase64 = data.base64EncodedString()
-
-        print("len(str) \(strBase64?.count)")
-
     } else if(isGrayscale == true && useRawData == false) {
         guard let grey_rotated_image :UIImage = convertImageToGrayScale(image: image) else {
                     print("Warning: conversion to grey scale fails")
@@ -189,7 +186,7 @@ func pixelBufferToUIImage(pixelBuffer : CVPixelBuffer ) -> UIImage?
     guard let videoImage:CGImage = temporaryContext.createCGImage(ciImage, from: CGRect(x: 0, y:0,width: CGFloat(CVPixelBufferGetWidth(pixelBuffer)),height:CGFloat(CVPixelBufferGetHeight(pixelBuffer)))) else {
         return nil
     }
-    var uiImage : UIImage = UIImage(cgImage: videoImage)
+    let uiImage : UIImage = UIImage(cgImage: videoImage)
     
     return uiImage;
 }

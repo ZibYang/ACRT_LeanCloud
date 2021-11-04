@@ -134,6 +134,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		278BE1FD2733B29A0080EE53 /* ARObjectViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				27B3EC4B27316E9700021DE1 /* USDZModel.swift */,
+				27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */,
+				27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */,
+				27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */,
+			);
+			path = ARObjectViewModel;
+			sourceTree = "<group>";
+		};
 		27B3EC5627316FE900021DE1 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,16 +372,13 @@
 		5A56E929272F9C360062680E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				278BE1FD2733B29A0080EE53 /* ARObjectViewModel */,
 				5A56E92A272F9C500062680E /* MapViewModel.swift */,
 				5A56E933272FD0920062680E /* UserViewModel.swift */,
 				5A56E93B2730E0740062680E /* ARViewModel.swift */,
 				5A56E93D2730E0DE0062680E /* HttpAuthView.swift */,
 				5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */,
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
-				27B3EC4B27316E9700021DE1 /* USDZModel.swift */,
-				27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */,
-				27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */,
-				27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

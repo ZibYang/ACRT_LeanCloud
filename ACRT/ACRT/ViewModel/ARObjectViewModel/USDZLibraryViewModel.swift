@@ -59,6 +59,15 @@ class USDZLibraryViewModel {
         return nil
     }
     
+    func AreModelsLoaded() -> Bool {
+        for (_, model) in usdzModelList {
+            if model.modelEntity == nil {
+                return false
+            }
+        }
+        return true
+    }
+    
 //    func getAndLoadUSDZModel(modelName: String) ->USDZModel? {
 //        if !usdzModelList.keys.contains(modelName) || usdzModelList[modelName] == nil {
 //            loadUSDZModel(modelName:modelName)

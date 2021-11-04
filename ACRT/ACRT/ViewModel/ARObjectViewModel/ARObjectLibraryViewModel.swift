@@ -82,5 +82,9 @@ class ARObjectLibraryViewModel : ObservableObject {
 
         }
     }
+    
+    func AreModelLibrariesLoaded() -> Bool {
+        return usdzInerentModelList.AreModelsLoaded() && usdzCreativeModelList.AreModelsLoaded()
+    }
 
 }

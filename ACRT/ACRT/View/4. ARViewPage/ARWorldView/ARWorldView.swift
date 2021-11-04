@@ -28,9 +28,10 @@ import SwiftUI
 struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var httpManager: HttpAuth
+    @EnvironmentObject var arObjectLibraryViewModel :ARObjectLibraryViewModel
+
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
-    @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()

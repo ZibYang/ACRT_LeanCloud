@@ -22,6 +22,8 @@ import ARKit
 
 class ARViewModel: ObservableObject{
     @Published var capabilitySatisfied = "optional"
+    @Published var isCoaching : Bool = false
+
     //MARK: For prepareView
     let indicatorImageName = "LiDARRequire"
     let indicatorTitle = "Use Device with LiDAR"
@@ -30,9 +32,7 @@ class ARViewModel: ObservableObject{
     var arView: ARView
 
     var lastCameraPose: simd_float4x4 = simd_float4x4()
-    
     var poseARKitToW: simd_float4x4 = simd_float4x4()
-    
     let scale : Float = 0.21419 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
     
     
@@ -123,24 +123,6 @@ class ARViewModel: ObservableObject{
             print("DEBUG(BCHO): srtARKitCToC", srtARKitCToC)
             print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
         }
-    
-//    func placeInherentARObjects(arObjectLibrary: ARObjectLibraryViewModel) {
-//        for model in arObjectLibrary.inherentModelList {
-//            print("DEBUG(BCH) test model ", model.modelName)
-//            if let usdzEntity = arObjectLibrary.usdzInerentModelList.getUSDZModelEntity(modelName: model.modelName) {
-//                model.updateModelTransform(T_arkit_w: poseARKitToW)
-//                print("DEBUG(BCH) update model ", model.modelName)
-//                if model.isAdded == false {
-//                    print("DEBUG(BCH) added pos ", model.anchorModelEntity.transform.translation)
-//                    model.anchorModelEntity.addChild(usdzEntity.clone(recursive: true))
-//                    arView.scene.anchors.append(model.anchorModelEntity)
-//                    model.isAdded = true
-//                }
-//            }
-//
-//        }
-//
-//    }
     
     func placeInherentARObjects(arObjectLibrary: ARObjectLibraryViewModel) {
         arObjectLibrary.updateInherentModels(poseARKitToW: poseARKitToW)
