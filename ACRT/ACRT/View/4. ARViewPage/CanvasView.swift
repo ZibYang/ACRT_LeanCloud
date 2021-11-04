@@ -36,7 +36,7 @@ struct CanvasView: View {
                 .environmentObject(httpManager)
                 .environmentObject(arObjectLibraryViewModel)
                 .ignoresSafeArea()
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $httpManager.statusLoc)
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $arViewModel.isCoaching)
             
             if arViewModel.isCoaching == true {
                 VStack {

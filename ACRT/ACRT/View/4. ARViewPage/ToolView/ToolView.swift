@@ -23,7 +23,7 @@ struct ToolView: View {
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
     @Binding var goBack: Bool
-    @Binding var coaching: Int
+    @Binding var coaching: Bool
     
     @State private var snapshotBackgroundOpacity = 0.0
     
@@ -68,12 +68,12 @@ struct ToolView: View {
                 Spacer()
                 
                 relocationButton
-                    .offset(x: coaching != 1 ? 400 : 0)
+                    .offset(x: coaching ? 400 : 0)
             }
             .padding(.top, 10)
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .offset(x: coaching != 1 ? -200 : 0)
+            .offset(x: coaching ? -200 : 0)
             Spacer()
         }
     }
@@ -90,7 +90,7 @@ struct ToolView: View {
                 Spacer()
             }
             .padding(.horizontal)
-            .offset(x: coaching != 1 ? -150 : 0)
+            .offset(x: coaching ? -150 : 0)
             Spacer()
         }
     }
@@ -145,16 +145,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(1))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(true))
             
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(1))
+                ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(true))
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(1))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(true))
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
         }
