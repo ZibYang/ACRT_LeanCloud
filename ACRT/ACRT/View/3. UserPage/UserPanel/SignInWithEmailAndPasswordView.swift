@@ -21,13 +21,17 @@
 import SwiftUI
 
 struct SignInWithEmailAndPasswordView: View {
+    @EnvironmentObject var userModel: UserViewModel
+    
     @Environment(\.dismiss) var dismissLoginSheet
     @FocusState private var focusedField: Field? // Email Password Field
-    @State var inputEmail = ""
+    @State var inputAccount = ""
     @State var inputPassword = ""
     
     @State var emptyEmail = false
     @State var emptyPassword = false
+    @State var incorrectInput = false
+    @State var loginSuccess = false
     
     @State var signUpNow = false
     
@@ -73,6 +77,7 @@ struct SignInWithEmailAndPasswordView: View {
             .navigationTitle(Text("Log in"))
             .navigationBarTitleDisplayMode(.inline)
         } // navigation
+        .environmentObject(userModel)
         
     }
         
@@ -81,7 +86,7 @@ struct SignInWithEmailAndPasswordView: View {
             Text("Account")
                 .font(.body)
                 .frame(width:80, alignment: .leading)
-            TextField(LocalizedStringKey("Email Account"), text: $inputEmail)
+            TextField(LocalizedStringKey("User account name"), text: $inputAccount)
                 .focused($focusedField, equals: .account)
                 .textContentType(.emailAddress)
                 .submitLabel(.next)
@@ -99,6 +104,7 @@ struct SignInWithEmailAndPasswordView: View {
                 .font(.body)
                 .frame(width:80, alignment: .leading)
             SecureField("Required", text: $inputPassword, prompt: Text("Required"))
+                .keyboardType(.namePhonePad)
                 .focused($focusedField, equals: .password)
                 .submitLabel(.join)
         }
@@ -126,6 +132,26 @@ struct SignInWithEmailAndPasswordView: View {
         }, label: {
             Text("Log in")
         })
+            .alert(isPresented: $emptyEmail){
+                Alert(title: Text("Apologize"),
+                      message: Text("Empty email is not acceptable."),
+                      dismissButton: .destructive(Text("Got it")))
+            }
+            .alert(isPresented: $emptyPassword){
+                Alert(title: Text("Apologize"),
+                      message: Text("Empty password is not acceptable."),
+                      dismissButton: .default(Text("Got it")))
+            }
+            .alert(isPresented: $incorrectInput){
+                Alert(title: Text("Error"),
+                      message: Text("Incorrect account or password"),
+                      dismissButton: .default(Text("Try it again")))
+            }
+            .alert(isPresented: $loginSuccess){
+                Alert(title: Text("Success"),
+                      message: Text("Welcome to ACRT"),
+                      dismissButton: .default(Text("OK")))
+            }
     }
     
     var leadingTollBarItem: some View{
@@ -138,6 +164,7 @@ struct SignInWithEmailAndPasswordView: View {
             SignUpView()
         })
     }
+    
     var traillingTollBarItem: some View{
         Button(action:{
             dismissLoginSheet()
@@ -148,16 +175,26 @@ struct SignInWithEmailAndPasswordView: View {
     }
     
     func checkAndLogIn(){
-        if inputEmail.isEmpty{
-            print("empty email")
-            emptyEmail = true
+        if inputAccount.isEmpty{
+            emptyEmail.toggle()
             focusedField = .account
+            return
         }else if inputPassword.isEmpty{
-            print("empty password")
-            emptyPassword = true
+            emptyPassword.toggle()
             focusedField = .password
+            return
         }else{
-            print("Logging in with botton")
+            let result =  userModel.tryToLogin(account: inputAccount, password: inputPassword)
+            switch result {
+                case 0:
+                    incorrectInput.toggle()
+                    inputPassword = ""
+                    focusedField = .password
+                case 1:
+                    loginSuccess.toggle()
+                default:
+                    print("[Error]: result is :\(result)")
+            }
         }
     }
 }
@@ -172,5 +209,6 @@ extension SignInWithEmailAndPasswordView {
 struct SignInWithEmailAndPasswordView_Previews: PreviewProvider {
     static var previews: some View {
         SignInWithEmailAndPasswordView()
+            .environmentObject(UserViewModel())
     }
 }

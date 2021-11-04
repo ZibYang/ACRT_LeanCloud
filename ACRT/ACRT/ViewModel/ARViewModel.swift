@@ -34,7 +34,7 @@ class ARViewModel: ObservableObject{
     var poseARKitToW: simd_float4x4 = simd_float4x4()
     
     let scale : Float = 1.0 //old qiushi : 6.7664; shelf : 0.21419, 1022 qiushi: 3.34645, 1024:0.858995
-    
+        
     var modelList : [USDZViewModel] = []
     
     var isLiDAREqiped: Bool{

@@ -37,17 +37,17 @@ struct UserCircleView: View {
             .sheet(isPresented: $showUserPanel){
                 if userModel.isSignedIn{
                     UserLoggedinView()
-//                        .environmentObject(userModel)
-//                        .environmentObject(awardModel)
                 }else{
                     SignInWithEmailAndPasswordView()
                 }
             }
+            .environmentObject(userModel)
     }
 }
 
 struct UserCircleView_Previews: PreviewProvider {
     static var previews: some View {
         UserCircleView()
+            .environmentObject(UserViewModel())
     }
 }

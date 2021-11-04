@@ -26,6 +26,7 @@ struct CanvasView: View {
     @State var requestNow = true
    
     @Binding var goBack: Bool
+    @Binding var localizing: Bool
     
     var body: some View {
         ZStack{
@@ -42,7 +43,7 @@ struct CanvasView: View {
             }
             // TODO: localization Button
         }.onAppear() {
-            httpManager.statusLoc = 0
+            localizing = true
             DispatchQueue.global(qos: .background).async {
                 sleep(1)
                 while(httpManager.statusLoc != 1) {
@@ -50,6 +51,7 @@ struct CanvasView: View {
                         arModel.RequestLocalization(manager: httpManager)
                     }
                 }
+                localizing = false
             }
         }
         
@@ -58,7 +60,7 @@ struct CanvasView: View {
 
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
-        CanvasView(goBack: .constant(false))
+        CanvasView(goBack: .constant(false), localizing: .constant(false))
             .environmentObject(ARViewModel())
             .environmentObject(HttpAuth())
             .environmentObject(UserViewModel())

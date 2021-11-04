@@ -33,7 +33,7 @@ struct IndicatorView: View {
             VStack(alignment: .leading) {
                 HStack{
                     Text(LocalizedStringKey(indicatorTitle))
-                        .font(.body)
+                        .font(.headline)
                         .padding(.bottom, 2)
                         .lineLimit(1)
                     Image(systemName: satisfied == "satisfied" ? "checkmark.circle" : satisfied == "optional" ? "exclamationmark.circle" : "multiply.circle")

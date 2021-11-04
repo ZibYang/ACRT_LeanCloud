@@ -24,4 +24,11 @@ extension View {
                                     endPoint: .bottomTrailing))
             .mask(self)
     }
+    
+    func angularGradientGlow(colors: [Color]) -> some View{
+        self.overlay(AngularGradient(gradient: Gradient(colors: colors),
+                                     center: .center,
+                                     angle: .degrees(0.0)))
+            .mask(self)
+    }
 }

@@ -23,7 +23,11 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismissSheet
+    
+    @EnvironmentObject var userModel: UserViewModel
+    
     @FocusState private var focusedField: Field?
     @State private var contentOffset = CGFloat(0)
     
@@ -35,14 +39,22 @@ struct SignUpView: View {
     @State private var showImagePicker = false
     
     //MARK: Basic Infomation
+    @State private var photoURL = URL(string: "")
     @State private var nickName = ""
-    @State private var gender = [ "Unknow", "Female", "Male", "Intersex", "Trans", "NonConforming", "Personal", "Eunuch"]
-    @State private var selectedGender = "Unknow"
+    @State private var nickNameError = false
+    @State private var age = ""
+    @State private var incorrectAge = false
     
     //MARK: Secured Infomation
     @State private var phoneNumber = ""
+    @State private var phoneVarifiedPressed = false
+    @State private var phoneVarifiedError = false
+    @State private var phoneNumberError = false
+    @State private var varifyCode = ""
     @State private var mail = ""
+    @State private var mailError = false
     @State private var password = ""
+    @State private var passwordError = false
     
     var body: some View {
         NavigationView{
@@ -58,6 +70,7 @@ struct SignUpView: View {
                 
                 securedInformation
             }
+            .background(Color(#colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1)))
             .frame(maxHeight: .infinity, alignment: .top)
             .navigationTitle(Text("Sign up"))
             .navigationBarTitleDisplayMode(.inline)
@@ -70,6 +83,9 @@ struct SignUpView: View {
                 }
             })
         }
+        .onAppear(perform: {
+            focusedField = .nickName
+        })
         
     }
     
@@ -84,11 +100,18 @@ struct SignUpView: View {
     // FIXME: Finsh Sign up
     var finishButton: some View{
         Button(action: {
+            // 先要再次检查各个框是否正确
+            userModel.tryToSignUp(photoURL: photoURL,
+                                  username: nickName,
+                                  password: password,
+                                  email: mail,
+                                  phone: phoneNumber,
+                                  age: age)
             dismissSheet()
         }, label: {
-            Text("Finish")
+            Text("Submit")
         })
-            .disabled(mail == "" && password == "")
+            .disabled(nickName == "" || password == "" ||  mail == "" || phoneNumber == "")
     }
     
     var userPhotoPicker: some View{
@@ -125,7 +148,7 @@ struct SignUpView: View {
             }
     }
         .sheet(isPresented: $showImagePicker, onDismiss: loadImage){
-            UserPhotoPickerView(image: $inputImage)
+            UserPhotoPickerView(image: $inputImage, imageURL: $photoURL)
     }
     }
     
@@ -134,121 +157,232 @@ struct SignUpView: View {
         image = Image(uiImage: pickedImage)
     }
     
+    // MARK: Basic Text Field
     var basicInformation: some View{
         VStack(alignment: .leading) {
             Text("Basic Information")
-                .font(.callout)
+                .font(.caption)
                 .foregroundColor(.gray)
                 .padding(.leading, 10)
-                .padding(.bottom, -5)
+                .padding(.bottom, -4)
             VStack(alignment: .leading){
                 nickNameTextField
                 
                 Divider()
-                    .background(Color.white.blendMode(.overlay))
+                    .background(Color.gray.blendMode(.overlay))
                 
-                genderPicker
+                ageTextField
                 
-                Divider()
-                    .background(Color.white.blendMode(.overlay))
-                
-                Text("PlaceHolder")
             }
-            .padding(16)
-            .background(Color("Background 1"))
-            .background(.ultraThinMaterial)
-            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.white, lineWidth: 1).blendMode(.overlay))
+            .padding(.vertical ,12)
+            .padding(.horizontal ,15)
+            .background(colorScheme == .dark ? .gray : .white)
+            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.clear, lineWidth: 1).blendMode(.overlay))
             .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
         .padding(.horizontal, 20)
     }
-    
+    // MARK: User Name
     var nickNameTextField: some View{
         HStack{
-            Text("Nick Name")
-                .font(.body)
-                .frame(width:100, alignment: .leading)
-            TextField(LocalizedStringKey("Nick Name"), text: $nickName)
+            Text("Account name")
+                .font(.callout)
+                .lineLimit(1)
+                .frame(width:80, alignment: .leading)
+            TextField(LocalizedStringKey("Log in required"), text: $nickName)
+                .onSubmit {
+                    if !validateUserName(userName: nickName){
+                        nickNameError.toggle()
+                        nickName = ""
+                        focusedField = .nickName
+                    }
+                }
                 .focused($focusedField, equals: .nickName)
                 .submitLabel(.next)
         }
-    }
-    
-    var genderPicker: some View{
-        HStack{
-            Text("User Gender")
-                .font(.body)
-                .frame(width:100, alignment: .leading)
-            Picker("Please choose a gender", selection: $selectedGender) {
-                ForEach(gender, id: \.self) {
-                    Text($0)
-                }
-            }
-            .focused($focusedField, equals: .gender)
-            .submitLabel(.next)
+        .alert(isPresented: $nickNameError){
+            Alert(title: Text("Apologize"),
+                  message:Text("Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20"),
+                  dismissButton: .default(Text("OK")))
         }
     }
-    
+    // MARK: User Age
+    var ageTextField: some View{
+        HStack{
+            Text("User Age")
+                .font(.callout)
+                .frame(width:80, alignment: .leading)
+            TextField(LocalizedStringKey("Optional"), text: $age)
+                .onSubmit {
+                    if age.count > 2{
+                        age = ""
+                        incorrectAge.toggle()
+                        focusedField = .age
+                    }
+                }
+            .focused($focusedField, equals: .age)
+            .submitLabel(.next)
+        }
+        .alert(isPresented: $incorrectAge){
+            Alert(title: Text("Apologize"),
+                  message: Text("Age can not above 99"),
+                  dismissButton: .default(Text("OK")))
+        }
+    }
+    // MARK: Secured Text Field
     var securedInformation: some View{
         VStack(alignment: .leading) {
             Text("Secured Information")
-                .font(.callout)
+                .font(.caption)
                 .foregroundColor(.gray)
                 .padding(.leading, 10)
-                .padding(.bottom, -5)
+                .padding(.bottom, -4)
             VStack(alignment: .leading){
                 phoneNumberTextField
                 Divider()
-                    .background(Color.white.blendMode(.overlay))
+                    .background(Color.gray.blendMode(.overlay))
+                if phoneVarifiedPressed {
+                    phoneVarifyTextField
+                        .foregroundColor(phoneVarifiedPressed ? .primary : .clear)
+                    Divider()
+                        .background(Color.gray.blendMode(.overlay))
+                }
                 mailTextField
                 Divider()
-                    .background(Color.white.blendMode(.overlay))
+                    .background(Color.gray.blendMode(.overlay))
                 passwordTextField
-                Divider()
-                    .background(Color.white.blendMode(.overlay))
-                
-                Text("PlaceHolder")
-                
             }
-            .padding(16)
-            .background(Color("Background 1"))
-            .background(.ultraThinMaterial)
-            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.white, lineWidth: 1).blendMode(.overlay))
+            .padding(.vertical ,12)
+            .padding(.horizontal ,15)
+            .background(colorScheme == .dark ? .gray : .white)
+            .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.clear, lineWidth: 1).blendMode(.overlay))
             .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
+            
+            HStack{
+                Spacer()
+                Image("icon_dataprivacy_2x")
+                    .resizable()
+                    .frame(width:25, height: 25)
+                ZStack(alignment:. trailing) {
+                    Text("Sign up with ACRT, you data will only be used for basic functionality in this app.")
+                        .font(.caption2)
+                    .frame(width:250, height: 50)
+                    Button(action: {
+                        
+                    }, label: {
+                        Text("See more...")
+                            .font(.caption2)
+                    })
+                        .offset(x: -10, y: 6)
+                }
+                .offset(y: 2)
+                
+                Spacer()
+            }
         }
         .padding(.horizontal, 20)
     }
-    
+    // MARK: User Phone
     var phoneNumberTextField: some View{
         HStack{
-            Text("Phone")
-                .font(.body)
-                .frame(width:100, alignment: .leading)
-            TextField(LocalizedStringKey("Phone Number"), text: $phoneNumber)
+            Text("Phone Number")
+                .font(.callout)
+                .frame(width:80, alignment: .leading)
+                .lineLimit(1)
+            Text("+86")
+            TextField(LocalizedStringKey("Required"), text: $phoneNumber)
+                .keyboardType(.numberPad)
+                .onSubmit {
+                    if !validatePhone(phoneNumber: phoneNumber){
+                        phoneNumberError.toggle()
+                        phoneNumber = ""
+                        focusedField = .phone
+                    }
+                }
                 .focused($focusedField, equals: .phone)
                 .submitLabel(.next)
+            Button(action: {
+                if userModel.sendVarifyCode(phoneNumber: phoneNumber) == 1{
+                    withAnimation(Animation.easeIn(duration: 0.5)){
+                        phoneVarifiedPressed.toggle()
+                    }
+                }else {
+                    phoneVarifiedError.toggle()
+                }
+            }, label: {
+                Text("Verify")
+            })
+            // TODO: Might have problem (only can sent once)
+                .disabled(!validatePhone(phoneNumber: phoneNumber) || phoneVarifiedPressed)
+        }
+        .alert(isPresented: $phoneNumberError){
+            Alert(title: Text("Apologize"),
+                  message: Text("Please input right phone number"),
+                  dismissButton: .default(Text("OK")))
+        }
+        .alert(isPresented: $phoneVarifiedError){
+            Alert(title: Text("Apologize"),
+                  message: Text("This phone number has been used"),
+                  dismissButton: .default(Text("OK")))
         }
     }
     
+    var phoneVarifyTextField: some View{
+        HStack{
+            Text("Varify code")
+                .font(.callout)
+                .frame(width:80, alignment: .leading)
+                .lineLimit(1)
+            TextField(LocalizedStringKey("Message might have seconds delay"), text: $varifyCode)
+                .keyboardType(.numberPad)
+                .focused($focusedField, equals: .varifyCode)
+        }
+    }
+    
+    // MARK: User Email
     var mailTextField: some View{
         HStack{
             Text("Email")
-                .font(.body)
-                .frame(width:100, alignment: .leading)
-            TextField(LocalizedStringKey("Email Address"), text: $mail)
+                .font(.callout)
+                .frame(width:80, alignment: .leading)
+            TextField(LocalizedStringKey("Required"), text: $mail)
+                .onSubmit {
+                    if !validateEmail(email: mail){
+                        mailError.toggle()
+                        mail = ""
+                        focusedField = .mail
+                    }
+                }
                 .focused($focusedField, equals: .mail)
                 .submitLabel(.next)
         }
+        .alert(isPresented: $mailError){
+            Alert(title: Text("Apologize"),
+                  message: Text("Please input right email"),
+                  dismissButton: .default(Text("OK")))
+        }
     }
-    
+    // MARK: User Password
     var passwordTextField: some View{
         HStack{
             Text("Password")
-                .font(.body)
-                .frame(width:100, alignment: .leading)
+                .font(.callout)
+                .frame(width:80, alignment: .leading)
             SecureField("Required", text: $password, prompt: Text("Required"))
+                .onSubmit {
+                    if !validatePassword(password: password){
+                        passwordError.toggle()
+                        password = ""
+                        focusedField = .password
+                    }
+                }
                 .focused($focusedField, equals: .password)
                 .submitLabel(.done)
+        }
+        .alert(isPresented: $passwordError){
+            Alert(title: Text("Apologize"),
+                  message: Text("Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits"),
+                  dismissButton: .default(Text("OK")))
         }
     }
 
@@ -256,8 +390,32 @@ struct SignUpView: View {
 
 extension SignUpView{
     private enum Field: Int, CaseIterable {
-        case nickName, gender, phone, mail, password
+        case nickName, age, phone, varifyCode, mail, password
     }
+    
+    private func validatePhone(phoneNumber: String) -> Bool {
+        let phoneRegex: String = "^((13[0-9])|(15[^4,\\D])|(18[0,0-9])|(17[0,0-9]))\\d{8}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: phoneNumber)
+    }
+    
+    private func validateEmail(email: String) -> Bool {
+        let emailRegex: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let emailTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailTest.evaluate(with: email)
+    }
+    
+    private func validateUserName(userName: String) -> Bool {
+        let userNameRegex = "^[A-Za-z0-9]{6,20}+$"
+        let userNamePredicate = NSPredicate(format: "SELF MATCHES %@", userNameRegex)
+        return userNamePredicate.evaluate(with: userName)
+    }
+    func validatePassword(password: String) -> Bool {
+        let  passWordRegex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$"
+        let passWordPredicate = NSPredicate(format: "SELF MATCHES%@", passWordRegex)
+        return passWordPredicate.evaluate(with: password)
+    }
+    
 }
 
 struct SignUpView_Previews: PreviewProvider {

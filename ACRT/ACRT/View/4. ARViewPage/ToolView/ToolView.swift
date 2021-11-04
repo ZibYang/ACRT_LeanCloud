@@ -103,7 +103,7 @@ struct ToolView: View {
             }
             print("pressed")
         }, label:{
-            Image(systemName: "location.fill")
+            Image(systemName: "location")
                 .foregroundColor(.white)
                 .frame(width: 40, height: 40)
         })

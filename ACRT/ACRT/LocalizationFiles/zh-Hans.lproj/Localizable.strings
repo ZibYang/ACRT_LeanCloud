@@ -39,15 +39,16 @@
 
 /* 用户登陆界面 localizable string */
 "Not now" = "暂不登陆";
-"Email Account" = "账户邮箱";
+"User account name" = "用户账户名";
 "Password" = "密码";
-"Account" = "邮箱账号";
+"Account" = "账号";
+"Email" = "邮箱";
 "Required" = "必填";
 "Log in" = "登陆";
 "Log out" = "注销";
 "Sign in" = "使用账号密码登陆";
 "Sign up" = "注册";
-"Forget account or password?" = "忘记邮箱账号或密码？";
+"Forget account or password?" = "忘记账号名或密码？";
 "Phone Number" = "手机号码";
 "Recived Code" = "验证码";
 "Send" = "发送";
@@ -60,6 +61,33 @@
 /* 注册 localization string*/
 "Finish" = "完成";
 "Cancel" = "取消";
+
+"Basic Information" = "基本信息";
+"Secured Information" = "保密信息";
+
+"Add photo" = "添加头像";
+"Photo" = "拍摄";
+"Choose Photo" = "从相册中选择";
+
+"Account name" = "账户名称";
+"Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20" = "请遵循命名规则: \n 1. 以大写或小写字母开头 \n 2. 长度在6至20之间";
+"Log in required" = "登陆时使用，必填";
+"User Age" = "用户年龄";
+"Optional" = "可选项";
+"Age can not above 99" = "年龄不可以设置超过99岁";
+"Log in with phone number" = "可使用手机号登陆，必填";
+"Please input right phone number" = "请输入正确的手机号";
+"Varify code" = "验证码";
+"This phone number has been used" = "此手机号已被注册过";
+"Message might have seconds delay" = "验证码发送可能会有几秒钟延迟";
+"Log in with email" = "可使用邮箱登陆，必填";
+"Please input right email" = "请输入正确的邮箱地址";
+
+"Sign up with ACRT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
+"See more..." = "了解更多...";
+"Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "请遵循密码设置规则: \n 1. 以大写字母开头 \n 2. 密码长度大于8位" ;
+"OK" = "好的";
+"Submit" = "提交";
 
 /* 更新提示 localization string*/
 "What's new" = "最近更新";

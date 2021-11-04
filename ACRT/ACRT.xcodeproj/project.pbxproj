@@ -49,6 +49,10 @@
 		5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93B2730E0740062680E /* ARViewModel.swift */; };
 		5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93D2730E0DE0062680E /* HttpAuthView.swift */; };
 		5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93F2730E2A60062680E /* IndicatorView.swift */; };
+		5ADF209427329CDD00CF0E4A /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209327329CDD00CF0E4A /* Award.swift */; };
+		5ADF209627329CEE00CF0E4A /* AwardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */; };
+		5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209727329D2D00CF0E4A /* AwardView.swift */; };
+		5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */; };
 		620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +103,10 @@
 		5A56E93B2730E0740062680E /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
 		5A56E93D2730E0DE0062680E /* HttpAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpAuthView.swift; sourceTree = "<group>"; };
 		5A56E93F2730E2A60062680E /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		5ADF209327329CDD00CF0E4A /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
+		5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardViewModel.swift; sourceTree = "<group>"; };
+		5ADF209727329D2D00CF0E4A /* AwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
+		5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRoundAwardView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EA644E134854EEEBD6DAD6 /* Pods-ACRT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.release.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +146,7 @@
 		5A3E1A5B2731095D00B170B2 /* UserPanel */ = {
 			isa = PBXGroup;
 			children = (
+				5ADF209227329CAB00CF0E4A /* AwardView */,
 				5A42159E27312B0F000C9F5B /* CustomView */,
 				5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */,
 				5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */,
@@ -165,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				5A3E1A6627310A9200B170B2 /* Update.swift */,
+				5ADF209327329CDD00CF0E4A /* Award.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,6 +366,7 @@
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
 				27B3EC4927316E7D00021DE1 /* USDZViewModel.swift */,
 				27B3EC4B27316E9700021DE1 /* USDZViewModel1.swift */,
+				5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -366,6 +377,15 @@
 				5A56E931272FC5D10062680E /* EquippedLiDARDevicesView.swift */,
 			);
 			path = LiDARDeviceView;
+			sourceTree = "<group>";
+		};
+		5ADF209227329CAB00CF0E4A /* AwardView */ = {
+			isa = PBXGroup;
+			children = (
+				5ADF209727329D2D00CF0E4A /* AwardView.swift */,
+				5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */,
+			);
+			path = AwardView;
 			sourceTree = "<group>";
 		};
 		9907A9A3558B046F6858F6E7 /* Pods */ = {
@@ -501,13 +521,16 @@
 				5A4215BA27323698000C9F5B /* ModelPickerView.swift in Sources */,
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
 				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
+				5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
 				5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */,
 				5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */,
+				5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */,
 				5A4215B027315E1D000C9F5B /* TopToolView.swift in Sources */,
 				5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */,
 				5A56E9382730DDCB0062680E /* WhatMeansExporeView.swift in Sources */,
+				5ADF209627329CEE00CF0E4A /* AwardViewModel.swift in Sources */,
 				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
 				5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */,
 				27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */,
@@ -534,6 +557,7 @@
 				5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */,
 				5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */,
 				5A4215A027312B2D000C9F5B /* TrackableScrollView.swift in Sources */,
+				5ADF209427329CDD00CF0E4A /* Award.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
