@@ -24,18 +24,22 @@ struct CanvasView: View {
     @State private var showMesh = false
     @State var snapShot = false
     @State var requestNow = true
+    
+    @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
    
     @Binding var goBack: Bool
     @Binding var localizing: Bool
     
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, httpStatus: $httpManager.statusLoc)
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
                 .environmentObject(arModel)
+                .environmentObject(httpManager)
+                .environmentObject(arObjectLibraryViewModel)
                 .ignoresSafeArea()
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $httpManager.statusLoc)
             
-            if httpManager.statusLoc != 1 {
+            if arModel.isCoaching == true {
                 VStack {
                     CustomCoachingView()
                 }
@@ -43,7 +47,7 @@ struct CanvasView: View {
             }
             // TODO: localization Button
         }.onAppear() {
-            localizing = true
+            arModel.isCoaching = true
             DispatchQueue.global(qos: .background).async {
                 sleep(1)
                 while(httpManager.statusLoc != 1) {
@@ -51,7 +55,14 @@ struct CanvasView: View {
                         arModel.RequestLocalization(manager: httpManager)
                     }
                 }
-                localizing = false
+                
+                while(!arObjectLibraryViewModel.AreModelLibrariesLoaded()) {
+                    sleep(1)
+                }
+                DispatchQueue.main.async {
+                    print("arModel isCoaching close")
+                    arModel.isCoaching = false
+                }
             }
         }
         

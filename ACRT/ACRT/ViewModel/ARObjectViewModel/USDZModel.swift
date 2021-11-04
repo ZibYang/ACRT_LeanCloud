@@ -20,7 +20,7 @@ import Foundation
 import RealityKit
 import Combine
 
-class USDZModel1{
+class USDZModel{
     var modelName: String
     var modelEntity: ModelEntity?
     private var cancellable: AnyCancellable? = nil
@@ -31,8 +31,7 @@ class USDZModel1{
         let fileName = self.modelName+".usdz"
         self.cancellable = ModelEntity.loadModelAsync(named: fileName)
             .sink(receiveCompletion : {loadCompletion in
-                print("1")
-            }, receiveValue:{modelEntity in
+            }, receiveValue:{ modelEntity in
                 self.modelEntity = modelEntity
             })
     }
