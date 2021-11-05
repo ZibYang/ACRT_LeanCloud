@@ -10,12 +10,13 @@
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
-		27B3EC5227316FD800021DE1 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */; };
-		27B3EC5327316FD800021DE1 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4F27316FD800021DE1 /* hello.usdz */; };
-		27B3EC5427316FD800021DE1 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5027316FD800021DE1 /* hello_1.usdz */; };
-		27B3EC5527316FD800021DE1 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5127316FD800021DE1 /* AppleHello.usdz */; };
 		27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */; };
 		27B3EC5A27325F7500021DE1 /* ARObjectLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */; };
+		27BEDBCC2735113E004F66E5 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBC82735113E004F66E5 /* AppleLogo.usdz */; };
+		27BEDBCD2735113E004F66E5 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBC92735113E004F66E5 /* hello_1.usdz */; };
+		27BEDBCE2735113E004F66E5 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBCA2735113E004F66E5 /* hello.usdz */; };
+		27BEDBCF2735113E004F66E5 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBCB2735113E004F66E5 /* AppleHello.usdz */; };
+		27BEDBD327351FE4004F66E5 /* CoachingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
 		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
 		5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */; };
@@ -67,12 +68,13 @@
 		27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
 		27B3EC4D27316F4000021DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleLogo.usdz; sourceTree = "<group>"; };
-		27B3EC4F27316FD800021DE1 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello.usdz; sourceTree = "<group>"; };
-		27B3EC5027316FD800021DE1 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello_1.usdz; sourceTree = "<group>"; };
-		27B3EC5127316FD800021DE1 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleHello.usdz; sourceTree = "<group>"; };
 		27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZLibraryViewModel.swift; sourceTree = "<group>"; };
 		27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectLibraryViewModel.swift; sourceTree = "<group>"; };
+		27BEDBC82735113E004F66E5 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleLogo.usdz; path = ACRT/Resource/AppleLogo.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBC92735113E004F66E5 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello_1.usdz; path = ACRT/Resource/hello_1.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBCA2735113E004F66E5 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello.usdz; path = ACRT/Resource/hello.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBCB2735113E004F66E5 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleHello.usdz; path = ACRT/Resource/AppleHello.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingViewModel.swift; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
 		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
 		5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailAndPasswordView.swift; sourceTree = "<group>"; };
@@ -155,15 +157,15 @@
 			path = ARObjectViewModel;
 			sourceTree = "<group>";
 		};
-		27B3EC5627316FE900021DE1 /* Resource */ = {
+		27BEDBC727351120004F66E5 /* USDZModels */ = {
 			isa = PBXGroup;
 			children = (
-				27B3EC5127316FD800021DE1 /* AppleHello.usdz */,
-				27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */,
-				27B3EC5027316FD800021DE1 /* hello_1.usdz */,
-				27B3EC4F27316FD800021DE1 /* hello.usdz */,
+				27BEDBCB2735113E004F66E5 /* AppleHello.usdz */,
+				27BEDBC82735113E004F66E5 /* AppleLogo.usdz */,
+				27BEDBC92735113E004F66E5 /* hello_1.usdz */,
+				27BEDBCA2735113E004F66E5 /* hello.usdz */,
 			);
-			path = Resource;
+			path = USDZModels;
 			sourceTree = "<group>";
 		};
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
@@ -290,6 +292,7 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
+				27BEDBC727351120004F66E5 /* USDZModels */,
 				27B3EC4D27316F4000021DE1 /* Info.plist */,
 				5A3E1A6527310A8900B170B2 /* Model */,
 				5A56E929272F9C360062680E /* ViewModel */,
@@ -400,6 +403,7 @@
 				5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */,
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
 				5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */,
+				27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -494,8 +498,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
+				27BEDBCD2735113E004F66E5 /* hello_1.usdz in Resources */,
+				27BEDBCE2735113E004F66E5 /* hello.usdz in Resources */,
+				27BEDBCC2735113E004F66E5 /* AppleLogo.usdz in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
+				27BEDBCF2735113E004F66E5 /* AppleHello.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 			);
@@ -580,6 +588,7 @@
 				5A42159D27311B9D000C9F5B /* SignUpView.swift in Sources */,
 				5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */,
 				5A56E915272BFB6C0062680E /* WelcomePageTitleView.swift in Sources */,
+				27BEDBD327351FE4004F66E5 /* CoachingViewModel.swift in Sources */,
 				5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */,
 				5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */,
 				27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */,

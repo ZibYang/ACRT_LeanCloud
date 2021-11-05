@@ -97,4 +97,4 @@ ACRT/Pods/
 
 *.lock
 
-ACRT/ACRT/Resource/
+ACRT/ACRT/Resource/*

@@ -135,7 +135,7 @@
 
 /* AR界面 localizable string*/
 "Move Device to locate..." = "缓慢移动设备进行定位...";
-
+"Enter Creation Mode" = "进入创作模式";
 /* 成就界面 localizable string*/
 "Special Event" = "特别活动";
 "Daily Event" = "每日活动";

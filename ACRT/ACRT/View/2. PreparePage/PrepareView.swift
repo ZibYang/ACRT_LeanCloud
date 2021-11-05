@@ -23,7 +23,8 @@ struct PrepareView: View {
     @StateObject var mapModel = MapViewModel()
     @StateObject var userModel = UserViewModel()
     @StateObject var arViewModel = ARViewModel()
-    @StateObject var httpManager = HttpAuth()
+    @StateObject var coachingViewModel = CoachingViewModel()
+
     
     @State var checkLocationRequest = false
     @State var checkLidarDeviceList = false
@@ -64,7 +65,7 @@ struct PrepareView: View {
                 HStack{
                     Spacer()
                     UserCircleView()
-                        .offset(x: arViewModel.isCoaching ? 70 : 0)
+                        .offset(x: coachingViewModel.isCoaching ? 70 : 0)
                         .padding(.top)
                 }
                 .padding(.trailing)
@@ -72,7 +73,7 @@ struct PrepareView: View {
         } // ZStack
         .environmentObject(userModel)
         .environmentObject(arViewModel)
-        .environmentObject(httpManager)
+        .environmentObject(coachingViewModel)
     }
     
     var locationRequest: some View{

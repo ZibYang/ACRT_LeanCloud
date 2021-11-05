@@ -22,7 +22,6 @@ import ARKit
 
 class ARViewModel: ObservableObject{
     @Published var capabilitySatisfied = "optional"
-    @Published var isCoaching : Bool = false
 
     //MARK: For prepareView
     let indicatorImageName = "LiDARRequire"
