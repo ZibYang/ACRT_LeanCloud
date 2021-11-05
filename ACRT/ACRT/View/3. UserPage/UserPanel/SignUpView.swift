@@ -47,10 +47,7 @@ struct SignUpView: View {
     
     //MARK: Secured Infomation
     @State private var phoneNumber = ""
-    @State private var phoneVarifiedPressed = false
-    @State private var phoneVarifiedError = false
     @State private var phoneNumberError = false
-    @State private var varifyCode = ""
     @State private var mail = ""
     @State private var mailError = false
     @State private var password = ""
@@ -70,7 +67,7 @@ struct SignUpView: View {
                 
                 securedInformation
             }
-            .background(Color(#colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1)))
+            .background(colorScheme == .dark ? Color.black : Color(#colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1)))
             .frame(maxHeight: .infinity, alignment: .top)
             .navigationTitle(Text("Sign up"))
             .navigationBarTitleDisplayMode(.inline)
@@ -101,13 +98,37 @@ struct SignUpView: View {
     var finishButton: some View{
         Button(action: {
             // 先要再次检查各个框是否正确
-            userModel.tryToSignUp(photoURL: photoURL,
-                                  username: nickName,
-                                  password: password,
-                                  email: mail,
-                                  phone: phoneNumber,
-                                  age: age)
-            dismissSheet()
+            if validateUserName(userName: nickName){
+                if validatePhone(phoneNumber: phoneNumber){
+                    if validateEmail(email: mail){
+                        if validatePassword(password: password){
+                            userModel.tryToSignUp(photoURL: photoURL,
+                                                  username: nickName,
+                                                  password: password,
+                                                  email: mail,
+                                                  phone: phoneNumber,
+                                                  age: age)
+                            dismissSheet()
+                        }else{ // wromg password
+                            passwordError.toggle()
+                            password = ""
+                            focusedField = .password
+                        }
+                    }else{ // wrong email
+                        mailError.toggle()
+                        mail = ""
+                        focusedField = .mail
+                    }
+                }else{ // wrong phone number
+                    phoneNumberError.toggle()
+                    phoneNumber = ""
+                    focusedField = .phone
+                }
+            }else{ // wrong user name
+                nickNameError.toggle()
+                nickName = ""
+                focusedField = .nickName
+            }
         }, label: {
             Text("Submit")
         })
@@ -176,7 +197,7 @@ struct SignUpView: View {
             }
             .padding(.vertical ,12)
             .padding(.horizontal ,15)
-            .background(colorScheme == .dark ? .gray : .white)
+            .background(colorScheme == .dark ? Color(#colorLiteral(red: 0.1098036841, green: 0.1098041013, blue: 0.1183908954, alpha: 1)) : .white)
             .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.clear, lineWidth: 1).blendMode(.overlay))
             .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
         }
@@ -206,6 +227,7 @@ struct SignUpView: View {
                   dismissButton: .default(Text("OK")))
         }
     }
+    
     // MARK: User Age
     var ageTextField: some View{
         HStack{
@@ -229,6 +251,7 @@ struct SignUpView: View {
                   dismissButton: .default(Text("OK")))
         }
     }
+    
     // MARK: Secured Text Field
     var securedInformation: some View{
         VStack(alignment: .leading) {
@@ -241,12 +264,7 @@ struct SignUpView: View {
                 phoneNumberTextField
                 Divider()
                     .background(Color.gray.blendMode(.overlay))
-                if phoneVarifiedPressed {
-                    phoneVarifyTextField
-                        .foregroundColor(phoneVarifiedPressed ? .primary : .clear)
-                    Divider()
-                        .background(Color.gray.blendMode(.overlay))
-                }
+                
                 mailTextField
                 Divider()
                     .background(Color.gray.blendMode(.overlay))
@@ -254,7 +272,7 @@ struct SignUpView: View {
             }
             .padding(.vertical ,12)
             .padding(.horizontal ,15)
-            .background(colorScheme == .dark ? .gray : .white)
+            .background(colorScheme == .dark ? Color(#colorLiteral(red: 0.1098036841, green: 0.1098041013, blue: 0.1183908954, alpha: 1)) : .white)
             .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.clear, lineWidth: 1).blendMode(.overlay))
             .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
             
@@ -282,6 +300,7 @@ struct SignUpView: View {
         }
         .padding(.horizontal, 20)
     }
+
     // MARK: User Phone
     var phoneNumberTextField: some View{
         HStack{
@@ -301,42 +320,16 @@ struct SignUpView: View {
                 }
                 .focused($focusedField, equals: .phone)
                 .submitLabel(.next)
-            Button(action: {
-                if userModel.sendVarifyCode(phoneNumber: phoneNumber) == 1{
-                    withAnimation(Animation.easeIn(duration: 0.5)){
-                        phoneVarifiedPressed.toggle()
-                    }
-                }else {
-                    phoneVarifiedError.toggle()
-                }
-            }, label: {
-                Text("Verify")
-            })
             // TODO: Might have problem (only can sent once)
-                .disabled(!validatePhone(phoneNumber: phoneNumber) || phoneVarifiedPressed)
+                
         }
+        
         .alert(isPresented: $phoneNumberError){
             Alert(title: Text("Apologize"),
                   message: Text("Please input right phone number"),
                   dismissButton: .default(Text("OK")))
         }
-        .alert(isPresented: $phoneVarifiedError){
-            Alert(title: Text("Apologize"),
-                  message: Text("This phone number has been used"),
-                  dismissButton: .default(Text("OK")))
-        }
-    }
-    
-    var phoneVarifyTextField: some View{
-        HStack{
-            Text("Varify code")
-                .font(.callout)
-                .frame(width:80, alignment: .leading)
-                .lineLimit(1)
-            TextField(LocalizedStringKey("Message might have seconds delay"), text: $varifyCode)
-                .keyboardType(.numberPad)
-                .focused($focusedField, equals: .varifyCode)
-        }
+        
     }
     
     // MARK: User Email

@@ -22,20 +22,19 @@ class UserViewModel: ObservableObject{
     
     @Published var isSignedIn = false
     
+    @Published var userName = ""
+    
+    @Published var userAge = ""
+    
+    @Published var userImage = ""
+    
     //MARK: For prepareView
     let indicatorImageName = "AccountRequire"
     let indicatorTitle = "Login with Account"
     let indicatorDescription = "Log in to get full functionality experiences."
     
     init(){
-        if let user = LCApplication.default.currentUser{
-            // TODO: other infomation
-            capabilitySatisfied = "satisfied"
-            isSignedIn = true
-        }else{
-            capabilitySatisfied = "optional"
-            isSignedIn = false
-        }
+        updateUserInfo()
     }
     
     func tryToSignUp(photoURL: URL?, username: String, password: String, email: String, phone: String, age: String){
@@ -43,10 +42,11 @@ class UserViewModel: ObservableObject{
             let user = LCUser()  // create a new User
             try user.set("username", value: username) // equal user.username = LCString("Tom")
             try user.set("password", value: password)
+            try user.set("age", value: age)
             
             // Optional
             try user.set("email", value: email)
-            try user.set("mobilePhoneNumber", value: "+86"+phone)
+            try user.set("mobilePhoneNumber", value: phone)
             try user.set("password", value: password)
             // User Image
             if let url = photoURL{
@@ -77,8 +77,7 @@ class UserViewModel: ObservableObject{
                     _ = LCUser.logIn(username: username, password: password) { result in
                         switch result {
                         case .success(object: let user):
-                            self.isSignedIn = true
-                            self.capabilitySatisfied = "satisfied"
+                            self.updateUserInfo()
                             print(user)
                         case .failure(error: let error):
                             print(error)
@@ -94,12 +93,35 @@ class UserViewModel: ObservableObject{
         }
     }
     
+    func updateUserInfo(){
+        if let user = LCApplication.default.currentUser{
+            // TODO: other infomation
+            if let name = user.get("username")?.stringValue{
+               userName = name
+            }
+            if let age = user.get("age")?.stringValue{
+                userAge = age
+            }else{
+                userAge = "Unknown"
+            }
+            if let image = user.get("imageURL")?.stringValue{
+                userImage = image
+            }
+            print("[zzy] userImage: \(userImage)")
+            capabilitySatisfied = "satisfied"
+            isSignedIn = true
+        }else{
+            capabilitySatisfied = "optional"
+            isSignedIn = false
+        }
+    }
+    
     func tryToLogin(account: String, password: String) -> Int{
         var logInStatus = 0
         _ = LCUser.logIn(username: account, password: password){result in
             switch result {
             case .success(object: _):
-                self.isSignedIn.toggle()
+                self.updateUserInfo()
                 logInStatus = 1
             case .failure(error: _):
                 logInStatus = 0
@@ -113,18 +135,5 @@ class UserViewModel: ObservableObject{
         self.capabilitySatisfied = "optional"
         isSignedIn = false
     }
-    
-    func sendVarifyCode(phoneNumber: String)-> Int{
-        var status = 0
-        _ = LCUser.requestVerificationCode(mobilePhoneNumber: "+86"+phoneNumber) { result in
-            switch result {
-            case .success:
-                status = 1
-                break
-            case .failure(error: let error):
-                print("[zzy]varify code error: \(error)")
-            }
-        }
-        return status
-    }
+
 }

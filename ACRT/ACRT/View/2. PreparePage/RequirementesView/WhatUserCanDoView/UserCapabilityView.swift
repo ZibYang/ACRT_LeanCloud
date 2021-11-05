@@ -31,6 +31,7 @@ struct UserCapabilityView: View {
             }
         })
         .disabled(labelImage == "checkmark.circle" && capabilityLevel != "satisfied")
+        .disabled(labelImage == "exclamationmark.circle" && capabilityLevel == "satisfied")
     }
 }
 
@@ -46,6 +47,11 @@ struct UserCapabilityView_Previews: PreviewProvider {
                                labelText: "Tourist can:",
                                buttonText: "exproe",
                                capabilityLevel: .constant("optional"),
+                               buttonTapped: .constant(true))
+            UserCapabilityView(labelImage: "exclamationmark.circle",
+                               labelText: "Tourist can:",
+                               buttonText: "exproe",
+                               capabilityLevel: .constant("satisfied"),
                                buttonTapped: .constant(true))
         }
     }

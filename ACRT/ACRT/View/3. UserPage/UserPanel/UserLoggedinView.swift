@@ -60,14 +60,16 @@ struct UserLoggedinView: View {
     }
     
     var profileView: some View{
-        HStack(alignment: .center, spacing: 20) {
+        HStack(alignment: .center, spacing: 50) {
             userImageView
             
             
             userInfoView
             
-            editButtonView
+            Spacer()
+            
         }
+        .padding(.leading)
     }
     
     var userImageView: some View{
@@ -77,23 +79,28 @@ struct UserLoggedinView: View {
                 .angularGradientGlow(colors: [Color(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)),Color(#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)),Color(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)),Color(#colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)),Color(#colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)),Color(#colorLiteral(red: 0.5818830132, green: 0.2156915367, blue: 1, alpha: 1))])
                 .frame(width: 70, height: 70)
                 .blur(radius: 10)
-            Image("user")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 70, height: 70)
-                .cornerRadius(50)
-                .overlay(Circle().stroke(Color.white, lineWidth: 1.0))
+            AsyncImage(url: URL(string: userModel.userImage)){image in
+                image.resizable()
+            }placeholder: {
+                Image("circle.fill")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .foregroundColor(.gray)
+                    .frame(width: 70, height: 70)
+                    .cornerRadius(50)
+                    .overlay(Circle().stroke(Color.white, lineWidth: 1.0))
+            }
         }
     }
     
     var userInfoView: some View{
         VStack(alignment: .leading){
-            Text("Zhang Ziyang")
+            Text(userModel.userName)
                 .foregroundColor(.primary)
                 .font(.title)
                 .bold()
                 .lineLimit(1)
-            Text("View Certificates")
+            Text(userModel.userAge)
                 .font(.footnote)
                 .foregroundColor(.secondary)
         }
@@ -126,8 +133,9 @@ struct UserLoggedinView: View {
 struct UserLoggedinView_Previews: PreviewProvider {
     static var previews: some View {
         UserLoggedinView()
-        
+            .environmentObject(UserViewModel())
         UserLoggedinView()
+            .environmentObject(UserViewModel())
             .previewDevice("iPad Pro (12.9-inch) (5th generation)")
     }
 }
