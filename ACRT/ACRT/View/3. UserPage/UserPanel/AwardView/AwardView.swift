@@ -28,19 +28,19 @@ struct AwardView: View {
         LazyVStack(alignment: .leading){            
             Text("Special Event")
                 .padding()
-                .font(.body)
+                .font(.headline)
             SpecialEventAwardView
             Divider()
                 .padding(.horizontal)
             Text("Daily Event")
                 .padding()
-                .font(.body)
+                .font(.headline)
             DailyEventAwardView
             Divider()
                 .padding(.horizontal)
             Text("LandMark")
                 .padding()
-                .font(.body)
+                .font(.headline)
             LandmarkAwardView
         }
     }

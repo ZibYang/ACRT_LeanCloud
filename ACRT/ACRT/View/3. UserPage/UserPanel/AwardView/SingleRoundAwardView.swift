@@ -28,7 +28,7 @@ struct SingleRoundAwardView: View {
                 .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 5, x: 0, y: 5)
             VStack{
                 Text(LocalizedStringKey(award.awardName))
-                    .font(.headline)
+                    .font(.body)
                 Text(award.state() ? award.timeDisplay : "")
                     .font(.footnote)
                     .foregroundColor(.secondary)
