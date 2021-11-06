@@ -28,6 +28,7 @@ struct CanvasView: View {
     
     @StateObject var httpManager: HttpAuth = HttpAuth()
     @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
+    @StateObject var placementSetting = PlacementSetting()
    
     @Binding var goBack: Bool
     
@@ -37,8 +38,11 @@ struct CanvasView: View {
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(arObjectLibraryViewModel)
-                .ignoresSafeArea()
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching)
+                .environmentObject(placementSetting)
+                .ignoresSafeArea().onTapGesture(count: 1) {
+                    placementSetting.doPlaceModel = true
+                }
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching).environmentObject(placementSetting)
             
             if coachingViewModel.isCoaching == true {
                 VStack {
@@ -50,7 +54,6 @@ struct CanvasView: View {
             // TODO: localization Button
         }.onAppear() {
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, arObjectLibraryViewModel: arObjectLibraryViewModel)
-            
         }
         
     }

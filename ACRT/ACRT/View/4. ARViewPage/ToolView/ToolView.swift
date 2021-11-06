@@ -17,6 +17,8 @@
 import SwiftUI
 
 struct ToolView: View {
+    @EnvironmentObject var placementSetting : PlacementSetting
+
     @State var showBottomView = false
     @State var showCameraButton = false
     
@@ -86,7 +88,7 @@ struct ToolView: View {
                 LeftToolView()
                     .padding(.all, 5)
                     .background(.ultraThinMaterial)
-                    .cornerRadius(10)
+                    .cornerRadius(10).environmentObject(placementSetting)
                 Spacer()
             }
             .padding(.horizontal)

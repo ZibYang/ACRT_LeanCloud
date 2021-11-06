@@ -28,7 +28,7 @@ class ARViewModel: ObservableObject{
     let indicatorTitle = "Use Device with LiDAR"
     let indicatorDescription = "LiDAR enhance the ability of realized the world."
     
-    var arView: ARView
+    var arView: CustomARView
 
     var lastCameraPose: simd_float4x4 = simd_float4x4()
     var poseARKitToW: simd_float4x4 = simd_float4x4()
@@ -40,7 +40,7 @@ class ARViewModel: ObservableObject{
     }
     
     init(){
-        arView = ARView(frame: .zero)
+        arView = CustomARView(frame: .zero)
         
         if isLiDAREqiped{
             capabilitySatisfied = "satisfied"

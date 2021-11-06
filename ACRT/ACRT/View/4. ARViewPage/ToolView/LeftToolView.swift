@@ -17,6 +17,8 @@
 import SwiftUI
 
 struct LeftToolView: View {
+    @EnvironmentObject var placementSetting : PlacementSetting
+
     @State private var selectedToolName = "Explore"
     
     var body: some View {
@@ -36,7 +38,10 @@ struct LeftToolView: View {
         Button(action: {
             withAnimation(.spring()){
                 selectedToolName = "Explore"
+
             }
+            placementSetting.isInCreationMode = false
+
         }, label:{
             Image(systemName: "magnifyingglass")
                 .foregroundColor(selectedToolName == "Explore" ? .blue : .white)
@@ -50,6 +55,7 @@ struct LeftToolView: View {
             withAnimation(.spring()){
                 selectedToolName = "Create"
             }
+            placementSetting.isInCreationMode = true
         }, label:{
             Image(systemName: "cube")
                 .foregroundColor(selectedToolName == "Create" ? .blue : .white)

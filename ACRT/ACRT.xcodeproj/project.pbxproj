@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27ADC8FE273694BB00926996 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27ADC8FD273694BB00926996 /* FocusEntity */; };
+		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
+		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
@@ -64,6 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
+		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
@@ -131,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ADC8FE273694BB00926996 /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +410,8 @@
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
 				5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */,
 				27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */,
+				27ADC8FF2736950D00926996 /* CustomARView.swift */,
+				27ADC9012736957500926996 /* PlacementSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -452,6 +460,9 @@
 			dependencies = (
 			);
 			name = ACRT;
+			packageProductDependencies = (
+				27ADC8FD273694BB00926996 /* FocusEntity */,
+			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
 			productType = "com.apple.product-type.application";
@@ -483,6 +494,9 @@
 				ja,
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
+			packageReferences = (
+				27ADC8FC273694BB00926996 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -563,6 +577,7 @@
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
 				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
 				5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */,
+				27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */,
 				27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
@@ -598,6 +613,7 @@
 				5A4215AA27314E83000C9F5B /* CanvasView.swift in Sources */,
 				5A56E92D272F9CB50062680E /* MapView.swift in Sources */,
 				5A56E92B272F9C500062680E /* MapViewModel.swift in Sources */,
+				27ADC9002736950D00926996 /* CustomARView.swift in Sources */,
 				5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */,
 				5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */,
 				5A4215A027312B2D000C9F5B /* TrackableScrollView.swift in Sources */,
@@ -837,6 +853,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27ADC8FC273694BB00926996 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27ADC8FD273694BB00926996 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27ADC8FC273694BB00926996 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A56E8F5272BF1FE0062680E /* Project object */;
 }
