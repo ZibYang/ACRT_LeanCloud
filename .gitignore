@@ -98,3 +98,4 @@ ACRT/Pods/
 *.lock
 
 ACRT/ACRT/Resource/*
+*.usdz

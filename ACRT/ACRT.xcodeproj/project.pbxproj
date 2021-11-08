@@ -10,6 +10,13 @@
 		27ADC8FE273694BB00926996 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27ADC8FD273694BB00926996 /* FocusEntity */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
+		27ADC90C2739162A00926996 /* flight.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9032739162900926996 /* flight.usdz */; };
+		27ADC90D2739162A00926996 /* Hello_World_Globe.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9042739162A00926996 /* Hello_World_Globe.usdz */; };
+		27ADC90E2739162A00926996 /* hammer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9052739162A00926996 /* hammer.usdz */; };
+		27ADC90F2739162A00926996 /* hand.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9062739162A00926996 /* hand.usdz */; };
+		27ADC9102739162A00926996 /* SwiftChangeTheWorld.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */; };
+		27ADC9122739162A00926996 /* gear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9092739162A00926996 /* gear.usdz */; };
+		27ADC9132739162A00926996 /* Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC90A2739162A00926996 /* Title.usdz */; };
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
@@ -69,6 +76,13 @@
 /* Begin PBXFileReference section */
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
+		27ADC9032739162900926996 /* flight.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flight.usdz; sourceTree = "<group>"; };
+		27ADC9042739162A00926996 /* Hello_World_Globe.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Hello_World_Globe.usdz; sourceTree = "<group>"; };
+		27ADC9052739162A00926996 /* hammer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hammer.usdz; sourceTree = "<group>"; };
+		27ADC9062739162A00926996 /* hand.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hand.usdz; sourceTree = "<group>"; };
+		27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SwiftChangeTheWorld.usdz; sourceTree = "<group>"; };
+		27ADC9092739162A00926996 /* gear.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = gear.usdz; sourceTree = "<group>"; };
+		27ADC90A2739162A00926996 /* Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Title.usdz; sourceTree = "<group>"; };
 		27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
@@ -168,6 +182,13 @@
 			children = (
 				27BEDBCB2735113E004F66E5 /* AppleHello.usdz */,
 				27BEDBC82735113E004F66E5 /* AppleLogo.usdz */,
+				27ADC9032739162900926996 /* flight.usdz */,
+				27ADC9092739162A00926996 /* gear.usdz */,
+				27ADC9052739162A00926996 /* hammer.usdz */,
+				27ADC9062739162A00926996 /* hand.usdz */,
+				27ADC9042739162A00926996 /* Hello_World_Globe.usdz */,
+				27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */,
+				27ADC90A2739162A00926996 /* Title.usdz */,
 				27BEDBC92735113E004F66E5 /* hello_1.usdz */,
 				27BEDBCA2735113E004F66E5 /* hello.usdz */,
 			);
@@ -511,13 +532,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ADC90D2739162A00926996 /* Hello_World_Globe.usdz in Resources */,
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
 				27BEDBCD2735113E004F66E5 /* hello_1.usdz in Resources */,
 				27BEDBCE2735113E004F66E5 /* hello.usdz in Resources */,
 				27BEDBCC2735113E004F66E5 /* AppleLogo.usdz in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
+				27ADC9132739162A00926996 /* Title.usdz in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
 				27BEDBCF2735113E004F66E5 /* AppleHello.usdz in Resources */,
+				27ADC9102739162A00926996 /* SwiftChangeTheWorld.usdz in Resources */,
+				27ADC90C2739162A00926996 /* flight.usdz in Resources */,
+				27ADC90E2739162A00926996 /* hammer.usdz in Resources */,
+				27ADC9122739162A00926996 /* gear.usdz in Resources */,
+				27ADC90F2739162A00926996 /* hand.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 			);
