@@ -17,8 +17,8 @@ class ARObjectLibraryViewModel : ObservableObject {
 
     
     init() {
-        initializeInherentModelsQiuShiSensetime()
-//        initializeInherentModelsShelf()
+//        initializeInherentModelsQiuShiSensetime()
+        initializeInherentModelsShelf()
     }
     
     func initializeInherentModelsInTime() {
@@ -68,8 +68,10 @@ class ARObjectLibraryViewModel : ObservableObject {
             let model1 = ARObjectViewModel(modelName: "hello", worldPos: simd_float3(0.341545, -0.727689, 5.92317), worldRotation: rotationMatrix, worldScale: simd_float3(0.2,0.2,0.2))
     
             let model2 = ARObjectViewModel(modelName: "AppleLogo", worldPos: simd_float3(-3.38882, 0.0870665, 0.155429), worldRotation: rotationMatrix, worldScale: simd_float3(0.4,0.4,0.4))
+        
+        let model3 = ARObjectViewModel(modelName: "AppleLogo", worldPos: simd_float3(-7.73664609,  0.536159  , -4.19239709), worldRotation: rotationMatrix, worldScale: simd_float3(0.4,0.4,0.4))
     
-            let model3 = ARObjectViewModel(modelName: "AppleLogo", worldPos: simd_float3(4.05483, 0.582852, 0.191444), worldRotation: rotationMatrix, worldScale: simd_float3(0.4,0.4,0.4))
+//            let model3 = ARObjectViewModel(modelName: "AppleLogo", worldPos: simd_float3(4.05483, 0.582852, 0.191444), worldRotation: rotationMatrix, worldScale: simd_float3(0.4,0.4,0.4))
             
         inherentModelList = [model1, model2, model3]
     }

@@ -32,7 +32,7 @@ class ARViewModel: ObservableObject{
 
     var lastCameraPose: simd_float4x4 = simd_float4x4()
     var poseARKitToW: simd_float4x4 = simd_float4x4()
-    let scale : Float = 1.0 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
+    let scale : Float = 0.21419 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
     
     
     var isLiDAREqiped: Bool{
@@ -49,7 +49,7 @@ class ARViewModel: ObservableObject{
     
     func RequestLocalization(manager: HttpAuth) {
             let isGrayScale : Bool = true
-            let useSensetime: Bool = true
+            let useSensetime: Bool = false
             let locIntime: Bool = false
             
             guard let arFrame = arView.session.currentFrame else {

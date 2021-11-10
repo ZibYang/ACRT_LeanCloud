@@ -59,8 +59,10 @@ struct ARWorldView:  UIViewRepresentable {
             print("[Debug] The device does not support LiDAR")
         }
         
+        
         // Scene Understanding
-        arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
+//        arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
+        arViewModel.arView.environment.sceneUnderstanding.options.insert(.receivesLighting)
         
         // ARCoachingOverlay
         arViewModel.arView.addCoaching()
