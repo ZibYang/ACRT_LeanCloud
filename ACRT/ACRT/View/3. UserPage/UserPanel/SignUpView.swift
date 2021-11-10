@@ -19,6 +19,9 @@
 // [confirmation] reference 1: https://developer.apple.com/documentation/swiftui/view/confirmationdialog(_:ispresented:titlevisibility:actions:)-46zbb
 //                reference 2: https://developer.apple.com/documentation/swiftui/visibility
 
+// [Accessing FocusState's value outside of the body of a View. This will result in a constant Binding of the initial value and will not update.] reference: https://www.pointfree.co/episodes/ep155-swiftui-focus-state
+// [keyboard move up] reference: https://stackoverflow.com/questions/56491881/move-textfield-up-when-the-keyboard-has-appeared-in-swiftui
+// [keyboardType] reference: https://developer.apple.com/documentation/uikit/uikeyboardtype
 
 import SwiftUI
 
@@ -28,61 +31,43 @@ struct SignUpView: View {
     
     @EnvironmentObject var userModel: UserViewModel
     
-    @FocusState private var focusedField: Field?
-    @State private var contentOffset = CGFloat(0)
+    @FocusState private var focusedField: SignUpViewModel.Field?
     
-    @State private var image: Image?
-    @State private var inputImage: UIImage?
-    
-    @State private var chosesImgButtonPressed = false
-    @State private var showCamera = false
-    @State private var showImagePicker = false
-    
-    //MARK: Basic Infomation
-    @State private var photoURL = URL(string: "")
-    @State private var nickName = ""
-    @State private var nickNameError = false
-    @State private var age = ""
-    @State private var incorrectAge = false
-    
-    //MARK: Secured Infomation
-    @State private var phoneNumber = ""
-    @State private var phoneNumberError = false
-    @State private var mail = ""
-    @State private var mailError = false
-    @State private var password = ""
-    @State private var passwordError = false
+    @StateObject private var signUpViewModel = SignUpViewModel()
     
     var body: some View {
-        NavigationView{
-            TrackableScrollView(offsetChanged: {offset in
-                contentOffset = offset.y
-                // print("contentOffset", contentOffset)
-            }){
-                userPhotoPicker
+        ZStack {
+            NavigationView{
+                TrackableScrollView(offsetChanged: {offset in
+                    signUpViewModel.contentOffset = offset.y
+                    // print("contentOffset", contentOffset)
+                }){
+                    userPhotoPicker
+                        .padding(.bottom, 30)
+                    
+                    basicInformation
                     .padding(.bottom, 30)
-                
-                basicInformation
-                    .padding(.bottom, 30)
-                
-                securedInformation
+                    
+                    securedInformation
+                    
+                }
+                .background(colorScheme == .dark ? Color.black : Color(#colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1)))
+                .frame(maxHeight: .infinity, alignment: .top)
+                .navigationTitle(Text("Sign up"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarLeading){
+                        cancelButton
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        finishButton
+                    }
+                })
             }
-            .background(colorScheme == .dark ? Color.black : Color(#colorLiteral(red: 0.949019134, green: 0.9490200877, blue: 0.9705254436, alpha: 1)))
-            .frame(maxHeight: .infinity, alignment: .top)
-            .navigationTitle(Text("Sign up"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar(content: {
-                ToolbarItem(placement: .navigationBarLeading){
-                    cancelButton
-                }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    finishButton
-                }
+            .onAppear(perform: {
+                signUpViewModel.focusedField = .userName
             })
         }
-        .onAppear(perform: {
-            focusedField = .nickName
-        })
         
     }
     
@@ -97,50 +82,33 @@ struct SignUpView: View {
     // FIXME: Finsh Sign up
     var finishButton: some View{
         Button(action: {
-            // 先要再次检查各个框是否正确
-            if validateUserName(userName: nickName){
-                if validatePhone(phoneNumber: phoneNumber){
-                    if validateEmail(email: mail){
-                        if validatePassword(password: password){
-                            userModel.tryToSignUp(photoURL: photoURL,
-                                                  username: nickName,
-                                                  password: password,
-                                                  email: mail,
-                                                  phone: phoneNumber,
-                                                  age: age)
-                            dismissSheet()
-                        }else{ // wromg password
-                            passwordError.toggle()
-                            password = ""
-                            focusedField = .password
-                        }
-                    }else{ // wrong email
-                        mailError.toggle()
-                        mail = ""
-                        focusedField = .mail
-                    }
-                }else{ // wrong phone number
-                    phoneNumberError.toggle()
-                    phoneNumber = ""
-                    focusedField = .phone
-                }
-            }else{ // wrong user name
-                nickNameError.toggle()
-                nickName = ""
-                focusedField = .nickName
+            // check all information is correct
+            if signUpViewModel.AllInfomationWithNoError(){
+                userModel.tryToSignUp(photoURL: signUpViewModel.photoURL,
+                                              username: signUpViewModel.userName,
+                                              password: signUpViewModel.password,
+                                              email: signUpViewModel.email,
+                                              phone: signUpViewModel.phoneNumber,
+                                              age: signUpViewModel.age)
             }
+            
         }, label: {
             Text("Submit")
         })
-            .disabled(nickName == "" || password == "" ||  mail == "" || phoneNumber == "")
+        .disabled(signUpViewModel.image == nil || signUpViewModel.userName == "" || signUpViewModel.password == "" ||  signUpViewModel.email == "" || signUpViewModel.phoneNumber == "")
+        .alert(isPresented: $userModel.signUpError){
+            Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
+                  message:Text(LocalizedStringKey(userModel.message)),
+                  dismissButton: .default(Text("OK")))
+        }
     }
     
     var userPhotoPicker: some View{
         VStack {
             Button(action: {
-                chosesImgButtonPressed.toggle()
+                signUpViewModel.chosesImgButtonPressed.toggle()
             }, label: {
-                if let userImage = image{
+                if let userImage = signUpViewModel.image{
                     userImage
                         .resizable()
                         .scaledToFill()
@@ -154,28 +122,33 @@ struct SignUpView: View {
                 }
             })
             Button(action: {
-                chosesImgButtonPressed.toggle()
+                signUpViewModel.chosesImgButtonPressed.toggle()
             }, label: {
                 Text("Add photo")
                     .font(.footnote)
             })
         }
-        .confirmationDialog("Select a Picture", isPresented: $chosesImgButtonPressed, titleVisibility: .hidden) {
+        .confirmationDialog("Select a Picture", isPresented: $signUpViewModel.chosesImgButtonPressed, titleVisibility: .hidden) {
             Button("Photo") {
-                showCamera.toggle()
+                signUpViewModel.showCamera.toggle()
             }
             Button("Choose Photo") {
-                showImagePicker.toggle()
+                signUpViewModel.showImagePicker.toggle()
             }
-    }
-        .sheet(isPresented: $showImagePicker, onDismiss: loadImage){
-            UserPhotoPickerView(image: $inputImage, imageURL: $photoURL)
-    }
+        }
+        .alert(isPresented: $signUpViewModel.showCamera){
+            Alert(title: Text("Apologize"),
+                  message:Text("Can not use camera yet. This function will active in the near future."),
+                  dismissButton: .default(Text("OK")))
+        }
+        .sheet(isPresented: $signUpViewModel.showImagePicker, onDismiss: loadImage){
+            UserPhotoPickerView(image: $signUpViewModel.inputImage, imageURL: $signUpViewModel.photoURL)
+        }
     }
     
     func loadImage(){
-        guard let pickedImage = inputImage else { return }
-        image = Image(uiImage: pickedImage)
+        guard let pickedImage = signUpViewModel.inputImage else { return }
+        signUpViewModel.image = Image(uiImage: pickedImage)
     }
     
     // MARK: Basic Text Field
@@ -187,7 +160,7 @@ struct SignUpView: View {
                 .padding(.leading, 10)
                 .padding(.bottom, -4)
             VStack(alignment: .leading){
-                nickNameTextField
+                userNameTextField
                 
                 Divider()
                     .background(Color.gray.blendMode(.overlay))
@@ -203,27 +176,29 @@ struct SignUpView: View {
         }
         .padding(.horizontal, 20)
     }
+    
     // MARK: User Name
-    var nickNameTextField: some View{
+    var userNameTextField: some View{
         HStack{
             Text("Account name")
                 .font(.callout)
                 .lineLimit(1)
                 .frame(width:80, alignment: .leading)
-            TextField(LocalizedStringKey("Log in required"), text: $nickName)
+            TextField(LocalizedStringKey("Log in required"), text: $signUpViewModel.userName)
                 .onSubmit {
-                    if !validateUserName(userName: nickName){
-                        nickNameError.toggle()
-                        nickName = ""
-                        focusedField = .nickName
-                    }
+                    signUpViewModel.validateUserName()
                 }
-                .focused($focusedField, equals: .nickName)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+                .focused($focusedField, equals: .userName)
                 .submitLabel(.next)
+                .onChange(of: signUpViewModel.focusedField) { newValue in
+                    focusedField = newValue
+                }
+                
         }
-        .alert(isPresented: $nickNameError){
-            Alert(title: Text("Apologize"),
-                  message:Text("Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20"),
+        .alert(isPresented: $signUpViewModel.userNameError){
+            Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
+                  message:Text(LocalizedStringKey(signUpViewModel.userNameErrorMessage)),
                   dismissButton: .default(Text("OK")))
         }
     }
@@ -234,20 +209,21 @@ struct SignUpView: View {
             Text("User Age")
                 .font(.callout)
                 .frame(width:80, alignment: .leading)
-            TextField(LocalizedStringKey("Optional"), text: $age)
+            TextField(LocalizedStringKey("Optional"), text: $signUpViewModel.age)
                 .onSubmit {
-                    if age.count > 2{
-                        age = ""
-                        incorrectAge.toggle()
-                        focusedField = .age
-                    }
+                    signUpViewModel.validateAge()
                 }
-            .focused($focusedField, equals: .age)
-            .submitLabel(.next)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+                .focused($focusedField, equals: .age)
+                .submitLabel(.next)
+                .onChange(of: signUpViewModel.focusedField) { newValue in
+                    signUpViewModel.focusedField = newValue
+                }
+                
         }
-        .alert(isPresented: $incorrectAge){
-            Alert(title: Text("Apologize"),
-                  message: Text("Age can not above 99"),
+        .alert(isPresented: $signUpViewModel.incorrectAge){
+            Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
+                  message: Text(LocalizedStringKey(signUpViewModel.ageErrorMessage)),
                   dismissButton: .default(Text("OK")))
         }
     }
@@ -276,29 +252,32 @@ struct SignUpView: View {
             .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.clear, lineWidth: 1).blendMode(.overlay))
             .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
             
-            HStack{
-                Spacer()
-                Image("icon_dataprivacy_2x")
-                    .resizable()
-                    .frame(width:25, height: 25)
-                ZStack(alignment:. trailing) {
-                    Text("Sign up with ACRT, you data will only be used for basic functionality in this app.")
-                        .font(.caption2)
-                    .frame(width:250, height: 50)
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("See more...")
-                            .font(.caption2)
-                    })
-                        .offset(x: -10, y: 6)
-                }
-                .offset(y: 2)
-                
-                Spacer()
-            }
         }
         .padding(.horizontal, 20)
+    }
+    
+    var securityHint: some View{
+        HStack{
+            Spacer()
+            Image("icon_dataprivacy_2x")
+                .resizable()
+                .frame(width:25, height: 25)
+            ZStack(alignment:. trailing) {
+                Text("Sign up with ACRT, you data will only be used for basic functionality in this app.")
+                    .font(.caption2)
+                .frame(width:250, height: 50)
+                Button(action: {
+                    
+                }, label: {
+                    Text("See more...")
+                        .font(.caption2)
+                })
+                    .offset(x: -10, y: 6)
+            }
+            .offset(y: 2)
+            
+            Spacer()
+        }
     }
 
     // MARK: User Phone
@@ -309,24 +288,24 @@ struct SignUpView: View {
                 .frame(width:80, alignment: .leading)
                 .lineLimit(1)
             Text("+86")
-            TextField(LocalizedStringKey("Required"), text: $phoneNumber)
-                .keyboardType(.numberPad)
+            TextField(LocalizedStringKey("Required"), text: $signUpViewModel.phoneNumber)
                 .onSubmit {
-                    if !validatePhone(phoneNumber: phoneNumber){
-                        phoneNumberError.toggle()
-                        phoneNumber = ""
-                        focusedField = .phone
-                    }
+                    signUpViewModel.validatePhone()
                 }
+                .keyboardType(.phonePad)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
                 .focused($focusedField, equals: .phone)
                 .submitLabel(.next)
+                .onChange(of: signUpViewModel.focusedField) { newValue in
+                    signUpViewModel.focusedField = newValue
+                }
             // TODO: Might have problem (only can sent once)
                 
         }
         
-        .alert(isPresented: $phoneNumberError){
-            Alert(title: Text("Apologize"),
-                  message: Text("Please input right phone number"),
+        .alert(isPresented: $signUpViewModel.phoneNumberError){
+            Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
+                  message: Text(LocalizedStringKey(signUpViewModel.phoneErrorMessage)),
                   dismissButton: .default(Text("OK")))
         }
         
@@ -338,20 +317,21 @@ struct SignUpView: View {
             Text("Email")
                 .font(.callout)
                 .frame(width:80, alignment: .leading)
-            TextField(LocalizedStringKey("Required"), text: $mail)
+            TextField(LocalizedStringKey("Required"), text: $signUpViewModel.email)
                 .onSubmit {
-                    if !validateEmail(email: mail){
-                        mailError.toggle()
-                        mail = ""
-                        focusedField = .mail
-                    }
+                    signUpViewModel.validateEmail()
                 }
+                .keyboardType(.emailAddress)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
                 .focused($focusedField, equals: .mail)
                 .submitLabel(.next)
+                .onChange(of: signUpViewModel.focusedField) { newValue in
+                    signUpViewModel.focusedField = newValue
+                }
         }
-        .alert(isPresented: $mailError){
-            Alert(title: Text("Apologize"),
-                  message: Text("Please input right email"),
+        .alert(isPresented: $signUpViewModel.emailError){
+            Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
+                  message: Text(LocalizedStringKey(signUpViewModel.emailErrorMessage)),
                   dismissButton: .default(Text("OK")))
         }
     }
@@ -361,55 +341,27 @@ struct SignUpView: View {
             Text("Password")
                 .font(.callout)
                 .frame(width:80, alignment: .leading)
-            SecureField("Required", text: $password, prompt: Text("Required"))
+            SecureField("Required", text: $signUpViewModel.password, prompt: Text("Required"))
                 .onSubmit {
-                    if !validatePassword(password: password){
-                        passwordError.toggle()
-                        password = ""
-                        focusedField = .password
-                    }
+                    signUpViewModel.validatePassword()
                 }
+                .ignoresSafeArea(.keyboard, edges: .bottom)
                 .focused($focusedField, equals: .password)
                 .submitLabel(.done)
+                .onChange(of: signUpViewModel.focusedField) { newValue in
+                    signUpViewModel.focusedField = newValue
+                }
+            
         }
-        .alert(isPresented: $passwordError){
-            Alert(title: Text("Apologize"),
-                  message: Text("Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits"),
+        .alert(isPresented: $signUpViewModel.passwordError){
+            Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
+                  message: Text(LocalizedStringKey(signUpViewModel.passwordErrorMessage)),
                   dismissButton: .default(Text("OK")))
         }
     }
 
 }
 
-extension SignUpView{
-    private enum Field: Int, CaseIterable {
-        case nickName, age, phone, varifyCode, mail, password
-    }
-    
-    private func validatePhone(phoneNumber: String) -> Bool {
-        let phoneRegex: String = "^((13[0-9])|(15[^4,\\D])|(18[0,0-9])|(17[0,0-9]))\\d{8}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: phoneNumber)
-    }
-    
-    private func validateEmail(email: String) -> Bool {
-        let emailRegex: String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let emailTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailTest.evaluate(with: email)
-    }
-    
-    private func validateUserName(userName: String) -> Bool {
-        let userNameRegex = "^[A-Za-z0-9]{6,20}+$"
-        let userNamePredicate = NSPredicate(format: "SELF MATCHES %@", userNameRegex)
-        return userNamePredicate.evaluate(with: userName)
-    }
-    func validatePassword(password: String) -> Bool {
-        let  passWordRegex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$"
-        let passWordPredicate = NSPredicate(format: "SELF MATCHES%@", passWordRegex)
-        return passWordPredicate.evaluate(with: password)
-    }
-    
-}
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {

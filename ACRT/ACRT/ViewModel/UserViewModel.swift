@@ -28,6 +28,10 @@ class UserViewModel: ObservableObject{
     
     @Published var userImage = ""
     
+    @Published var message = ""
+    
+    @Published var signUpError = false
+    
     //MARK: For prepareView
     let indicatorImageName = "AccountRequire"
     let indicatorTitle = "Login with Account"
@@ -38,6 +42,7 @@ class UserViewModel: ObservableObject{
     }
     
     func tryToSignUp(photoURL: URL?, username: String, password: String, email: String, phone: String, age: String){
+        message = ""
         do {
             let user = LCUser()  // create a new User
             try user.set("username", value: username) // equal user.username = LCString("Tom")
@@ -56,16 +61,20 @@ class UserViewModel: ObservableObject{
                     case .success:
                         // save success
                         if let value = file.url?.value {
-                            print("[zzy]Image saved, URL is: \(value)")
+                            print("[zzy userViewModel debug] Image saved, URL is: \(value)")
                             do{
                                 try user.set("imageURL", value: file)
                             }catch{
-                                print("[zzy] error to save URL to user: \(error)")
+                                print("[zzy userViewModel debug] Error to save URL to user: \(error)")
                             }
                         }
                     case .failure(error: let error):
+                        print("[zzy userViewModel debug] error to upload URL \(error)")
                         // save failed
-                        print("[zzy] error to upload URL \(error)")
+                        if let errorInfo = error.reason{
+                            self.message += errorInfo
+                            self.signUpError = true
+                        }
                     }
                 }
             }
@@ -80,17 +89,31 @@ class UserViewModel: ObservableObject{
                             self.updateUserInfo()
                             print(user)
                         case .failure(error: let error):
-                            print(error)
+                            print("[zzy userViewModel debug] error to sign in \(error)")
+                            if let errorInfo = error.reason{
+                                self.message += "\n"
+                                self.message += errorInfo
+                                self.signUpError = true
+                                return
+                            }
                         }
                     }
                     break
                 case .failure(error: let error):
-                    print(error)
+                    if let errorInfo = error.reason{
+                        self.message += "\n"
+                        self.message += errorInfo
+                        self.signUpError = true
+                        return
+                    }
+                    print("[zzy userViewModel debug] error to sign up \(error)")
                 }
             }
+
         } catch {
-            print(" errorcode : \(error as NSError)")
+            print("[userViewModel debug] Errorcode : \(error as NSError)")
         }
+        
     }
     
     func updateUserInfo(){

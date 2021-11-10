@@ -10,10 +10,6 @@
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
-		27B3EC5227316FD800021DE1 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */; };
-		27B3EC5327316FD800021DE1 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC4F27316FD800021DE1 /* hello.usdz */; };
-		27B3EC5427316FD800021DE1 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5027316FD800021DE1 /* hello_1.usdz */; };
-		27B3EC5527316FD800021DE1 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27B3EC5127316FD800021DE1 /* AppleHello.usdz */; };
 		27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */; };
 		27B3EC5A27325F7500021DE1 /* ARObjectLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
@@ -60,6 +56,7 @@
 		5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209727329D2D00CF0E4A /* AwardView.swift */; };
 		5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */; };
 		620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */; };
+		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,10 +64,6 @@
 		27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
 		27B3EC4D27316F4000021DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleLogo.usdz; sourceTree = "<group>"; };
-		27B3EC4F27316FD800021DE1 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello.usdz; sourceTree = "<group>"; };
-		27B3EC5027316FD800021DE1 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hello_1.usdz; sourceTree = "<group>"; };
-		27B3EC5127316FD800021DE1 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = AppleHello.usdz; sourceTree = "<group>"; };
 		27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZLibraryViewModel.swift; sourceTree = "<group>"; };
 		27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectLibraryViewModel.swift; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
@@ -119,6 +112,7 @@
 		5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardViewModel.swift; sourceTree = "<group>"; };
 		5ADF209727329D2D00CF0E4A /* AwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
 		5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRoundAwardView.swift; sourceTree = "<group>"; };
+		9F118CE5273908E30054A252 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EA644E134854EEEBD6DAD6 /* Pods-ACRT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.release.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,23 +149,11 @@
 			path = ARObjectViewModel;
 			sourceTree = "<group>";
 		};
-		27B3EC5627316FE900021DE1 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				27B3EC5127316FD800021DE1 /* AppleHello.usdz */,
-				27B3EC4E27316FD800021DE1 /* AppleLogo.usdz */,
-				27B3EC5027316FD800021DE1 /* hello_1.usdz */,
-				27B3EC4F27316FD800021DE1 /* hello.usdz */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
 			isa = PBXGroup;
 			children = (
 				5A3E1A592731080700B170B2 /* UserCircleView.swift */,
 				5A3E1A6127310A4C00B170B2 /* WhatIsNewView */,
-				5A3E1A5C2731096800B170B2 /* AwardView */,
 				5A3E1A5B2731095D00B170B2 /* UserPanel */,
 			);
 			path = "3. UserPage";
@@ -187,13 +169,6 @@
 				5A42159C27311B9D000C9F5B /* SignUpView.swift */,
 			);
 			path = UserPanel;
-			sourceTree = "<group>";
-		};
-		5A3E1A5C2731096800B170B2 /* AwardView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = AwardView;
 			sourceTree = "<group>";
 		};
 		5A3E1A6127310A4C00B170B2 /* WhatIsNewView */ = {
@@ -400,6 +375,7 @@
 				5A3E1A6827310B1200B170B2 /* WhatIsNewViewModel.swift */,
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
 				5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */,
+				9F118CE5273908E30054A252 /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -592,6 +568,7 @@
 				5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */,
 				5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */,
 				5A4215A027312B2D000C9F5B /* TrackableScrollView.swift in Sources */,
+				9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */,
 				5ADF209427329CDD00CF0E4A /* Award.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
