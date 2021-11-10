@@ -105,8 +105,9 @@ class HttpAuth : ObservableObject {
     }
     
     func requestAndCallback(request : URLRequest) {
-        
-        self.statusLoc = -1
+        DispatchQueue.main.async {
+            self.statusLoc = -1
+        }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             

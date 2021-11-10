@@ -20,6 +20,7 @@ import SwiftUI
 
 struct CustomCoachingView: View {
     @EnvironmentObject var coachingViewModel : CoachingViewModel
+    @EnvironmentObject var placementSetting : PlacementSetting
 
     @State var animate: Bool = false
     var animation: Animation{
@@ -43,6 +44,7 @@ struct CustomCoachingView: View {
                 if coachingViewModel.showQuitButton {
                     Button("Enter Creation Mode") {
                         coachingViewModel.isCoaching = false
+                        placementSetting.isInCreationMode = true
                     }
                 }
                 

@@ -48,6 +48,7 @@ struct CanvasView: View {
                 VStack {
                     CustomCoachingView()
                         .environmentObject(coachingViewModel)
+                        .environmentObject(placementSetting)
                 }
                 .background(Color.black.opacity(0.5))
             }

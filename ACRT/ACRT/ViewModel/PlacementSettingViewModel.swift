@@ -12,7 +12,7 @@ import Combine
 class PlacementSetting  : ObservableObject {
     var sceneObserver: Cancellable?
     var confirmedModel : USDZModel?
-    var isInCreationMode : Bool = false
+    @Published var isInCreationMode : Bool = false
     var doPlaceModel : Bool  = false
     init() {
         confirmedModel = USDZModel(modelName: "hello")
