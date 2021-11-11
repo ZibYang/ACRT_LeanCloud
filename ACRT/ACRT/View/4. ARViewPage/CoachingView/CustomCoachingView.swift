@@ -19,11 +19,15 @@
 import SwiftUI
 
 struct CustomCoachingView: View {
+    @EnvironmentObject var coachingViewModel : CoachingViewModel
+    @EnvironmentObject var placementSetting : PlacementSetting
+
     @State var animate: Bool = false
     var animation: Animation{
         Animation.linear(duration: 2.0)
         .repeatForever()
     }
+    
     var body: some View {
         ZStack {
             Color.clear
@@ -37,6 +41,13 @@ struct CustomCoachingView: View {
                     .aspectRatio(2, contentMode: .fit)
                     .frame(height: 120)
                 .modifier(transitionEffect(x: animate ? -20 : 20))
+                if coachingViewModel.showQuitButton {
+                    Button("Enter Creation Mode") {
+                        coachingViewModel.isCoaching = false
+                        placementSetting.isInCreationMode = true
+                    }
+                }
+                
             }
         }
         .onAppear{

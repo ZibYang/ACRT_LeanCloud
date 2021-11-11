@@ -22,14 +22,13 @@ import ARKit
 
 class ARViewModel: ObservableObject{
     @Published var capabilitySatisfied = "optional"
-    @Published var isCoaching : Bool = false
 
     //MARK: For prepareView
     let indicatorImageName = "LiDARRequire"
     let indicatorTitle = "Use Device with LiDAR"
     let indicatorDescription = "LiDAR enhance the ability of realized the world."
     
-    var arView: ARView
+    var arView: CustomARView
 
     var lastCameraPose: simd_float4x4 = simd_float4x4()
     var poseARKitToW: simd_float4x4 = simd_float4x4()
@@ -41,7 +40,7 @@ class ARViewModel: ObservableObject{
     }
     
     init(){
-        arView = ARView(frame: .zero)
+        arView = CustomARView(frame: .zero)
         
         if isLiDAREqiped{
             capabilitySatisfied = "satisfied"
@@ -129,7 +128,7 @@ class ARViewModel: ObservableObject{
         arObjectLibrary.pushUSDZIntoAnchor()
         for model in arObjectLibrary.inherentModelList {
             if model.isAdded == true && model.isRendered == false {
-                print("DEBUG(BCH) add model into arView")
+                print("DEBUG(BCH) add model \(model.modelName) into arView")
                 arView.scene.anchors.append(model.anchorModelEntity)
                 model.isRendered = true
             }

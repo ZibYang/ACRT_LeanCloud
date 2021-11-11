@@ -105,8 +105,9 @@ class HttpAuth : ObservableObject {
     }
     
     func requestAndCallback(request : URLRequest) {
-        
-        self.statusLoc = -1
+        DispatchQueue.main.async {
+            self.statusLoc = -1
+        }
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -230,10 +231,17 @@ class HttpAuth : ObservableObject {
             print("DEBUG(BCH): pos: " , finalData.x, finalData.y, finalData.z)
             print("DEBUG(BCH): pose " , finalData.pose)
 
+            let Tcw : simd_float4x4 = simd_float4x4(
+                simd_float4(finalData.pose[0], finalData.pose[1], finalData.pose[2], finalData.pose[3]),
+                simd_float4(finalData.pose[4], finalData.pose[5], finalData.pose[6], finalData.pose[7]),
+                simd_float4(finalData.pose[8], finalData.pose[9], finalData.pose[10], finalData.pose[11]),
+                simd_float4(0,0,0,1.0)).transpose
             
+            print("DEBUG(BCH): Tcw " , (Tcw).transpose)
+
             DispatchQueue.main.async {
-//                self.statusLoc = 1
-//                self.T_ci_w = Tcw
+                self.statusLoc = 1
+                self.T_ci_w = Tcw
             }
         }.resume()
     }

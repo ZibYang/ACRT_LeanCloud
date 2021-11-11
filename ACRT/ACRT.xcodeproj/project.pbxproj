@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27ADC8FE273694BB00926996 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27ADC8FD273694BB00926996 /* FocusEntity */; };
+		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
+		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
+		27ADC90C2739162A00926996 /* flight.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9032739162900926996 /* flight.usdz */; };
+		27ADC90D2739162A00926996 /* Hello_World_Globe.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9042739162A00926996 /* Hello_World_Globe.usdz */; };
+		27ADC90E2739162A00926996 /* hammer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9052739162A00926996 /* hammer.usdz */; };
+		27ADC90F2739162A00926996 /* hand.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9062739162A00926996 /* hand.usdz */; };
+		27ADC9102739162A00926996 /* SwiftChangeTheWorld.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */; };
+		27ADC9122739162A00926996 /* gear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9092739162A00926996 /* gear.usdz */; };
+		27ADC9132739162A00926996 /* Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC90A2739162A00926996 /* Title.usdz */; };
 		27B3EC4827316E4E00021DE1 /* ImageUtilsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ARObjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
 		27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */; };
 		27B3EC5A27325F7500021DE1 /* ARObjectLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */; };
+		27BEDBCC2735113E004F66E5 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBC82735113E004F66E5 /* AppleLogo.usdz */; };
+		27BEDBCD2735113E004F66E5 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBC92735113E004F66E5 /* hello_1.usdz */; };
+		27BEDBCE2735113E004F66E5 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBCA2735113E004F66E5 /* hello.usdz */; };
+		27BEDBCF2735113E004F66E5 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBCB2735113E004F66E5 /* AppleHello.usdz */; };
+		27BEDBD327351FE4004F66E5 /* CoachingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
 		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
 		5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */; };
@@ -60,12 +75,26 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
+		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
+		27ADC9032739162900926996 /* flight.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flight.usdz; sourceTree = "<group>"; };
+		27ADC9042739162A00926996 /* Hello_World_Globe.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Hello_World_Globe.usdz; sourceTree = "<group>"; };
+		27ADC9052739162A00926996 /* hammer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hammer.usdz; sourceTree = "<group>"; };
+		27ADC9062739162A00926996 /* hand.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hand.usdz; sourceTree = "<group>"; };
+		27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SwiftChangeTheWorld.usdz; sourceTree = "<group>"; };
+		27ADC9092739162A00926996 /* gear.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = gear.usdz; sourceTree = "<group>"; };
+		27ADC90A2739162A00926996 /* Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Title.usdz; sourceTree = "<group>"; };
 		27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtilsViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4927316E7D00021DE1 /* ARObjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectViewModel.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
 		27B3EC4D27316F4000021DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		27B3EC5727325E0900021DE1 /* USDZLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZLibraryViewModel.swift; sourceTree = "<group>"; };
 		27B3EC5927325F7500021DE1 /* ARObjectLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARObjectLibraryViewModel.swift; sourceTree = "<group>"; };
+		27BEDBC82735113E004F66E5 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleLogo.usdz; path = ACRT/Resource/AppleLogo.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBC92735113E004F66E5 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello_1.usdz; path = ACRT/Resource/hello_1.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBCA2735113E004F66E5 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello.usdz; path = ACRT/Resource/hello.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBCB2735113E004F66E5 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleHello.usdz; path = ACRT/Resource/AppleHello.usdz; sourceTree = SOURCE_ROOT; };
+		27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingViewModel.swift; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
 		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
 		5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailAndPasswordView.swift; sourceTree = "<group>"; };
@@ -123,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ADC8FE273694BB00926996 /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +295,7 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
+				27BEDBC727351120004F66E5 /* USDZModels */,
 				27B3EC4D27316F4000021DE1 /* Info.plist */,
 				5A3E1A6527310A8900B170B2 /* Model */,
 				5A56E929272F9C360062680E /* ViewModel */,
@@ -376,6 +407,9 @@
 				27B3EC4727316E4E00021DE1 /* ImageUtilsViewModel.swift */,
 				5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */,
 				9F118CE5273908E30054A252 /* SignUpViewModel.swift */,
+				27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */,
+				27ADC8FF2736950D00926996 /* CustomARView.swift */,
+				27ADC9012736957500926996 /* PlacementSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -424,6 +458,9 @@
 			dependencies = (
 			);
 			name = ACRT;
+			packageProductDependencies = (
+				27ADC8FD273694BB00926996 /* FocusEntity */,
+			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
 			productType = "com.apple.product-type.application";
@@ -455,6 +492,9 @@
 				ja,
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
+			packageReferences = (
+				27ADC8FC273694BB00926996 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -469,9 +509,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ADC90D2739162A00926996 /* Hello_World_Globe.usdz in Resources */,
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
+				27BEDBCD2735113E004F66E5 /* hello_1.usdz in Resources */,
+				27BEDBCE2735113E004F66E5 /* hello.usdz in Resources */,
+				27BEDBCC2735113E004F66E5 /* AppleLogo.usdz in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
+				27ADC9132739162A00926996 /* Title.usdz in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
+				27BEDBCF2735113E004F66E5 /* AppleHello.usdz in Resources */,
+				27ADC9102739162A00926996 /* SwiftChangeTheWorld.usdz in Resources */,
+				27ADC90C2739162A00926996 /* flight.usdz in Resources */,
+				27ADC90E2739162A00926996 /* hammer.usdz in Resources */,
+				27ADC9122739162A00926996 /* gear.usdz in Resources */,
+				27ADC90F2739162A00926996 /* hand.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 			);
@@ -531,6 +582,7 @@
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
 				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
 				5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */,
+				27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */,
 				27B3EC5827325E0900021DE1 /* USDZLibraryViewModel.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
@@ -556,6 +608,7 @@
 				5A42159D27311B9D000C9F5B /* SignUpView.swift in Sources */,
 				5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */,
 				5A56E915272BFB6C0062680E /* WelcomePageTitleView.swift in Sources */,
+				27BEDBD327351FE4004F66E5 /* CoachingViewModel.swift in Sources */,
 				5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */,
 				5A3E1A6427310A6800B170B2 /* WhatIsNewView.swift in Sources */,
 				27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */,
@@ -565,6 +618,7 @@
 				5A4215AA27314E83000C9F5B /* CanvasView.swift in Sources */,
 				5A56E92D272F9CB50062680E /* MapView.swift in Sources */,
 				5A56E92B272F9C500062680E /* MapViewModel.swift in Sources */,
+				27ADC9002736950D00926996 /* CustomARView.swift in Sources */,
 				5A56E936272FD2720062680E /* UserCapabilityView.swift in Sources */,
 				5A56E93E2730E0DE0062680E /* HttpAuthView.swift in Sources */,
 				5A4215A027312B2D000C9F5B /* TrackableScrollView.swift in Sources */,
@@ -805,6 +859,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		27ADC8FC273694BB00926996 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		27ADC8FD273694BB00926996 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 27ADC8FC273694BB00926996 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A56E8F5272BF1FE0062680E /* Project object */;
 }

@@ -29,6 +29,8 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var arObjectLibraryViewModel :ARObjectLibraryViewModel
+    @EnvironmentObject var placementSetting : PlacementSetting
+
 
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
@@ -57,8 +59,10 @@ struct ARWorldView:  UIViewRepresentable {
             print("[Debug] The device does not support LiDAR")
         }
         
+        
         // Scene Understanding
-        arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
+//        arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
+        arViewModel.arView.environment.sceneUnderstanding.options.insert(.receivesLighting)
         
         // ARCoachingOverlay
         arViewModel.arView.addCoaching()
@@ -70,6 +74,11 @@ struct ARWorldView:  UIViewRepresentable {
             arViewModel.arView.debugOptions.insert(.showSceneUnderstanding)
         }
         arViewModel.arView.session.run(config)
+        
+        placementSetting.sceneObserver = arViewModel.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
+            updateScene(for: arViewModel.arView)
+        })
+        
         return arViewModel.arView
     }
     
@@ -91,6 +100,32 @@ struct ARWorldView:  UIViewRepresentable {
             }
             takeSnapshootNow = false
         }
+    }
+    
+    private func updateScene(for arView: CustomARView) {
+        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
+        if placementSetting.isInCreationMode == true && placementSetting.doPlaceModel == true {
+            if let confirmedModel = placementSetting.confirmedModel, let modelEntity = confirmedModel.modelEntity {
+                self.place(modelEntity, in: arView)
+                self.placementSetting.doPlaceModel = false
+            }
+        }
+        
+    }
+    
+    private func place(_ modelEntity: ModelEntity, in arView : ARView) {
+        let clonedEntity = modelEntity.clone(recursive: true)
+        
+        clonedEntity.generateCollisionShapes(recursive: true)
+        
+        arView.installGestures([.translation, .rotation], for: clonedEntity)
+        
+        let anchorEntity = AnchorEntity(plane: .any)
+        anchorEntity.transform.scale = SIMD3<Float>(0.1, 0.1, 0.1) // DEBUG(BCH)
+        anchorEntity.addChild(clonedEntity)
+        arView.scene.addAnchor(anchorEntity)
+        
+        print("Added modelEntity")
     }
 }
 

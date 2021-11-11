@@ -17,15 +17,18 @@
 import SwiftUI
 
 struct CanvasView: View {
-    @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arViewModel: ARViewModel
+    @EnvironmentObject var coachingViewModel : CoachingViewModel
     
     @State private var showMesh = false
     @State var snapShot = false
     @State var requestNow = true
+    @State var showQuitButton = false
     
+    @StateObject var httpManager: HttpAuth = HttpAuth()
     @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
+    @StateObject var placementSetting = PlacementSetting()
    
     @Binding var goBack: Bool
     
@@ -35,35 +38,23 @@ struct CanvasView: View {
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(arObjectLibraryViewModel)
-                .ignoresSafeArea()
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $arViewModel.isCoaching)
+                .environmentObject(placementSetting)
+                .ignoresSafeArea().onTapGesture(count: 1) {
+                    placementSetting.doPlaceModel = true
+                }
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching).environmentObject(placementSetting)
             
-            if arViewModel.isCoaching == true {
+            if coachingViewModel.isCoaching == true {
                 VStack {
                     CustomCoachingView()
+                        .environmentObject(coachingViewModel)
+                        .environmentObject(placementSetting)
                 }
                 .background(Color.black.opacity(0.5))
             }
             // TODO: localization Button
         }.onAppear() {
-            arViewModel.isCoaching = true
-            DispatchQueue.global(qos: .background).async {
-                sleep(1)
-                while(httpManager.statusLoc != 1) {
-                    if(httpManager.statusLoc == 0) {
-                        arViewModel.RequestLocalization(manager: httpManager)
-                    }
-                }
-                
-                while(!arObjectLibraryViewModel.AreModelLibrariesLoaded()) {
-                    sleep(1)
-                }
-                DispatchQueue.main.async {
-                    print("arViewModel isCoaching close")
-                    arViewModel.isCoaching = false
-                }
-            }
-            
+            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, arObjectLibraryViewModel: arObjectLibraryViewModel)
         }
         
     }

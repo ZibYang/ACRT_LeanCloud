@@ -17,7 +17,9 @@
 import SwiftUI
 
 struct LeftToolView: View {
-    @State private var selectedToolName = "Explore"
+    @EnvironmentObject var placementSetting : PlacementSetting
+
+//    @State private var selectedToolName = "Explore"
     
     var body: some View {
         VStack {
@@ -35,27 +37,31 @@ struct LeftToolView: View {
     var exploreTool: some View{
         Button(action: {
             withAnimation(.spring()){
-                selectedToolName = "Explore"
+//                selectedToolName = "Explore"
+
             }
+            placementSetting.isInCreationMode = false
+
         }, label:{
             Image(systemName: "magnifyingglass")
-                .foregroundColor(selectedToolName == "Explore" ? .blue : .white)
+                .foregroundColor(placementSetting.isInCreationMode == false ? .blue : .white)
                 .frame(width: 40, height: 40)
         })
-            .background( .gray .opacity(selectedToolName == "Explore" ? 0.5 : 0.0))
+            .background( .gray .opacity(placementSetting.isInCreationMode == false ? 0.5 : 0.0))
             .cornerRadius(10)
     }
     var createTool: some View{
         Button(action: {
             withAnimation(.spring()){
-                selectedToolName = "Create"
+//                selectedToolName = "Create"
             }
+            placementSetting.isInCreationMode = true
         }, label:{
             Image(systemName: "cube")
-                .foregroundColor(selectedToolName == "Create" ? .blue : .white)
+                .foregroundColor(placementSetting.isInCreationMode == true ? .blue : .white)
                 .frame(width: 40, height: 40)
         })
-            .background( .gray .opacity(selectedToolName == "Create" ? 0.5 : 0.0))
+            .background( .gray .opacity(placementSetting.isInCreationMode == true ? 0.5 : 0.0))
             .cornerRadius(10)
     }
     
