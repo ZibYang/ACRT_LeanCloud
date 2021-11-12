@@ -13,10 +13,12 @@ class CoachingViewModel : ObservableObject {
     @Published var isCoaching : Bool = false
     @Published var showQuitButton : Bool = false
     
+    var maxWaitForLoc : Double  = 3
+    
     
     func StartLocalizationAndModelLoadingAsync(httpManager : HttpAuth,
                                                arViewModel: ARViewModel,
-                                               arObjectLibraryViewModel: ARObjectLibraryViewModel) {
+                                               usdzManagerViewModel: USDZManagerViewModel) {
         self.isCoaching = true
         DispatchQueue.global(qos: .background).async {
             sleep(1)
@@ -27,7 +29,7 @@ class CoachingViewModel : ObservableObject {
                 if(httpManager.statusLoc == 0) {
                     arViewModel.RequestLocalization(manager: httpManager)
                 }
-                if((CFAbsoluteTimeGetCurrent() - start) > 10 && !enableQuitButton) {
+                if((CFAbsoluteTimeGetCurrent() - start) > self.maxWaitForLoc && !enableQuitButton) {
                     enableQuitButton = true
                     print("DEBUG(BCH): Request takes too long")
                     DispatchQueue.main.async {
@@ -39,7 +41,7 @@ class CoachingViewModel : ObservableObject {
                 }
             }
             if(self.isCoaching) {
-                while(!arObjectLibraryViewModel.AreModelLibrariesLoaded()) {
+                while(!usdzManagerViewModel.AreModelLibrariesLoaded()) {
                     sleep(1)
                 }
                 DispatchQueue.main.async {

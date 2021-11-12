@@ -122,18 +122,6 @@ class ARViewModel: ObservableObject{
             print("DEBUG(BCHO): srtARKitCToC", srtARKitCToC)
             print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
         }
-    
-    func placeInherentARObjects(arObjectLibrary: ARObjectLibraryViewModel) {
-        arObjectLibrary.updateInherentModels(poseARKitToW: poseARKitToW)
-        arObjectLibrary.pushUSDZIntoAnchor()
-        for model in arObjectLibrary.inherentModelList {
-            if model.isAdded == true && model.isRendered == false {
-                print("DEBUG(BCH) add model \(model.modelName) into arView")
-                arView.scene.anchors.append(model.anchorModelEntity)
-                model.isRendered = true
-            }
-        }
-    }
         
         
 }

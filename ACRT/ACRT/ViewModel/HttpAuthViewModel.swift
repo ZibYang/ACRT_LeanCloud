@@ -152,8 +152,10 @@ class HttpAuth : ObservableObject {
             Tcw = Tcw.transpose
             print("DEBUG(BCH): Loc Tcw",Tcw)
             DispatchQueue.main.async {
-                self.statusLoc = 1
-                self.T_ci_w = Tcw
+                if self.statusLoc != 1 {
+                    self.statusLoc = 1
+                    self.T_ci_w = Tcw
+                }
             }
         }.resume()
     }
@@ -240,8 +242,10 @@ class HttpAuth : ObservableObject {
             print("DEBUG(BCH): Tcw " , (Tcw).transpose)
 
             DispatchQueue.main.async {
-                self.statusLoc = 1
-                self.T_ci_w = Tcw
+                if self.statusLoc != 1 {
+                    self.statusLoc = 1
+                    self.T_ci_w = Tcw
+                }
             }
         }.resume()
     }

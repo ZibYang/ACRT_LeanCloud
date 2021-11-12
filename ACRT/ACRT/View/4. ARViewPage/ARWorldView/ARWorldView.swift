@@ -28,12 +28,15 @@ import SwiftUI
 struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var httpManager: HttpAuth
-    @EnvironmentObject var arObjectLibraryViewModel :ARObjectLibraryViewModel
+    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel 
     @EnvironmentObject var placementSetting : PlacementSetting
+    @EnvironmentObject var persistenceManager : PersistenceManagerViewModel
 
 
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
+    var userName : String
+    let exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()
@@ -76,7 +79,8 @@ struct ARWorldView:  UIViewRepresentable {
         arViewModel.arView.session.run(config)
         
         placementSetting.sceneObserver = arViewModel.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
-            updateScene(for: arViewModel.arView)
+            self.updateScene(for: arViewModel.arView)
+            self.handlePersistence(for: arViewModel.arView)
         })
         
         return arViewModel.arView
@@ -85,7 +89,11 @@ struct ARWorldView:  UIViewRepresentable {
     func updateUIView(_ arView: ARView, context: Context) {
         if (httpManager.statusLoc == 1) {
             arViewModel.onLocalizationResult(manager: httpManager)
-            arViewModel.placeInherentARObjects(arObjectLibrary: arObjectLibraryViewModel)
+            if self.exploreAnchorManager.isRendered == false {
+                let exploreModels = self.exploreAnchorManager.getTransformedModelAnchors(poseARKitToW: arViewModel.poseARKitToW)
+                self.placementSetting.modelConfirmedForPlacement.append(contentsOf: exploreModels)
+                self.exploreAnchorManager.isRendered = true
+            }
         }
         if showMesh {
             arViewModel.arView.debugOptions.insert(.showAnchorOrigins)
@@ -104,29 +112,66 @@ struct ARWorldView:  UIViewRepresentable {
     
     private func updateScene(for arView: CustomARView) {
         arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
-        if placementSetting.isInCreationMode == true && placementSetting.doPlaceModel == true {
-            if let confirmedModel = placementSetting.confirmedModel, let modelEntity = confirmedModel.modelEntity {
-                self.place(modelEntity, in: arView)
-                self.placementSetting.doPlaceModel = false
+        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.createModelList.getUSDZModelEntity(modelName: modelAnchor.modelName) {
+            if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
+                // Anchor needs to be created from placement
+                let anchorName = modelAnchor.anchorName!
+                print("modelAnchor.transform \(modelAnchor.transform)")
+                let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
+                if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
+                    self.place(modelEntity, for: anchor, in: arView, enableGesture: false)
+                } else {
+                    self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
+                }
+            }else if let transform = getTransformForPlacement(in: arView) {
+                // Anchor needs to be created from placement
+                let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
+                let anchor = ARAnchor(name:anchorName, transform: transform)
+                self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
             }
-        }
+        
+    }
         
     }
     
-    private func place(_ modelEntity: ModelEntity, in arView : ARView) {
+    private func place(_ modelEntity: ModelEntity, for anchor: ARAnchor, in arView : ARView, enableGesture: Bool) {
         let clonedEntity = modelEntity.clone(recursive: true)
         
         clonedEntity.generateCollisionShapes(recursive: true)
-        
-        arView.installGestures([.translation, .rotation], for: clonedEntity)
+        if enableGesture == true {
+            arView.installGestures([.translation, .rotation], for: clonedEntity)
+        }
         
         let anchorEntity = AnchorEntity(plane: .any)
-        anchorEntity.transform.scale = SIMD3<Float>(0.1, 0.1, 0.1) // DEBUG(BCH)
+        anchorEntity.name = anchor.name! + "|entity"
         anchorEntity.addChild(clonedEntity)
+        anchorEntity.anchoring = AnchoringComponent(anchor)
+        arView.session.add(anchor: anchor)
         arView.scene.addAnchor(anchorEntity)
         
         print("Added modelEntity")
     }
+    
+    private func handlePersistence(for arView:  CustomARView) {
+        if self.persistenceManager.shouldUploadSceneToCloud {
+            PersistenceHelperViewModel.uploadScene(for: arView, at: self.persistenceManager.persistenceUrl, with: userName, poseWToARKit: arViewModel.poseARKitToW)
+            self.persistenceManager.shouldUploadSceneToCloud = false
+        } else if self.persistenceManager.shouldDownloadSceneFromCloud {
+            let modelAnchors = PersistenceHelperViewModel.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
+            self.placementSetting.modelConfirmedForPlacement.append(contentsOf: modelAnchors)
+            self.persistenceManager.shouldDownloadSceneFromCloud = false
+        }
+    }
+    
+    private func getTransformForPlacement(in arView: ARView) -> simd_float4x4? {
+        guard let query = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .any) else {
+            return nil
+        }
+        guard let raycastResult = arView.session.raycast(query).first else {return nil}
+        return raycastResult.worldTransform
+    }
+    
+    
 }
 
 
