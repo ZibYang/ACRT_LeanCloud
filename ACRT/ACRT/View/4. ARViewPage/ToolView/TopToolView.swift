@@ -18,7 +18,6 @@ import SwiftUI
 
 struct TopToolView: View {
     @Binding var showMesh: Bool
-    @Binding var goBack: Bool
     @Binding var showCamera: Bool
     
     var body: some View {
@@ -58,7 +57,7 @@ struct TopToolView_Previews: PreviewProvider {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [.gray, .black]), center: .center, startRadius: 10, endRadius: 250)
                 .ignoresSafeArea()
-            TopToolView(showMesh: .constant(false), goBack: .constant(false), showCamera: .constant(false))
+            TopToolView(showMesh: .constant(false), showCamera: .constant(false))
         }
     }
 }

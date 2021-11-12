@@ -31,7 +31,7 @@ struct CanvasView: View {
     @StateObject var placementSetting = PlacementSetting()
    
     @Binding var goBack: Bool
-    
+    @State var showModelPicker = false
     var body: some View {
         ZStack{
             ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
@@ -42,19 +42,31 @@ struct CanvasView: View {
                 .ignoresSafeArea().onTapGesture(count: 1) {
                     placementSetting.doPlaceModel = true
                 }
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching).environmentObject(placementSetting)
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching)
+                .environmentObject(placementSetting)
             
             if coachingViewModel.isCoaching == true {
                 VStack {
-                    CustomCoachingView()
+                    CustomCoachingView(goBack: $goBack)
                         .environmentObject(coachingViewModel)
                         .environmentObject(placementSetting)
                 }
                 .background(Color.black.opacity(0.5))
             }
-            // TODO: localization Button
-        }.onAppear() {
+            if placementSetting.isInCreationMode{
+                VStack{
+                    Spacer()
+                    ModelSelectedView(modelName: "love_white")
+                }
+                .padding()
+            }
+        }
+        
+        .onAppear() {
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, arObjectLibraryViewModel: arObjectLibraryViewModel)
+        }
+        .halfSheet(showSheet: $placementSetting.openModelList){
+            ModelPickerView()
         }
         
     }

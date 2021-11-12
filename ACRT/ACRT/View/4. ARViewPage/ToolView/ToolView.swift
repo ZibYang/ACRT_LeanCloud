@@ -49,7 +49,7 @@ struct ToolView: View {
             HStack {
                 // quit Button
                 Button(action: {
-                    withAnimation(Animation.easeInOut(duration: 1.0)){
+                    withAnimation(Animation.easeInOut(duration: 0.8)){
                         goBack.toggle()
                     }
                     print("pressed")
@@ -62,15 +62,12 @@ struct ToolView: View {
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
                     
-                TopToolView(showMesh: $showMesh, goBack: $goBack, showCamera: $showCameraButton)
+                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton)
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
                 
                 Spacer()
-                
-                relocationButton
-                    .offset(x: coaching ? 400 : 0)
             }
             .padding(.top, 10)
             .padding(.horizontal)
@@ -88,7 +85,13 @@ struct ToolView: View {
                 LeftToolView()
                     .padding(.all, 5)
                     .background(.ultraThinMaterial)
-                    .cornerRadius(10).environmentObject(placementSetting)
+                    .cornerRadius(10).environmentObject(placementSetting)                
+                Spacer()
+            }
+            .padding(.horizontal)
+            .offset(x: coaching ? -150 : 0)
+            HStack {
+                relocationButton
                 Spacer()
             }
             .padding(.horizontal)
@@ -97,12 +100,10 @@ struct ToolView: View {
         }
     }
     
+    
     var relocationButton: some View{
         //MARK: relocation Button
         Button(action: {
-            withAnimation(Animation.easeInOut(duration: 1.0)){
-                goBack.toggle()
-            }
             print("pressed")
         }, label:{
             Image(systemName: "location")

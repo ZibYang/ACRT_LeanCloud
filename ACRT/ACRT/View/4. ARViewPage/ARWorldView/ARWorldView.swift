@@ -114,18 +114,18 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func place(_ modelEntity: ModelEntity, in arView : ARView) {
-        let clonedEntity = modelEntity.clone(recursive: true)
-        
-        clonedEntity.generateCollisionShapes(recursive: true)
-        
-        arView.installGestures([.translation, .rotation], for: clonedEntity)
-        
-        let anchorEntity = AnchorEntity(plane: .any)
-        anchorEntity.transform.scale = SIMD3<Float>(0.1, 0.1, 0.1) // DEBUG(BCH)
-        anchorEntity.addChild(clonedEntity)
-        arView.scene.addAnchor(anchorEntity)
-        
-        print("Added modelEntity")
+//        let clonedEntity = modelEntity.clone(recursive: true)
+//        
+//        clonedEntity.generateCollisionShapes(recursive: true)
+//        
+//        arView.installGestures([.translation, .rotation], for: clonedEntity)
+//        
+//        let anchorEntity = AnchorEntity(plane: .any)
+//        anchorEntity.transform.scale = SIMD3<Float>(0.1, 0.1, 0.1) // DEBUG(BCH)
+//        anchorEntity.addChild(clonedEntity)
+//        arView.scene.addAnchor(anchorEntity)
+//        
+//        print("Added modelEntity")
     }
 }
 

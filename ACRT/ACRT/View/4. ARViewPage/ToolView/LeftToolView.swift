@@ -45,7 +45,7 @@ struct LeftToolView: View {
         }, label:{
             Image(systemName: "magnifyingglass")
                 .foregroundColor(placementSetting.isInCreationMode == false ? .blue : .white)
-                .frame(width: 40, height: 40)
+                .frame(width: 45, height: 45)
         })
             .background( .gray .opacity(placementSetting.isInCreationMode == false ? 0.5 : 0.0))
             .cornerRadius(10)
@@ -56,10 +56,11 @@ struct LeftToolView: View {
 //                selectedToolName = "Create"
             }
             placementSetting.isInCreationMode = true
+            placementSetting.openModelList = true
         }, label:{
             Image(systemName: "cube")
                 .foregroundColor(placementSetting.isInCreationMode == true ? .blue : .white)
-                .frame(width: 40, height: 40)
+                .frame(width: 45, height: 45)
         })
             .background( .gray .opacity(placementSetting.isInCreationMode == true ? 0.5 : 0.0))
             .cornerRadius(10)

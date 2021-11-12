@@ -63,7 +63,9 @@ struct SignUpView: View {
                         finishButton
                     }
                 })
+                
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .onAppear(perform: {
                 signUpViewModel.focusedField = .userName
             })
