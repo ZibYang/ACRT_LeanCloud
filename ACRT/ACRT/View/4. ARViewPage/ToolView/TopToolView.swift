@@ -17,6 +17,7 @@
 import SwiftUI
 
 struct TopToolView: View {
+    @EnvironmentObject var persistenceManager : PersistenceManagerViewModel
     @Binding var showMesh: Bool
     @Binding var showCamera: Bool
     
@@ -48,6 +49,30 @@ struct TopToolView: View {
                 .contextMenu{
                     Label("Take a snap shot", systemImage: "camera.aperture")
                 }
+            
+            // MARK: upload button
+            Button(action: {
+                persistenceManager.shouldUploadSceneToCloud = true
+            }, label:{
+                Image(systemName: "icloud.and.arrow.up")
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+            })
+//                .contextMenu{
+//                    Label("Upload objects", systemImage: "square.dashed")
+//                }
+            
+            // MARK: download button
+            Button(action: {
+                persistenceManager.shouldDownloadSceneFromCloud = true
+            }, label:{
+                Image(systemName: "icloud.and.arrow.down")
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+            })
+//                .contextMenu{
+//                    Label("Downloads objects", systemImage: "square.dashed")
+//                }
         }
     }
 }

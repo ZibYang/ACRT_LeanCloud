@@ -18,6 +18,7 @@ import SwiftUI
 
 struct ToolView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
+    @EnvironmentObject var persistenceManager : PersistenceManagerViewModel
 
     @State var showBottomView = false
     @State var showCameraButton = false
@@ -66,6 +67,7 @@ struct ToolView: View {
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
+                    .environmentObject(persistenceManager)
                 
                 Spacer()
             }

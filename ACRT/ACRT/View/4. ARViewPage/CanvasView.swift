@@ -27,23 +27,28 @@ struct CanvasView: View {
     @State var showQuitButton = false
     
     @StateObject var httpManager: HttpAuth = HttpAuth()
-    @StateObject var arObjectLibraryViewModel :ARObjectLibraryViewModel = ARObjectLibraryViewModel()
+    @StateObject var usdzManagerViewModel : USDZManagerViewModel = USDZManagerViewModel()
     @StateObject var placementSetting = PlacementSetting()
+    @StateObject var persistenceManager = PersistenceManagerViewModel()
    
     @Binding var goBack: Bool
     @State var showModelPicker = false
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, userName: "BCH")
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
-                .environmentObject(arObjectLibraryViewModel)
+                .environmentObject(usdzManagerViewModel)
                 .environmentObject(placementSetting)
+                .environmentObject(persistenceManager)
                 .ignoresSafeArea().onTapGesture(count: 1) {
-                    placementSetting.doPlaceModel = true
+                    let modelAnchor = ModelAnchor(modelName: "hand", transform: nil, anchorName: nil)
+                    self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
+//                        self.placementSetting.selectedModel = nil
                 }
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching)
                 .environmentObject(placementSetting)
+                .environmentObject(persistenceManager)
             
             if coachingViewModel.isCoaching == true {
                 VStack {
@@ -63,7 +68,8 @@ struct CanvasView: View {
         }
         
         .onAppear() {
-            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, arObjectLibraryViewModel: arObjectLibraryViewModel)
+            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
+            // TODO: localization Button
         }
         .halfSheet(showSheet: $placementSetting.openModelList){
             ModelPickerView()

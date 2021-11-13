@@ -7,19 +7,25 @@
 
 import Foundation
 import Combine
-
+import ARKit
 
 class PlacementSetting  : ObservableObject {
+    
     var sceneObserver: Cancellable?
-    var confirmedModel : USDZModel?
-
-    @Published var isInCreationMode = false
+    var modelConfirmedForPlacement: [ModelAnchor] = []
+    @Published var selectedModel: String? {
+        willSet(newValue) {
+            print("Setting selectedModel to \(String(describing: newValue))")
+        }
+    }
+    @Published var readyToPlace : Bool  = false
+    @Published var isInCreationMode : Bool = false
     @Published var openModelList = false
     
-    var doPlaceModel : Bool  = false
-    
     init() {
-        confirmedModel = USDZModel(modelName: "hello")
+        selectedModel = "hello"
     }
+    
+
 
 }
