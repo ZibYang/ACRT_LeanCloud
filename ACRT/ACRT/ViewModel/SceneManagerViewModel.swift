@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import RealityKit
 
-
-class PersistenceManagerViewModel: ObservableObject {
+class SceneManagerViewModel: ObservableObject {
     var shouldUploadSceneToCloud: Bool = false
     var shouldDownloadSceneFromCloud: Bool = false
+    @Published var anchorEntities: [AnchorEntity] = []
+
     
     lazy var persistenceUrl: URL = {
         do {

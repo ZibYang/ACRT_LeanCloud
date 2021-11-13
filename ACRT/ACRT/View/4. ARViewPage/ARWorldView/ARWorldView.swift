@@ -30,13 +30,15 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel 
     @EnvironmentObject var placementSetting : PlacementSetting
-    @EnvironmentObject var persistenceManager : PersistenceManagerViewModel
+    @EnvironmentObject var sceneManager : SceneManagerViewModel
+    @EnvironmentObject var modelDeletionManager: ModelDeletionManagerViewModel
 
 
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
     var userName : String
-    let exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
+    var testBool : Bool = false
+    @StateObject var exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()
@@ -78,6 +80,8 @@ struct ARWorldView:  UIViewRepresentable {
         }
         arViewModel.arView.session.run(config)
         
+        arViewModel.arView.modelDeletionManager = modelDeletionManager
+        
         placementSetting.sceneObserver = arViewModel.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
             self.updateScene(for: arViewModel.arView)
             self.handlePersistence(for: arViewModel.arView)
@@ -87,13 +91,12 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        if (httpManager.statusLoc == 1) {
+        if (httpManager.statusLoc == 1 && self.exploreAnchorManager.isRendered == false) {
+            print("DEBUG(BCH): isRendered : \(self.exploreAnchorManager.isRendered)")
+            self.exploreAnchorManager.isRendered = true
             arViewModel.onLocalizationResult(manager: httpManager)
-            if self.exploreAnchorManager.isRendered == false {
-                let exploreModels = self.exploreAnchorManager.getTransformedModelAnchors(poseARKitToW: arViewModel.poseARKitToW)
-                self.placementSetting.modelConfirmedForPlacement.append(contentsOf: exploreModels)
-                self.exploreAnchorManager.isRendered = true
-            }
+            let exploreModels = self.exploreAnchorManager.getTransformedModelAnchors(poseARKitToW: arViewModel.poseARKitToW)
+            self.placementSetting.modelConfirmedForPlacement.append(contentsOf: exploreModels)
         }
         if showMesh {
             arViewModel.arView.debugOptions.insert(.showAnchorOrigins)
@@ -116,7 +119,7 @@ struct ARWorldView:  UIViewRepresentable {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
                 // Anchor needs to be created from placement
                 let anchorName = modelAnchor.anchorName!
-                print("modelAnchor.transform \(modelAnchor.transform)")
+                print("anchor \(anchorName) has transform \(modelAnchor.transform)")
                 let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
                     self.place(modelEntity, for: anchor, in: arView, enableGesture: false)
@@ -148,18 +151,19 @@ struct ARWorldView:  UIViewRepresentable {
         //anchorEntity.anchoring = AnchoringComponent(anchor)
         arView.session.add(anchor: anchor)
         arView.scene.addAnchor(anchorEntity)
-        
+        self.sceneManager.anchorEntities.append(anchorEntity)
+
         print("Added modelEntity")
     }
     
     private func handlePersistence(for arView:  CustomARView) {
-        if self.persistenceManager.shouldUploadSceneToCloud {
-            PersistenceHelperViewModel.uploadScene(for: arView, at: self.persistenceManager.persistenceUrl, with: userName, poseWToARKit: arViewModel.poseARKitToW)
-            self.persistenceManager.shouldUploadSceneToCloud = false
-        } else if self.persistenceManager.shouldDownloadSceneFromCloud {
+        if self.sceneManager.shouldUploadSceneToCloud {
+            PersistenceHelperViewModel.uploadScene(for: arView, at: self.sceneManager.persistenceUrl, with: userName, poseWToARKit: arViewModel.poseARKitToW)
+            self.sceneManager.shouldUploadSceneToCloud = false
+        } else if self.sceneManager.shouldDownloadSceneFromCloud {
             let modelAnchors = PersistenceHelperViewModel.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
             self.placementSetting.modelConfirmedForPlacement.append(contentsOf: modelAnchors)
-            self.persistenceManager.shouldDownloadSceneFromCloud = false
+            self.sceneManager.shouldDownloadSceneFromCloud = false
         }
     }
     

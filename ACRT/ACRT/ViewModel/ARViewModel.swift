@@ -34,13 +34,14 @@ class ARViewModel: ObservableObject{
     var poseARKitToW: simd_float4x4 = simd_float4x4()
     let scale : Float = 0.21419 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
     
+
     
     var isLiDAREqiped: Bool{
         return ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)
     }
     
     init(){
-        arView = CustomARView(frame: .zero)
+        arView = CustomARView(frame: .zero, modelDeletionManager:nil)
         
         if isLiDAREqiped{
             capabilitySatisfied = "satisfied"
@@ -118,9 +119,9 @@ class ARViewModel: ObservableObject{
                                             simd_float4(0.00,  0.00,   -scale,    0.0),
                                                simd_float4(0.0, 0.0, 0.0, 1.0)).transpose
             poseARKitToW = lastCameraPose * srtARKitCToC * manager.T_ci_w
-            print("DEBUG(BCHO): poseARKitToW", poseARKitToW)
-            print("DEBUG(BCHO): srtARKitCToC", srtARKitCToC)
-            print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
+//            print("DEBUG(BCHO): poseARKitToW", poseARKitToW)
+//            print("DEBUG(BCHO): srtARKitCToC", srtARKitCToC)
+//            print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
         }
         
         

@@ -13,11 +13,20 @@ import ARKit
 class CustomARView: ARView {
     
     var foucsEntity : FocusEntity?
+    var modelDeletionManager : ModelDeletionManagerViewModel?
+
     
     required init(frame frameRect: CGRect) {
+        fatalError("init(frame:) has not been implemented")
+    }
+    
+    required init(frame frameRect: CGRect, modelDeletionManager : ModelDeletionManagerViewModel?) {
+        self.modelDeletionManager = modelDeletionManager
+
         super.init(frame: frameRect)
-        foucsEntity = FocusEntity(on: self, focus: .classic)
-        configure()
+        self.foucsEntity = FocusEntity(on: self, focus: .classic)
+        self.configure()
+        self.enableObjectDeletion()
     }
     
     @MainActor @objc required dynamic init?(coder decoder: NSCoder) {
@@ -30,4 +39,18 @@ class CustomARView: ARView {
 //        session.run(config)
     }
     
+}
+
+extension CustomARView {
+    func enableObjectDeletion() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(recognizer:)))
+        self.addGestureRecognizer(longPressGesture)
+    }
+    
+    @objc func handleLongPress(recognizer : UILongPressGestureRecognizer) {
+        let location = recognizer.location(in: self)
+        if let entity = self.entity(at: location) as? ModelEntity, let deletionManager = self.modelDeletionManager {
+            deletionManager.entitySelectedForDeletion = entity
+        }
+    }
 }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
-		27ADC922273E45CA00926996 /* PersistenceManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* PersistenceManagerViewModel.swift */; };
+		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
 		27ADC924273E49E900926996 /* PersistenceHelperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC923273E49E900926996 /* PersistenceHelperViewModel.swift */; };
 		27ADC926273E5F8C00926996 /* RandomUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC925273E5F8C00926996 /* RandomUtils.swift */; };
 		27ADC928273E868800926996 /* USDZManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC927273E868800926996 /* USDZManagerViewModel.swift */; };
@@ -26,6 +26,8 @@
 		27ADC94B273FA4A400926996 /* Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC942273FA4A300926996 /* Title.usdz */; };
 		27ADC94C273FA4A400926996 /* gear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC943273FA4A300926996 /* gear.usdz */; };
 		27ADC94D273FA4A400926996 /* hammer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC944273FA4A400926996 /* hammer.usdz */; };
+		27ADC955273FD31900926996 /* ModelDeletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC954273FD31900926996 /* ModelDeletionView.swift */; };
+		27ADC958273FD36700926996 /* ModelDeletionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC957273FD36700926996 /* ModelDeletionManager.swift */; };
 		27B3EC4827316E4E00021DE1 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtils.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ModelAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ModelAnchor.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
@@ -84,7 +86,7 @@
 /* Begin PBXFileReference section */
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
-		27ADC921273E45CA00926996 /* PersistenceManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerViewModel.swift; sourceTree = "<group>"; };
+		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
 		27ADC923273E49E900926996 /* PersistenceHelperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelperViewModel.swift; sourceTree = "<group>"; };
 		27ADC925273E5F8C00926996 /* RandomUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUtils.swift; sourceTree = "<group>"; };
 		27ADC927273E868800926996 /* USDZManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZManagerViewModel.swift; sourceTree = "<group>"; };
@@ -100,6 +102,8 @@
 		27ADC942273FA4A300926996 /* Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Title.usdz; path = ACRT/USDZModels/Title.usdz; sourceTree = SOURCE_ROOT; };
 		27ADC943273FA4A300926996 /* gear.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = gear.usdz; path = ACRT/USDZModels/gear.usdz; sourceTree = SOURCE_ROOT; };
 		27ADC944273FA4A400926996 /* hammer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hammer.usdz; path = ACRT/USDZModels/hammer.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC954273FD31900926996 /* ModelDeletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDeletionView.swift; sourceTree = "<group>"; };
+		27ADC957273FD36700926996 /* ModelDeletionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDeletionManager.swift; sourceTree = "<group>"; };
 		27B3EC4727316E4E00021DE1 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		27B3EC4927316E7D00021DE1 /* ModelAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAnchor.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
@@ -212,6 +216,14 @@
 			path = USDZResource;
 			sourceTree = "<group>";
 		};
+		27ADC953273FD2FD00926996 /* ModelDeletionView */ = {
+			isa = PBXGroup;
+			children = (
+				27ADC954273FD31900926996 /* ModelDeletionView.swift */,
+			);
+			path = ModelDeletionView;
+			sourceTree = "<group>";
+		};
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +275,7 @@
 		5A4215A827314E68000C9F5B /* 4. ARViewPage */ = {
 			isa = PBXGroup;
 			children = (
+				27ADC953273FD2FD00926996 /* ModelDeletionView */,
 				5A4215B827323687000C9F5B /* ModelPickerView */,
 				5A4215B52731625E000C9F5B /* CoachingView */,
 				5A4215AE273159CF000C9F5B /* ToolView */,
@@ -445,10 +458,11 @@
 				27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */,
 				27ADC8FF2736950D00926996 /* CustomARView.swift */,
 				27ADC9012736957500926996 /* PlacementSettingViewModel.swift */,
-				27ADC921273E45CA00926996 /* PersistenceManagerViewModel.swift */,
+				27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */,
 				27ADC923273E49E900926996 /* PersistenceHelperViewModel.swift */,
 				27ADC925273E5F8C00926996 /* RandomUtils.swift */,
 				27ADC92B273E9B0400926996 /* AnchorIdentifierHelper.swift */,
+				27ADC957273FD36700926996 /* ModelDeletionManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -623,12 +637,13 @@
 				5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */,
 				27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */,
 				27B3EC5827325E0900021DE1 /* USDZModelList.swift in Sources */,
-				27ADC922273E45CA00926996 /* PersistenceManagerViewModel.swift in Sources */,
+				27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
 				5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */,
 				5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */,
 				5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */,
+				27ADC958273FD36700926996 /* ModelDeletionManager.swift in Sources */,
 				5A4215B027315E1D000C9F5B /* TopToolView.swift in Sources */,
 				5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */,
 				5A56E9382730DDCB0062680E /* WhatMeansExporeView.swift in Sources */,
@@ -670,6 +685,7 @@
 				9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */,
 				5ADF209427329CDD00CF0E4A /* Award.swift in Sources */,
 				27ADC924273E49E900926996 /* PersistenceHelperViewModel.swift in Sources */,
+				27ADC955273FD31900926996 /* ModelDeletionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

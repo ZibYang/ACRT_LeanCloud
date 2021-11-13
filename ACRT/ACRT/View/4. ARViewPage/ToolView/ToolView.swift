@@ -18,7 +18,13 @@ import SwiftUI
 
 struct ToolView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
-    @EnvironmentObject var persistenceManager : PersistenceManagerViewModel
+    @EnvironmentObject var sceneManager : SceneManagerViewModel
+    @EnvironmentObject var coachingViewModel : CoachingViewModel
+    @EnvironmentObject var httpManager: HttpAuth
+    @EnvironmentObject var arViewModel: ARViewModel
+    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+
+
 
     @State var showBottomView = false
     @State var showCameraButton = false
@@ -67,7 +73,7 @@ struct ToolView: View {
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
-                    .environmentObject(persistenceManager)
+                    .environmentObject(sceneManager)
                 
                 Spacer()
             }
@@ -98,7 +104,15 @@ struct ToolView: View {
             }
             .padding(.horizontal)
             .offset(x: coaching ? -150 : 0)
+            HStack {
+                clearSceneButton
+                Spacer()
+            }
+            .padding(.horizontal)
+            .offset(x: coaching ? -150 : 0)
             Spacer()
+            
+
         }
     }
     
@@ -106,7 +120,9 @@ struct ToolView: View {
     var relocationButton: some View{
         //MARK: relocation Button
         Button(action: {
-            print("pressed")
+            httpManager.statusLoc = 0
+            placementSetting.isInCreationMode = false
+            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
         }, label:{
             Image(systemName: "location")
                 .foregroundColor(.white)
@@ -117,6 +133,27 @@ struct ToolView: View {
             .cornerRadius(10)
             .contextMenu{
                 Label("Locate again", systemImage: "location.circle.fill")
+            }
+    }
+    
+    var clearSceneButton: some View{
+        //MARK: clear Button
+        Button(action: {
+            for anchorEntity in self.sceneManager.anchorEntities {
+                print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
+                anchorEntity.removeFromParent()
+            }
+            
+        }, label:{
+            Image(systemName: "trash")
+                .foregroundColor(.white)
+                .frame(width: 40, height: 40)
+        })
+            .padding(.all, 6)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
+            .contextMenu{
+                Label("Locate again", systemImage: "trash.circle.fill")
             }
     }
         

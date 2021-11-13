@@ -19,6 +19,9 @@ class CoachingViewModel : ObservableObject {
     func StartLocalizationAndModelLoadingAsync(httpManager : HttpAuth,
                                                arViewModel: ARViewModel,
                                                usdzManagerViewModel: USDZManagerViewModel) {
+        if httpManager.statusLoc == 1 {
+            return
+        }
         self.isCoaching = true
         DispatchQueue.global(qos: .background).async {
             sleep(1)
@@ -52,4 +55,5 @@ class CoachingViewModel : ObservableObject {
            
         }
     }
+    
 }

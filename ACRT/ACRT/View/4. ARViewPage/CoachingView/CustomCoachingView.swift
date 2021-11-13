@@ -71,7 +71,7 @@ struct CustomCoachingView: View {
                         Button(action: {
                             withAnimation(Animation.easeInOut(duration: 0.8)){
                                 coachingViewModel.isCoaching = false
-                                placementSetting.isInCreationMode.toggle()
+                                placementSetting.isInCreationMode = true
                                 placementSetting.openModelList.toggle()
                             }
                         }, label: {

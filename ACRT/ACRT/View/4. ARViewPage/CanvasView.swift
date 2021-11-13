@@ -21,6 +21,7 @@ struct CanvasView: View {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     
+    
     @State private var showMesh = false
     @State var snapShot = false
     @State var requestNow = true
@@ -29,7 +30,9 @@ struct CanvasView: View {
     @StateObject var httpManager: HttpAuth = HttpAuth()
     @StateObject var usdzManagerViewModel : USDZManagerViewModel = USDZManagerViewModel()
     @StateObject var placementSetting = PlacementSetting()
-    @StateObject var persistenceManager = PersistenceManagerViewModel()
+    @StateObject var sceneManager = SceneManagerViewModel()
+    @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
+
    
     @Binding var goBack: Bool
     @State var showModelPicker = false
@@ -40,7 +43,8 @@ struct CanvasView: View {
                 .environmentObject(httpManager)
                 .environmentObject(usdzManagerViewModel)
                 .environmentObject(placementSetting)
-                .environmentObject(persistenceManager)
+                .environmentObject(sceneManager)
+                .environmentObject(modelDeletionManager)
                 .ignoresSafeArea().onTapGesture(count: 1) {
 //                    let modelAnchor = ModelAnchor(modelName: "hand", transform: nil, anchorName: nil)
 //                    self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
@@ -48,8 +52,11 @@ struct CanvasView: View {
                 }
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching)
                 .environmentObject(placementSetting)
-                .environmentObject(persistenceManager)
-            
+                .environmentObject(sceneManager)
+                .environmentObject(coachingViewModel)
+                .environmentObject(httpManager)
+                .environmentObject(usdzManagerViewModel)
+
             if coachingViewModel.isCoaching == true {
                 VStack {
                     CustomCoachingView(goBack: $goBack)
@@ -58,13 +65,19 @@ struct CanvasView: View {
                 }
                 .background(Color.black.opacity(0.5))
             }
-            if placementSetting.isInCreationMode{
-                VStack{
-                    Spacer()
-                    ModelSelectedView(modelName: "hand")
-                        .environmentObject(placementSetting)
+            else if placementSetting.isInCreationMode{
+                if self.modelDeletionManager.entitySelectedForDeletion == nil {
+                    VStack{
+                        Spacer()
+                        ModelSelectedView(modelName: "hand")
+                            .environmentObject(placementSetting)
+                    }
+                    .padding()
+                } else {
+                    DeletionView().environmentObject(sceneManager)
+                        .environmentObject(modelDeletionManager)
                 }
-                .padding()
+                
             }
         }
         
