@@ -11,7 +11,7 @@ import Foundation
 
 class USDZManagerViewModel: ObservableObject {
     var exploreModelList : USDZModelList = USDZModelList(usdzModelNameList:  ["hello", "AppleLogo","Hello_World_Globe","Title","flight","gear","hammer","hand"])
-    var createModelList : USDZModelList = USDZModelList(usdzModelNameList:["hello", "hello_1", "AppleHello", "AppleLogo","hand", "love_white"])
+    var createModelList : USDZModelList = USDZModelList(usdzModelNameList:["hello", "hello_1", "AppleHello", "AppleLogo","hand"])
     
     func AreModelLibrariesLoaded() -> Bool {
             return exploreModelList.AreModelsLoaded() && createModelList.AreModelsLoaded()
