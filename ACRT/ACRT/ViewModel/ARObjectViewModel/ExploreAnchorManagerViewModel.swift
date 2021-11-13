@@ -56,10 +56,10 @@ class ExploreAnchorManagerViewModel : ObservableObject {
     }
     
     func initializeInherentModelsShelf()  {
-            let worldUp =  simd_float3(0,-1,0) // = local y in world axis
-            let worldFront = simd_float3(0,0,-1) // = local z in world axis
-            let worldRight = normalize(cross(-1 * worldUp, -1 * worldFront))
-            let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
+        let worldUp =  simd_float3(0,-1,0) // = local y in world axis
+        let worldFront = simd_float3(0,0,-1) // = local z in world axis
+        let worldRight = normalize(cross(-1 * worldUp, -1 * worldFront))
+        let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
 
             //Shelf
         let model1 = ModelAnchor(modelName: "hello", pos: simd_float3(0.341545, -0.727689, 5.92317), rotation: rotationMatrix, scale: simd_float3(1.0, 1.0, 1.0))

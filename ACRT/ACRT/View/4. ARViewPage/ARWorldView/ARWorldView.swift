@@ -142,10 +142,10 @@ struct ARWorldView:  UIViewRepresentable {
             arView.installGestures([.translation, .rotation], for: clonedEntity)
         }
         
-        let anchorEntity = AnchorEntity(plane: .any)
+        let anchorEntity = AnchorEntity(anchor: anchor)
         anchorEntity.name = anchor.name! + "|entity"
         anchorEntity.addChild(clonedEntity)
-        anchorEntity.anchoring = AnchoringComponent(anchor)
+        //anchorEntity.anchoring = AnchoringComponent(anchor)
         arView.session.add(anchor: anchor)
         arView.scene.addAnchor(anchorEntity)
         

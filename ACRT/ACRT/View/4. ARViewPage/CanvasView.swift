@@ -42,7 +42,7 @@ struct CanvasView: View {
                 .environmentObject(placementSetting)
                 .environmentObject(persistenceManager)
                 .ignoresSafeArea().onTapGesture(count: 1) {
-                    let modelAnchor = ModelAnchor(modelName: "hello", transform: nil, anchorName: nil)
+                    let modelAnchor = ModelAnchor(modelName: "hand", transform: nil, anchorName: nil)
                     self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
 //                        self.placementSetting.selectedModel = nil
                 }

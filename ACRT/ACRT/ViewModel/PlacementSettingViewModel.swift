@@ -23,7 +23,7 @@ class PlacementSetting  : ObservableObject {
 
     
     init() {
-        selectedModel = "hello_1"
+        selectedModel = "hello"
     }
     
 

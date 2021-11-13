@@ -49,7 +49,8 @@ func getTransformedModelAnchor(modelAnchor : ModelAnchor, T_arkit_w: simd_float4
     guard let transform = modelAnchor.transform else {
         return ModelAnchor(modelName: modelAnchor.modelName, transform: nil, anchorName: modelAnchor.anchorName)
     }
-    return ModelAnchor(modelName: modelAnchor.modelName, transform: T_arkit_w * transform, anchorName: modelAnchor.anchorName)
+    var arKitTransform = T_arkit_w * transform
+    return ModelAnchor(modelName: modelAnchor.modelName, transform: arKitTransform, anchorName: modelAnchor.anchorName)
 }
 
 func getTransformMatrix(pos: simd_float3, rotation: simd_float3x3, scale: simd_float3) -> simd_float4x4 {
