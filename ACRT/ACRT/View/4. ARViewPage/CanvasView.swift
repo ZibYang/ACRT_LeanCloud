@@ -20,6 +20,12 @@ struct CanvasView: View {
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var coachingViewModel : CoachingViewModel
+    @EnvironmentObject var httpManager: HttpAuth
+    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+    @EnvironmentObject var placementSetting:PlacementSetting
+    @EnvironmentObject var sceneManager:SceneManagerViewModel
+    @EnvironmentObject var modelDeletionManager:ModelDeletionManagerViewModel
+
     
     
     @State private var showMesh = false
@@ -27,11 +33,6 @@ struct CanvasView: View {
     @State var requestNow = true
     @State var showQuitButton = false
     
-    @StateObject var httpManager: HttpAuth = HttpAuth()
-    @StateObject var usdzManagerViewModel : USDZManagerViewModel = USDZManagerViewModel()
-    @StateObject var placementSetting = PlacementSetting()
-    @StateObject var sceneManager = SceneManagerViewModel()
-    @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
 
    
     @Binding var goBack: Bool
@@ -74,8 +75,11 @@ struct CanvasView: View {
                     }
                     .padding()
                 } else {
-                    DeletionView().environmentObject(sceneManager)
+                    VStack{
+                        Spacer()
+                        DeletionView().environmentObject(sceneManager)
                         .environmentObject(modelDeletionManager)
+                    }.padding(.bottom)
                 }
                 
             }

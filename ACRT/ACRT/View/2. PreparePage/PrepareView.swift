@@ -24,6 +24,12 @@ struct PrepareView: View {
     @StateObject var userModel = UserViewModel()
     @StateObject var arViewModel = ARViewModel()
     @StateObject var coachingViewModel = CoachingViewModel()
+    @StateObject var httpManager: HttpAuth = HttpAuth()
+    @StateObject var usdzManagerViewModel : USDZManagerViewModel = USDZManagerViewModel()
+    @StateObject var placementSetting = PlacementSetting()
+    @StateObject var sceneManager = SceneManagerViewModel()
+    @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
+
 
     
     @State var checkLocationRequest = false
@@ -74,6 +80,11 @@ struct PrepareView: View {
         .environmentObject(userModel)
         .environmentObject(arViewModel)
         .environmentObject(coachingViewModel)
+        .environmentObject(httpManager)
+        .environmentObject(usdzManagerViewModel)
+        .environmentObject(placementSetting)
+        .environmentObject(sceneManager)
+        .environmentObject(modelDeletionManager)
     }
     
     var locationRequest: some View{
