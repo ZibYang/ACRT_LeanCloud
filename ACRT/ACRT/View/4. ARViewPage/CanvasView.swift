@@ -42,9 +42,9 @@ struct CanvasView: View {
                 .environmentObject(placementSetting)
                 .environmentObject(persistenceManager)
                 .ignoresSafeArea().onTapGesture(count: 1) {
-                    let modelAnchor = ModelAnchor(modelName: "hand", transform: nil, anchorName: nil)
-                    self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
-//                        self.placementSetting.selectedModel = nil
+//                    let modelAnchor = ModelAnchor(modelName: "hand", transform: nil, anchorName: nil)
+//                    self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
+////                        self.placementSetting.selectedModel = nil
                 }
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching)
                 .environmentObject(placementSetting)
@@ -61,7 +61,8 @@ struct CanvasView: View {
             if placementSetting.isInCreationMode{
                 VStack{
                     Spacer()
-                    ModelSelectedView(modelName: "love_white")
+                    ModelSelectedView(modelName: "hand")
+                        .environmentObject(placementSetting)
                 }
                 .padding()
             }

@@ -9,27 +9,28 @@
 /* Begin PBXBuildFile section */
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
-		27ADC90C2739162A00926996 /* flight.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9032739162900926996 /* flight.usdz */; };
-		27ADC90D2739162A00926996 /* Hello_World_Globe.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9042739162A00926996 /* Hello_World_Globe.usdz */; };
-		27ADC90E2739162A00926996 /* hammer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9052739162A00926996 /* hammer.usdz */; };
-		27ADC90F2739162A00926996 /* hand.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9062739162A00926996 /* hand.usdz */; };
-		27ADC9102739162A00926996 /* SwiftChangeTheWorld.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */; };
-		27ADC9122739162A00926996 /* gear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC9092739162A00926996 /* gear.usdz */; };
-		27ADC9132739162A00926996 /* Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC90A2739162A00926996 /* Title.usdz */; };
 		27ADC922273E45CA00926996 /* PersistenceManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* PersistenceManagerViewModel.swift */; };
 		27ADC924273E49E900926996 /* PersistenceHelperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC923273E49E900926996 /* PersistenceHelperViewModel.swift */; };
 		27ADC926273E5F8C00926996 /* RandomUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC925273E5F8C00926996 /* RandomUtils.swift */; };
 		27ADC928273E868800926996 /* USDZManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC927273E868800926996 /* USDZManagerViewModel.swift */; };
 		27ADC92C273E9B0400926996 /* AnchorIdentifierHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC92B273E9B0400926996 /* AnchorIdentifierHelper.swift */; };
+		27ADC92F273FA33100926996 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27ADC92E273FA33100926996 /* FocusEntity */; };
+		27ADC939273FA48D00926996 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC935273FA48D00926996 /* hello_1.usdz */; };
+		27ADC93B273FA48D00926996 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC937273FA48D00926996 /* AppleHello.usdz */; };
+		27ADC93C273FA48D00926996 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC938273FA48D00926996 /* hello.usdz */; };
+		27ADC946273FA4A400926996 /* flight.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC93D273FA4A300926996 /* flight.usdz */; };
+		27ADC947273FA4A400926996 /* hand.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC93E273FA4A300926996 /* hand.usdz */; };
+		27ADC948273FA4A400926996 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC93F273FA4A300926996 /* AppleLogo.usdz */; };
+		27ADC949273FA4A400926996 /* Hello_World_Globe.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC940273FA4A300926996 /* Hello_World_Globe.usdz */; };
+		27ADC94A273FA4A400926996 /* SwiftChangeTheWorld.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC941273FA4A300926996 /* SwiftChangeTheWorld.usdz */; };
+		27ADC94B273FA4A400926996 /* Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC942273FA4A300926996 /* Title.usdz */; };
+		27ADC94C273FA4A400926996 /* gear.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC943273FA4A300926996 /* gear.usdz */; };
+		27ADC94D273FA4A400926996 /* hammer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27ADC944273FA4A400926996 /* hammer.usdz */; };
 		27B3EC4827316E4E00021DE1 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4727316E4E00021DE1 /* ImageUtils.swift */; };
 		27B3EC4A27316E7D00021DE1 /* ModelAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4927316E7D00021DE1 /* ModelAnchor.swift */; };
 		27B3EC4C27316E9700021DE1 /* USDZModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC4B27316E9700021DE1 /* USDZModel.swift */; };
 		27B3EC5827325E0900021DE1 /* USDZModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5727325E0900021DE1 /* USDZModelList.swift */; };
 		27B3EC5A27325F7500021DE1 /* ExploreAnchorManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5927325F7500021DE1 /* ExploreAnchorManagerViewModel.swift */; };
-		27BEDBCC2735113E004F66E5 /* AppleLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBC82735113E004F66E5 /* AppleLogo.usdz */; };
-		27BEDBCD2735113E004F66E5 /* hello_1.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBC92735113E004F66E5 /* hello_1.usdz */; };
-		27BEDBCE2735113E004F66E5 /* hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBCA2735113E004F66E5 /* hello.usdz */; };
-		27BEDBCF2735113E004F66E5 /* AppleHello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27BEDBCB2735113E004F66E5 /* AppleHello.usdz */; };
 		27BEDBD327351FE4004F66E5 /* CoachingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
 		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
@@ -76,7 +77,6 @@
 		5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */; };
 		620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */; };
 		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
-		9FC82552273CCFD200C9894C /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9FC82551273CCFD200C9894C /* FocusEntity */; };
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 /* End PBXBuildFile section */
@@ -84,28 +84,28 @@
 /* Begin PBXFileReference section */
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
-		27ADC9032739162900926996 /* flight.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = flight.usdz; sourceTree = "<group>"; };
-		27ADC9042739162A00926996 /* Hello_World_Globe.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Hello_World_Globe.usdz; sourceTree = "<group>"; };
-		27ADC9052739162A00926996 /* hammer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hammer.usdz; sourceTree = "<group>"; };
-		27ADC9062739162A00926996 /* hand.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = hand.usdz; sourceTree = "<group>"; };
-		27ADC9072739162A00926996 /* SwiftChangeTheWorld.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = SwiftChangeTheWorld.usdz; sourceTree = "<group>"; };
-		27ADC9092739162A00926996 /* gear.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = gear.usdz; sourceTree = "<group>"; };
-		27ADC90A2739162A00926996 /* Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = Title.usdz; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* PersistenceManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManagerViewModel.swift; sourceTree = "<group>"; };
 		27ADC923273E49E900926996 /* PersistenceHelperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelperViewModel.swift; sourceTree = "<group>"; };
 		27ADC925273E5F8C00926996 /* RandomUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUtils.swift; sourceTree = "<group>"; };
 		27ADC927273E868800926996 /* USDZManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZManagerViewModel.swift; sourceTree = "<group>"; };
 		27ADC92B273E9B0400926996 /* AnchorIdentifierHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorIdentifierHelper.swift; sourceTree = "<group>"; };
+		27ADC935273FA48D00926996 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello_1.usdz; path = ACRT/Resource/hello_1.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC937273FA48D00926996 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleHello.usdz; path = ACRT/Resource/AppleHello.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC938273FA48D00926996 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello.usdz; path = ACRT/Resource/hello.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC93D273FA4A300926996 /* flight.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = flight.usdz; path = ACRT/USDZModels/flight.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC93E273FA4A300926996 /* hand.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hand.usdz; path = ACRT/USDZModels/hand.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC93F273FA4A300926996 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleLogo.usdz; path = ACRT/USDZModels/AppleLogo.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC940273FA4A300926996 /* Hello_World_Globe.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Hello_World_Globe.usdz; path = ACRT/USDZModels/Hello_World_Globe.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC941273FA4A300926996 /* SwiftChangeTheWorld.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = SwiftChangeTheWorld.usdz; path = ACRT/USDZModels/SwiftChangeTheWorld.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC942273FA4A300926996 /* Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = Title.usdz; path = ACRT/USDZModels/Title.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC943273FA4A300926996 /* gear.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = gear.usdz; path = ACRT/USDZModels/gear.usdz; sourceTree = SOURCE_ROOT; };
+		27ADC944273FA4A400926996 /* hammer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hammer.usdz; path = ACRT/USDZModels/hammer.usdz; sourceTree = SOURCE_ROOT; };
 		27B3EC4727316E4E00021DE1 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		27B3EC4927316E7D00021DE1 /* ModelAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAnchor.swift; sourceTree = "<group>"; };
 		27B3EC4B27316E9700021DE1 /* USDZModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModel.swift; sourceTree = "<group>"; };
 		27B3EC4D27316F4000021DE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		27B3EC5727325E0900021DE1 /* USDZModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModelList.swift; sourceTree = "<group>"; };
 		27B3EC5927325F7500021DE1 /* ExploreAnchorManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreAnchorManagerViewModel.swift; sourceTree = "<group>"; };
-		27BEDBC82735113E004F66E5 /* AppleLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleLogo.usdz; path = ACRT/Resource/AppleLogo.usdz; sourceTree = SOURCE_ROOT; };
-		27BEDBC92735113E004F66E5 /* hello_1.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello_1.usdz; path = ACRT/Resource/hello_1.usdz; sourceTree = SOURCE_ROOT; };
-		27BEDBCA2735113E004F66E5 /* hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = hello.usdz; path = ACRT/Resource/hello.usdz; sourceTree = SOURCE_ROOT; };
-		27BEDBCB2735113E004F66E5 /* AppleHello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = AppleHello.usdz; path = ACRT/Resource/AppleHello.usdz; sourceTree = SOURCE_ROOT; };
 		27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingViewModel.swift; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
 		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FC82552273CCFD200C9894C /* FocusEntity in Frameworks */,
+				27ADC92F273FA33100926996 /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -182,7 +182,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		278BE1FD2733B29A0080EE53 /* ARObjectViewModel */ = {
+		278BE1FD2733B29A0080EE53 /* ModelViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				27B3EC4B27316E9700021DE1 /* USDZModel.swift */,
@@ -191,7 +191,25 @@
 				27B3EC5927325F7500021DE1 /* ExploreAnchorManagerViewModel.swift */,
 				27ADC927273E868800926996 /* USDZManagerViewModel.swift */,
 			);
-			path = ARObjectViewModel;
+			path = ModelViewModel;
+			sourceTree = "<group>";
+		};
+		27ADC934273FA46C00926996 /* USDZResource */ = {
+			isa = PBXGroup;
+			children = (
+				27ADC937273FA48D00926996 /* AppleHello.usdz */,
+				27ADC93F273FA4A300926996 /* AppleLogo.usdz */,
+				27ADC93D273FA4A300926996 /* flight.usdz */,
+				27ADC943273FA4A300926996 /* gear.usdz */,
+				27ADC944273FA4A400926996 /* hammer.usdz */,
+				27ADC93E273FA4A300926996 /* hand.usdz */,
+				27ADC940273FA4A300926996 /* Hello_World_Globe.usdz */,
+				27ADC941273FA4A300926996 /* SwiftChangeTheWorld.usdz */,
+				27ADC942273FA4A300926996 /* Title.usdz */,
+				27ADC935273FA48D00926996 /* hello_1.usdz */,
+				27ADC938273FA48D00926996 /* hello.usdz */,
+			);
+			path = USDZResource;
 			sourceTree = "<group>";
 		};
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
@@ -312,6 +330,7 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
+				27ADC934273FA46C00926996 /* USDZResource */,
 				27B3EC4D27316F4000021DE1 /* Info.plist */,
 				5A3E1A6527310A8900B170B2 /* Model */,
 				5A56E929272F9C360062680E /* ViewModel */,
@@ -414,7 +433,7 @@
 		5A56E929272F9C360062680E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				278BE1FD2733B29A0080EE53 /* ARObjectViewModel */,
+				278BE1FD2733B29A0080EE53 /* ModelViewModel */,
 				5A56E92A272F9C500062680E /* MapViewModel.swift */,
 				5A56E933272FD0920062680E /* UserViewModel.swift */,
 				5A56E93B2730E0740062680E /* ARViewModel.swift */,
@@ -479,7 +498,7 @@
 			);
 			name = ACRT;
 			packageProductDependencies = (
-				9FC82551273CCFD200C9894C /* FocusEntity */,
+				27ADC92E273FA33100926996 /* FocusEntity */,
 			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
@@ -513,7 +532,7 @@
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
 			packageReferences = (
-				9FC82550273CCFD200C9894C /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				27ADC92D273FA33100926996 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
@@ -529,11 +548,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27ADC939273FA48D00926996 /* hello_1.usdz in Resources */,
+				27ADC94B273FA4A400926996 /* Title.usdz in Resources */,
+				27ADC949273FA4A400926996 /* Hello_World_Globe.usdz in Resources */,
+				27ADC948273FA4A400926996 /* AppleLogo.usdz in Resources */,
+				27ADC93B273FA48D00926996 /* AppleHello.usdz in Resources */,
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
+				27ADC94A273FA4A400926996 /* SwiftChangeTheWorld.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
+				27ADC946273FA4A400926996 /* flight.usdz in Resources */,
+				27ADC94C273FA4A400926996 /* gear.usdz in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
+				27ADC94D273FA4A400926996 /* hammer.usdz in Resources */,
+				27ADC93C273FA48D00926996 /* hello.usdz in Resources */,
+				27ADC947273FA4A400926996 /* hand.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -879,20 +909,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9FC82550273CCFD200C9894C /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		27ADC92D273FA33100926996 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZibYang/FocusEntity";
+			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9FC82551273CCFD200C9894C /* FocusEntity */ = {
+		27ADC92E273FA33100926996 /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9FC82550273CCFD200C9894C /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 27ADC92D273FA33100926996 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -18,7 +18,10 @@
 import SwiftUI
 
 struct ModelSelectedView: View {
+    @EnvironmentObject var placementSetting : PlacementSetting
+
     let modelName : String
+
     
     var body: some View {
         HStack(spacing: 30) {
@@ -79,7 +82,9 @@ struct ModelSelectedView: View {
     
     var placeButton: some View{
         Button(action: {
-            
+            let modelAnchor = ModelAnchor(modelName: modelName, transform: nil, anchorName: nil)
+            self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
+//                        self.placementSetting.selectedModel = nil
         }, label: {
             Text("Place")
         })
