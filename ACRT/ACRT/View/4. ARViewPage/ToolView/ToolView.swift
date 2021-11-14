@@ -139,10 +139,7 @@ struct ToolView: View {
     var clearSceneButton: some View{
         //MARK: clear Button
         Button(action: {
-            for anchorEntity in self.sceneManager.anchorEntities {
-                print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
-                anchorEntity.removeFromParent()
-            }
+            self.sceneManager.ClearCreativeAnchors()
             
         }, label:{
             Image(systemName: "trash")

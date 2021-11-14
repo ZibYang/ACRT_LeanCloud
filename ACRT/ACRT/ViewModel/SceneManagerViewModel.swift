@@ -22,4 +22,21 @@ class SceneManagerViewModel: ObservableObject {
             fatalError("Unable to get persistenceUrl \(error.localizedDescription)")
         }
     }()
+    
+    func ClearCreativeAnchors() {
+        for anchorEntity in anchorEntities {
+            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != "admin" {
+                print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
+                anchorEntity.removeFromParent()
+            }
+            
+        }
+    }
+    
+    func updateAnchors(transform : simd_float4x4) {
+        for anchorEntity in anchorEntities {
+            let oldTransform : simd_float4x4 = anchorEntity.transform.matrix
+            anchorEntity.transform.matrix = transform * oldTransform
+        }
+    }
 }

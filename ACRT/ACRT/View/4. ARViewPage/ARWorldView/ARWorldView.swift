@@ -91,12 +91,17 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        if (httpManager.statusLoc == 1 && self.exploreAnchorManager.isRendered == false) {
-            print("DEBUG(BCH): isRendered : \(self.exploreAnchorManager.isRendered)")
-            self.exploreAnchorManager.isRendered = true
-            arViewModel.onLocalizationResult(manager: httpManager)
-            let exploreModels = self.exploreAnchorManager.getTransformedModelAnchors(poseARKitToW: arViewModel.poseARKitToW)
-            self.placementSetting.modelConfirmedForPlacement.append(contentsOf: exploreModels)
+        if (self.httpManager.statusLoc == 1 ) {
+            self.arViewModel.onLocalizationResult(manager: httpManager)
+            if (self.exploreAnchorManager.isRendered == false) {
+                print("DEBUG(BCH): isRendered : \(self.exploreAnchorManager.isRendered)")
+                self.exploreAnchorManager.isRendered = true
+                let exploreModels = self.exploreAnchorManager.getTransformedModelAnchors(poseARKitToW: arViewModel.poseARKitToW)
+                self.placementSetting.modelConfirmedForPlacement.append(contentsOf: exploreModels)
+            }
+            let transform : simd_float4x4 = self.arViewModel.poseARKitToW * self.arViewModel.lastPoseARKitToW.inverse
+            self.sceneManager.updateAnchors(transform: transform)
+            
         }
         if showMesh {
             arViewModel.arView.debugOptions.insert(.showAnchorOrigins)
