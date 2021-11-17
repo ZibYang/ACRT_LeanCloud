@@ -134,6 +134,7 @@ struct ToolView: View {
         Button(action: {
             httpManager.statusLoc = 0
             placementSetting.isInCreationMode = false
+            coachingViewModel.comeFromPrepareView = false
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
         }, label:{
             Image(systemName: "location")

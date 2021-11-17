@@ -161,6 +161,8 @@ struct PrepareView: View {
             }else{
                 everythingIsNotSetYetWarning.toggle()
             }
+            coachingViewModel.comeFromPrepareView = true
+            print("DEBUG(BCH): comeFromPrepareView")
         }, label: {
             HStack {
                 Image(systemName: "arkit")

@@ -12,7 +12,7 @@ import Foundation
 class CoachingViewModel : ObservableObject {
     @Published var isCoaching : Bool = false
     @Published var showQuitButton : Bool = false
-    
+    @Published var comeFromPrepareView : Bool = true
     var maxWaitForLoc : Double  = 3
     
     

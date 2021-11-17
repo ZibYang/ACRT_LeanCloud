@@ -58,7 +58,11 @@ struct CustomCoachingView: View {
                             .multilineTextAlignment(.center)
                         Button(action: {
                             withAnimation(Animation.easeInOut(duration: 0.8)){
-                                goBack.toggle()
+                                if coachingViewModel.comeFromPrepareView == true {
+                                    goBack.toggle()
+                                } else {
+                                    coachingViewModel.isCoaching = false
+                                }
                             }
                         }, label: {
                             Text("Return")
