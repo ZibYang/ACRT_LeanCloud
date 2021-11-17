@@ -25,9 +25,10 @@ struct PrepareView: View {
     @StateObject var arViewModel = ARViewModel()
     @StateObject var coachingViewModel = CoachingViewModel()
     @StateObject var httpManager: HttpAuth = HttpAuth()
-    @StateObject var placementSetting = PlacementSetting()
-    @StateObject var sceneManager = SceneManagerViewModel()
-    @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
+    @StateObject var usdzManagerViewModel = USDZManagerViewModel()
+
+
+    
 
     @State var checkLocationRequest = false
     @State var checkLidarDeviceList = false
@@ -78,9 +79,8 @@ struct PrepareView: View {
         .environmentObject(arViewModel)
         .environmentObject(coachingViewModel)
         .environmentObject(httpManager)
-        .environmentObject(placementSetting)
-        .environmentObject(sceneManager)
-        .environmentObject(modelDeletionManager)
+        .environmentObject(usdzManagerViewModel)
+        
     }
     
     var locationRequest: some View{

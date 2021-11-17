@@ -17,15 +17,17 @@
 import SwiftUI
 
 struct CanvasView: View {
-    @StateObject var usdzManagerViewModel = USDZManagerViewModel()
+    
+    @StateObject var placementSetting = PlacementSetting()
+    @StateObject var sceneManager = SceneManagerViewModel()
+    @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
     
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var coachingViewModel : CoachingViewModel
-    @EnvironmentObject var httpManager: HttpAuth
-    @EnvironmentObject var placementSetting:PlacementSetting
-    @EnvironmentObject var sceneManager:SceneManagerViewModel
-    @EnvironmentObject var modelDeletionManager:ModelDeletionManagerViewModel
+    @EnvironmentObject var httpManager : HttpAuth
+    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+
 
     @State private var showMesh = false
     @State var snapShot = false
