@@ -33,6 +33,14 @@ class SceneManagerViewModel: ObservableObject {
         }
     }
     
+    func ClearWholeAnchors() {
+        for anchorEntity in anchorEntities {
+            print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
+            anchorEntity.removeFromParent()
+            
+        }
+    }
+    
     func updateAnchors(transform : simd_float4x4) {
         for anchorEntity in anchorEntities {
             let oldTransform : simd_float4x4 = anchorEntity.transform.matrix

@@ -22,6 +22,38 @@
 		27B3EC5827325E0900021DE1 /* USDZModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5727325E0900021DE1 /* USDZModelList.swift */; };
 		27B3EC5A27325F7500021DE1 /* ExploreAnchorManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B3EC5927325F7500021DE1 /* ExploreAnchorManagerViewModel.swift */; };
 		27BEDBD327351FE4004F66E5 /* CoachingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */; };
+		27D759FD2744B29200745242 /* qs_SwiftChangeTheWorld.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759EB2744B29100745242 /* qs_SwiftChangeTheWorld.usdz */; };
+		27D759FE2744B29200745242 /* qs_Calendar.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759EC2744B29100745242 /* qs_Calendar.usdz */; };
+		27D759FF2744B29200745242 /* qs_iBook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759ED2744B29100745242 /* qs_iBook.usdz */; };
+		27D75A002744B29200745242 /* qs_iMessage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759EE2744B29100745242 /* qs_iMessage.usdz */; };
+		27D75A012744B29200745242 /* qs_Phone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759EF2744B29100745242 /* qs_Phone.usdz */; };
+		27D75A022744B29200745242 /* qs_Hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F02744B29200745242 /* qs_Hello.usdz */; };
+		27D75A032744B29200745242 /* qs_Home.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F12744B29200745242 /* qs_Home.usdz */; };
+		27D75A042744B29200745242 /* qs_AppleLogo_right.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F22744B29200745242 /* qs_AppleLogo_right.usdz */; };
+		27D75A052744B29200745242 /* qs_Swift.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F32744B29200745242 /* qs_Swift.usdz */; };
+		27D75A062744B29200745242 /* qs_Weather.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F42744B29200745242 /* qs_Weather.usdz */; };
+		27D75A072744B29200745242 /* qs_Camera.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F52744B29200745242 /* qs_Camera.usdz */; };
+		27D75A082744B29200745242 /* qs_AppStore.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F62744B29200745242 /* qs_AppStore.usdz */; };
+		27D75A092744B29200745242 /* qs_Health.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F72744B29200745242 /* qs_Health.usdz */; };
+		27D75A0A2744B29200745242 /* qs_AppleMusic.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F82744B29200745242 /* qs_AppleMusic.usdz */; };
+		27D75A0B2744B29200745242 /* qs_AppleLogo_left.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759F92744B29200745242 /* qs_AppleLogo_left.usdz */; };
+		27D75A0C2744B29200745242 /* qs_Facetime.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759FA2744B29200745242 /* qs_Facetime.usdz */; };
+		27D75A0D2744B29200745242 /* qs_Safari.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759FB2744B29200745242 /* qs_Safari.usdz */; };
+		27D75A0E2744B29200745242 /* qs_Setting.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D759FC2744B29200745242 /* qs_Setting.usdz */; };
+		27D75A152744B29F00745242 /* yt_Cocacola.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A0F2744B29F00745242 /* yt_Cocacola.usdz */; };
+		27D75A162744B29F00745242 /* yt_Coffee.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A102744B29F00745242 /* yt_Coffee.usdz */; };
+		27D75A172744B29F00745242 /* yt_FrenchFires.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A112744B29F00745242 /* yt_FrenchFires.usdz */; };
+		27D75A182744B29F00745242 /* yt_KFC.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A122744B29F00745242 /* yt_KFC.usdz */; };
+		27D75A192744B29F00745242 /* yt_McDonald's.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A132744B29F00745242 /* yt_McDonald's.usdz */; };
+		27D75A1A2744B29F00745242 /* yt_BugerKing.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A142744B29F00745242 /* yt_BugerKing.usdz */; };
+		27D75A222744B2B000745242 /* user_love_red.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A1B2744B2AF00745242 /* user_love_red.usdz */; };
+		27D75A232744B2B000745242 /* user_like_green.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A1C2744B2AF00745242 /* user_like_green.usdz */; };
+		27D75A242744B2B000745242 /* user_like_purple.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A1D2744B2AF00745242 /* user_like_purple.usdz */; };
+		27D75A252744B2B000745242 /* user_love_white.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A1E2744B2AF00745242 /* user_love_white.usdz */; };
+		27D75A262744B2B000745242 /* user_like_red.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A1F2744B2AF00745242 /* user_like_red.usdz */; };
+		27D75A272744B2B000745242 /* user_like_yellow.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A202744B2AF00745242 /* user_like_yellow.usdz */; };
+		27D75A282744B2B000745242 /* user_like_blue.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27D75A212744B2B000745242 /* user_like_blue.usdz */; };
+		27D75A2B2744B2D800745242 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27D75A2A2744B2D800745242 /* FocusEntity */; };
 		5A3E1A5A2731080700B170B2 /* UserCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A592731080700B170B2 /* UserCircleView.swift */; };
 		5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */; };
 		5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */; };
@@ -69,40 +101,6 @@
 		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
-		9FC825752741FB6600C9894C /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9FC825742741FB6600C9894C /* FocusEntity */; };
-		9FC8258A27423BA900C9894C /* qs_AppleLogo_left.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257727423BA900C9894C /* qs_AppleLogo_left.usdz */; };
-		9FC8258B27423BA900C9894C /* qs_Camera.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257827423BA900C9894C /* qs_Camera.usdz */; };
-		9FC8258C27423BA900C9894C /* qs_Calendar.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257927423BA900C9894C /* qs_Calendar.usdz */; };
-		9FC8258D27423BAA00C9894C /* qs_Health.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257A27423BA900C9894C /* qs_Health.usdz */; };
-		9FC8258E27423BAA00C9894C /* qs_Setting.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257B27423BA900C9894C /* qs_Setting.usdz */; };
-		9FC8259027423BAA00C9894C /* qs_Hello.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257D27423BA900C9894C /* qs_Hello.usdz */; };
-		9FC8259127423BAA00C9894C /* qs_Weather.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257E27423BA900C9894C /* qs_Weather.usdz */; };
-		9FC8259227423BAA00C9894C /* qs_Safari.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8257F27423BA900C9894C /* qs_Safari.usdz */; };
-		9FC8259327423BAA00C9894C /* qs_Swift.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258027423BA900C9894C /* qs_Swift.usdz */; };
-		9FC8259427423BAA00C9894C /* qs_SwiftChangeTheWorld.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258127423BA900C9894C /* qs_SwiftChangeTheWorld.usdz */; };
-		9FC8259527423BAA00C9894C /* qs_Facetime.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258227423BA900C9894C /* qs_Facetime.usdz */; };
-		9FC8259627423BAA00C9894C /* qs_AppleMusic.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258327423BA900C9894C /* qs_AppleMusic.usdz */; };
-		9FC8259727423BAA00C9894C /* qs_iMessage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258427423BA900C9894C /* qs_iMessage.usdz */; };
-		9FC8259827423BAA00C9894C /* qs_Phone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258527423BA900C9894C /* qs_Phone.usdz */; };
-		9FC8259927423BAA00C9894C /* qs_AppleLogo_right.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258627423BA900C9894C /* qs_AppleLogo_right.usdz */; };
-		9FC8259A27423BAA00C9894C /* qs_AppStore.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258727423BA900C9894C /* qs_AppStore.usdz */; };
-		9FC8259B27423BAA00C9894C /* qs_Home.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258827423BA900C9894C /* qs_Home.usdz */; };
-		9FC8259C27423BAA00C9894C /* qs_iBook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8258927423BA900C9894C /* qs_iBook.usdz */; };
-		9FC825A627423DE200C9894C /* yt_McDonald's.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC8259F27423DE200C9894C /* yt_McDonald's.usdz */; };
-		9FC825A727423DE200C9894C /* yt_Cocacola.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825A027423DE200C9894C /* yt_Cocacola.usdz */; };
-		9FC825A927423DE200C9894C /* yt_FrenchFires.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825A227423DE200C9894C /* yt_FrenchFires.usdz */; };
-		9FC825AA27423DE200C9894C /* yt_KFC.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825A327423DE200C9894C /* yt_KFC.usdz */; };
-		9FC825AB27423DE200C9894C /* yt_BugerKing.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825A427423DE200C9894C /* yt_BugerKing.usdz */; };
-		9FC825AC27423DE200C9894C /* yt_Coffee.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825A527423DE200C9894C /* yt_Coffee.usdz */; };
-		9FC825B427423ED800C9894C /* user_like_red.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825AD27423ED700C9894C /* user_like_red.usdz */; };
-		9FC825B527423ED800C9894C /* user_love_white.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825AE27423ED700C9894C /* user_love_white.usdz */; };
-		9FC825B627423ED800C9894C /* user_like_purple.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825AF27423ED700C9894C /* user_like_purple.usdz */; };
-		9FC825B727423ED800C9894C /* user_like_yellow.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825B027423ED800C9894C /* user_like_yellow.usdz */; };
-		9FC825B827423ED800C9894C /* user_like_green.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825B127423ED800C9894C /* user_like_green.usdz */; };
-		9FC825B927423ED800C9894C /* user_like_blue.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825B227423ED800C9894C /* user_like_blue.usdz */; };
-		9FC825BA27423ED800C9894C /* user_love_red.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825B327423ED800C9894C /* user_love_red.usdz */; };
-		9FC825C0274272A100C9894C /* yt_Burger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825BF274272A100C9894C /* yt_Burger.usdz */; };
-		9FC825C42743C83A00C9894C /* user_letter_A.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC825C32743C83800C9894C /* user_letter_A.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -122,6 +120,37 @@
 		27B3EC5727325E0900021DE1 /* USDZModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDZModelList.swift; sourceTree = "<group>"; };
 		27B3EC5927325F7500021DE1 /* ExploreAnchorManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreAnchorManagerViewModel.swift; sourceTree = "<group>"; };
 		27BEDBD227351FE4004F66E5 /* CoachingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingViewModel.swift; sourceTree = "<group>"; };
+		27D759EB2744B29100745242 /* qs_SwiftChangeTheWorld.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_SwiftChangeTheWorld.usdz; sourceTree = "<group>"; };
+		27D759EC2744B29100745242 /* qs_Calendar.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Calendar.usdz; sourceTree = "<group>"; };
+		27D759ED2744B29100745242 /* qs_iBook.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_iBook.usdz; sourceTree = "<group>"; };
+		27D759EE2744B29100745242 /* qs_iMessage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_iMessage.usdz; sourceTree = "<group>"; };
+		27D759EF2744B29100745242 /* qs_Phone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Phone.usdz; sourceTree = "<group>"; };
+		27D759F02744B29200745242 /* qs_Hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Hello.usdz; sourceTree = "<group>"; };
+		27D759F12744B29200745242 /* qs_Home.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Home.usdz; sourceTree = "<group>"; };
+		27D759F22744B29200745242 /* qs_AppleLogo_right.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleLogo_right.usdz; sourceTree = "<group>"; };
+		27D759F32744B29200745242 /* qs_Swift.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Swift.usdz; sourceTree = "<group>"; };
+		27D759F42744B29200745242 /* qs_Weather.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Weather.usdz; sourceTree = "<group>"; };
+		27D759F52744B29200745242 /* qs_Camera.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Camera.usdz; sourceTree = "<group>"; };
+		27D759F62744B29200745242 /* qs_AppStore.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppStore.usdz; sourceTree = "<group>"; };
+		27D759F72744B29200745242 /* qs_Health.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Health.usdz; sourceTree = "<group>"; };
+		27D759F82744B29200745242 /* qs_AppleMusic.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleMusic.usdz; sourceTree = "<group>"; };
+		27D759F92744B29200745242 /* qs_AppleLogo_left.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleLogo_left.usdz; sourceTree = "<group>"; };
+		27D759FA2744B29200745242 /* qs_Facetime.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Facetime.usdz; sourceTree = "<group>"; };
+		27D759FB2744B29200745242 /* qs_Safari.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Safari.usdz; sourceTree = "<group>"; };
+		27D759FC2744B29200745242 /* qs_Setting.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Setting.usdz; sourceTree = "<group>"; };
+		27D75A0F2744B29F00745242 /* yt_Cocacola.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_Cocacola.usdz; sourceTree = "<group>"; };
+		27D75A102744B29F00745242 /* yt_Coffee.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_Coffee.usdz; sourceTree = "<group>"; };
+		27D75A112744B29F00745242 /* yt_FrenchFires.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_FrenchFires.usdz; sourceTree = "<group>"; };
+		27D75A122744B29F00745242 /* yt_KFC.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_KFC.usdz; sourceTree = "<group>"; };
+		27D75A132744B29F00745242 /* yt_McDonald's.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "yt_McDonald's.usdz"; sourceTree = "<group>"; };
+		27D75A142744B29F00745242 /* yt_BugerKing.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_BugerKing.usdz; sourceTree = "<group>"; };
+		27D75A1B2744B2AF00745242 /* user_love_red.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_love_red.usdz; sourceTree = "<group>"; };
+		27D75A1C2744B2AF00745242 /* user_like_green.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_green.usdz; sourceTree = "<group>"; };
+		27D75A1D2744B2AF00745242 /* user_like_purple.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_purple.usdz; sourceTree = "<group>"; };
+		27D75A1E2744B2AF00745242 /* user_love_white.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_love_white.usdz; sourceTree = "<group>"; };
+		27D75A1F2744B2AF00745242 /* user_like_red.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_red.usdz; sourceTree = "<group>"; };
+		27D75A202744B2AF00745242 /* user_like_yellow.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_yellow.usdz; sourceTree = "<group>"; };
+		27D75A212744B2B000745242 /* user_like_blue.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_blue.usdz; sourceTree = "<group>"; };
 		5A3E1A592731080700B170B2 /* UserCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCircleView.swift; sourceTree = "<group>"; };
 		5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoggedinView.swift; sourceTree = "<group>"; };
 		5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithEmailAndPasswordView.swift; sourceTree = "<group>"; };
@@ -171,39 +200,6 @@
 		9F118CE5273908E30054A252 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9FC82553273D110D00C9894C /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
-		9FC8257727423BA900C9894C /* qs_AppleLogo_left.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleLogo_left.usdz; sourceTree = "<group>"; };
-		9FC8257827423BA900C9894C /* qs_Camera.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Camera.usdz; sourceTree = "<group>"; };
-		9FC8257927423BA900C9894C /* qs_Calendar.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Calendar.usdz; sourceTree = "<group>"; };
-		9FC8257A27423BA900C9894C /* qs_Health.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Health.usdz; sourceTree = "<group>"; };
-		9FC8257B27423BA900C9894C /* qs_Setting.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Setting.usdz; sourceTree = "<group>"; };
-		9FC8257D27423BA900C9894C /* qs_Hello.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Hello.usdz; sourceTree = "<group>"; };
-		9FC8257E27423BA900C9894C /* qs_Weather.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Weather.usdz; sourceTree = "<group>"; };
-		9FC8257F27423BA900C9894C /* qs_Safari.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Safari.usdz; sourceTree = "<group>"; };
-		9FC8258027423BA900C9894C /* qs_Swift.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Swift.usdz; sourceTree = "<group>"; };
-		9FC8258127423BA900C9894C /* qs_SwiftChangeTheWorld.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_SwiftChangeTheWorld.usdz; sourceTree = "<group>"; };
-		9FC8258227423BA900C9894C /* qs_Facetime.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Facetime.usdz; sourceTree = "<group>"; };
-		9FC8258327423BA900C9894C /* qs_AppleMusic.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleMusic.usdz; sourceTree = "<group>"; };
-		9FC8258427423BA900C9894C /* qs_iMessage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_iMessage.usdz; sourceTree = "<group>"; };
-		9FC8258527423BA900C9894C /* qs_Phone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Phone.usdz; sourceTree = "<group>"; };
-		9FC8258627423BA900C9894C /* qs_AppleLogo_right.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleLogo_right.usdz; sourceTree = "<group>"; };
-		9FC8258727423BA900C9894C /* qs_AppStore.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppStore.usdz; sourceTree = "<group>"; };
-		9FC8258827423BA900C9894C /* qs_Home.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Home.usdz; sourceTree = "<group>"; };
-		9FC8258927423BA900C9894C /* qs_iBook.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_iBook.usdz; sourceTree = "<group>"; };
-		9FC8259F27423DE200C9894C /* yt_McDonald's.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "yt_McDonald's.usdz"; sourceTree = "<group>"; };
-		9FC825A027423DE200C9894C /* yt_Cocacola.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_Cocacola.usdz; sourceTree = "<group>"; };
-		9FC825A227423DE200C9894C /* yt_FrenchFires.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_FrenchFires.usdz; sourceTree = "<group>"; };
-		9FC825A327423DE200C9894C /* yt_KFC.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_KFC.usdz; sourceTree = "<group>"; };
-		9FC825A427423DE200C9894C /* yt_BugerKing.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_BugerKing.usdz; sourceTree = "<group>"; };
-		9FC825A527423DE200C9894C /* yt_Coffee.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_Coffee.usdz; sourceTree = "<group>"; };
-		9FC825AD27423ED700C9894C /* user_like_red.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_red.usdz; sourceTree = "<group>"; };
-		9FC825AE27423ED700C9894C /* user_love_white.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_love_white.usdz; sourceTree = "<group>"; };
-		9FC825AF27423ED700C9894C /* user_like_purple.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_purple.usdz; sourceTree = "<group>"; };
-		9FC825B027423ED800C9894C /* user_like_yellow.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_yellow.usdz; sourceTree = "<group>"; };
-		9FC825B127423ED800C9894C /* user_like_green.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_green.usdz; sourceTree = "<group>"; };
-		9FC825B227423ED800C9894C /* user_like_blue.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_blue.usdz; sourceTree = "<group>"; };
-		9FC825B327423ED800C9894C /* user_love_red.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_love_red.usdz; sourceTree = "<group>"; };
-		9FC825BF274272A100C9894C /* yt_Burger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_Burger.usdz; sourceTree = "<group>"; };
-		9FC825C32743C83800C9894C /* user_letter_A.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_letter_A.usdz; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EA644E134854EEEBD6DAD6 /* Pods-ACRT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.release.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,7 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9FC825752741FB6600C9894C /* FocusEntity in Frameworks */,
+				27D75A2B2744B2D800745242 /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +244,44 @@
 				27ADC954273FD31900926996 /* ModelDeletionView.swift */,
 			);
 			path = ModelDeletionView;
+			sourceTree = "<group>";
+		};
+		27D759EA2744B26100745242 /* USDZModel */ = {
+			isa = PBXGroup;
+			children = (
+				27D75A212744B2B000745242 /* user_like_blue.usdz */,
+				27D75A1C2744B2AF00745242 /* user_like_green.usdz */,
+				27D75A1D2744B2AF00745242 /* user_like_purple.usdz */,
+				27D75A1F2744B2AF00745242 /* user_like_red.usdz */,
+				27D75A202744B2AF00745242 /* user_like_yellow.usdz */,
+				27D75A1B2744B2AF00745242 /* user_love_red.usdz */,
+				27D75A1E2744B2AF00745242 /* user_love_white.usdz */,
+				27D75A142744B29F00745242 /* yt_BugerKing.usdz */,
+				27D75A0F2744B29F00745242 /* yt_Cocacola.usdz */,
+				27D75A102744B29F00745242 /* yt_Coffee.usdz */,
+				27D75A112744B29F00745242 /* yt_FrenchFires.usdz */,
+				27D75A122744B29F00745242 /* yt_KFC.usdz */,
+				27D75A132744B29F00745242 /* yt_McDonald's.usdz */,
+				27D759F92744B29200745242 /* qs_AppleLogo_left.usdz */,
+				27D759F22744B29200745242 /* qs_AppleLogo_right.usdz */,
+				27D759F82744B29200745242 /* qs_AppleMusic.usdz */,
+				27D759F62744B29200745242 /* qs_AppStore.usdz */,
+				27D759EC2744B29100745242 /* qs_Calendar.usdz */,
+				27D759F52744B29200745242 /* qs_Camera.usdz */,
+				27D759FA2744B29200745242 /* qs_Facetime.usdz */,
+				27D759F72744B29200745242 /* qs_Health.usdz */,
+				27D759F02744B29200745242 /* qs_Hello.usdz */,
+				27D759F12744B29200745242 /* qs_Home.usdz */,
+				27D759ED2744B29100745242 /* qs_iBook.usdz */,
+				27D759EE2744B29100745242 /* qs_iMessage.usdz */,
+				27D759EF2744B29100745242 /* qs_Phone.usdz */,
+				27D759FB2744B29200745242 /* qs_Safari.usdz */,
+				27D759FC2744B29200745242 /* qs_Setting.usdz */,
+				27D759F32744B29200745242 /* qs_Swift.usdz */,
+				27D759EB2744B29100745242 /* qs_SwiftChangeTheWorld.usdz */,
+				27D759F42744B29200745242 /* qs_Weather.usdz */,
+			);
+			path = USDZModel;
 			sourceTree = "<group>";
 		};
 		5A3E1A58273107CD00B170B2 /* 3. UserPage */ = {
@@ -369,7 +403,7 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
-				9FC8257627423A8100C9894C /* USDZModel */,
+				27D759EA2744B26100745242 /* USDZModel */,
 				27B3EC4D27316F4000021DE1 /* Info.plist */,
 				5A3E1A6527310A8900B170B2 /* Model */,
 				5A56E929272F9C360062680E /* ViewModel */,
@@ -505,46 +539,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		9FC8257627423A8100C9894C /* USDZModel */ = {
-			isa = PBXGroup;
-			children = (
-				9FC8257727423BA900C9894C /* qs_AppleLogo_left.usdz */,
-				9FC8258627423BA900C9894C /* qs_AppleLogo_right.usdz */,
-				9FC8258327423BA900C9894C /* qs_AppleMusic.usdz */,
-				9FC8258727423BA900C9894C /* qs_AppStore.usdz */,
-				9FC8257927423BA900C9894C /* qs_Calendar.usdz */,
-				9FC8257827423BA900C9894C /* qs_Camera.usdz */,
-				9FC8258227423BA900C9894C /* qs_Facetime.usdz */,
-				9FC8257A27423BA900C9894C /* qs_Health.usdz */,
-				9FC8257D27423BA900C9894C /* qs_Hello.usdz */,
-				9FC8258827423BA900C9894C /* qs_Home.usdz */,
-				9FC8258927423BA900C9894C /* qs_iBook.usdz */,
-				9FC8258427423BA900C9894C /* qs_iMessage.usdz */,
-				9FC8258527423BA900C9894C /* qs_Phone.usdz */,
-				9FC8257F27423BA900C9894C /* qs_Safari.usdz */,
-				9FC8257B27423BA900C9894C /* qs_Setting.usdz */,
-				9FC8258027423BA900C9894C /* qs_Swift.usdz */,
-				9FC8258127423BA900C9894C /* qs_SwiftChangeTheWorld.usdz */,
-				9FC8257E27423BA900C9894C /* qs_Weather.usdz */,
-				9FC825BF274272A100C9894C /* yt_Burger.usdz */,
-				9FC825A427423DE200C9894C /* yt_BugerKing.usdz */,
-				9FC825A027423DE200C9894C /* yt_Cocacola.usdz */,
-				9FC825A527423DE200C9894C /* yt_Coffee.usdz */,
-				9FC825A227423DE200C9894C /* yt_FrenchFires.usdz */,
-				9FC825A327423DE200C9894C /* yt_KFC.usdz */,
-				9FC8259F27423DE200C9894C /* yt_McDonald's.usdz */,
-				9FC825B227423ED800C9894C /* user_like_blue.usdz */,
-				9FC825B127423ED800C9894C /* user_like_green.usdz */,
-				9FC825AF27423ED700C9894C /* user_like_purple.usdz */,
-				9FC825AD27423ED700C9894C /* user_like_red.usdz */,
-				9FC825B027423ED800C9894C /* user_like_yellow.usdz */,
-				9FC825B327423ED800C9894C /* user_love_red.usdz */,
-				9FC825AE27423ED700C9894C /* user_love_white.usdz */,
-				9FC825C32743C83800C9894C /* user_letter_A.usdz */,
-			);
-			path = USDZModel;
-			sourceTree = "<group>";
-		};
 		9FC825BB2742710400C9894C /* PreparePageViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,7 +596,7 @@
 			);
 			name = ACRT;
 			packageProductDependencies = (
-				9FC825742741FB6600C9894C /* FocusEntity */,
+				27D75A2A2744B2D800745242 /* FocusEntity */,
 			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
@@ -636,7 +630,7 @@
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
 			packageReferences = (
-				9FC825732741FB6600C9894C /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				27D75A292744B2D800745242 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
@@ -652,44 +646,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D75A062744B29200745242 /* qs_Weather.usdz in Resources */,
+				27D75A262744B2B000745242 /* user_like_red.usdz in Resources */,
+				27D75A252744B2B000745242 /* user_love_white.usdz in Resources */,
+				27D75A032744B29200745242 /* qs_Home.usdz in Resources */,
+				27D75A222744B2B000745242 /* user_love_red.usdz in Resources */,
+				27D75A242744B2B000745242 /* user_like_purple.usdz in Resources */,
+				27D759FF2744B29200745242 /* qs_iBook.usdz in Resources */,
+				27D759FE2744B29200745242 /* qs_Calendar.usdz in Resources */,
+				27D75A052744B29200745242 /* qs_Swift.usdz in Resources */,
+				27D75A082744B29200745242 /* qs_AppStore.usdz in Resources */,
+				27D75A232744B2B000745242 /* user_like_green.usdz in Resources */,
+				27D75A172744B29F00745242 /* yt_FrenchFires.usdz in Resources */,
+				27D75A0C2744B29200745242 /* qs_Facetime.usdz in Resources */,
+				27D75A022744B29200745242 /* qs_Hello.usdz in Resources */,
+				27D75A0E2744B29200745242 /* qs_Setting.usdz in Resources */,
+				27D75A012744B29200745242 /* qs_Phone.usdz in Resources */,
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
-				9FC8259B27423BAA00C9894C /* qs_Home.usdz in Resources */,
-				9FC8259A27423BAA00C9894C /* qs_AppStore.usdz in Resources */,
-				9FC825BA27423ED800C9894C /* user_love_red.usdz in Resources */,
-				9FC8258C27423BA900C9894C /* qs_Calendar.usdz in Resources */,
-				9FC8259827423BAA00C9894C /* qs_Phone.usdz in Resources */,
-				9FC825B427423ED800C9894C /* user_like_red.usdz in Resources */,
-				9FC8259927423BAA00C9894C /* qs_AppleLogo_right.usdz in Resources */,
-				9FC825A627423DE200C9894C /* yt_McDonald's.usdz in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
-				9FC8259327423BAA00C9894C /* qs_Swift.usdz in Resources */,
-				9FC8259227423BAA00C9894C /* qs_Safari.usdz in Resources */,
-				9FC825AC27423DE200C9894C /* yt_Coffee.usdz in Resources */,
-				9FC8258A27423BA900C9894C /* qs_AppleLogo_left.usdz in Resources */,
-				9FC825C42743C83A00C9894C /* user_letter_A.usdz in Resources */,
-				9FC8259027423BAA00C9894C /* qs_Hello.usdz in Resources */,
-				9FC825B827423ED800C9894C /* user_like_green.usdz in Resources */,
-				9FC825A927423DE200C9894C /* yt_FrenchFires.usdz in Resources */,
-				9FC825B627423ED800C9894C /* user_like_purple.usdz in Resources */,
-				9FC8258E27423BAA00C9894C /* qs_Setting.usdz in Resources */,
-				9FC825A727423DE200C9894C /* yt_Cocacola.usdz in Resources */,
+				27D759FD2744B29200745242 /* qs_SwiftChangeTheWorld.usdz in Resources */,
+				27D75A272744B2B000745242 /* user_like_yellow.usdz in Resources */,
+				27D75A182744B29F00745242 /* yt_KFC.usdz in Resources */,
+				27D75A152744B29F00745242 /* yt_Cocacola.usdz in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
-				9FC8258B27423BA900C9894C /* qs_Camera.usdz in Resources */,
-				9FC8259127423BAA00C9894C /* qs_Weather.usdz in Resources */,
-				9FC8259C27423BAA00C9894C /* qs_iBook.usdz in Resources */,
-				9FC8258D27423BAA00C9894C /* qs_Health.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
-				9FC8259627423BAA00C9894C /* qs_AppleMusic.usdz in Resources */,
-				9FC8259527423BAA00C9894C /* qs_Facetime.usdz in Resources */,
-				9FC825AB27423DE200C9894C /* yt_BugerKing.usdz in Resources */,
-				9FC8259727423BAA00C9894C /* qs_iMessage.usdz in Resources */,
-				9FC825B527423ED800C9894C /* user_love_white.usdz in Resources */,
-				9FC8259427423BAA00C9894C /* qs_SwiftChangeTheWorld.usdz in Resources */,
+				27D75A002744B29200745242 /* qs_iMessage.usdz in Resources */,
+				27D75A042744B29200745242 /* qs_AppleLogo_right.usdz in Resources */,
+				27D75A092744B29200745242 /* qs_Health.usdz in Resources */,
+				27D75A0D2744B29200745242 /* qs_Safari.usdz in Resources */,
+				27D75A162744B29F00745242 /* yt_Coffee.usdz in Resources */,
+				27D75A0A2744B29200745242 /* qs_AppleMusic.usdz in Resources */,
+				27D75A1A2744B29F00745242 /* yt_BugerKing.usdz in Resources */,
+				27D75A072744B29200745242 /* qs_Camera.usdz in Resources */,
+				27D75A0B2744B29200745242 /* qs_AppleLogo_left.usdz in Resources */,
+				27D75A282744B2B000745242 /* user_like_blue.usdz in Resources */,
+				27D75A192744B29F00745242 /* yt_McDonald's.usdz in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
-				9FC825B927423ED800C9894C /* user_like_blue.usdz in Resources */,
-				9FC825AA27423DE200C9894C /* yt_KFC.usdz in Resources */,
-				9FC825B727423ED800C9894C /* user_like_yellow.usdz in Resources */,
-				9FC825C0274272A100C9894C /* yt_Burger.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,9 +1029,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9FC825732741FB6600C9894C /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		27D75A292744B2D800745242 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZibYang/FocusEntity";
+			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -1048,9 +1040,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9FC825742741FB6600C9894C /* FocusEntity */ = {
+		27D75A2A2744B2D800745242 /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9FC825732741FB6600C9894C /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 27D75A292744B2D800745242 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */

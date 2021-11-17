@@ -99,4 +99,27 @@ class USDZManagerViewModel: ObservableObject {
 //        return exploreModelList.AreModelsLoaded() && createModelList.AreModelsLoaded()
 //    }
     
+    init() {
+        for model in self.exploreModelList.usdzModelList {
+            model.asyncLoadModelEntity(){ completed, error in }
+        }
+    }
+    
+    func getModel(modelName: String) -> USDZModel? {
+        if let usdzModel = getCreateModel(modelName: modelName) {
+            return usdzModel
+        } else if let usdzModel = getExploreModel(modelName: modelName) {
+            return usdzModel
+        }
+        return nil
+    }
+    
+    func getCreateModel(modelName: String) -> USDZModel? {
+        return createModelList.getUSDZModel(modelName: modelName)
+    }
+    
+    func getExploreModel(modelName: String) -> USDZModel? {
+        return exploreModelList.getUSDZModel(modelName: modelName)
+    }
+    
 }

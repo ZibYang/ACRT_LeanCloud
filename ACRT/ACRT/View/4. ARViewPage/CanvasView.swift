@@ -45,9 +45,7 @@ struct CanvasView: View {
                 .environmentObject(sceneManager)
                 .environmentObject(modelDeletionManager)
                 .ignoresSafeArea().onTapGesture(count: 1) {
-//                    let modelAnchor = ModelAnchor(modelName: "hand", transform: nil, anchorName: nil)
-//                    self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
-////                        self.placementSetting.selectedModel = nil
+
                 }
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack)
                 .environmentObject(placementSetting)
@@ -67,6 +65,7 @@ struct CanvasView: View {
         }
         .statusBar(hidden: true)
         .onAppear() {
+            httpManager.statusLoc = 0
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
             // TODO: localization Button
         }

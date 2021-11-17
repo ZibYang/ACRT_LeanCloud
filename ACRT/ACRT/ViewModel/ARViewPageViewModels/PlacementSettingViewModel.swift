@@ -12,6 +12,7 @@ import ARKit
 class PlacementSetting : ObservableObject {
     
     var sceneObserver: Cancellable?
+    var modelWaitingForPlacement: [ModelAnchor] = []
     var modelConfirmedForPlacement: [ModelAnchor] = []
     
     @Published var selectedModel: String {

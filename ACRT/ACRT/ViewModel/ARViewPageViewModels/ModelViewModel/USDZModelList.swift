@@ -34,5 +34,22 @@ class USDZModelList {
     func get(category: ModelCategory) -> [USDZModel] {
         return usdzModelList.filter( {$0.category == category})
     }
+    
+//    func getUSDZModelEntity(modelName: String) -> ModelEntity? {
+//        if let model = usdzModelList.filter( {$0.modelName == modelName})[0].modelEntity {
+//            return model
+//        } else {
+//            return nil
+//        }
+//    }
+    
+    func getUSDZModel(modelName: String) -> USDZModel? {
+        for model in self.usdzModelList {
+            if model.modelName == modelName {
+                return model
+            }
+        }
+        return nil
+    }
 
 }

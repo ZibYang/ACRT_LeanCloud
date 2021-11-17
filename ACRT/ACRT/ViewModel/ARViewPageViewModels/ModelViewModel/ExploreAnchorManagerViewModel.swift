@@ -71,11 +71,11 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
 
             //Shelf
-        let model1 = ModelAnchor(modelName: "hello", pos: simd_float3(0.341545, -0.727689, 5.92317), rotation: rotationMatrix, scale: simd_float3(1.0, 1.0, 1.0))
+        let model1 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(0.341545, -0.727689, 5.92317), rotation: rotationMatrix, scale: simd_float3(10.0, 10.0, 10.0))
     
-        let model2 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(-3.38882, 0.0870665, 0.155429), rotation: rotationMatrix, scale: simd_float3(1.0, 1.0, 1.0))
+        let model2 = ModelAnchor(modelName: "qs_AppleLogo_left", pos: simd_float3(-3.38882, 0.0870665, 0.155429), rotation: rotationMatrix, scale: simd_float3(1, 1, 1))
         
-        let model3 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(-7.73664609,  0.536159  , -4.19239709), rotation: rotationMatrix, scale: simd_float3(1.0, 1.0, 1.0))
+        let model3 = ModelAnchor(modelName: "qs_AppleLogo_right", pos: simd_float3(-7.73664609,  0.536159  , -4.19239709), rotation: rotationMatrix, scale: simd_float3(100, 100, 100))
     
 //            let model3 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(4.05483, 0.582852, 0.191444), rotation: rotationMatrix, scale: simd_float3(0.4,0.4,0.4))
             

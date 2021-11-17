@@ -50,11 +50,24 @@ class USDZModel{
         self.modelName = modelName
         self.category = category
         self.modelPreviewImage = UIImage(named: modelName)
+//        let fileName = self.modelName+".usdz"
+//
+//        self.cancellable = ModelEntity.loadModelAsync(named: fileName)
+//            .sink(receiveCompletion : {loadCompletion in
+//            }, receiveValue:{ modelEntity in
+//                self.modelEntity = modelEntity
+//            })
+    }
+    
+    func asyncLoadModelEntity(handler : @escaping(_ completed : Bool, _ error: Error?)->Void) {
         let fileName = self.modelName+".usdz"
-        
         self.cancellable = ModelEntity.loadModelAsync(named: fileName)
             .sink(receiveCompletion : {loadCompletion in
-            }, receiveValue:{ modelEntity in
+                print("1")
+                handler(false,nil)
+            }, receiveValue:{modelEntity in
+                
+                handler(true,nil)
                 self.modelEntity = modelEntity
             })
     }

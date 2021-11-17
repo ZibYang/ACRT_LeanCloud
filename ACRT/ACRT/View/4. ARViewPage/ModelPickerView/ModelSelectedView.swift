@@ -54,7 +54,9 @@ struct ModelSelectedView: View {
     var placeButton: some View{
         Button(action: {
             let modelAnchor = ModelAnchor(modelName: placementSetting.selectedModel, transform: nil, anchorName: nil)
-            self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
+            print("DEBUG(BCH): append \(modelAnchor.modelName)")
+
+            self.placementSetting.modelWaitingForPlacement.append(modelAnchor)
 //                        self.placementSetting.selectedModel = nil
         }, label: {
             Text("Place")

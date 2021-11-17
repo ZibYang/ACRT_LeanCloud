@@ -69,6 +69,7 @@ struct ToolView: View {
                     withAnimation(Animation.easeInOut(duration: 0.8)){
                         goBack.toggle()
                     }
+                    sceneManager.ClearWholeAnchors()
                     print("pressed")
                 }, label:{
                     Image(systemName: "arrow.backward")

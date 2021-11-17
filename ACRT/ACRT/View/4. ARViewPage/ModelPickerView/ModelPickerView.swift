@@ -63,6 +63,7 @@ struct HorizontalGrid: View{
                         let model = items[index]
                         Button(action:{
                             placementSetting.selectedModel = model.modelName
+                            print("DEBUG(BCH): select \(placementSetting.selectedModel)")
                             dismissSheet()
                         }, label:{
                             if let unwrapedUIImage = model.modelPreviewImage {

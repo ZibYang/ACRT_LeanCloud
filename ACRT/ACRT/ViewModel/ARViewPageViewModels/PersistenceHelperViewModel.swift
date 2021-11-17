@@ -13,19 +13,15 @@ class PersistenceHelperViewModel {
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
     // So whenever we load a scene from file, we will use the model and ARAnchor pair for placement.
-    class func uploadScene(for arView: CustomARView, at persistenceUrl: URL, with modelPrefix : String, poseWToARKit : simd_float4x4 ) {
+    class func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseWToARKit : simd_float4x4 ) {
         print("Save scene to local filesystem.")
         // find anchorentity -> add entity
         
-        // find anchor
-        print(arView.scene.anchors)
-        for anchor in arView.scene.anchors {
-            let anchorName = anchor.name
-            if anchorName.hasPrefix(modelPrefix) {
-                let modelName = anchorName.dropFirst(modelPrefix.count)
-                print("ARSession: didAdd anchor for modelName: \(modelName)")
+        for anchor in anchorEntities {
+            if AnchorIdentifierHelper.decode(identifier: anchor.name)[0] != usrname {
                 let poseWToAnchor = poseWToARKit * anchor.transform.matrix
-                // save username , name , poseWToAnchor
+                // save username , anchor.name , poseWToAnchor
+
             }
         }
         
