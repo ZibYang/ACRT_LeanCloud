@@ -20,49 +20,20 @@ import SwiftUI
 struct ModelSelectedView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
 
-    let modelName : String
-
-    
     var body: some View {
         HStack(spacing: 30) {
+            cacelButton
+            
             Image(systemName: "square.fill")
                 .resizable()
                 .background(.ultraThinMaterial)
                 .opacity(0.5)
                 .frame(width: 100, height: 100)
-                .cornerRadius(11)
-                .overlay(Image(modelName))
-            
-            colorPicker
-            
-            buttonSet
-        }
-    }
-    
-    var colorPicker: some View{
-        HStack{
-            Button(action: {
-                
-            }, label: {
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(.white)
-            })
-            Button(action: {
-                
-            }, label: {
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 40, height: 40)
-                    .foregroundColor(.red)
-            })
-        }
-    }
-    
-    var buttonSet: some View{
-        VStack(spacing: 20){
-            cacelButton
+                .cornerRadius(12)
+                .overlay(Image(placementSetting.selectedModel)
+                            .resizable()
+                            .aspectRatio(1/1, contentMode: .fit)
+                            .frame(width:90))
             
             placeButton
         }
@@ -82,7 +53,7 @@ struct ModelSelectedView: View {
     
     var placeButton: some View{
         Button(action: {
-            let modelAnchor = ModelAnchor(modelName: modelName, transform: nil, anchorName: nil)
+            let modelAnchor = ModelAnchor(modelName: placementSetting.selectedModel, transform: nil, anchorName: nil)
             self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
 //                        self.placementSetting.selectedModel = nil
         }, label: {
@@ -97,9 +68,10 @@ struct ModelSelectedView: View {
 struct ModelSelectedView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            ModelSelectedView(modelName: "love_white")
-            ModelSelectedView(modelName: "love_red")
+            ModelSelectedView()
+            ModelSelectedView()
                 .preferredColorScheme(.dark)
         }
+        .environmentObject(PlacementSetting())
     }
 }

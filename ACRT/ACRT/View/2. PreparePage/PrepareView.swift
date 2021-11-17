@@ -25,13 +25,10 @@ struct PrepareView: View {
     @StateObject var arViewModel = ARViewModel()
     @StateObject var coachingViewModel = CoachingViewModel()
     @StateObject var httpManager: HttpAuth = HttpAuth()
-    @StateObject var usdzManagerViewModel : USDZManagerViewModel = USDZManagerViewModel()
     @StateObject var placementSetting = PlacementSetting()
     @StateObject var sceneManager = SceneManagerViewModel()
     @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
 
-
-    
     @State var checkLocationRequest = false
     @State var checkLidarDeviceList = false
     @State var checkUserCapability = false
@@ -72,7 +69,7 @@ struct PrepareView: View {
                     Spacer()
                     UserCircleView()
                         .offset(x: coachingViewModel.isCoaching ? 70 : 0)
-                        .padding(.top)
+                        .padding(.top, 8)
                 }
                 .padding(.trailing)
             }
@@ -81,7 +78,6 @@ struct PrepareView: View {
         .environmentObject(arViewModel)
         .environmentObject(coachingViewModel)
         .environmentObject(httpManager)
-        .environmentObject(usdzManagerViewModel)
         .environmentObject(placementSetting)
         .environmentObject(sceneManager)
         .environmentObject(modelDeletionManager)
@@ -157,7 +153,9 @@ struct PrepareView: View {
     var intoARWorldButton: some View{
         Button(action: {
             if !mapModel.permissionDenied{
-                everythingSetted.toggle()
+                withAnimation(Animation.easeInOut(duration: 0.5)) {
+                    everythingSetted.toggle()
+                }
                 // TODO: And model loaded
                 
             }else{

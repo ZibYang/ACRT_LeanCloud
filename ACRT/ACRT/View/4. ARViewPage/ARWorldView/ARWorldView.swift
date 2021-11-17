@@ -82,10 +82,10 @@ struct ARWorldView:  UIViewRepresentable {
         
         arViewModel.arView.modelDeletionManager = modelDeletionManager
         
-        placementSetting.sceneObserver = arViewModel.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
-            self.updateScene(for: arViewModel.arView)
-            self.handlePersistence(for: arViewModel.arView)
-        })
+//        placementSetting.sceneObserver = arViewModel.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
+//            self.updateScene(for: arViewModel.arView)
+//            self.handlePersistence(for: arViewModel.arView)
+//        })
         
         return arViewModel.arView
     }
@@ -118,67 +118,67 @@ struct ARWorldView:  UIViewRepresentable {
         }
     }
     
-    private func updateScene(for arView: CustomARView) {
-        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
-        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.createModelList.getUSDZModelEntity(modelName: modelAnchor.modelName) {
-            if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
-                // Anchor needs to be created from placement
-                let anchorName = modelAnchor.anchorName!
-                print("anchor \(anchorName) has transform \(modelAnchor.transform)")
-                let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
-                if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
-                    self.place(modelEntity, for: anchor, in: arView, enableGesture: false)
-                } else {
-                    self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
-                }
-            }else if let transform = getTransformForPlacement(in: arView) {
-                // Anchor needs to be created from placement
-                let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
-                let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
-            }
+//    private func updateScene(for arView: CustomARView) {
+//        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
+//        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.createModelList.getUSDZModelEntity(modelName: modelAnchor.modelName) {
+//            if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
+//                // Anchor needs to be created from placement
+//                let anchorName = modelAnchor.anchorName!
+//                print("anchor \(anchorName) has transform \(modelAnchor.transform)")
+//                let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
+//                if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
+//                    self.place(modelEntity, for: anchor, in: arView, enableGesture: false)
+//                } else {
+//                    self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
+//                }
+//            }else if let transform = getTransformForPlacement(in: arView) {
+//                // Anchor needs to be created from placement
+//                let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
+//                let anchor = ARAnchor(name:anchorName, transform: transform)
+//                self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
+//            }
+//
+//    }
         
-    }
-        
-    }
+//    }
+//    
+//    private func place(_ modelEntity: ModelEntity, for anchorPosition: ARAnchor, in arView : ARView, enableGesture: Bool) {
+//        let clonedEntity = modelEntity.clone(recursive: true)
+//        
+//        clonedEntity.generateCollisionShapes(recursive: true)
+//        if enableGesture == true {
+//            arView.installGestures([.translation, .rotation], for: clonedEntity)
+//        }
+//        
+//        let anchorEntity = AnchorEntity(anchor: anchorPosition)
+//        anchorEntity.name = anchorPosition.name! + "|entity"
+//        anchorEntity.addChild(clonedEntity)
+//        //anchorEntity.anchoring = AnchoringComponent(anchor)
+//        arView.session.add(anchor: anchorPosition)
+//        arView.scene.addAnchor(anchorEntity)
+//        self.sceneManager.anchorEntities.append(anchorEntity)
+//
+//        print("Added modelEntity")
+//    }
     
-    private func place(_ modelEntity: ModelEntity, for anchor: ARAnchor, in arView : ARView, enableGesture: Bool) {
-        let clonedEntity = modelEntity.clone(recursive: true)
-        
-        clonedEntity.generateCollisionShapes(recursive: true)
-        if enableGesture == true {
-            arView.installGestures([.translation, .rotation], for: clonedEntity)
-        }
-        
-        let anchorEntity = AnchorEntity(anchor: anchor)
-        anchorEntity.name = anchor.name! + "|entity"
-        anchorEntity.addChild(clonedEntity)
-        //anchorEntity.anchoring = AnchoringComponent(anchor)
-        arView.session.add(anchor: anchor)
-        arView.scene.addAnchor(anchorEntity)
-        self.sceneManager.anchorEntities.append(anchorEntity)
-
-        print("Added modelEntity")
-    }
-    
-    private func handlePersistence(for arView:  CustomARView) {
-        if self.sceneManager.shouldUploadSceneToCloud {
-            PersistenceHelperViewModel.uploadScene(for: arView, at: self.sceneManager.persistenceUrl, with: userName, poseWToARKit: arViewModel.poseARKitToW)
-            self.sceneManager.shouldUploadSceneToCloud = false
-        } else if self.sceneManager.shouldDownloadSceneFromCloud {
-            let modelAnchors = PersistenceHelperViewModel.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
-            self.placementSetting.modelConfirmedForPlacement.append(contentsOf: modelAnchors)
-            self.sceneManager.shouldDownloadSceneFromCloud = false
-        }
-    }
-    
-    private func getTransformForPlacement(in arView: ARView) -> simd_float4x4? {
-        guard let query = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .any) else {
-            return nil
-        }
-        guard let raycastResult = arView.session.raycast(query).first else {return nil}
-        return raycastResult.worldTransform
-    }
+//    private func handlePersistence(for arView:  CustomARView) {
+//        if self.sceneManager.shouldUploadSceneToCloud {
+//            PersistenceHelperViewModel.uploadScene(for: arView, at: self.sceneManager.persistenceUrl, with: userName, poseWToARKit: arViewModel.poseARKitToW)
+//            self.sceneManager.shouldUploadSceneToCloud = false
+//        } else if self.sceneManager.shouldDownloadSceneFromCloud {
+//            let modelAnchors = PersistenceHelperViewModel.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
+//            self.placementSetting.modelConfirmedForPlacement.append(contentsOf: modelAnchors)
+//            self.sceneManager.shouldDownloadSceneFromCloud = false
+//        }
+//    }
+//
+//    private func getTransformForPlacement(in arView: ARView) -> simd_float4x4? {
+//        guard let query = arView.makeRaycastQuery(from: arView.center, allowing: .estimatedPlane, alignment: .any) else {
+//            return nil
+//        }
+//        guard let raycastResult = arView.session.raycast(query).first else {return nil}
+//        return raycastResult.worldTransform
+//    }
     
     
 }

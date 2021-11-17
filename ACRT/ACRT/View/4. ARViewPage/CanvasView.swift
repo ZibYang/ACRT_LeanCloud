@@ -17,26 +17,24 @@
 import SwiftUI
 
 struct CanvasView: View {
+    @StateObject var usdzManagerViewModel = USDZManagerViewModel()
+    
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var httpManager: HttpAuth
-    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
     @EnvironmentObject var placementSetting:PlacementSetting
     @EnvironmentObject var sceneManager:SceneManagerViewModel
     @EnvironmentObject var modelDeletionManager:ModelDeletionManagerViewModel
 
-    
-    
     @State private var showMesh = false
     @State var snapShot = false
     @State var requestNow = true
     @State var showQuitButton = false
-    
 
-   
     @Binding var goBack: Bool
     @State var showModelPicker = false
+    
     var body: some View {
         ZStack{
             ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, userName: "BCH")
@@ -51,7 +49,7 @@ struct CanvasView: View {
 //                    self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
 ////                        self.placementSetting.selectedModel = nil
                 }
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack, coaching: $coachingViewModel.isCoaching)
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)
@@ -66,31 +64,16 @@ struct CanvasView: View {
                 }
                 .background(Color.black.opacity(0.5))
             }
-            else if placementSetting.isInCreationMode{
-                if self.modelDeletionManager.entitySelectedForDeletion == nil {
-                    VStack{
-                        Spacer()
-                        ModelSelectedView(modelName: "hand")
-                            .environmentObject(placementSetting)
-                    }
-                    .padding()
-                } else {
-                    VStack{
-                        Spacer()
-                        DeletionView().environmentObject(sceneManager)
-                        .environmentObject(modelDeletionManager)
-                    }.padding(.bottom)
-                }
-                
-            }
         }
-        
+        .statusBar(hidden: true)
         .onAppear() {
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
             // TODO: localization Button
         }
         .halfSheet(showSheet: $placementSetting.openModelList){
             ModelPickerView()
+                .environmentObject(placementSetting)
+                .environmentObject(usdzManagerViewModel)
         }
         
     }
@@ -99,9 +82,13 @@ struct CanvasView: View {
 struct CanvasView_Previews: PreviewProvider {
     static var previews: some View {
         CanvasView(goBack: .constant(false))
+            .environmentObject(UserViewModel())
             .environmentObject(ARViewModel())
             .environmentObject(HttpAuth())
-            .environmentObject(UserViewModel())
+            .environmentObject(CoachingViewModel())
+            .environmentObject(PlacementSetting())
+            .environmentObject(SceneManagerViewModel())
+            .environmentObject(ModelDeletionManagerViewModel())
     }
 }
 

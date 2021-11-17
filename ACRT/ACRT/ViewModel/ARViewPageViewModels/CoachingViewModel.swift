@@ -44,9 +44,9 @@ class CoachingViewModel : ObservableObject {
                 }
             }
             if(self.isCoaching) {
-                while(!usdzManagerViewModel.AreModelLibrariesLoaded()) {
-                    sleep(1)
-                }
+//                while(!usdzManagerViewModel.AreModelLibrariesLoaded()) {
+//                    sleep(1)
+//                }
                 DispatchQueue.main.async {
                     print("DEBUG(BCH): arViewModel isCoaching close")
                     self.isCoaching = false

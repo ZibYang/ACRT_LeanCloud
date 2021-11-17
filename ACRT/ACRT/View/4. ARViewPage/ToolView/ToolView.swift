@@ -24,15 +24,12 @@ struct ToolView: View {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
 
-
-
     @State var showBottomView = false
     @State var showCameraButton = false
     
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
     @Binding var goBack: Bool
-    @Binding var coaching: Bool
     
     @State private var snapshotBackgroundOpacity = 0.0
     
@@ -47,9 +44,22 @@ struct ToolView: View {
             leftToolGroup
                     
             snapShotButton
+            
+            placeModelView
         }
         
     }
+    
+    var placeModelView: some View{
+        VStack{
+            Spacer()
+            ModelSelectedView()
+                .environmentObject(placementSetting)
+                .padding()
+        }
+        .offset(y: placementSetting.isInCreationMode && !showCameraButton ? 0 : 300)
+    }
+    
     var topToolGroup: some View{
         VStack {
             // MARK: Top tool
@@ -77,10 +87,10 @@ struct ToolView: View {
                 
                 Spacer()
             }
-            .padding(.top, 10)
+//            .padding(.top, 10)
             .padding(.horizontal)
             .padding(.vertical, 5)
-            .offset(x: coaching ? -200 : 0)
+            .offset(x: coachingViewModel.isCoaching ? -400 : 0)
             Spacer()
         }
     }
@@ -97,19 +107,19 @@ struct ToolView: View {
                 Spacer()
             }
             .padding(.horizontal)
-            .offset(x: coaching ? -150 : 0)
+            .offset(x: coachingViewModel.isCoaching ? -150 : 0)
             HStack {
                 relocationButton
                 Spacer()
             }
             .padding(.horizontal)
-            .offset(x: coaching ? -150 : 0)
+            .offset(x: coachingViewModel.isCoaching ? -150 : 0)
             HStack {
                 clearSceneButton
                 Spacer()
             }
             .padding(.horizontal)
-            .offset(x: coaching ? -150 : 0)
+            .offset(x: coachingViewModel.isCoaching ? -150 : 0)
             Spacer()
             
 
@@ -163,7 +173,9 @@ struct ToolView: View {
                 withAnimation(Animation.easeInOut(duration: 1.0)){
                     snapshotBackgroundOpacity = 0.0
                 }
-                snapShot.toggle()
+                withAnimation(Animation.easeInOut(duration: 0.8)){
+                    snapShot.toggle()
+                }
                 print("snapshort")
             }, label: {
                 Circle()
@@ -184,16 +196,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(true))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
             
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(true))
+                ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false), coaching: .constant(true))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
         }

@@ -88,6 +88,7 @@ struct CustomCoachingView: View {
             }
             
         }
+        .statusBar(hidden: coachingViewModel.isCoaching)
         .onAppear{
             withAnimation(Animation.easeInOut(duration: 1.0) .repeatForever()){
                 self.animate = true

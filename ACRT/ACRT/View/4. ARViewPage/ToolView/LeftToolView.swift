@@ -36,11 +36,11 @@ struct LeftToolView: View {
     
     var exploreTool: some View{
         Button(action: {
-            withAnimation(.spring()){
+            withAnimation(Animation.easeInOut(duration: 0.5)){
 //                selectedToolName = "Explore"
-
+                placementSetting.isInCreationMode = false
             }
-            placementSetting.isInCreationMode = false
+            
 
         }, label:{
             Image(systemName: "magnifyingglass")
@@ -52,11 +52,12 @@ struct LeftToolView: View {
     }
     var createTool: some View{
         Button(action: {
-            withAnimation(.spring()){
+            withAnimation(Animation.easeInOut(duration: 0.5)){
 //                selectedToolName = "Create"
+                placementSetting.isInCreationMode = true
+                placementSetting.openModelList = true
             }
-            placementSetting.isInCreationMode = true
-            placementSetting.openModelList = true
+            
         }, label:{
             Image(systemName: "cube")
                 .foregroundColor(placementSetting.isInCreationMode == true ? .blue : .white)

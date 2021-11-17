@@ -9,11 +9,12 @@ import Foundation
 import Combine
 import ARKit
 
-class PlacementSetting  : ObservableObject {
+class PlacementSetting : ObservableObject {
     
     var sceneObserver: Cancellable?
     var modelConfirmedForPlacement: [ModelAnchor] = []
-    @Published var selectedModel: String? {
+    
+    @Published var selectedModel: String {
         willSet(newValue) {
             print("Setting selectedModel to \(String(describing: newValue))")
         }
@@ -23,7 +24,7 @@ class PlacementSetting  : ObservableObject {
     @Published var openModelList = false
     
     init() {
-        selectedModel = "hello"
+        selectedModel = ""
     }
     
 

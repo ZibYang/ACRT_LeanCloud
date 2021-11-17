@@ -1,5 +1,5 @@
 //
-//  USDZModel.swift
+//  USDZLibraryViewModel.swift
 //  ACRT
 
 //        _         ____
@@ -11,7 +11,6 @@
 //  / /       \ \ | |    \ \   \ ____ /  / /          Team
  
 //  Created by ARCT_ZJU_Lab509 on 2021/7/5.
-
 //  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 //
 
@@ -20,19 +19,20 @@ import Foundation
 import RealityKit
 import Combine
 
-class USDZModel{
-    var modelName: String
-    var modelEntity: ModelEntity?
-    private var cancellable: AnyCancellable? = nil
+
+class USDZModelList {
     
+    var usdzModelList : [USDZModel]
     
-    init(modelName: String){
-        self.modelName = modelName
-        let fileName = self.modelName+".usdz"
-        self.cancellable = ModelEntity.loadModelAsync(named: fileName)
-            .sink(receiveCompletion : {loadCompletion in
-            }, receiveValue:{ modelEntity in
-                self.modelEntity = modelEntity
-            })
+    init(usdzModelNameList: [String], categoryList: [ModelCategory]) {
+        usdzModelList = []
+        for index in 0..<usdzModelNameList.count {
+            usdzModelList.append(USDZModel(modelName: usdzModelNameList[index], category: categoryList[index]))
+        }
     }
+    
+    func get(category: ModelCategory) -> [USDZModel] {
+        return usdzModelList.filter( {$0.category == category})
+    }
+
 }
