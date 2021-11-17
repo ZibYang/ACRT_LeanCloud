@@ -17,9 +17,11 @@ class PersistenceHelperViewModel {
         print("Save scene to local filesystem.")
         // find anchorentity -> add entity
         
-        for anchor in anchorEntities {
-            if AnchorIdentifierHelper.decode(identifier: anchor.name)[0] != usrname {
-                let poseWToAnchor = poseWToARKit * anchor.transform.matrix
+        for anchorEntity in anchorEntities {
+//            print("anchorEnity \(anchorEntity.name) transform \(anchorEntity.transformMatrix(relativeTo: nil))")
+
+            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != usrname {
+                let poseWToAnchor = poseWToARKit * anchorEntity.transformMatrix(relativeTo: nil)
                 // save username , anchor.name , poseWToAnchor
 
             }

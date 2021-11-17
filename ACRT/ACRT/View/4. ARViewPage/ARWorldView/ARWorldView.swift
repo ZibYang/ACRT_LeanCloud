@@ -143,23 +143,23 @@ struct ARWorldView:  UIViewRepresentable {
                 // Anchor needs to be created from placement
                 let anchorName = modelAnchor.anchorName!
                 print("DEBUG(BCH): anchor \(anchorName) has transform \(modelAnchor.transform)")
-                let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
+                //let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
-                    self.place(modelEntity, for: anchor, in: arView, enableGesture: false)
+                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 } else {
-                    self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
+                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: true)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
                 let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
-                let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: anchor, in: arView, enableGesture: true)
+                //let anchor = ARAnchor(name:anchorName, transform: transform)
+                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
             }
     }
         
     }
     
-    private func place(_ modelEntity: ModelEntity, for anchorPosition: ARAnchor, in arView : ARView, enableGesture: Bool) {
+    private func place(_ modelEntity: ModelEntity, for transform: simd_float4x4, with anchorName: String, in arView : ARView, enableGesture: Bool) {
         let clonedEntity = modelEntity.clone(recursive: true)
         
         clonedEntity.generateCollisionShapes(recursive: true)
@@ -167,11 +167,11 @@ struct ARWorldView:  UIViewRepresentable {
             arView.installGestures([.translation, .rotation], for: clonedEntity)
         }
         
-        let anchorEntity = AnchorEntity(anchor: anchorPosition)
-        anchorEntity.name = anchorPosition.name! + "|entity"
+        let anchorEntity = AnchorEntity(world: transform)
+        anchorEntity.name = anchorName
         anchorEntity.addChild(clonedEntity)
         //anchorEntity.anchoring = AnchoringComponent(anchor)
-        arView.session.add(anchor: anchorPosition)
+        //arView.session.add(anchor: anchorPosition)
         arView.scene.addAnchor(anchorEntity)
         self.sceneManager.anchorEntities.append(anchorEntity)
 

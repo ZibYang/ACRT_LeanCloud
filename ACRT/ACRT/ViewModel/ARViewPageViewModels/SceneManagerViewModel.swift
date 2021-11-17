@@ -43,8 +43,8 @@ class SceneManagerViewModel: ObservableObject {
     
     func updateAnchors(transform : simd_float4x4) {
         for anchorEntity in anchorEntities {
-            let oldTransform : simd_float4x4 = anchorEntity.transform.matrix
-            anchorEntity.transform.matrix = transform * oldTransform
+            let oldTransform : simd_float4x4 = anchorEntity.transformMatrix(relativeTo: nil)
+            anchorEntity.setTransformMatrix(transform * oldTransform, relativeTo: nil)
         }
     }
 }

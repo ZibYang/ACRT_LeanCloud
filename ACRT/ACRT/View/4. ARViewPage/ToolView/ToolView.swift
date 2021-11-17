@@ -70,6 +70,7 @@ struct ToolView: View {
                         goBack.toggle()
                     }
                     sceneManager.ClearWholeAnchors()
+                    httpManager.statusLoc = 0
                     print("pressed")
                 }, label:{
                     Image(systemName: "arrow.backward")
