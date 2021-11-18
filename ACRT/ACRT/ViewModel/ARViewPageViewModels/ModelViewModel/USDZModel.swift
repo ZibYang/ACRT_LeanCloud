@@ -21,11 +21,13 @@ import RealityKit
 import Combine
 
 enum ModelCategory: String, CaseIterable{
-    case letter, foundmental, other
+    case message, letter, foundmental, other
     
     var label: String{
         get{
             switch self{
+            case .message:
+                return "Messages"
             case .letter:
                 return "Letters"
             case .foundmental:

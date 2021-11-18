@@ -55,7 +55,6 @@ struct LeftToolView: View {
             withAnimation(Animation.easeInOut(duration: 0.5)){
 //                selectedToolName = "Create"
                 placementSetting.isInCreationMode = true
-                placementSetting.openModelList = true
             }
             
         }, label:{

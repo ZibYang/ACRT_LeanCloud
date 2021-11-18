@@ -21,7 +21,8 @@ import SwiftUI
 struct CustomCoachingView: View {
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var placementSetting : PlacementSetting
-
+    @EnvironmentObject var userModel: UserViewModel
+    
     @State var animate: Bool = false
     
     @Binding var goBack: Bool
@@ -44,51 +45,46 @@ struct CustomCoachingView: View {
                     .frame(height: 120)
                     .modifier(transitionEffect(x: animate ? -20 : 20))
             }
+            .offset(y:-50)
             if coachingViewModel.showQuitButton{
                 VStack{
                     Text("Current network is not stable")
                         .foregroundColor(.white)
                         .font(.headline)
+                        .padding(.bottom)
                     VStack{
-                        
-                        // MARK: If not sign in
-                        Text("Sign in so you can turn into create mode without location")
+                        // MARK: Hint
+                        Text(userModel.isSignedIn ? "You can turn into create mode and re-localize when you are ready" : "Sign in so you can turn into create mode without location")
                             .font(.headline)
                             .foregroundColor(.gray)
                             .multilineTextAlignment(.center)
+                        
+                        // MARK: If sign in or not sign in
                         Button(action: {
                             withAnimation(Animation.easeInOut(duration: 0.8)){
-                                if coachingViewModel.comeFromPrepareView == true {
-                                    goBack.toggle()
-                                } else {
+                                if userModel.isSignedIn{
                                     coachingViewModel.isCoaching = false
+                                    placementSetting.isInCreationMode = true
+                                    placementSetting.openModelList.toggle()
+                                }else{
+                                    if coachingViewModel.comeFromPrepareView == true {
+                                        coachingViewModel.isCoaching = false
+                                        goBack.toggle()
+                                    } else {
+                                        coachingViewModel.isCoaching = false
+                                    }
                                 }
                             }
                         }, label: {
-                            Text("Return")
+                            Text(userModel.isSignedIn ? "Into create mode" : "Return and sign in")
                         })
-                            .frame(width: 80, height: 35)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(10)
-                        
-                        // MARK: If sign in
-                        Button(action: {
-                            withAnimation(Animation.easeInOut(duration: 0.8)){
-                                coachingViewModel.isCoaching = false
-                                placementSetting.isInCreationMode = true
-                                placementSetting.openModelList.toggle()
-                            }
-                        }, label: {
-                            Text("Into create mode")
-                        })
-                            .frame(width: 160, height: 35)
-                            .background(.ultraThinMaterial)
+                            .frame(width: 180, height: 35)
                             .cornerRadius(10)
                         
                     }
                 }
                 .padding()
-                .offset(y: 190)
+                .offset(y: 150)
             }
             
         }

@@ -33,7 +33,7 @@ struct ModelPickerView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text("Models"), displayMode: .large)
+            .navigationBarTitle(Text("My models"), displayMode: .large)
             .navigationBarItems(trailing:
                   Button(action: {
                     dismissSheet()
@@ -57,6 +57,7 @@ struct HorizontalGrid: View{
             Divider()
             Text(LocalizedStringKey(title))
                 .font(.headline)
+                .padding(.leading)
             ScrollView(.horizontal, showsIndicators: false){
                 LazyHGrid(rows: gridItemLayout){
                     ForEach(0..<items.count){ index in
@@ -88,7 +89,7 @@ struct HorizontalGrid: View{
                 }
             }
         }
-        .padding(.leading)
+        
     }
 }
 

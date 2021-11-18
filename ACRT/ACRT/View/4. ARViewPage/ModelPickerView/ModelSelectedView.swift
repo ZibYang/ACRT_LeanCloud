@@ -24,16 +24,16 @@ struct ModelSelectedView: View {
         HStack(spacing: 30) {
             cacelButton
             
-            Image(systemName: "square.fill")
-                .resizable()
-                .background(.ultraThinMaterial)
-                .opacity(0.5)
-                .frame(width: 100, height: 100)
-                .cornerRadius(12)
-                .overlay(Image(placementSetting.selectedModel)
-                            .resizable()
-                            .aspectRatio(1/1, contentMode: .fit)
-                            .frame(width:90))
+            Button(action: {
+                placementSetting.openModelList = true
+            }, label: {
+                ZStack{
+                    Image(placementSetting.selectedModel == "" ? "questionMark_dark" : placementSetting.selectedModel)
+                        .resizable()
+                        .aspectRatio(1/1, contentMode: .fit)
+                        .frame(width:100)
+                }
+            })
             
             placeButton
         }

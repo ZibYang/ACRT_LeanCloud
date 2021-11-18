@@ -137,6 +137,17 @@
 "Slowly move device to locate..." = "缓慢移动设备进行定位...";
 "Enter Creation Mode" = "进入创作模式";
 "Place" = "放置";
+"Current network is not stable" = "当前网络状态不佳";
+"Sign in so you can turn into create mode without location"="登陆后在未定位成功时也可以进入离线创作模式";
+"You can turn into create mode and re-localize when you are ready" = "您可以进入离线创作模式，等一切就绪后再重新定位";
+"Return and sign in" = "返回注册";
+"Into create mode" = "进入本地创作模式";
+"My models" = "我的模型";
+"Messages" = "情感表达";
+"Letters" = "英文字母";
+"Foundmentals" = "基础模型";
+"Others" = "其他模型";
+
 /* 成就界面 localizable string*/
 "Special Event" = "特别活动";
 "Daily Event" = "每日活动";

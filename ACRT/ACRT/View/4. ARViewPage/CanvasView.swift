@@ -61,6 +61,7 @@ struct CanvasView: View {
                     CustomCoachingView(goBack: $goBack)
                         .environmentObject(coachingViewModel)
                         .environmentObject(placementSetting)
+                        .environmentObject(userModel)
                 }
                 .background(Color.black.opacity(0.5))
             }
