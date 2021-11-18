@@ -38,7 +38,7 @@ class USDZManagerViewModel: ObservableObject {
                                                               "qs_SwiftChangeTheWorld", //16
                                                               "qs_Weather", //17
                                                               "yt_BugerKing", //18
-                                                              "yt_Burger", //19
+                                                              "yt_BugerKing", //19
                                                               "yt_Cocacola", //20
                                                               "yt_Coffee", // 21
                                                               "yt_FrenchFires", //22

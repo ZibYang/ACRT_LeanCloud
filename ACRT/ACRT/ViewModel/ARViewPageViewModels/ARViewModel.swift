@@ -51,7 +51,7 @@ class ARViewModel: ObservableObject{
     
     func RequestLocalization(manager: HttpAuth) {
             let isGrayScale : Bool = true
-            let useSensetime: Bool = false
+            let useSensetime: Bool = true
             let locIntime: Bool = false
             
             guard let arFrame = arView.session.currentFrame else {
@@ -121,9 +121,9 @@ class ARViewModel: ObservableObject{
                                             simd_float4(0.00,  0.00,   -scale,    0.0),
                                                simd_float4(0.0, 0.0, 0.0, 1.0)).transpose
             poseARKitToW = lastCameraPose * srtARKitCToC * manager.T_ci_w
-//            print("DEBUG(BCHO): poseARKitToW", poseARKitToW)
-//            print("DEBUG(BCHO): srtARKitCToC", srtARKitCToC)
-//            print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
+            print("DEBUG(BCHO): poseARKitToW", poseARKitToW)
+            print("DEBUG(BCHO): T_ci_w", manager.T_ci_w)
+            print("DEBUG(BCHO): lastCameraPose", lastCameraPose)
         }
         
         

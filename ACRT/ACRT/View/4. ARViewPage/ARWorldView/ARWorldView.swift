@@ -92,7 +92,7 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        if (self.httpManager.statusLoc == 1 ) {
+        if (self.httpManager.statusLoc == 1) {
             self.arViewModel.onLocalizationResult(manager: httpManager)
             if (self.exploreAnchorManager.isRendered == false) {
                 print("DEBUG(BCH): isRendered : \(self.exploreAnchorManager.isRendered)")

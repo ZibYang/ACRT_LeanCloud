@@ -49,15 +49,17 @@ func getTransformedModelAnchor(modelAnchor : ModelAnchor, T_arkit_w: simd_float4
     guard let transform = modelAnchor.transform else {
         return ModelAnchor(modelName: modelAnchor.modelName, transform: nil, anchorName: modelAnchor.anchorName)
     }
+
     var arKitTransform = T_arkit_w * transform
     return ModelAnchor(modelName: modelAnchor.modelName, transform: arKitTransform, anchorName: modelAnchor.anchorName)
 }
 
 func getTransformMatrix(pos: simd_float3, rotation: simd_float3x3, scale: simd_float3) -> simd_float4x4 {
+    // Note: rotation is col-major matrix
     var matrix = matrix_identity_float4x4
     for i in 0...2 {
         for j in 0...2 {
-            matrix[i][j] = rotation[i][j] * scale[j]
+            matrix[i][j] = rotation[j][i] * scale[j]
         }
         matrix[3][i] = 0
         matrix[i][3] = pos[i]

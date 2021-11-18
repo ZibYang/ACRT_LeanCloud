@@ -55,6 +55,7 @@ class USDZModelList {
     func AreModelsLoaded() -> Bool {
         for model in usdzModelList {
             if model.modelEntity == nil {
+                print("model \(model.modelName) does not exist ")
                 return false
             }
         }
