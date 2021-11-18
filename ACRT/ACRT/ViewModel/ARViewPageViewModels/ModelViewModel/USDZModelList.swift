@@ -51,5 +51,14 @@ class USDZModelList {
         }
         return nil
     }
+    
+    func AreModelsLoaded() -> Bool {
+        for model in usdzModelList {
+            if model.modelEntity == nil {
+                return false
+            }
+        }
+        return true
+    }
 
 }

@@ -43,7 +43,8 @@ class USDZManagerViewModel: ObservableObject {
                                                               "yt_Coffee", // 21
                                                               "yt_FrenchFires", //22
                                                               "yt_KFC", //23
-                                                              "yt_McDonald's"], //24
+                                                              "yt_McDonald's",
+                                                             "Title"], //24
                                                          categoryList: [.other, //1
                                                                         .other, //2
                                                                         .other, //3
@@ -68,6 +69,7 @@ class USDZManagerViewModel: ObservableObject {
                                                                         .other, // 21
                                                                         .other, //22
                                                                         .other, //23
+                                                                        .other,
                                                                         .other])  //24
     
     var createModelList = USDZModelList(usdzModelNameList:["user_like_blue", //1
@@ -170,6 +172,10 @@ class USDZManagerViewModel: ObservableObject {
     
     func getExploreModel(modelName: String) -> USDZModel? {
         return exploreModelList.getUSDZModel(modelName: modelName)
+    }
+    
+    func AreExploreModelLibrariesLoaded() -> Bool {
+        return exploreModelList.AreModelsLoaded()
     }
     
 }

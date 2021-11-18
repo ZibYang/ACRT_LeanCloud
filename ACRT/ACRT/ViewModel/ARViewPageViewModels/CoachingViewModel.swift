@@ -46,7 +46,7 @@ class CoachingViewModel : ObservableObject {
                 }
             }
             if(self.isCoaching) {
-//                while(!usdzManagerViewModel.AreModelLibrariesLoaded()) {
+//                while(!usdzManagerViewModel.AreExploreModelLibrariesLoaded()) {
 //                    sleep(1)
 //                }
                 DispatchQueue.main.async {

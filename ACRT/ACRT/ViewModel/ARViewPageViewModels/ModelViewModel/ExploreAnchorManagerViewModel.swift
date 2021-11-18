@@ -24,7 +24,10 @@ class ExploreAnchorManagerViewModel : ObservableObject {
     var isRendered : Bool = false
     
     init() {
-        initializeInherentModelsShelf()
+//        initializeInherentModelsShelf()
+        initializeInherentModelsQiuShi()
+//        initializeInherentModelsQiuShiSensetime()
+
     }
     
     func initializeInherentModelsInTime() {
@@ -43,25 +46,19 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let worldRight = normalize(cross(-1 * worldUp, -1 * worldFront))
         //Qiushi
         let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
-        let model1 = ModelAnchor(modelName: "Hello_World_Globe", pos: simd_float3(12.4161, -2.48313, 9.02723), rotation: rotationMatrix, scale: simd_float3(1,1,1))
 
-        let model2 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(-8.45376, -2.92693, 9.33032), rotation: rotationMatrix, scale: simd_float3(1,1,1))
-
-        let model3 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(33.3995, -2.83004, 7.99316), rotation: rotationMatrix, scale: simd_float3(1,1,1))
-        
-        let model4 = ModelAnchor(modelName: "Title", pos: simd_float3(112.4831, -7.83952, 13.8966), rotation: rotationMatrix, scale: simd_float3(20,20,20))
-        
-        let model5 = ModelAnchor(modelName: "flight", pos: simd_float3(-0.822067, -9.01792, 11.3803), rotation: rotationMatrix, scale: simd_float3(10,10,10))
-        
-        let model6 = ModelAnchor(modelName: "gear", pos: simd_float3(25.6591, -8.51259, 10.7296), rotation: rotationMatrix, scale: simd_float3(10,10,10))
-        
-        let model7 = ModelAnchor(modelName: "hammer", pos: simd_float3(1.90713, -0.380037, 2.17264), rotation: rotationMatrix, scale: simd_float3(10,10,10))
-        
-        let model8 = ModelAnchor(modelName: "SwiftChangeTheWorld.usdz", pos: simd_float3(22.2034, -0.347333, 1.56218), rotation: rotationMatrix, scale: simd_float3(10,10,10))
-        
-        
-        modelAnchorList = [model1, model2, model3, model4, model5, model6, model7, model8]
-
+        let model1 = ModelAnchor(modelName: "qs_AppStore", pos: simd_float3(0.35, -0.9024, 4.4489), rotation: rotationMatrix, scale: simd_float3(0.4, 0.4, 0.4))
+        let model2 = ModelAnchor(modelName: "qs_AppleLogo_right", pos: simd_float3(7.4656, -3.0853, 6.3871), rotation: rotationMatrix, scale: simd_float3(50,50,50))
+        let model3 = ModelAnchor(modelName: "qs_AppleLogo_left", pos: simd_float3(15.4656, -3.085,6.3871), rotation: rotationMatrix, scale: simd_float3(1,1,1))
+        let model4 = ModelAnchor(modelName: "qs_AppleMusic", pos: simd_float3(18.1737, -7.88608, 14.1996), rotation: rotationMatrix, scale: simd_float3(40,40,40))
+        let model5 = ModelAnchor(modelName: "qs_Calendar", pos: simd_float3(20.559, -1.39, 2.754), rotation: rotationMatrix, scale: simd_float3(40,40,40))
+        let model6 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(12.1793, -1.3317, 8.66942), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+        let model7 = ModelAnchor(modelName: "Title", pos: simd_float3(12.5103, -7.78159, 6.9709), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+        let model8 = ModelAnchor(modelName: "qs_Camera", pos: simd_float3(8.61513, -7.44404, 14.6042), rotation: rotationMatrix, scale: simd_float3(8,8,8))
+        let model9 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(-8.03984, -2.56496, 9.19537), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+        let model10 = ModelAnchor(modelName: "qs_SwiftChangeTheWorld", pos: simd_float3(33.907, -2.3223, 7.93072), rotation: rotationMatrix, scale: simd_float3(4,4,4))
+        modelAnchorList = [model1, model2, model3, model4, model5,model6, model7,model8, model9, model10]
+    
     }
     
     func initializeInherentModelsShelf()  {
@@ -88,12 +85,17 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let worldRight = normalize(cross(-1 * worldUp, -1 * worldFront))
         //Qiushi
         let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
-        let model1 = ModelAnchor(modelName: "hello", pos: simd_float3(59.538483, 9.173322, 0.584023), rotation: rotationMatrix, scale: simd_float3(1,1,1))
-
-        let model2 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(59.506565, 30.814552, 1.062348), rotation: rotationMatrix, scale: simd_float3(1,1,1))
-
-        let model3 = ModelAnchor(modelName: "AppleLogo", pos: simd_float3(59.398548, -11.554224, 1.109176), rotation: rotationMatrix, scale: simd_float3(1,1,1))
-        modelAnchorList = [model1, model2, model3]
+        let model1 = ModelAnchor(modelName: "qs_AppStore", pos: simd_float3(62.734833, -1.281104, -0.013874), rotation: rotationMatrix, scale: simd_float3(0.4, 0.4, 0.4))
+        let model2 = ModelAnchor(modelName: "qs_AppleLogo_right", pos: simd_float3(57.134, 3.7623, 1.928), rotation: rotationMatrix, scale: simd_float3(100,100,100))
+        let model3 = ModelAnchor(modelName: "qs_AppleLogo_left", pos: simd_float3(61.406, 3.7623, 1.928), rotation: rotationMatrix, scale: simd_float3(0.8,0.8,0.8))
+        let model4 = ModelAnchor(modelName: "qs_AppleMusic", pos: simd_float3(57.474, 13.969, 4.2688), rotation: rotationMatrix, scale: simd_float3(40,40,40))
+        let model5 = ModelAnchor(modelName: "qs_Calendar", pos: simd_float3(65.32, 18.528, 0.0), rotation: rotationMatrix, scale: simd_float3(40,40,40))
+        let model6 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(59.135, 11.017, 0), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+        let model7 = ModelAnchor(modelName: "Title", pos: simd_float3(55.291, 8.356, 5.2607), rotation: rotationMatrix, scale: simd_float3(40,40,40))
+        let model8 = ModelAnchor(modelName: "qs_Camera", pos: simd_float3(55.046, 5.023, 5.50), rotation: rotationMatrix, scale: simd_float3(8,8,8))
+        let model9 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(59.135, 11.017, 0.001), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+        let model10 = ModelAnchor(modelName: "qs_SwiftChangeTheWorld", pos: simd_float3(60.92, 31.17, 2.27), rotation: rotationMatrix, scale: simd_float3(4,4,4))
+        modelAnchorList = [model1, model2, model3, model4, model5,model6, model7,model8, model9,model10]
 
     }
     
