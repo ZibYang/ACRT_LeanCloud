@@ -26,7 +26,7 @@ class UserViewModel: ObservableObject{
     
     @Published var userAge = ""
     
-    @Published var userImage = ""
+    @Published var userImageuserImage = ""
     
     @Published var message = ""
     
@@ -41,31 +41,61 @@ class UserViewModel: ObservableObject{
         updateUserInfo()
     }
     
-    func tryToSignUp(photoURL: URL?, username: String, password: String, email: String, phone: String, age: String){
+    func tryToSignUp(photo: UIImage?, username: String, password: String, email: String, phone: String, age: String){
         message = ""
-        do {
-            let user = LCUser()  // create a new User
-            try user.set("username", value: username) // equal user.username = LCString("Tom")
-            try user.set("password", value: password)
-            try user.set("age", value: age)
-            
-            // Optional
-            try user.set("email", value: email)
-            try user.set("mobilePhoneNumber", value: phone)
-            try user.set("password", value: password)
             // User Image
-            if let url = photoURL{
-                let file = LCFile(payload: .fileURL(fileURL: url))
+            if let image = photo{
+                let file = LCFile(payload: .data(data: image.pngData()!))
                 _ = file.save() { (result) in
                     switch result {
                     case .success:
                         // save success
                         if let value = file.url?.value {
                             print("[zzy userViewModel debug] Image saved, URL is: \(value)")
-                            do{
-                                try user.set("imageURL", value: file)
-                            }catch{
-                                print("[zzy userViewModel debug] Error to save URL to user: \(error)")
+                            do {
+                                let user = LCUser()  // create a new User
+                                try user.set("username", value: username) // equal user.username = LCString("Tom")
+                                try user.set("password", value: password)
+                                try user.set("age", value: age)
+                                
+                                // Optional
+                                try user.set("email", value: email)
+                                try user.set("mobilePhoneNumber", value: phone)
+                                try user.set("password", value: password)
+                                try user.set("imageURL", value: file.url!)
+                                
+                                _ = user.signUp { (result) in
+                                    switch result {
+                                    case .success:
+                                        // sign up success then sign in directly
+                                        _ = LCUser.logIn(username: username, password: password) { result in
+                                            switch result {
+                                            case .success(object: let user):
+                                                self.updateUserInfo()
+                                                print(user)
+                                            case .failure(error: let error):
+                                                print("[zzy userViewModel debug] error to sign in \(error)")
+                                                if let errorInfo = error.reason{
+                                                    self.message += "\n"
+                                                    self.message += errorInfo
+                                                    self.signUpError = true
+                                                    return
+                                                }
+                                            }
+                                        }
+                                        break
+                                    case .failure(error: let error):
+                                        if let errorInfo = error.reason{
+                                            self.message += "\n"
+                                            self.message += errorInfo
+                                            self.signUpError = true
+                                            return
+                                        }
+                                        print("[zzy userViewModel debug] error to sign up \(error)")
+                                    }
+                                }
+                            } catch {
+                                print("[userViewModel debug] Errorcode : \(error as NSError)")
                             }
                         }
                     case .failure(error: let error):
@@ -77,43 +107,52 @@ class UserViewModel: ObservableObject{
                         }
                     }
                 }
-            }
-            
-            _ = user.signUp { (result) in
-                switch result {
-                case .success:
-                    // sign up success then sign in directly
-                    _ = LCUser.logIn(username: username, password: password) { result in
+            } else {
+                do {
+                    let user = LCUser()  // create a new User
+                    try user.set("username", value: username) // equal user.username = LCString("Tom")
+                    try user.set("password", value: password)
+                    try user.set("age", value: age)
+                    
+                    // Optional
+                    try user.set("email", value: email)
+                    try user.set("mobilePhoneNumber", value: phone)
+                    try user.set("password", value: password)
+                    
+                    _ = user.signUp { (result) in
                         switch result {
-                        case .success(object: let user):
-                            self.updateUserInfo()
-                            print(user)
+                        case .success:
+                            // sign up success then sign in directly
+                            _ = LCUser.logIn(username: username, password: password) { result in
+                                switch result {
+                                case .success(object: let user):
+                                    self.updateUserInfo()
+                                    print(user)
+                                case .failure(error: let error):
+                                    print("[zzy userViewModel debug] error to sign in \(error)")
+                                    if let errorInfo = error.reason{
+                                        self.message += "\n"
+                                        self.message += errorInfo
+                                        self.signUpError = true
+                                        return
+                                    }
+                                }
+                            }
+                            break
                         case .failure(error: let error):
-                            print("[zzy userViewModel debug] error to sign in \(error)")
                             if let errorInfo = error.reason{
                                 self.message += "\n"
                                 self.message += errorInfo
                                 self.signUpError = true
                                 return
                             }
+                            print("[zzy userViewModel debug] error to sign up \(error)")
                         }
                     }
-                    break
-                case .failure(error: let error):
-                    if let errorInfo = error.reason{
-                        self.message += "\n"
-                        self.message += errorInfo
-                        self.signUpError = true
-                        return
-                    }
-                    print("[zzy userViewModel debug] error to sign up \(error)")
+                } catch {
+                    print("[userViewModel debug] Errorcode : \(error as NSError)")
                 }
             }
-
-        } catch {
-            print("[userViewModel debug] Errorcode : \(error as NSError)")
-        }
-        
     }
     
     func updateUserInfo(){

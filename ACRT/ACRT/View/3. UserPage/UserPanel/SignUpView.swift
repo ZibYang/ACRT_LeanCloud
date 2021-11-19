@@ -86,7 +86,7 @@ struct SignUpView: View {
         Button(action: {
             // check all information is correct
             if signUpViewModel.AllInfomationWithNoError(){
-                userModel.tryToSignUp(photoURL: signUpViewModel.photoURL,
+                userModel.tryToSignUp(photo: signUpViewModel.inputImage,
                                               username: signUpViewModel.userName,
                                               password: signUpViewModel.password,
                                               email: signUpViewModel.email,
