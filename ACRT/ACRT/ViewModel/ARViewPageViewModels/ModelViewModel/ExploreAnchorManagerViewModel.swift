@@ -85,17 +85,25 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let worldRight = normalize(cross(-1 * worldUp, -1 * worldFront))
         //Qiushi
         let rotationMatrix : simd_float3x3 = simd_float3x3(columns:(worldRight, worldUp, worldFront))
-        let model1 = ModelAnchor(modelName: "qs_AppStore", pos: simd_float3(62.734833, -1.281104, -0.013874), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+        let model1 = ModelAnchor(modelName: "qs_AppStore", pos: simd_float3(62.734833, -1.281104, -0.013874), rotation: rotationMatrix, scale: simd_float3(30,30,30))
          let model2 = ModelAnchor(modelName: "qs_AppleLogo_right", pos: simd_float3(57.134, 3.7623, 1.928), rotation: rotationMatrix, scale: simd_float3(50,50,50))
          let model3 = ModelAnchor(modelName: "qs_AppleLogo_left", pos: simd_float3(61.406, 11.7623, 1.928), rotation: rotationMatrix, scale: simd_float3(1,1,1))
-         let model4 = ModelAnchor(modelName: "qs_AppleMusic", pos: simd_float3(57.474, 13.969, 4.2688), rotation: rotationMatrix, scale: simd_float3(40,40,40))
+         let model4 = ModelAnchor(modelName: "qs_AppleMusic", pos: simd_float3(57.474, 13.969, 5.5088), rotation: rotationMatrix, scale: simd_float3(60,60,60))
          let model5 = ModelAnchor(modelName: "qs_Calendar", pos: simd_float3(65.32, 18.528, 0.0), rotation: rotationMatrix, scale: simd_float3(40,40,40))
          let model6 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(59.135, 11.017, 0), rotation: rotationMatrix, scale: simd_float3(15,15,15))
-         let model7 = ModelAnchor(modelName: "Title", pos: simd_float3(55.291, 8.356, 5.2607), rotation: rotationMatrix, scale: simd_float3(15,15,15))
-         let model8 = ModelAnchor(modelName: "qs_Camera", pos: simd_float3(55.046, 5.023, 5.50), rotation: rotationMatrix, scale: simd_float3(8,8,8))
-         let model9 = ModelAnchor(modelName: "qs_Hello", pos: simd_float3(60.92, -5, 2.27), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+         let model7 = ModelAnchor(modelName: "Title", pos: simd_float3(55.291, 8.356, 9.2607), rotation: rotationMatrix, scale: simd_float3(15,15,15))
+         let model8 = ModelAnchor(modelName: "qs_Camera", pos: simd_float3(55.046, 5.023, 5.50), rotation: rotationMatrix, scale: simd_float3(12,12,12))
+         let model9 = ModelAnchor(modelName: "qs_Swift", pos: simd_float3(60.92, -9, 2.27), rotation: rotationMatrix, scale: simd_float3(15,15,15))
          let model10 = ModelAnchor(modelName: "qs_SwiftChangeTheWorld", pos: simd_float3(60.92, 31.17, 2.27), rotation: rotationMatrix, scale: simd_float3(4,4,4))
-         modelAnchorList = [model1, model2, model3, model4, model5,model6, model7,model8, model9,model10]
+        let model11 = ModelAnchor(modelName: "qs_Facetime", pos: simd_float3(56.0926, -3.03, 2.27), rotation: rotationMatrix, scale: simd_float3(6.3,6.3,6.3))
+        let model12 = ModelAnchor(modelName: "qs_Health", pos: simd_float3(56.0926, 19.03, 2.27), rotation: rotationMatrix, scale: simd_float3(6.3, 6.3, 6.3))
+        let model13 = ModelAnchor(modelName: "qs_Home", pos: simd_float3(67.41,14.31, -0.86), rotation: rotationMatrix, scale: simd_float3(6.3,6.3,6.3))
+        let model14 = ModelAnchor(modelName: "qs_iMessage", pos: simd_float3(67.41,3.08, -0.86), rotation: rotationMatrix, scale: simd_float3(6.3, 6.3, 6.3))
+        let model15 = ModelAnchor(modelName: "qs_Phone", pos: simd_float3(55.785,-0.70, 4.80), rotation: rotationMatrix, scale: simd_float3(6.4,6.4,6.4))
+        let model16 = ModelAnchor(modelName: "qs_iBook", pos: simd_float3(55.785,17.269, 4.80), rotation: rotationMatrix, scale: simd_float3(60,60,60))
+        let model17 = ModelAnchor(modelName: "qs_Weather", pos: simd_float3(63.1652,25.246, 0.7361), rotation: rotationMatrix, scale: simd_float3(6.3,6.3,6.3))
+        let model18 = ModelAnchor(modelName: "qs_Safari", pos: simd_float3(63.165,-3.61, 0.73), rotation: rotationMatrix, scale: simd_float3(6.3,6.3,6.3))
+         modelAnchorList = [model1, model2, model3, model4, model5,model6, model7,model8, model9,model10, model11, model12, model13, model14, model15, model16, model17, model18]
 
 
 
