@@ -39,6 +39,7 @@ struct ARWorldView:  UIViewRepresentable {
     var userName : String
     var testBool : Bool = false
     @StateObject var exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
+    @StateObject var persistence: PersistenceHelperViewModel = PersistenceHelperViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()
@@ -180,11 +181,16 @@ struct ARWorldView:  UIViewRepresentable {
     
     private func handlePersistence(for arView:  CustomARView) {
         if self.sceneManager.shouldUploadSceneToCloud {
-            PersistenceHelperViewModel.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseWToARKit: arViewModel.poseARKitToW)
+            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseWToARKit: arViewModel.poseARKitToW)
             self.sceneManager.shouldUploadSceneToCloud = false
         } else if self.sceneManager.shouldDownloadSceneFromCloud {
-            let modelAnchors = PersistenceHelperViewModel.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
+            let modelAnchors = persistence.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: modelAnchors)
+            self.sceneManager.shouldDownloadSceneFromCloud = false
+        }
+        
+        if persistence.anchors.count > 0 {
+            self.placementSetting.modelWaitingForPlacement.append(contentsOf: persistence.anchors)
             self.sceneManager.shouldDownloadSceneFromCloud = false
         }
     }
