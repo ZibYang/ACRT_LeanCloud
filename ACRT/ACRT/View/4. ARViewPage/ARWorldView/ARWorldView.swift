@@ -124,12 +124,12 @@ struct ARWorldView:  UIViewRepresentable {
     private func updateModels() {
         if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast(),let model = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName) {
             if model.modelEntity != nil {
-                print("DEBUG(BCH): place \(modelAnchor.modelName) nil")
+                print("DEBUG(BCH): load \n\(modelAnchor.modelName) ")
                 self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
             } else {
                 model.asyncLoadModelEntity() {  completed, error in
                     if completed {
-                        print("DEBUG(BCH): place \(modelAnchor.modelName)")
+                        print("DEBUG(BCH): load nil model\n \(modelAnchor.modelName)")
                         self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
                     }
                 }
@@ -143,7 +143,7 @@ struct ARWorldView:  UIViewRepresentable {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
                 // Anchor needs to be created from placement
                 let anchorName = modelAnchor.anchorName!
-                print("DEBUG(BCH): anchor \(anchorName) has transform \(modelAnchor.transform)")
+                print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
                 //let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
@@ -180,6 +180,9 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func handlePersistence(for arView:  CustomARView) {
+        if self.arViewModel.hasBeenLocalized == false || userName == "" {
+            return
+        }
         if self.sceneManager.shouldUploadSceneToCloud {
             persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseWToARKit: arViewModel.poseARKitToW)
             self.sceneManager.shouldUploadSceneToCloud = false
@@ -191,6 +194,7 @@ struct ARWorldView:  UIViewRepresentable {
         
         if persistence.anchors.count > 0 {
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: persistence.anchors)
+            persistence.anchors.removeAll()
             self.sceneManager.shouldDownloadSceneFromCloud = false
         }
     }

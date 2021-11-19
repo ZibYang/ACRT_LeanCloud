@@ -39,7 +39,7 @@ struct CanvasView: View {
     
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, userName: "BCH")
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, userName: userModel.isSignedIn == true ?userModel.userName:"")
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(usdzManagerViewModel)

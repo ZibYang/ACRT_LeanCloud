@@ -66,12 +66,10 @@ class PersistenceHelperViewModel: ObservableObject {
                         var object_poses: [String] = []
                         
                         for anchorEntity in anchorEntities {
-                //            print("anchorEnity \(anchorEntity.name) transform \(anchorEntity.transformMatrix(relativeTo: nil))")
-
-                            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != usrname {
+                            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] == usrname {
                                 let poseWToAnchor = poseWToARKit * anchorEntity.transformMatrix(relativeTo: nil)
                                 // save username , anchor.name , poseWToAnchor
-                                
+                                print("[LH] append \(anchorEntity.name) ")
                                 object_names.append(anchorEntity.name)
                                 object_poses.append(poseWToAnchor.debugDescription)
                             }
@@ -122,10 +120,13 @@ class PersistenceHelperViewModel: ObservableObject {
                         
                         let name = AnchorIdentifierHelper.decode(identifier: obeject_name)[1]
                         print("[LH] \(name)")
-                        let trans = simd_float4x4(object_pose)
-                        print("[LH] \(String(describing: trans))")
+                        guard let trans = simd_float4x4(object_pose) else {
+                            return
+                        }
+                        let poseARKitToModel = poseWToARKit.inverse * trans
+                        print("[LH] \(String(describing: poseARKitToModel))")
                         
-                        let anchor = ModelAnchor(modelName: name, transform : trans, anchorName: obeject_name)
+                        let anchor = ModelAnchor(modelName: name, transform : poseARKitToModel, anchorName: obeject_name)
                         self.anchors.append(anchor)
                     }
                     

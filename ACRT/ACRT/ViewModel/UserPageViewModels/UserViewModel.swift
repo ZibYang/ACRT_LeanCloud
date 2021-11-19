@@ -26,7 +26,7 @@ class UserViewModel: ObservableObject{
     
     @Published var userAge = ""
     
-    @Published var userImageuserImage = ""
+    @Published var userImage = ""
     
     @Published var message = ""
     

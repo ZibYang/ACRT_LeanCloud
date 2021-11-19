@@ -32,6 +32,7 @@ class ARViewModel: ObservableObject{
 
     var lastCameraPose: simd_float4x4 = simd_float4x4()
     var poseARKitToW: simd_float4x4 = matrix_identity_float4x4
+    var hasBeenLocalized : Bool = false
     var lastPoseARKitToW: simd_float4x4 = matrix_identity_float4x4
     let scale : Float = 1.0 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
     
@@ -115,6 +116,7 @@ class ARViewModel: ObservableObject{
         }
         
         func onLocalizationResult(manager: HttpAuth) {
+            hasBeenLocalized = true
             lastPoseARKitToW = poseARKitToW
             let srtARKitCToC: simd_float4x4 = simd_float4x4(simd_float4(scale,  0.000,   0.00,    0.0),
                                             simd_float4(0.000,     -scale,   0.00,   0.000),
