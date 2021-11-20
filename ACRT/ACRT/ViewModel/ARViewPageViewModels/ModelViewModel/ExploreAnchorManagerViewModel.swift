@@ -24,9 +24,9 @@ class ExploreAnchorManagerViewModel : ObservableObject {
     var isRendered : Bool = false
     
     init() {
-//        initializeInherentModelsShelf()
+        initializeInherentModelsShelf()
 //        initializeInherentModelsQiuShi()
-        initializeInherentModelsQiuShiSensetime()
+//        initializeInherentModelsQiuShiSensetime()
 
     }
     

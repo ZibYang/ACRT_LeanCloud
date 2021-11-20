@@ -184,10 +184,10 @@ struct ARWorldView:  UIViewRepresentable {
             return
         }
         if self.sceneManager.shouldUploadSceneToCloud {
-            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseWToARKit: arViewModel.poseARKitToW)
+            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseARKitToW: arViewModel.poseARKitToW)
             self.sceneManager.shouldUploadSceneToCloud = false
         } else if self.sceneManager.shouldDownloadSceneFromCloud {
-            let modelAnchors = persistence.downloadScene(poseWToARKit: arViewModel.poseARKitToW)
+            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW)
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: modelAnchors)
             self.sceneManager.shouldDownloadSceneFromCloud = false
         }

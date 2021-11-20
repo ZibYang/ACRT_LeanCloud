@@ -37,8 +37,9 @@ class PersistenceHelperViewModel: ObservableObject {
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
     // So whenever we load a scene from file, we will use the model and ARAnchor pair for placement.
-    func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseWToARKit : simd_float4x4 ) {
+    func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 ) {
         print("Save scene to local filesystem.")
+
         // find anchorentity -> add entity
 //            check if scene is already exist
             let query = LCQuery(className: "Scene")
@@ -67,9 +68,10 @@ class PersistenceHelperViewModel: ObservableObject {
                         
                         for anchorEntity in anchorEntities {
                             if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] == usrname {
-                                let poseWToAnchor = poseWToARKit * anchorEntity.transformMatrix(relativeTo: nil)
+                                let poseWToAnchor = poseARKitToW.inverse * anchorEntity.transformMatrix(relativeTo: nil)
                                 // save username , anchor.name , poseWToAnchor
-                                print("[LH] append \(anchorEntity.name) ")
+                                print("[LH] upload \(anchorEntity.name) with raw trans \(anchorEntity.transformMatrix(relativeTo: nil))")
+                                print("[LH] upload \(anchorEntity.name) with poseWToAnchor trans \(poseWToAnchor.debugDescription)")
                                 object_names.append(anchorEntity.name)
                                 object_poses.append(poseWToAnchor.debugDescription)
                             }
@@ -97,7 +99,7 @@ class PersistenceHelperViewModel: ObservableObject {
 
     }
     
-    func downloadScene(poseWToARKit : simd_float4x4) -> [ModelAnchor]{
+    func downloadScene(poseARKitToW : simd_float4x4) -> [ModelAnchor]{
         print("Load scene from local filesystem.")
         // return models which is appended into confirmedModel
     
@@ -123,8 +125,10 @@ class PersistenceHelperViewModel: ObservableObject {
                         guard let trans = simd_float4x4(object_pose) else {
                             return
                         }
-                        let poseARKitToModel = poseWToARKit.inverse * trans
-                        print("[LH] \(String(describing: poseARKitToModel))")
+                        print("[LH] trans\n \(String(describing: trans))")
+
+                        let poseARKitToModel = poseARKitToW * trans
+                        print("[LH] poseARKitToModel\n \(String(describing: poseARKitToModel))")
                         
                         let anchor = ModelAnchor(modelName: name, transform : poseARKitToModel, anchorName: obeject_name)
                         self.anchors.append(anchor)
