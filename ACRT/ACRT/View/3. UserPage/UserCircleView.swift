@@ -26,11 +26,12 @@ struct UserCircleView: View {
         Button(action: {
             showUserPanel.toggle()
         }, label:{
-            Image(systemName: "person.crop.circle")
+            Image(uiImage: userModel.userImage == nil ? UIImage(systemName: "person.crop.circle")! : userModel.userImage!)
+                .renderingMode(userModel.userImage == nil ? .template : .original)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 30, height: 30)
-                .padding(6)
+                .padding(7)
                 .background(.ultraThinMaterial)
                 .clipShape(Circle())
         })
