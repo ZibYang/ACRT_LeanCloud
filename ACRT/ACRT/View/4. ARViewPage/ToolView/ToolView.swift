@@ -177,7 +177,7 @@ struct ToolView: View {
             .background(.ultraThinMaterial)
             .cornerRadius(10)
             .contextMenu{
-                Label("Locate again", systemImage: "trash.circle.fill")
+                Label("Batch deletion: click the button.\nSingle Object deletion: long press the object", systemImage: "trash.circle.fill")
             }
     }
         

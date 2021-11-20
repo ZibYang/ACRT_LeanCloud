@@ -148,14 +148,14 @@ struct ARWorldView:  UIViewRepresentable {
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 } else {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: true)
+                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
                 let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
+                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: false)
             }
     }
         
