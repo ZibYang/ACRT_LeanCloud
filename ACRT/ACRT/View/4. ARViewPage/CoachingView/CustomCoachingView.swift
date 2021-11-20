@@ -77,7 +77,10 @@ struct CustomCoachingView: View {
                                 }
                             }
                         }, label: {
-                            Text(userModel.isSignedIn ? "Into create mode" : "Return and sign in")
+                            HStack {
+                                Text(userModel.isSignedIn ? "Into create mode" : "Return and sign in")
+                                Image(systemName: "chevron.forward")
+                            }
                         })
                             .frame(width: 180, height: 35)
                             .cornerRadius(10)

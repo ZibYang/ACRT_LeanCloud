@@ -58,7 +58,7 @@ struct UserLoggedinView: View {
     }
     
     var profileView: some View{
-        HStack(alignment: .center, spacing: 50) {
+        HStack(alignment: .center, spacing: 30) {
             userImageView
             
             

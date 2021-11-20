@@ -26,7 +26,7 @@ class UserViewModel: ObservableObject{
     
     @Published var userAge = ""
     
-    @Published var userImage :UIImage?
+    @Published var userImage: UIImage?
     
     @Published var message = ""
     
@@ -215,6 +215,7 @@ class UserViewModel: ObservableObject{
         LCUser.logOut()
         self.capabilitySatisfied = "optional"
         isSignedIn = false
+        userImage = nil
     }
 
 }
