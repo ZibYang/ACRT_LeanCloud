@@ -148,6 +148,7 @@ struct ToolView: View {
             httpManager.statusLoc = 0
             placementSetting.isInCreationMode = false
             coachingViewModel.comeFromPrepareView = false
+            showCameraButton = false
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
         }, label:{
             Image(systemName: "location")
