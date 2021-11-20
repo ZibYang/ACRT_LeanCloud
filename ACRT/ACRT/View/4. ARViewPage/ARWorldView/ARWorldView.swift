@@ -153,6 +153,7 @@ struct ARWorldView:  UIViewRepresentable {
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
                 let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
+                print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
                 self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
             }

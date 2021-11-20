@@ -23,6 +23,8 @@ struct ToolView: View {
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+    @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
+
 
     @State var showBottomView = false
     @State var showCameraButton = false
@@ -44,8 +46,19 @@ struct ToolView: View {
             leftToolGroup
                     
             snapShotButton
+            if modelDeletionManager.entitySelectedForDeletion == nil {
+                placeModelView
+            } else {
+                VStack{
+                    Spacer()
+                    DeletionView()
+                        .environmentObject(sceneManager)
+                        .environmentObject(modelDeletionManager)
+                        .padding()
+                }
+                
+            }
             
-            placeModelView
         }
         
     }

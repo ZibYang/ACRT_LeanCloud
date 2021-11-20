@@ -11,7 +11,12 @@ import Foundation
 private let anchorIdentifierDelimiter : String = "|"
 class AnchorIdentifierHelper {
     class func encode(userName: String, modelName :String) -> String {
-        return userName + anchorIdentifierDelimiter + modelName + anchorIdentifierDelimiter + randomString(length: 2)
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd.HH.mm.ss.SSSS"
+
+        return userName + anchorIdentifierDelimiter + modelName + anchorIdentifierDelimiter + formatter.string(from: date)
+
     }
     
     class func decode(identifier : String) -> [String] {
