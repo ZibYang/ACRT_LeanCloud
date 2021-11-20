@@ -33,6 +33,8 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
     @Published var capabilitySatisfied = "requireNotDetermine"
     
+    @Published var isInsideQiuShi = false
+
     //MARK: For prepareView
     let indicatorImageName = "LocateRequire"
     let indicatorTitle = "Open Map Service"
@@ -78,6 +80,23 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
             return false;
         }
     }
+    
+    // is Locate in QiuShi
+    func isLocationInQiuShi(location:CLLocationCoordinate2D) -> Bool{
+        // Google: latitude, Longtitude
+        // TopLeading: 30.304775, 120.074420                 TopTrailling: 30.304775, 120.075120
+        
+        //                      QiuShi Hall:  center: 30.304497, 120.074852
+        
+        // BottomLeading: 30.304574, 120.074420             BottomTrailling: 30.304574, 120.075120
+        if (location.longitude > 120.074420 || location.longitude < 120.075120 || location.latitude < 30.304775 || location.latitude > 30.304574){
+            // Inside The QiuShi Hall Area
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     
     // Calculate Latitude
     func transformLatWithX(x:Double,y:Double)->Double{
@@ -146,6 +165,8 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         guard let location = locations.last else { return }
         let acculateLocation = transformFromWGSToGCJ(wgsLoc: location.coordinate)
+        // Check if inside QiuShi Area
+        isInsideQiuShi = isLocationInQiuShi(location: acculateLocation)
         self.region = MKCoordinateRegion(center: acculateLocation, latitudinalMeters: 1000, longitudinalMeters: 1000)
         // Update the Map
         self.mapView.setRegion(self.region, animated: true)
