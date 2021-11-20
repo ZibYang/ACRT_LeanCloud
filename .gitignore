@@ -99,3 +99,5 @@ ACRT/Pods/
 
 ACRT/ACRT/Resource/*
 *.usdz
+ACRT/USDZModel
+ACRT/USDZModel.zip
