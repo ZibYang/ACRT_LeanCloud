@@ -89,7 +89,11 @@ struct SignInWithEmailAndPasswordView: View {
             }
         }
         .environmentObject(userModel)
-        
+        .alert(isPresented: $userModel.signUpError){
+            Alert(title: Text("Apologize"),
+                  message:Text(LocalizedStringKey(userModel.signUpErrorMessage)),
+                  dismissButton: .default(Text("OK")))
+        }
     }
         
     var emailSheet: some View{

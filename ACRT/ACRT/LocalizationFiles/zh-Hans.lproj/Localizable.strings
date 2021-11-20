@@ -92,9 +92,10 @@
 "Sign up with ACRT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
 "See more..." = "了解更多...";
 "Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "请遵循密码设置规则: \n 1. 以大写字母开头 \n 2. 密码长度大于8位" ;
+"The email is already taken by another user." = "您输入的邮箱已注册";
 "OK" = "好的";
 "Submit" = "提交";
-
+"Let's Change the World!" = "一起创造城市新视界！";
 /* 更新提示 localization string*/
 "What's new" = "最近更新";
 "MAIC 2021" = "移动应用创新赛";

@@ -45,9 +45,9 @@ struct ModelPickerView: View {
 }
 
 struct HorizontalGrid: View{
+    @Environment(\.presentationMode) var presentationMode
     let title: String
     let items: [USDZModel]
-    @Environment(\.dismiss) var dismissSheet
     private let gridItemLayout = [GridItem(.fixed(150))]
     
     @EnvironmentObject var placementSetting: PlacementSetting
@@ -65,7 +65,7 @@ struct HorizontalGrid: View{
                         Button(action:{
                             placementSetting.selectedModel = model.modelName
                             print("DEBUG(BCH): select \(placementSetting.selectedModel)")
-                            dismissSheet()
+                            presentationMode.wrappedValue.dismiss()
                         }, label:{
                             if let unwrapedUIImage = model.modelPreviewImage {
                                 Image(uiImage: unwrapedUIImage)
