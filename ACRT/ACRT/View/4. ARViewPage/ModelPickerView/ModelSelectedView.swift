@@ -22,8 +22,6 @@ struct ModelSelectedView: View {
 
     var body: some View {
         HStack(spacing: 30) {
-            cacelButton
-            
             Button(action: {
                 placementSetting.openModelList = true
             }, label: {
@@ -36,6 +34,8 @@ struct ModelSelectedView: View {
             })
             
             placeButton
+            
+            cancelButton
         }
     }
     
