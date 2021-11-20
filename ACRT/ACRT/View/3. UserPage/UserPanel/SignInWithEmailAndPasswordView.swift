@@ -17,6 +17,7 @@
 // [localize SecureField in iOS 15] reference: https://stackoverflow.com/questions/69293197/textfield-swiftui-xcode-13
 // [focusState] reference: https://developer.apple.com/documentation/swiftui/focusstate
 // [List Is already Scrollable] reference: https://developer.apple.com/forums/thread/126898
+// [hide keyBoard] reference: https://designcode.io/swiftui-handbook-hide-keyboard
 
 import SwiftUI
 
@@ -31,52 +32,62 @@ struct SignInWithEmailAndPasswordView: View {
     @State var emptyEmail = false
     @State var emptyPassword = false
     @State var incorrectInput = false
-    @State var loginSuccess = false
     
     @State var signUpNow = false
-    
+    @State var fogetPasswordPressed = false
     var body: some View {
-        NavigationView {
-            List{
-                Section {
-                    emailSheet
-                        
-                    passwordSheet
-                        
-                }// Info input Section
-                
-                Section(content: {
-                    signInButton
-                }, footer: {
-                    fogetPasswordSheet
-                }) // Button Section
-                
-                Section(header: Text("What's new"), content: {
-                    ForEach(whatIsNew.updates, id:\.self){updateMessage in
-                        WhatIsNewView(update: updateMessage)
+        ZStack {
+            NavigationView {
+                List{
+                    Section {
+                        emailSheet
+                            
+                        passwordSheet
+                            
+                    }// Info input Section
+                    
+                    Section(content: {
+                        signInButton
+                    }, footer: {
+                        fogetPasswordSheet
+                    }) // Button Section
+                    
+                    Section(header: Text("What's new"), content: {
+                        ForEach(whatIsNew.updates, id:\.self){updateMessage in
+                            WhatIsNewView(update: updateMessage)
+                        }
+                    }) // What's new Section
+                    
+                } // List
+                .onSubmit {
+                    switch focusedField{
+                    case .account:
+                        focusedField = .password
+                    default:
+                        checkAndLogIn()
                     }
-                }) // What's new Section
-                
-            } // List
-            .onSubmit {
-                switch focusedField{
-                case .account:
-                    focusedField = .password
-                default:
-                    checkAndLogIn()
                 }
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarLeading){
+                        leadingTollBarItem
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing){
+                        traillingTollBarItem
+                    }
+                }
+                .navigationTitle(Text("Log in"))
+                .navigationBarTitleDisplayMode(.inline)
+            } // navigation
+            
+            if userModel.signInProcessing || userModel.signUpProcessing{
+                Color.black
+                    .opacity(0.8)
+                    .ignoresSafeArea()
+                ProgressView(LocalizedStringKey(userModel.processingMessage))
+                    .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                    .foregroundColor(.white)
             }
-            .toolbar{
-                ToolbarItem(placement: .navigationBarLeading){
-                    leadingTollBarItem
-                }
-                ToolbarItem(placement: .navigationBarTrailing){
-                    traillingTollBarItem
-                }
-            }
-            .navigationTitle(Text("Log in"))
-            .navigationBarTitleDisplayMode(.inline)
-        } // navigation
+        }
         .environmentObject(userModel)
         
     }
@@ -119,15 +130,22 @@ struct SignInWithEmailAndPasswordView: View {
         HStack{
             Spacer()
             Button(action:{
+                fogetPasswordPressed.toggle()
             }, label:{
                 Text("Forget account or password?")
             })
             Spacer()
         }
+        .alert(isPresented: $fogetPasswordPressed){
+            Alert(title: Text("Apologize"),
+                  message: Text("Can not reset password now \n Please contact with admin."),
+                  dismissButton: .default(Text("OK")))
+        }
     }
     
     var signInButton: some View{
         Button(action: {
+            hideKeyboard()
             checkAndLogIn()
         }, label: {
             Text("Log in")
@@ -142,16 +160,12 @@ struct SignInWithEmailAndPasswordView: View {
                       message: Text("Empty password is not acceptable."),
                       dismissButton: .default(Text("Got it")))
             }
-            .alert(isPresented: $incorrectInput){
+            .alert(isPresented: $userModel.signInError){
                 Alert(title: Text("Error"),
-                      message: Text("Incorrect account or password"),
+                      message: Text(LocalizedStringKey(userModel.signInErrorMessage)),
                       dismissButton: .default(Text("Try it again")))
             }
-            .alert(isPresented: $loginSuccess){
-                Alert(title: Text("Success"),
-                      message: Text("Welcome to ACRT"),
-                      dismissButton: .default(Text("OK")))
-            }
+            
     }
     
     var leadingTollBarItem: some View{
@@ -184,17 +198,7 @@ struct SignInWithEmailAndPasswordView: View {
             focusedField = .password
             return
         }else{
-            let result =  userModel.tryToLogin(account: inputAccount, password: inputPassword)
-            switch result {
-                case 0:
-                    incorrectInput.toggle()
-                    inputPassword = ""
-                    focusedField = .password
-                case 1:
-                    loginSuccess.toggle()
-                default:
-                    print("[Error]: result is :\(result)")
-            }
+            userModel.tryToLogin(account: inputAccount, password: inputPassword)
         }
     }
 }

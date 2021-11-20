@@ -63,7 +63,6 @@ struct SignUpView: View {
                         finishButton
                     }
                 })
-                
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .onAppear(perform: {
@@ -92,6 +91,7 @@ struct SignUpView: View {
                                               email: signUpViewModel.email,
                                               phone: signUpViewModel.phoneNumber,
                                               age: signUpViewModel.age)
+                dismissSheet()
             }
             
         }, label: {
@@ -100,7 +100,7 @@ struct SignUpView: View {
         .disabled(signUpViewModel.image == nil || signUpViewModel.userName == "" || signUpViewModel.password == "" ||  signUpViewModel.email == "" || signUpViewModel.phoneNumber == "")
         .alert(isPresented: $userModel.signUpError){
             Alert(title: Text(LocalizedStringKey(signUpViewModel.errorTitle)),
-                  message:Text(LocalizedStringKey(userModel.message)),
+                  message:Text(LocalizedStringKey(userModel.signUpErrorMessage)),
                   dismissButton: .default(Text("OK")))
         }
     }
@@ -138,11 +138,13 @@ struct SignUpView: View {
                 signUpViewModel.showImagePicker.toggle()
             }
         }
+        // FIXME: using Camera
         .alert(isPresented: $signUpViewModel.showCamera){
             Alert(title: Text("Apologize"),
                   message:Text("Can not use camera yet. This function will active in the near future."),
                   dismissButton: .default(Text("OK")))
         }
+        // Using Image Picker
         .sheet(isPresented: $signUpViewModel.showImagePicker, onDismiss: loadImage){
             UserPhotoPickerView(image: $signUpViewModel.inputImage, imageURL: $signUpViewModel.photoURL)
         }

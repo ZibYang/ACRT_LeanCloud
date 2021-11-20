@@ -35,7 +35,7 @@ class SignUpViewModel: ObservableObject{
     
     //MARK: Error Message
     let errorTitle = "Apologize"
-    let userNameErrorMessage = "Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20"
+    let userNameErrorMessage = "Please follow the naming rules\n 1. Start with letter \n 2. Length between 4 and 20"
     let ageErrorMessage = "Age can not above 99"
     let phoneErrorMessage = "Please input right phone number"
     let emailErrorMessage = "Please input right email"
@@ -90,7 +90,7 @@ class SignUpViewModel: ObservableObject{
     }
     
     func validateUserName(){
-        let userNameRegex = "^[A-Za-z0-9]{6,20}+$"
+        let userNameRegex = "^[A-Za-z0-9]{4,20}+$"
         let userNamePredicate = NSPredicate(format: "SELF MATCHES %@", userNameRegex)
         if !userNamePredicate.evaluate(with: self.userName){
             userNameError.toggle()

@@ -52,12 +52,18 @@
 "Phone Number" = "手机号码";
 "Recived Code" = "验证码";
 "Send" = "发送";
-
+"join" = "登陆";
 "Apologize" = "抱歉" ;
 "Empty email is not acceptable" = "请输入邮箱账号";
 "Empty password is not acceptable" = "请输入密码";
 "Got it" = "好的";
-
+"Signing in, please wait..." = "正在登陆中，请等待...";
+"Registering, please wait..." = "正在注册新用户，请等待...";
+"Error" = "错误";
+"Try it again" = "再试一次";
+"Could not find user." = "登陆用户名错误，登陆失败";
+"The username and password mismatch." = "登陆用户密码错误，登陆失败";
+"Can not reset password now \n Please contact with admin." = "目前暂不支持密码找回\n 请联系管理员";
 /* 注册 localization string*/
 "Finish" = "完成";
 "Cancel" = "取消";
@@ -70,7 +76,7 @@
 "Choose Photo" = "从相册中选择";
 
 "Account name" = "账户名称";
-"Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20" = "请遵循命名规则: \n 1. 以大写或小写字母开头 \n 2. 长度在6至20之间";
+"Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20" = "请遵循命名规则: \n 1. 以大写或小写字母开头 \n 2. 长度在4至20之间";
 "Log in required" = "登陆时使用，必填";
 "User Age" = "用户年龄";
 "Optional" = "可选项";

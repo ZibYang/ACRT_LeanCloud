@@ -28,9 +28,19 @@ class UserViewModel: ObservableObject{
     
     @Published var userImage: UIImage?
     
-    @Published var message = ""
+    @Published var signUpErrorMessage = ""
+    
+    @Published var signInErrorMessage = ""
+    
+    @Published var signUpProcessing = false
+    
+    @Published var signInProcessing = false
+    
+    @Published var processingMessage = "Registering, please wait..."
     
     @Published var signUpError = false
+    
+    @Published var signInError = false
     
     //MARK: For prepareView
     let indicatorImageName = "AccountRequire"
@@ -42,7 +52,9 @@ class UserViewModel: ObservableObject{
     }
     
     func tryToSignUp(photo: UIImage?, username: String, password: String, email: String, phone: String, age: String){
-        message = ""
+        signUpProcessing.toggle()
+        processingMessage = "Registering, please wait..."
+        signUpErrorMessage = ""
             // User Image
             if let image = photo{
                 let file = LCFile(payload: .data(data: image.pngData()!))
@@ -67,6 +79,7 @@ class UserViewModel: ObservableObject{
                                 _ = user.signUp { (result) in
                                     switch result {
                                     case .success:
+                                        self.signUpProcessing.toggle()
                                         // sign up success then sign in directly
                                         _ = LCUser.logIn(username: username, password: password) { result in
                                             switch result {
@@ -76,21 +89,20 @@ class UserViewModel: ObservableObject{
                                             case .failure(error: let error):
                                                 print("[zzy userViewModel debug] error to sign in \(error)")
                                                 if let errorInfo = error.reason{
-                                                    self.message += "\n"
-                                                    self.message += errorInfo
-                                                    self.signUpError = true
-                                                    return
+                                                    self.signUpErrorMessage += "\n"
+                                                    self.signUpErrorMessage += errorInfo
                                                 }
+                                                self.signUpError = true
                                             }
                                         }
                                         break
                                     case .failure(error: let error):
+                                        self.signUpProcessing.toggle()
                                         if let errorInfo = error.reason{
-                                            self.message += "\n"
-                                            self.message += errorInfo
-                                            self.signUpError = true
-                                            return
+                                            self.signUpErrorMessage += "\n"
+                                            self.signUpErrorMessage += errorInfo
                                         }
+                                        self.signUpError = true
                                         print("[zzy userViewModel debug] error to sign up \(error)")
                                     }
                                 }
@@ -100,11 +112,12 @@ class UserViewModel: ObservableObject{
                         }
                     case .failure(error: let error):
                         print("[zzy userViewModel debug] error to upload URL \(error)")
+                        self.signUpProcessing.toggle()
                         // save failed
                         if let errorInfo = error.reason{
-                            self.message += errorInfo
-                            self.signUpError = true
+                            self.signUpErrorMessage += errorInfo
                         }
+                        self.signUpError = true
                     }
                 }
             } else {
@@ -122,30 +135,15 @@ class UserViewModel: ObservableObject{
                     _ = user.signUp { (result) in
                         switch result {
                         case .success:
-                            // sign up success then sign in directly
-                            _ = LCUser.logIn(username: username, password: password) { result in
-                                switch result {
-                                case .success(object: let user):
-                                    self.updateUserInfo()
-                                    print(user)
-                                case .failure(error: let error):
-                                    print("[zzy userViewModel debug] error to sign in \(error)")
-                                    if let errorInfo = error.reason{
-                                        self.message += "\n"
-                                        self.message += errorInfo
-                                        self.signUpError = true
-                                        return
-                                    }
-                                }
-                            }
+                            self.tryToLogin(account: username, password: password)
                             break
                         case .failure(error: let error):
                             if let errorInfo = error.reason{
-                                self.message += "\n"
-                                self.message += errorInfo
-                                self.signUpError = true
-                                return
+                                self.signUpErrorMessage += "\n"
+                                self.signUpErrorMessage += errorInfo
+                                
                             }
+                            self.signUpError = true
                             print("[zzy userViewModel debug] error to sign up \(error)")
                         }
                     }
@@ -197,18 +195,24 @@ class UserViewModel: ObservableObject{
         }
     }
     
-    func tryToLogin(account: String, password: String) -> Int{
-        var logInStatus = 0
+    func tryToLogin(account: String, password: String){
+        signInErrorMessage = ""
+        signInProcessing.toggle()
+        processingMessage = "Signing in, please wait..."
         _ = LCUser.logIn(username: account, password: password){result in
             switch result {
             case .success(object: _):
+                self.signInProcessing.toggle()
                 self.updateUserInfo()
-                logInStatus = 1
-            case .failure(error: _):
-                logInStatus = 0
+            case .failure(error: let error):
+                self.signInProcessing.toggle()
+                if let errorInfo = error.reason{
+                    self.signInErrorMessage += errorInfo
+                }
+                self.signInError.toggle()
+                return
             }
         }
-        return logInStatus
     }
     
     func tryToLogout(){

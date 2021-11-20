@@ -61,7 +61,6 @@ struct UserLoggedinView: View {
         HStack(alignment: .center, spacing: 30) {
             userImageView
             
-            
             userInfoView
             
             Spacer()
@@ -82,6 +81,7 @@ struct UserLoggedinView: View {
                 .resizable()
                 .aspectRatio(contentMode: userModel.userImage == nil ? .fit : .fill)
                 .foregroundColor(.gray)
+                .opacity(userModel.userImage == nil ? 0.5 : 1.0)
                 .frame(width: 90, height: 90)
                 .cornerRadius(50)
                 .overlay(Circle().stroke(Color.white, lineWidth: 1.0))

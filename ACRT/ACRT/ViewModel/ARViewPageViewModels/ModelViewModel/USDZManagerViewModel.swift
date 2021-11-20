@@ -79,20 +79,20 @@ class USDZManagerViewModel: ObservableObject {
                                                                        ])
     
     var createModelList = USDZModelList(usdzModelNameList:["user_like_blue", //1
-                                                           "user_like_green", //2
-                                                           "user_like_purple", //3
-                                                           "user_like_red", //4
-                                                           "user_like_yellow", //5
-                                                           "user_love_red", //6
-                                                           "user_love_white", //7
+                                                           "user_like_red", //2
+                                                           "user_love_red", //3
+                                                           "user_love_white", //4
+                                                           
                                                             "user_letter_A", //1
                                                             "user_letter_B", //2
                                                             "user_letter_C", //3
                                                             "user_letter_D", //4
                                                             "user_letter_E", //5
-                                                            "user_letter_H", //6
-                                                            "user_letter_L", //7
-                                                            "user_letter_O", //8
+                                                            "user_letter_F", //6
+                                                            "user_letter_H", //7
+                                                            "user_letter_L", //8
+                                                            "user_letter_O", //9
+                                                            "user_letter_P", //10
                                                            
 //                                                           "user_message_HELLO!", //1
 //                                                           "user_message_LOL", //2
@@ -114,14 +114,15 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_message_BOOM!", //18
                                                            "user_message_COOL", //19
 //                                                           "user_message_CRASH!" //20
+                                                           
+                                                           "user_emoji_smileWithSweat", //1
+                                                           "user_emoji_smile" //2
                                                           ],
                                         categoryList:[.foundmental, //1
                                                       .foundmental, //2
                                                       .foundmental, //3
                                                       .foundmental, //4
-                                                      .foundmental, //5
-                                                      .foundmental, //6
-                                                      .foundmental, //7
+
                                                        .letter, //1
                                                        .letter, //2
                                                        .letter, //3
@@ -130,6 +131,9 @@ class USDZManagerViewModel: ObservableObject {
                                                        .letter, //6
                                                        .letter, //7
                                                        .letter, //8
+                                                       .letter, //9
+                                                       .letter, //10
+                                                      
                                                       
 //                                                      .message, //1
 //                                                      .message, //2
@@ -151,6 +155,9 @@ class USDZManagerViewModel: ObservableObject {
                                                       .message, //18
                                                       .message, //19
 //                                                      .message //20
+                                                      
+                                                      .emoji,
+                                                      .emoji
                                                      ])
     
 //    func AreModelLibrariesLoaded() -> Bool {
