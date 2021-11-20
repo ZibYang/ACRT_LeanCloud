@@ -39,7 +39,7 @@ struct ModelSelectedView: View {
         }
     }
     
-    var cacelButton: some View{
+    var cancelButton: some View{
         Button(action: {
             
         }, label: {
