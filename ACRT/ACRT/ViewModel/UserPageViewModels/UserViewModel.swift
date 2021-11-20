@@ -26,7 +26,7 @@ class UserViewModel: ObservableObject{
     
     @Published var userAge = ""
     
-    @Published var userImage = ""
+    @Published var userImage: UIImage?
     
     @Published var message = ""
     
@@ -155,6 +155,23 @@ class UserViewModel: ObservableObject{
             }
     }
     
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
+    func downloadImage(from url: URL) {
+        print("Download image Started")
+        getData(from: url) { data, response, error in
+            guard let data = data, error == nil else { return }
+            print(response?.suggestedFilename ?? url.lastPathComponent)
+            print("Download image  Finished")
+            // always update the UI from the main thread
+            DispatchQueue.main.async() { [weak self] in
+                self?.userImage = UIImage(data: data)
+            }
+        }
+    }
+    
     func updateUserInfo(){
         if let user = LCApplication.default.currentUser{
             // TODO: other infomation
@@ -166,10 +183,12 @@ class UserViewModel: ObservableObject{
             }else{
                 userAge = "Unknown"
             }
-            if let image = user.get("imageURL")?.stringValue{
-                userImage = image
+            if let imageURL = user.get("imageURL")?.stringValue{
+                if let url = URL(string: imageURL){
+                    downloadImage(from: url)
+                }
             }
-            print("[zzy] userImage: \(userImage)")
+            print("[zzy] userImage loading")
             capabilitySatisfied = "satisfied"
             isSignedIn = true
         }else{
@@ -196,6 +215,7 @@ class UserViewModel: ObservableObject{
         LCUser.logOut()
         self.capabilitySatisfied = "optional"
         isSignedIn = false
+        userImage = nil
     }
 
 }

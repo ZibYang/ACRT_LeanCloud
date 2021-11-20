@@ -43,8 +43,11 @@ class USDZManagerViewModel: ObservableObject {
                                                               "yt_Coffee", // 21
                                                               "yt_FrenchFires", //22
                                                               "yt_KFC", //23
-                                                              "yt_McDonald's",
-                                                             "Title"], //24
+                                                              "yt_McDonald's",//24
+                                                              "qs_findMy", //25
+                                                              "qs_Title", //26
+                                                              "qs_contact" //27
+                                                             ],
                                                          categoryList: [.other, //1
                                                                         .other, //2
                                                                         .other, //3
@@ -69,8 +72,11 @@ class USDZManagerViewModel: ObservableObject {
                                                                         .other, // 21
                                                                         .other, //22
                                                                         .other, //23
-                                                                        .other,
-                                                                        .other])  //24
+                                                                        .other, //24
+                                                                        .other, //25
+                                                                        .other, //26
+                                                                        .other //27
+                                                                       ])
     
     var createModelList = USDZModelList(usdzModelNameList:["user_like_blue", //1
                                                            "user_like_green", //2
@@ -79,19 +85,19 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_like_yellow", //5
                                                            "user_love_red", //6
                                                            "user_love_white", //7
-                                                        //    "user_letter_A", //1
-                                                        //    "user_letter_B", //2
-                                                        //    "user_letter_C", //3
-                                                        //    "user_letter_D", //4
-                                                        //    "user_letter_E", //5
-                                                        //    "user_letter_H", //6
-                                                        //    "user_letter_L", //7
-                                                        //    "user_letter_O", //8
+                                                            "user_letter_A", //1
+                                                            "user_letter_B", //2
+                                                            "user_letter_C", //3
+                                                            "user_letter_D", //4
+                                                            "user_letter_E", //5
+                                                            "user_letter_H", //6
+                                                            "user_letter_L", //7
+                                                            "user_letter_O", //8
                                                            
 //                                                           "user_message_HELLO!", //1
 //                                                           "user_message_LOL", //2
 //                                                           "user_message_OHNO!", //3
-//                                                           "user_message_OMG!", //4
+                                                           "user_message_OMG!", //4
 //                                                           "user_message_OOPS!", //5
 //                                                           "user_message_OUCH!", //6
 //                                                           "user_message_ZZZ..", //7
@@ -100,13 +106,13 @@ class USDZManagerViewModel: ObservableObject {
 //                                                           "user_message_SHH!", //10
 //                                                           "user_message_WTF", //11
 //                                                           "user_message_YEAH!", //12
-//                                                           "user_message_YES!", //13
+                                                           "user_message_YES!", //13
 //                                                           "user_message_YES!2", //14
 //                                                           "user_message_DAMN!", //15
 //                                                           "user_message_ZAP!", //16
-//                                                           "user_message_BANG!", //17
-//                                                           "user_message_BOOM!", //18
-//                                                           "user_message_COOL", //19
+                                                           "user_message_BANG!", //17
+                                                           "user_message_BOOM!", //18
+                                                           "user_message_COOL", //19
 //                                                           "user_message_CRASH!" //20
                                                           ],
                                         categoryList:[.foundmental, //1
@@ -116,19 +122,19 @@ class USDZManagerViewModel: ObservableObject {
                                                       .foundmental, //5
                                                       .foundmental, //6
                                                       .foundmental, //7
-                                                    //   .letter, //1
-                                                    //   .letter, //2
-                                                    //   .letter, //3
-                                                    //   .letter, //4
-                                                    //   .letter, //5
-                                                    //   .letter, //6
-                                                    //   .letter, //7
-                                                    //   .letter, //8
+                                                       .letter, //1
+                                                       .letter, //2
+                                                       .letter, //3
+                                                       .letter, //4
+                                                       .letter, //5
+                                                       .letter, //6
+                                                       .letter, //7
+                                                       .letter, //8
                                                       
 //                                                      .message, //1
 //                                                      .message, //2
 //                                                      .message, //3
-//                                                      .message, //4
+                                                      .message, //4
 //                                                      .message, //5
 //                                                      .message, //6
 //                                                      .message, //7
@@ -137,13 +143,13 @@ class USDZManagerViewModel: ObservableObject {
 //                                                      .message, //10
 //                                                      .message, //11
 //                                                      .message, //12
-//                                                      .message, //13
+                                                      .message, //13
 //                                                      .message, //14
 //                                                      .message, //15
 //                                                      .message, //16
-//                                                      .message, //17
-//                                                      .message, //18
-//                                                      .message, //19
+                                                      .message, //17
+                                                      .message, //18
+                                                      .message, //19
 //                                                      .message //20
                                                      ])
     

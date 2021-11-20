@@ -110,10 +110,18 @@ struct PrepareView: View {
     var useLidarDeviceRecommandation: some View{
         DisclosureGroup(isExpanded: $checkLidarDeviceList, content: {
             Text("Recommend devices include")
-            EquippedLiDARDevicesView(deviceName: "iPhone 13 Pro series", iconName: "iphone")
-            EquippedLiDARDevicesView(deviceName: "iPhone 12 Pro series", iconName: "iphone")
-            EquippedLiDARDevicesView(deviceName: "iPad Pro 12.9-inch 4/5th-generation", iconName: "ipad")
-            EquippedLiDARDevicesView(deviceName: "iPad Pro 11-inch 2/3th-generation", iconName: "ipad")
+            Link(destination: URL(string: "https://www.apple.com.cn/iphone/")!,
+                 label: {
+                    EquippedLiDARDevicesView(deviceName: "iPhone 13 Pro series", iconName: "iphone")})
+            Link(destination: URL(string: "https://www.apple.com.cn/iphone/")!,
+                 label: {
+                    EquippedLiDARDevicesView(deviceName: "iPhone 12 Pro series", iconName: "iphone")})
+            Link(destination: URL(string: "https://www.apple.com.cn/ipad-pro/")!,
+                 label: {
+                    EquippedLiDARDevicesView(deviceName: "iPad Pro 12.9-inch 4/5th-generation", iconName: "ipad")})
+            Link(destination: URL(string: "https://www.apple.com.cn/ipad-pro/")!,
+                 label: {
+                    EquippedLiDARDevicesView(deviceName: "iPad Pro 11-inch 2/3th-generation", iconName: "ipad")})
         }){
             IndicatorView(indicatorImageName: arViewModel.indicatorImageName,
                          indicatorTitle: arViewModel.indicatorTitle,
@@ -134,7 +142,7 @@ struct PrepareView: View {
                                labelText: "Tourist can:",
                                buttonText: "explore",
                                capabilityLevel: $userModel.capabilitySatisfied,
-                               buttonTapped: $introduceExporeAndCreate)
+                               buttonTapped: $introduceExpore)
             
         }){
             IndicatorView(indicatorImageName: userModel.indicatorImageName,
@@ -143,7 +151,7 @@ struct PrepareView: View {
                           satisfied: $userModel.capabilitySatisfied)
         }
         .sheet(isPresented: $introduceExpore){
-            WhatMeansExporeView()
+            WhatMeansExploreView()
         }
         .sheet(isPresented: $introduceExporeAndCreate){
             WhatMeansCreateView()
@@ -162,6 +170,7 @@ struct PrepareView: View {
                 everythingIsNotSetYetWarning.toggle()
             }
             coachingViewModel.comeFromPrepareView = true
+            coachingViewModel.isInsideQiushi = mapModel.isInsideQiuShi
             print("DEBUG(BCH): comeFromPrepareView")
         }, label: {
             HStack {

@@ -13,6 +13,7 @@ class CoachingViewModel : ObservableObject {
     @Published var isCoaching : Bool = false
     @Published var showQuitButton : Bool = false
     @Published var comeFromPrepareView : Bool = true
+    @Published var isInsideQiushi: Bool = false
     var maxWaitForLoc : Double  = 3
     
     

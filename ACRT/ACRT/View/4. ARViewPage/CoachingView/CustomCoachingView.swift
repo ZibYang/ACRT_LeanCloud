@@ -48,7 +48,8 @@ struct CustomCoachingView: View {
             .offset(y:-50)
             if coachingViewModel.showQuitButton{
                 VStack{
-                    Text("Current network is not stable")
+                    Text(coachingViewModel.isInsideQiushi ? "Current network is not stable" : "ACRT location services are not available in the current area")
+
                         .foregroundColor(.white)
                         .font(.headline)
                         .padding(.bottom)
@@ -76,7 +77,10 @@ struct CustomCoachingView: View {
                                 }
                             }
                         }, label: {
-                            Text(userModel.isSignedIn ? "Into create mode" : "Return and sign in")
+                            HStack {
+                                Text(userModel.isSignedIn ? "Into create mode" : "Return and sign in")
+                                Image(systemName: "chevron.forward")
+                            }
                         })
                             .frame(width: 180, height: 35)
                             .cornerRadius(10)

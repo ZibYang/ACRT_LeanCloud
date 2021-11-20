@@ -123,6 +123,10 @@
 "Tourist can:" = "游客可以进行:";
 "explore and create" = "探索和创造";
 "explore" = "探索";
+"Explore" = "探索";
+"Create" = "创造";
+"Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "随时随地，当您完成定位后就可以在城市的指定区域内**尽情探索无穷无尽的奇妙新世界**，可能遇到的是异次元的美食，也可能是神奇的动物，一切都在等着你去发现！";
+"This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "这一次，**不再只做信息的获取者** 您可以通过摆放模型来表达自己的心情、装饰城市，而且这一切都可以被其他小伙伴共享，城市的一切都因你而焕然一新";
 
 "Requirement not fullfill!" = "还有运行条件不满足！";
 "Check it again" = "再检查一下";
@@ -132,12 +136,13 @@
 "Into Augmented City Brain New World" = "进入城市新视界";
 
 "My ART Chest" = "我的艺术档案";
-
+"%@ 's badge" = "%@的徽章";
 /* AR界面 localizable string*/
 "Slowly move device to locate..." = "缓慢移动设备进行定位...";
 "Enter Creation Mode" = "进入创作模式";
 "Place" = "放置";
 "Current network is not stable" = "当前网络状态不佳";
+"ACRT location services are not available in the current area" = "ACRT无法在当前区域提供定位服务";
 "Sign in so you can turn into create mode without location"="登陆后在未定位成功时也可以进入离线创作模式";
 "You can turn into create mode and re-localize when you are ready" = "您可以进入离线创作模式，等一切就绪后再重新定位";
 "Return and sign in" = "返回注册";
