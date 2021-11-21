@@ -69,7 +69,7 @@ struct PrepareView: View {
                 HStack{
                     Spacer()
                     UserCircleView()
-                        .offset(x: coachingViewModel.isCoaching ? 70 : 0)
+                        .offset(x: coachingViewModel.isCoaching ? 200 : 0)
                         .padding(.top, 8)
                 }
                 .padding(.trailing)

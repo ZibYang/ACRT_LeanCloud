@@ -41,6 +41,8 @@ struct ModelPickerView: View {
                     Text("Cancel")
                 }))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        
     }
 }
 
