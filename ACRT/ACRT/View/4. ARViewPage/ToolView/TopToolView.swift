@@ -30,7 +30,7 @@ struct TopToolView: View {
                 showMesh.toggle()
             }, label:{
                 Image(systemName: "square.grid.3x3.square")
-                    .foregroundColor(.white)
+                    .foregroundColor(showMesh ? .green : .white)
                     .frame(width: 40, height: 40)
             })
                 .contextMenu{
@@ -49,30 +49,6 @@ struct TopToolView: View {
                 .contextMenu{
                     Label("Take a snap shot", systemImage: "camera.aperture")
                 }
-            
-            // MARK: upload button
-            Button(action: {
-                sceneManager.shouldUploadSceneToCloud = true
-            }, label:{
-                Image(systemName: "icloud.and.arrow.up")
-                    .foregroundColor(.white)
-                    .frame(width: 40, height: 40)
-            })
-//                .contextMenu{
-//                    Label("Upload objects", systemImage: "square.dashed")
-//                }
-            
-            // MARK: download button
-            Button(action: {
-                sceneManager.shouldDownloadSceneFromCloud = true
-            }, label:{
-                Image(systemName: "icloud.and.arrow.down")
-                    .foregroundColor(.white)
-                    .frame(width: 40, height: 40)
-            })
-//                .contextMenu{
-//                    Label("Downloads objects", systemImage: "square.dashed")
-//                }
         }
     }
 }

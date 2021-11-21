@@ -52,6 +52,8 @@ pod init # if Podfile exit then skip this step
 
 - Open `xxx.xworkspace`
 
+    > Use Package: [FoucusEntity](https://github.com/ZibYang/FocusEntity)
+
 ## Debug hint
 
 

@@ -18,6 +18,8 @@
 // Since we did't choose a AR app at the first begining, so we have to add some key personally,
 // which includs: *Required Device capabilites* and *Privacy-Camera Usage Description*
 
+// [snapShot] reference: https://github.com/josh-wayda/ARScreenShot
+
 import ARKit
 import SwiftUI
 import RealityKit

@@ -88,7 +88,7 @@ struct CustomCoachingView: View {
                     }
                 }
                 .padding()
-                .offset(y: 150)
+                .offset(y: 140)
             }
             
         }

@@ -14,7 +14,10 @@
 
 //  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 
+// [playSound] reference: https://www.hackingwithswift.com/example-code/media/how-to-play-sounds-using-avaudioplayer
+//             reference: https://www.hackingwithswift.com/forums/swiftui/playing-sound/4921
 import SwiftUI
+import AVFoundation
 
 struct ToolView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
@@ -28,6 +31,7 @@ struct ToolView: View {
 
     @State var showBottomView = false
     @State var showCameraButton = false
+    @State var audioPlayer: AVAudioPlayer!
     
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
@@ -44,7 +48,9 @@ struct ToolView: View {
             topToolGroup
             
             leftToolGroup
-                    
+            
+            rightToolGroup
+            
             snapShotButton
             if modelDeletionManager.entitySelectedForDeletion == nil {
                 placeModelView
@@ -68,7 +74,7 @@ struct ToolView: View {
             Spacer()
             ModelSelectedView()
                 .environmentObject(placementSetting)
-                .padding()
+                .padding(.horizontal)
         }
         .offset(y: placementSetting.isInCreationMode && !showCameraButton ? 0 : 300)
     }
@@ -122,23 +128,14 @@ struct ToolView: View {
                 Spacer()
             }
             .padding(.horizontal)
-            .offset(x: coachingViewModel.isCoaching ? -150 : 0)
             HStack {
                 relocationButton
                 Spacer()
             }
             .padding(.horizontal)
-            .offset(x: coachingViewModel.isCoaching ? -150 : 0)
-            HStack {
-                clearSceneButton
-                Spacer()
-            }
-            .padding(.horizontal)
-            .offset(x: coachingViewModel.isCoaching ? -150 : 0)
             Spacer()
-            
-
         }
+        .offset(x: coachingViewModel.isCoaching ? -150 : 0)
     }
     
     
@@ -163,6 +160,32 @@ struct ToolView: View {
             }
     }
     
+    var rightToolGroup: some View{
+        VStack{
+            Spacer()
+            // MARK: Left center tool
+            HStack {
+                Spacer()
+                VStack{
+                    downloadButton
+                    
+                    uploadButton
+                    
+                    clearSceneButton
+                }
+                .padding(.all, 6)
+                .background(.ultraThinMaterial)
+                .cornerRadius(10)
+            }
+            .padding(.horizontal)
+            .offset(x: coachingViewModel.isCoaching ? 150 : 0)
+            .offset(x: placementSetting.isInCreationMode ? 0 : 150)
+            Spacer()
+            
+
+        }
+    }
+    
     var clearSceneButton: some View{
         //MARK: clear Button
         Button(action: {
@@ -173,19 +196,53 @@ struct ToolView: View {
                 .foregroundColor(.white)
                 .frame(width: 40, height: 40)
         })
-            .padding(.all, 6)
-            .background(.ultraThinMaterial)
-            .cornerRadius(10)
             .contextMenu{
                 Label("Batch deletion: click the button.\nSingle Object deletion: long press the object", systemImage: "trash.circle.fill")
             }
     }
+    var uploadButton: some View{
+        // MARK: upload button
+        Button(action: {
+            sceneManager.shouldUploadSceneToCloud = true
+        }, label:{
+            Image(systemName: "icloud.and.arrow.up")
+                .foregroundColor(.white)
+                .frame(width: 40, height: 40)
+        })
+            .contextMenu{
+                Label("Upload objects", systemImage: "square.dashed")
+            }
         
+    }
+    
+    var downloadButton: some View{
+        // MARK: download button
+        Button(action: {
+            sceneManager.shouldDownloadSceneFromCloud = true
+        }, label:{
+            Image(systemName: "icloud.and.arrow.down")
+                .foregroundColor(.white)
+                .frame(width: 40, height: 40)
+        })
+            .contextMenu{
+                Label("Downloads objects", systemImage: "square.dashed")
+            }
+    }
+    
     var snapShotButton: some View{
         VStack{
             Spacer()
             // MARK: SnapShot button
             Button(action: {
+                guard let shutterPath = Bundle.main.url(forResource: "ARKitInteraction_shutter.mp3", withExtension: nil) else{
+                    fatalError("Unable to find ARKitInteraction_shutter.mp3 in bundle")
+                }
+                do{
+                    audioPlayer = try AVAudioPlayer(contentsOf: shutterPath)
+                    audioPlayer.play()
+                }catch{
+                    print(error.localizedDescription)
+                }
                 snapshotBackgroundOpacity = 1.0
                 withAnimation(Animation.easeInOut(duration: 1.0)){
                     snapshotBackgroundOpacity = 0.0
@@ -214,15 +271,35 @@ struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
             ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
-            
+                .environmentObject(PlacementSetting())
+                .environmentObject(SceneManagerViewModel())
+                .environmentObject(CoachingViewModel())
+                .environmentObject(HttpAuth())
+                .environmentObject(ARViewModel())
+                .environmentObject(USDZManagerViewModel())
+                .environmentObject(ModelDeletionManagerViewModel())
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
                 ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
+                    .environmentObject(PlacementSetting())
+                    .environmentObject(SceneManagerViewModel())
+                    .environmentObject(CoachingViewModel())
+                    .environmentObject(HttpAuth())
+                    .environmentObject(ARViewModel())
+                    .environmentObject(USDZManagerViewModel())
+                    .environmentObject(ModelDeletionManagerViewModel())
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
             ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
+                .environmentObject(PlacementSetting())
+                .environmentObject(SceneManagerViewModel())
+                .environmentObject(CoachingViewModel())
+                .environmentObject(HttpAuth())
+                .environmentObject(ARViewModel())
+                .environmentObject(USDZManagerViewModel())
+                .environmentObject(ModelDeletionManagerViewModel())
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
         }

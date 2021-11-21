@@ -69,6 +69,7 @@
 		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
 		9F205276274A18D000244C20 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9F205275274A18D000244C20 /* FocusEntity */; };
 		9F20527B274A320A00244C20 /* SecurityInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F20527A274A320A00244C20 /* SecurityInfomation.swift */; };
+		9F20527D274A36FB00244C20 /* ARKitInteraction_shutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */; };
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 /* End PBXBuildFile section */
@@ -138,6 +139,7 @@
 		5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRoundAwardView.swift; sourceTree = "<group>"; };
 		9F118CE5273908E30054A252 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		9F20527A274A320A00244C20 /* SecurityInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityInfomation.swift; sourceTree = "<group>"; };
+		9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ARKitInteraction_shutter.mp3; sourceTree = "<group>"; };
 		9FC82553273D110D00C9894C /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 		5A4215AE273159CF000C9F5B /* ToolView */ = {
 			isa = PBXGroup;
 			children = (
+				9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */,
 				5A4215AF27315E1D000C9F5B /* TopToolView.swift */,
 				5A4215B127315EDE000C9F5B /* LeftToolView.swift */,
 				5A4215B3273161CC000C9F5B /* ToolView.swift */,
@@ -561,6 +564,7 @@
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
+				9F20527D274A36FB00244C20 /* ARKitInteraction_shutter.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
