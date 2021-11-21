@@ -34,19 +34,19 @@ extension simd_float4x4 {
 class PersistenceHelperViewModel: ObservableObject {
     var anchors: [ModelAnchor] = []
     let CLASS_NAME: String = "Objects"
-    let SCENE_NAME: String = "default"
+    // let SCENE_NAME: String = "default"
     var objects_dict: [String: LCString] = [:]
     
     
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
     // So whenever we load a scene from file, we will use the model and ARAnchor pair for placement.
-    func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 ) {
+    func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 , in sceneName: String) {
         print("Save scene to local filesystem.")
         
 //      first check if object is already exist
         let query = LCQuery(className: CLASS_NAME)
-        query.whereKey("scene_name", .equalTo(SCENE_NAME))
+        query.whereKey("scene_name", .equalTo(sceneName))
         _ = query.find { result in
             switch result {
             case .success(objects: let objects):
@@ -60,48 +60,50 @@ class PersistenceHelperViewModel: ObservableObject {
                 } else {
                     print("[LH] no query scene in database")
                 }
+                
+                var objects: [LCObject] = []
+                for anchorEntity in anchorEntities {
+                    if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] == usrname {
+                        let poseWToAnchor = poseARKitToW.inverse * anchorEntity.transformMatrix(relativeTo: nil)
+                        // save username , anchor.name , poseWToAnchor
+                        var object = LCObject(className: self.CLASS_NAME)
+                        if self.objects_dict[anchorEntity.name] != nil {
+                            object = LCObject(className: self.CLASS_NAME, objectId: self.objects_dict[anchorEntity.name]!)
+                        }
+                        do {
+                            try object.set("creator", value: usrname)
+                            try object.set("scene_name", value: sceneName)
+                            try object.set("object_name", value: anchorEntity.name)
+                            try object.set("object_pose", value: poseWToAnchor.debugDescription)
+                        } catch {
+                            print("[LH] \(error)")
+                        }
+                        objects.append(object)
+                    }
+                }
+                
+                _ = LCObject.save(objects, completion: { (result) in
+                    switch result {
+                    case .success:
+                        print("[LH] upload success !!")
+                    case .failure(error: let error):
+                        print(error)
+                    }
+                })
+                
+
             case .failure(error: let error):
                 print("[LH] \(error)")
             }
         }
-        
-        var objects: [LCObject] = []
-        for anchorEntity in anchorEntities {
-            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] == usrname {
-                let poseWToAnchor = poseARKitToW.inverse * anchorEntity.transformMatrix(relativeTo: nil)
-                // save username , anchor.name , poseWToAnchor
-                var object = LCObject(className: CLASS_NAME)
-                if self.objects_dict[anchorEntity.name] != nil {
-                    object = LCObject(className: CLASS_NAME, objectId: self.objects_dict[anchorEntity.name]!)
-                }
-                do {
-                    try object.set("creator", value: usrname)
-                    try object.set("scene_name", value: SCENE_NAME)
-                    try object.set("object_name", value: anchorEntity.name)
-                    try object.set("object_pose", value: poseWToAnchor.debugDescription)
-                } catch {
-                    print("[LH] \(error)")
-                }
-                objects.append(object)
-            }
-        }
-        
-        _ = LCObject.save(objects, completion: { (result) in
-            switch result {
-            case .success:
-                print("[LH] upload success !!")
-            case .failure(error: let error):
-                print(error)
-            }
-        })
     }
     
-    func downloadScene(poseARKitToW : simd_float4x4) -> [ModelAnchor]{
+    func downloadScene(poseARKitToW : simd_float4x4, in sceneName: String) -> [ModelAnchor]{
         print("Load scene from local filesystem.")
         // return models which is appended into confirmedModel
         
         let query = LCQuery(className: "Objects")
-        query.whereKey("scene_name", .equalTo("default"))
+        query.whereKey("scene_name", .equalTo(sceneName))
         _ = query.find { result in
             switch result {
             case .success(objects: let objects):

@@ -52,12 +52,12 @@ struct AwardView: View {
             ForEach(0..<awardModel.specialEventAward.count, id: \.self){ i in
                 VStack{
                     SingleRoundAwardView(award: $awardModel.specialEventAward[i])
-                    Button(action: {
-                        awardModel.specialEventAward[i].grantedTime = Date()
-                        awardModel.specialEventAward[i].granted.toggle()
-                    }, label: {
-                        Text("test")
-                    })
+//                    Button(action: {
+//                        awardModel.specialEventAward[i].grantedTime = Date()
+//                        awardModel.specialEventAward[i].granted.toggle()
+//                    }, label: {
+//                        Text("test")
+//                    })
                 }
             }
         }
@@ -68,12 +68,12 @@ struct AwardView: View {
             ForEach(0..<awardModel.dailyEventAward.count, id: \.self){ i in
                 VStack{
                     SingleRoundAwardView(award: $awardModel.dailyEventAward[i])
-                    Button(action: {
-                        awardModel.dailyEventAward[i].grantedTime = Date()
-                        awardModel.dailyEventAward[i].granted.toggle()
-                    }, label: {
-                        Text("test")
-                    })
+//                    Button(action: {
+//                        awardModel.dailyEventAward[i].grantedTime = Date()
+//                        awardModel.dailyEventAward[i].granted.toggle()
+//                    }, label: {
+//                        Text("test")
+//                    })
                 }
             }
         }
@@ -84,12 +84,12 @@ struct AwardView: View {
             ForEach(0..<awardModel.landmarkAward.count, id: \.self){ i in
                 VStack{
                     SingleRoundAwardView(award: $awardModel.landmarkAward[i])
-                    Button(action: {
-                        awardModel.landmarkAward[i].grantedTime = Date()
-                        awardModel.landmarkAward[i].granted.toggle()
-                    }, label: {
-                        Text("test")
-                    })
+//                    Button(action: {
+//                        awardModel.landmarkAward[i].grantedTime = Date()
+//                        awardModel.landmarkAward[i].granted.toggle()
+//                    }, label: {
+//                        Text("test")
+//                    })
                 }
             }
         }

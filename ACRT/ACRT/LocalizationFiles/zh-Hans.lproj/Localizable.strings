@@ -76,7 +76,13 @@
 "Choose Photo" = "从相册中选择";
 
 "Account name" = "账户名称";
-"Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20" = "请遵循命名规则: \n 1. 以大写或小写字母开头 \n 2. 长度在4至20之间";
+"Plases use 4 to 20 letters and numbers" = "请使用4到20位字母和数字组成用户名";
+"This can let us know you well" = "您的年龄信息不会被泄漏";
+"We only accept phone number from China" = "目前只能验证来自中国的手机号码";
+"A email can only sign up once." = "每一个邮箱只能注册一个账号";
+"Plases use 8 to 16 letters and numbers" = "请使用8-16位数字、字母和符号构成密码";
+
+"Please follow the naming rules\n 1. Use letter or number only \n 2. Length between 4 and 20" = "请遵循命名规则: \n 1. 名称只包含字母或者数字 \n 2. 长度在4至20之间";
 "Log in required" = "登陆时使用，必填";
 "User Age" = "用户年龄";
 "Optional" = "可选项";
@@ -92,9 +98,10 @@
 "Sign up with ACRT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
 "See more..." = "了解更多...";
 "Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "请遵循密码设置规则: \n 1. 以大写字母开头 \n 2. 密码长度大于8位" ;
+"The email is already taken by another user." = "您输入的邮箱已注册";
 "OK" = "好的";
 "Submit" = "提交";
-
+"Let's Change the World!" = "一起创造城市新视界！";
 /* 更新提示 localization string*/
 "What's new" = "最近更新";
 "MAIC 2021" = "移动应用创新赛";
@@ -159,6 +166,14 @@
 "Foundmentals" = "基础模型";
 "Others" = "其他模型";
 
+"Show mesh in reality" = "在配备LiDAR的设备上展示定位背后的原理";
+"Take a snap shot" = "拍照记录下这奇妙的时刻";
+"Explore the magic world" = "点击进入探索模式，尽情探索城市新视界";
+"Change the world now" = "点击进入创作模式，动手改变城市面貌";
+"Clear all model you put" = "一键清除所有放置的模型";
+"Upload objects" = "上传当前场景放置的模型";
+"Downloads objects" = "下载其他用户的模型";
+"Locate again" = "点击进行重新定位、位置校准";
 /* 成就界面 localizable string*/
 "Special Event" = "特别活动";
 "Daily Event" = "每日活动";

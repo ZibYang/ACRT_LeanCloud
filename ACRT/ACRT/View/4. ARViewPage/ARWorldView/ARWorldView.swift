@@ -18,6 +18,8 @@
 // Since we did't choose a AR app at the first begining, so we have to add some key personally,
 // which includs: *Required Device capabilites* and *Privacy-Camera Usage Description*
 
+// [snapShot] reference: https://github.com/josh-wayda/ARScreenShot
+
 import ARKit
 import SwiftUI
 import RealityKit
@@ -103,7 +105,7 @@ struct ARWorldView:  UIViewRepresentable {
                 self.placementSetting.modelWaitingForPlacement.append(contentsOf: exploreModels)
             }
             let transform : simd_float4x4 = self.arViewModel.poseARKitToW * self.arViewModel.lastPoseARKitToW.inverse
-            self.sceneManager.updateAnchors(transform: transform)
+            self.sceneManager.offsetAnchors(transform: transform)
  
         }
         if showMesh {
@@ -124,12 +126,13 @@ struct ARWorldView:  UIViewRepresentable {
     private func updateModels() {
         if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast(),let model = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName) {
             if model.modelEntity != nil {
-                print("DEBUG(BCH): load \n\(modelAnchor.modelName) ")
+                print("DEBUG(BCH): load \(modelAnchor.modelName) ")
                 self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
             } else {
+                print("DEBUG(BCH): nil model \(modelAnchor.modelName)")
                 model.asyncLoadModelEntity() {  completed, error in
                     if completed {
-                        print("DEBUG(BCH): load nil model\n \(modelAnchor.modelName)")
+                        print("DEBUG(BCH): load nil model \(modelAnchor.modelName)")
                         self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
                     }
                 }
@@ -140,7 +143,11 @@ struct ARWorldView:  UIViewRepresentable {
     private func updateScene(for arView: CustomARView) {
         arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
         if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName)?.modelEntity {
-            if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
+            if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
+                print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")
+                sceneManager.updateAnchorByName(anchorName: modelAnchor.anchorName!, transform: modelAnchor.transform!)
+            }
+            else if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
                 // Anchor needs to be created from placement
                 let anchorName = modelAnchor.anchorName!
                 print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
@@ -148,14 +155,14 @@ struct ARWorldView:  UIViewRepresentable {
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 } else {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: true)
+                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
                 let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
+                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: false)
             }
     }
         
@@ -185,10 +192,10 @@ struct ARWorldView:  UIViewRepresentable {
             return
         }
         if self.sceneManager.shouldUploadSceneToCloud {
-            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseARKitToW: arViewModel.poseARKitToW)
+            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
             self.sceneManager.shouldUploadSceneToCloud = false
         } else if self.sceneManager.shouldDownloadSceneFromCloud {
-            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW)
+            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: modelAnchors)
             self.sceneManager.shouldDownloadSceneFromCloud = false
         }

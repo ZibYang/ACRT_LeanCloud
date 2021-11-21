@@ -54,7 +54,6 @@ struct CanvasView: View {
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)
                 .environmentObject(httpManager)
-                .environmentObject(usdzManagerViewModel)
                 .environmentObject(modelDeletionManager)
 
             if coachingViewModel.isCoaching == true {
@@ -70,7 +69,7 @@ struct CanvasView: View {
         .statusBar(hidden: true)
         .onAppear() {
             httpManager.statusLoc = 0
-            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
+            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
             // TODO: localization Button
         }
         .halfSheet(showSheet: $placementSetting.openModelList){
