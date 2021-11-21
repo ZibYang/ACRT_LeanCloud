@@ -33,6 +33,10 @@ extension simd_float4x4 {
 
 class PersistenceHelperViewModel: ObservableObject {
     var anchors: [ModelAnchor] = []
+    let CLASS_NAME: String = "Objects"
+    let SCENE_NAME: String = "default"
+    var objects_dict: [String: LCString] = [:]
+    
     
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
@@ -40,15 +44,39 @@ class PersistenceHelperViewModel: ObservableObject {
     func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 ) {
         print("Save scene to local filesystem.")
         
+//      first check if object is already exist
+        let query = LCQuery(className: CLASS_NAME)
+        query.whereKey("scene_name", .equalTo(SCENE_NAME))
+        _ = query.find { result in
+            switch result {
+            case .success(objects: let objects):
+                if objects.count > 0 {
+                    for object in objects {
+                        let object_id:LCString = object.objectId!
+                        let object_name:String = (object.get("object_name") as! LCString).value
+                        print("[LH] get \(String(describing: object_name)) ==> \(String(describing: object_id))")
+                        var _ = self.objects_dict.updateValue(object_id, forKey: object_name)
+                    }
+                } else {
+                    print("[LH] no query scene in database")
+                }
+            case .failure(error: let error):
+                print("[LH] \(error)")
+            }
+        }
+        
         var objects: [LCObject] = []
         for anchorEntity in anchorEntities {
             if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] == usrname {
                 let poseWToAnchor = poseARKitToW.inverse * anchorEntity.transformMatrix(relativeTo: nil)
                 // save username , anchor.name , poseWToAnchor
-                let object = LCObject(className: "Objects")
+                var object = LCObject(className: CLASS_NAME)
+                if self.objects_dict[anchorEntity.name] != nil {
+                    object = LCObject(className: CLASS_NAME, objectId: self.objects_dict[anchorEntity.name]!)
+                }
                 do {
                     try object.set("creator", value: usrname)
-                    try object.set("scene_name", value: "default")
+                    try object.set("scene_name", value: SCENE_NAME)
                     try object.set("object_name", value: anchorEntity.name)
                     try object.set("object_pose", value: poseWToAnchor.debugDescription)
                 } catch {
