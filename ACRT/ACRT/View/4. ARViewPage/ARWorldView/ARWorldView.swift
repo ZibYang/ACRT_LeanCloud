@@ -185,10 +185,10 @@ struct ARWorldView:  UIViewRepresentable {
             return
         }
         if self.sceneManager.shouldUploadSceneToCloud {
-            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseARKitToW: arViewModel.poseARKitToW)
+            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
             self.sceneManager.shouldUploadSceneToCloud = false
         } else if self.sceneManager.shouldDownloadSceneFromCloud {
-            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW)
+            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: modelAnchors)
             self.sceneManager.shouldDownloadSceneFromCloud = false
         }

@@ -37,7 +37,7 @@ class PersistenceHelperViewModel: ObservableObject {
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
     // So whenever we load a scene from file, we will use the model and ARAnchor pair for placement.
-    func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 ) {
+    func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 , in sceneName: String) {
         print("Save scene to local filesystem.")
         
         var objects: [LCObject] = []
@@ -48,7 +48,7 @@ class PersistenceHelperViewModel: ObservableObject {
                 let object = LCObject(className: "Objects")
                 do {
                     try object.set("creator", value: usrname)
-                    try object.set("scene_name", value: "default")
+                    try object.set("scene_name", value: sceneName)
                     try object.set("object_name", value: anchorEntity.name)
                     try object.set("object_pose", value: poseWToAnchor.debugDescription)
                 } catch {
@@ -68,12 +68,12 @@ class PersistenceHelperViewModel: ObservableObject {
         })
     }
     
-    func downloadScene(poseARKitToW : simd_float4x4) -> [ModelAnchor]{
+    func downloadScene(poseARKitToW : simd_float4x4, in sceneName: String) -> [ModelAnchor]{
         print("Load scene from local filesystem.")
         // return models which is appended into confirmedModel
         
         let query = LCQuery(className: "Objects")
-        query.whereKey("scene_name", .equalTo("default"))
+        query.whereKey("scene_name", .equalTo(sceneName))
         _ = query.find { result in
             switch result {
             case .success(objects: let objects):

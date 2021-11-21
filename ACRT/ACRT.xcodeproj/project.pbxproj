@@ -57,6 +57,7 @@
 		27505D6927492AE20060501D /* user_message_BOOM!.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27505D5427492AE20060501D /* user_message_BOOM!.usdz */; };
 		27505D6A27492AE20060501D /* user_like_blue.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27505D5527492AE20060501D /* user_like_blue.usdz */; };
 		27505D6B27492AE20060501D /* user_emoji_smileWithSweat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27505D5627492AE20060501D /* user_emoji_smileWithSweat.usdz */; };
+		27505D6D2749FE2E0060501D /* qs_Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27505D6C2749FE2E0060501D /* qs_Title.usdz */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -171,6 +172,7 @@
 		27505D5427492AE20060501D /* user_message_BOOM!.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "user_message_BOOM!.usdz"; sourceTree = "<group>"; };
 		27505D5527492AE20060501D /* user_like_blue.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_like_blue.usdz; sourceTree = "<group>"; };
 		27505D5627492AE20060501D /* user_emoji_smileWithSweat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_emoji_smileWithSweat.usdz; sourceTree = "<group>"; };
+		27505D6C2749FE2E0060501D /* qs_Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Title.usdz; sourceTree = "<group>"; };
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 		27505D0927492A9C0060501D /* USDZModels */ = {
 			isa = PBXGroup;
 			children = (
+				27505D6C2749FE2E0060501D /* qs_Title.usdz */,
 				27505D4827492AE10060501D /* user_emoji_smile.usdz */,
 				27505D5627492AE20060501D /* user_emoji_smileWithSweat.usdz */,
 				27505D4B27492AE10060501D /* user_letter_A.usdz */,
@@ -718,6 +721,7 @@
 				27505D5D27492AE20060501D /* user_emoji_smile.usdz in Resources */,
 				27505D2D27492AAF0060501D /* qs_Calendar.usdz in Resources */,
 				27505D2A27492AAF0060501D /* qs_iMessage.usdz in Resources */,
+				27505D6D2749FE2E0060501D /* qs_Title.usdz in Resources */,
 				27505D6627492AE20060501D /* user_letter_H.usdz in Resources */,
 				27505D6827492AE20060501D /* user_letter_P.usdz in Resources */,
 				27505D2F27492AAF0060501D /* qs_iBook.usdz in Resources */,
