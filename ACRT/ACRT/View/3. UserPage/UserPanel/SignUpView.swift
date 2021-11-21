@@ -22,6 +22,7 @@
 // [Accessing FocusState's value outside of the body of a View. This will result in a constant Binding of the initial value and will not update.] reference: https://www.pointfree.co/episodes/ep155-swiftui-focus-state
 // [keyboard move up] reference: https://stackoverflow.com/questions/56491881/move-textfield-up-when-the-keyboard-has-appeared-in-swiftui
 // [keyboardType] reference: https://developer.apple.com/documentation/uikit/uikeyboardtype
+// [dissmissKeyboard] reference: https://stackoverflow.com/questions/56491386/how-to-hide-keyboard-when-using-swiftui
 
 import SwiftUI
 
@@ -34,7 +35,7 @@ struct SignUpView: View {
     @FocusState private var focusedField: SignUpViewModel.Field?
     
     @StateObject private var signUpViewModel = SignUpViewModel()
-    
+
     var body: some View {
         ZStack {
             NavigationView{
@@ -63,12 +64,37 @@ struct SignUpView: View {
                         finishButton
                     }
                 })
+                .toolbar{
+                    ToolbarItem(placement: .keyboard) {
+                        HStack {
+                            Button(action: focusPreviousField) {
+                                Image(systemName: "chevron.up")
+                            }
+                            .disabled(!canFocusPreviousField())
+                            Button(action: focusNextField) {
+                                Image(systemName: "chevron.down")
+                            }
+                            .disabled(!canFocusNextField()) // remove this to loop through fields
+                            Spacer()
+                            Text(LocalizedStringKey(signUpViewModel.hintMessage))
+                                .font(.caption)
+                            Spacer()
+                            Button(action: {
+                                focusedField = nil
+                            }, label:{
+                                Image(systemName: "keyboard.chevron.compact.down")
+                            })
+                        } // remove this to loop through fields
+                    }
+                    
+                }
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .onAppear(perform: {
                 signUpViewModel.focusedField = .userName
             })
         }
+        
         
     }
     
@@ -256,6 +282,7 @@ struct SignUpView: View {
             .overlay(RoundedRectangle(cornerRadius: 15, style: .continuous).stroke(Color.clear, lineWidth: 1).blendMode(.overlay))
             .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
             
+            securityHint
         }
         .padding(.horizontal, 20)
     }
@@ -271,16 +298,19 @@ struct SignUpView: View {
                     .font(.caption2)
                 .frame(width:250, height: 50)
                 Button(action: {
-                    
+                    signUpViewModel.showMore.toggle()
                 }, label: {
                     Text("See more...")
                         .font(.caption2)
                 })
-                    .offset(x: -10, y: 6)
+                    .offset(x: -10, y: 7)
             }
             .offset(y: 2)
             
             Spacer()
+        }
+        .sheet(isPresented: $signUpViewModel.showMore){
+            SecurityInfomation()
         }
     }
 
@@ -363,15 +393,84 @@ struct SignUpView: View {
                   dismissButton: .default(Text("OK")))
         }
     }
+    
+    func focusPreviousField() {
+        signUpViewModel.focusedField = signUpViewModel.focusedField.map {
+            SignUpViewModel.Field(rawValue: $0.rawValue - 1) ?? .password
+        }
+        updateHintMessage(toPrevious: true)
+    }
 
+    func focusNextField() {
+        updateHintMessage(toPrevious: false)
+    }
+    
+    func canFocusPreviousField() -> Bool {
+        guard let currentFocusedField = focusedField else {
+            return false
+        }
+        return currentFocusedField.rawValue > 0
+    }
+
+    func canFocusNextField() -> Bool {
+        guard let currentFocusedField = focusedField else {
+            return false
+        }
+        return currentFocusedField.rawValue < SignUpViewModel.Field.allCases.count - 1
+    }
+    
+    func updateHintMessage(toPrevious: Bool){
+        switch focusedField{
+        case .userName:
+            if toPrevious{
+                signUpViewModel.hintMessage = signUpViewModel.userNameHint
+            }else{
+                signUpViewModel.validateUserName()
+            }
+            break
+        case .age:
+            if toPrevious{
+                signUpViewModel.hintMessage = signUpViewModel.userNameHint
+            }else{
+                signUpViewModel.validateAge()
+            }
+            break
+        case .phone:
+            if toPrevious{
+                signUpViewModel.hintMessage = signUpViewModel.userAgeHint
+            }else{
+                signUpViewModel.validatePhone()
+            }
+            break
+        case .mail:
+            if toPrevious{
+                signUpViewModel.hintMessage = signUpViewModel.phoneHint
+            }else{
+                signUpViewModel.validateEmail()
+            }
+            break
+        case .password:
+            if toPrevious{
+                signUpViewModel.hintMessage = signUpViewModel.emailHint
+            }else{
+                signUpViewModel.validatePassword()
+            }
+            break
+        case .none:
+            break
+        }
+    }
 }
 
 
 struct SignUpView_Previews: PreviewProvider {
     static var previews: some View {
         SignUpView()
+            .environmentObject(UserViewModel())
         
         SignUpView()
+            .environmentObject(UserViewModel())
             .preferredColorScheme(.dark)
+        
     }
 }
