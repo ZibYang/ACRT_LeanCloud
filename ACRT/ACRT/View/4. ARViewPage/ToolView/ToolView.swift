@@ -197,7 +197,7 @@ struct ToolView: View {
                 .frame(width: 40, height: 40)
         })
             .contextMenu{
-                Label("Batch deletion: click the button.\nSingle Object deletion: long press the object", systemImage: "trash.circle.fill")
+                Label("Clear all model you put", systemImage: "trash.circle.fill")
             }
     }
     var uploadButton: some View{
@@ -210,7 +210,7 @@ struct ToolView: View {
                 .frame(width: 40, height: 40)
         })
             .contextMenu{
-                Label("Upload objects", systemImage: "square.dashed")
+                Label("Upload objects", systemImage: "arrow.up.to.line.circle.fill")
             }
         
     }
@@ -225,7 +225,7 @@ struct ToolView: View {
                 .frame(width: 40, height: 40)
         })
             .contextMenu{
-                Label("Downloads objects", systemImage: "square.dashed")
+                Label("Downloads objects", systemImage: "arrow.down.to.line.circle.fill")
             }
     }
     

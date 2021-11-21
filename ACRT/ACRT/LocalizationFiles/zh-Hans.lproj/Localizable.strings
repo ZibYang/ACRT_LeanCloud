@@ -166,6 +166,14 @@
 "Foundmentals" = "基础模型";
 "Others" = "其他模型";
 
+"Show mesh in reality" = "在配备LiDAR的设备上展示定位背后的原理";
+"Take a snap shot" = "拍照记录下这奇妙的时刻";
+"Explore the magic world" = "点击进入探索模式，尽情探索城市新视界";
+"Change the world now" = "点击进入创作模式，动手改变城市面貌";
+"Clear all model you put" = "一键清除所有放置的模型";
+"Upload objects" = "上传当前场景放置的模型";
+"Downloads objects" = "下载其他用户的模型";
+"Locate again" = "点击进行重新定位、位置校准";
 /* 成就界面 localizable string*/
 "Special Event" = "特别活动";
 "Daily Event" = "每日活动";
