@@ -126,12 +126,13 @@ struct ARWorldView:  UIViewRepresentable {
     private func updateModels() {
         if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast(),let model = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName) {
             if model.modelEntity != nil {
-                print("DEBUG(BCH): load \n\(modelAnchor.modelName) ")
+                print("DEBUG(BCH): load \(modelAnchor.modelName) ")
                 self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
             } else {
+                print("DEBUG(BCH): nil model \(modelAnchor.modelName)")
                 model.asyncLoadModelEntity() {  completed, error in
                     if completed {
-                        print("DEBUG(BCH): load nil model\n \(modelAnchor.modelName)")
+                        print("DEBUG(BCH): load nil model \(modelAnchor.modelName)")
                         self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
                     }
                 }

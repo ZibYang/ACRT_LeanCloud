@@ -18,6 +18,11 @@ import SwiftUI
 
 struct LeftToolView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
+    @EnvironmentObject var arViewModel: ARViewModel
+    @EnvironmentObject var coachingViewModel : CoachingViewModel
+    @EnvironmentObject var httpManager: HttpAuth
+    @Binding var showCameraButton : Bool 
+
 
 //    @State private var selectedToolName = "Explore"
     
@@ -36,10 +41,20 @@ struct LeftToolView: View {
     
     var exploreTool: some View{
         Button(action: {
-            withAnimation(Animation.easeInOut(duration: 0.5)){
-//                selectedToolName = "Explore"
+            if arViewModel.hasBeenLocalized == false{
+                httpManager.statusLoc = 0
                 placementSetting.isInCreationMode = false
+                coachingViewModel.comeFromPrepareView = false
+                showCameraButton = false
+                coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
             }
+            else {
+                withAnimation(Animation.easeInOut(duration: 0.5)){
+    //                selectedToolName = "Explore"
+                    placementSetting.isInCreationMode = false
+                }
+            }
+            
             
 
         }, label:{
@@ -72,7 +87,7 @@ struct LeftToolView: View {
 
 struct LeftsideToolView_Previews: PreviewProvider {
     static var previews: some View {
-        LeftToolView()
+        LeftToolView(showCameraButton: .constant(false))
             .background(.ultraThinMaterial)
     }
 }

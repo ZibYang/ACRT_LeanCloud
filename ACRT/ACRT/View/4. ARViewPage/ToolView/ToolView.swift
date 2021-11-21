@@ -25,7 +25,7 @@ struct ToolView: View {
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var arViewModel: ARViewModel
-    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+//    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
     @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
 
 
@@ -121,10 +121,14 @@ struct ToolView: View {
             Spacer()
             // MARK: Left center tool
             HStack {
-                LeftToolView()
+                LeftToolView(showCameraButton: $showCameraButton)
                     .padding(.all, 5)
                     .background(.ultraThinMaterial)
-                    .cornerRadius(10).environmentObject(placementSetting)                
+                    .cornerRadius(10)
+                    .environmentObject(placementSetting)
+                    .environmentObject(arViewModel)
+                    .environmentObject(httpManager)
+                    .environmentObject(coachingViewModel)
                 Spacer()
             }
             .padding(.horizontal)
@@ -146,7 +150,7 @@ struct ToolView: View {
             placementSetting.isInCreationMode = false
             coachingViewModel.comeFromPrepareView = false
             showCameraButton = false
-            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel, usdzManagerViewModel: usdzManagerViewModel)
+            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
         }, label:{
             Image(systemName: "location")
                 .foregroundColor(.white)
