@@ -41,10 +41,22 @@ class SceneManagerViewModel: ObservableObject {
         }
     }
     
-    func updateAnchors(transform : simd_float4x4) {
+    func offsetAnchors(transform : simd_float4x4) {
         for anchorEntity in anchorEntities {
             let oldTransform : simd_float4x4 = anchorEntity.transformMatrix(relativeTo: nil)
             anchorEntity.setTransformMatrix(transform * oldTransform, relativeTo: nil)
         }
+    }
+    
+    func updateAnchorByName(anchorName: String, transform : simd_float4x4) {
+        for anchorEntity in anchorEntities {
+            if anchorEntity.name == anchorName {
+                anchorEntity.setTransformMatrix(transform, relativeTo: nil)
+            }
+        }
+    }
+    
+    func IsAnchorExisted(anchorName: String) -> Bool {
+        return anchorEntities.contains(where: {$0.name == anchorName})
     }
 }

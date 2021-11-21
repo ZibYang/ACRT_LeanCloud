@@ -103,7 +103,7 @@ struct ARWorldView:  UIViewRepresentable {
                 self.placementSetting.modelWaitingForPlacement.append(contentsOf: exploreModels)
             }
             let transform : simd_float4x4 = self.arViewModel.poseARKitToW * self.arViewModel.lastPoseARKitToW.inverse
-            self.sceneManager.updateAnchors(transform: transform)
+            self.sceneManager.offsetAnchors(transform: transform)
  
         }
         if showMesh {
@@ -140,7 +140,11 @@ struct ARWorldView:  UIViewRepresentable {
     private func updateScene(for arView: CustomARView) {
         arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
         if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName)?.modelEntity {
-            if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
+            if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
+                print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")
+                sceneManager.updateAnchorByName(anchorName: modelAnchor.anchorName!, transform: modelAnchor.transform!)
+            }
+            else if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
                 // Anchor needs to be created from placement
                 let anchorName = modelAnchor.anchorName!
                 print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
