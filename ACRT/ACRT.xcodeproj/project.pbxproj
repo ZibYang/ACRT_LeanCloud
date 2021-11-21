@@ -118,6 +118,8 @@
 		5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */; };
 		620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */; };
 		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
+		9F205276274A18D000244C20 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9F205275274A18D000244C20 /* FocusEntity */; };
+		9F20527B274A320A00244C20 /* SecurityInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F20527A274A320A00244C20 /* SecurityInfomation.swift */; };
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 /* End PBXBuildFile section */
@@ -236,6 +238,7 @@
 		5ADF209727329D2D00CF0E4A /* AwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
 		5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRoundAwardView.swift; sourceTree = "<group>"; };
 		9F118CE5273908E30054A252 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		9F20527A274A320A00244C20 /* SecurityInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityInfomation.swift; sourceTree = "<group>"; };
 		9FC82553273D110D00C9894C /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -248,7 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27505D0727492A4C0060501D /* FocusEntity in Frameworks */,
+				9F205276274A18D000244C20 /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +357,7 @@
 		5A3E1A5B2731095D00B170B2 /* UserPanel */ = {
 			isa = PBXGroup;
 			children = (
+				9F20527A274A320A00244C20 /* SecurityInfomation.swift */,
 				5ADF209227329CAB00CF0E4A /* AwardView */,
 				5A42159E27312B0F000C9F5B /* CustomView */,
 				5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */,
@@ -653,7 +657,7 @@
 			);
 			name = ACRT;
 			packageProductDependencies = (
-				27505D0627492A4C0060501D /* FocusEntity */,
+				9F205275274A18D000244C20 /* FocusEntity */,
 			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
@@ -687,7 +691,7 @@
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
 			packageReferences = (
-				27505D0527492A4C0060501D /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				9F205274274A18D000244C20 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
@@ -703,17 +707,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27505D2327492AAF0060501D /* qs_ARKit.usdz in Resources */,
-				27505D3D27492ABA0060501D /* yt_Coffee.usdz in Resources */,
-				27505D6727492AE20060501D /* user_letter_E.usdz in Resources */,
-				27505D6927492AE20060501D /* user_message_BOOM!.usdz in Resources */,
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
-				27505D3527492AAF0060501D /* qs_Phone.usdz in Resources */,
-				27505D2927492AAF0060501D /* qs_Swift.usdz in Resources */,
-				27505D3C27492ABA0060501D /* yt_Cocacola.usdz in Resources */,
-				27505D3127492AAF0060501D /* qs_Health.usdz in Resources */,
-				27505D3027492AAF0060501D /* qs_Weather.usdz in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
 				27505D4127492ABA0060501D /* yt_BugerKing.usdz in Resources */,
 				27505D5827492AE20060501D /* user_message_COOL.usdz in Resources */,
@@ -744,20 +739,7 @@
 				27505D2027492AAF0060501D /* qs_AppStore.usdz in Resources */,
 				27505D2827492AAF0060501D /* qs_findMy.usdz in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
-				27505D5C27492AE20060501D /* user_letter_B.usdz in Resources */,
-				27505D6B27492AE20060501D /* user_emoji_smileWithSweat.usdz in Resources */,
-				27505D3327492AAF0060501D /* qs_AppleLogo_left.usdz in Resources */,
-				27505D5F27492AE20060501D /* user_love_red.usdz in Resources */,
-				27505D5727492AE20060501D /* user_message_BANG!.usdz in Resources */,
-				27505D6527492AE20060501D /* user_letter_D.usdz in Resources */,
-				27505D2227492AAF0060501D /* qs_Camera.usdz in Resources */,
-				27505D3E27492ABA0060501D /* yt_FrenchFires.usdz in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
-				27505D5A27492AE20060501D /* user_like_red.usdz in Resources */,
-				27505D2B27492AAF0060501D /* qs_Facetime.usdz in Resources */,
-				27505D3227492AAF0060501D /* APPLE_LOGO.usdz in Resources */,
-				27505D2727492AAF0060501D /* qs_contacts.usdz in Resources */,
-				27505D2527492AAF0060501D /* qs_AppleMusic.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -826,6 +808,7 @@
 				27ADC958273FD36700926996 /* ModelDeletionManager.swift in Sources */,
 				5A4215B027315E1D000C9F5B /* TopToolView.swift in Sources */,
 				5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */,
+				9F20527B274A320A00244C20 /* SecurityInfomation.swift in Sources */,
 				5A56E9382730DDCB0062680E /* WhatMeansExploreView.swift in Sources */,
 				5ADF209627329CEE00CF0E4A /* AwardViewModel.swift in Sources */,
 				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
@@ -1105,9 +1088,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		27505D0527492A4C0060501D /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		9F205274274A18D000244C20 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
+			repositoryURL = "https://github.com/ZibYang/FocusEntity";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -1116,9 +1099,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		27505D0627492A4C0060501D /* FocusEntity */ = {
+		9F205275274A18D000244C20 /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 27505D0527492A4C0060501D /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 9F205274274A18D000244C20 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */

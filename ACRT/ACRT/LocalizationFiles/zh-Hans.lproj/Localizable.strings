@@ -76,7 +76,13 @@
 "Choose Photo" = "从相册中选择";
 
 "Account name" = "账户名称";
-"Please follow the naming rules\n 1. Start with letter \n 2. Length between 6 and 20" = "请遵循命名规则: \n 1. 以大写或小写字母开头 \n 2. 长度在4至20之间";
+"Plases use 4 to 20 letters and numbers" = "请使用4到20位字母和数字组成用户名";
+"This can let us know you well" = "您的年龄信息不会被泄漏";
+"We only accept phone number from China" = "目前只能验证来自中国的手机号码";
+"A email can only sign up once." = "每一个邮箱只能注册一个账号";
+"Plases use 8 to 16 letters and numbers" = "请使用8-16位数字、字母和符号构成密码";
+
+"Please follow the naming rules\n 1. Use letter or number only \n 2. Length between 4 and 20" = "请遵循命名规则: \n 1. 名称只包含字母或者数字 \n 2. 长度在4至20之间";
 "Log in required" = "登陆时使用，必填";
 "User Age" = "用户年龄";
 "Optional" = "可选项";

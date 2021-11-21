@@ -24,22 +24,21 @@ class SignUpViewModel: ObservableObject{
     @Published var contentOffset = CGFloat(0)
     
     //MARK: Error sign
-    
     @Published var userNameError = false // User Name Error
     @Published var incorrectAge = false // User Age Error
     @Published var phoneNumberError = false // User Phone Error
     @Published var emailError = false // User Email Error
     @Published var passwordError = false // User Password Error
-    
     @Published var showErrorMessage = false // User Info Error
     
     //MARK: Error Message
     let errorTitle = "Apologize"
-    let userNameErrorMessage = "Please follow the naming rules\n 1. Start with letter \n 2. Length between 4 and 20"
+    let userNameErrorMessage = "Please follow the naming rules\n 1. Use letter or number only \n 2. Length between 4 and 20"
     let ageErrorMessage = "Age can not above 99"
     let phoneErrorMessage = "Please input right phone number"
     let emailErrorMessage = "Please input right email"
     let passwordErrorMessage = "Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits"
+    
     //MARK: Basic Infomation
     @Published var image: Image? // User Image
     @Published var inputImage: UIImage?
@@ -59,9 +58,18 @@ class SignUpViewModel: ObservableObject{
     // MARK: Finishing
     @Published var showProgressView = false
     
-    // Focus Field FIXME: Not working
+    //MARK: Hint messages
+    let userNameHint = "Plases use 4 to 20 letters and numbers"
+    let userAgeHint = "This can let us know you well"
+    let phoneHint = "We only accept phone number from China"
+    let emailHint = "A email can only sign up once."
+    let passwordHint = "Plases use 8 to 16 letters and numbers"
+    
+    @Published var hintMessage = "Plases use 4 to 20 letters and numbers"
+    @Published var showMore = false
+    // Focus Field
     enum Field: Int, CaseIterable {
-        case userName, age, phone, varifyCode, mail, password
+        case userName, age, phone, mail, password
     }
     
     func validatePhone(){
@@ -69,10 +77,12 @@ class SignUpViewModel: ObservableObject{
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
         if !phoneTest.evaluate(with: self.phoneNumber){
             phoneNumberError.toggle()
-            phoneNumber = ""
+            // phoneNumber = ""
             focusedField = .phone
+            hintMessage = phoneHint
         }else{
             focusedField = .mail
+            hintMessage = emailHint
         }
     }
     
@@ -81,11 +91,13 @@ class SignUpViewModel: ObservableObject{
         let emailTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         if !emailTest.evaluate(with: self.email){
             emailError.toggle()
-            email = ""
+            // email = ""
             focusedField = .mail
+            hintMessage = emailHint
         }
         else{
             focusedField = .password
+            hintMessage = passwordHint
         }
     }
     
@@ -94,10 +106,12 @@ class SignUpViewModel: ObservableObject{
         let userNamePredicate = NSPredicate(format: "SELF MATCHES %@", userNameRegex)
         if !userNamePredicate.evaluate(with: self.userName){
             userNameError.toggle()
-            userName = ""
+            // userName = ""
             focusedField = .userName
+            hintMessage = userNameHint
         }else{
             focusedField = .age
+            hintMessage = userAgeHint
         }
     }
     
@@ -106,8 +120,10 @@ class SignUpViewModel: ObservableObject{
             age = ""
             incorrectAge.toggle()
             focusedField = .age
+            hintMessage = userAgeHint
         }else{
             focusedField = .phone
+            hintMessage = phoneHint
         }
     }
     func validatePassword(){
@@ -117,6 +133,7 @@ class SignUpViewModel: ObservableObject{
             passwordError.toggle()
             password = ""
             focusedField = .password
+            hintMessage = password
         }else{
             focusedField = nil
         }
@@ -131,6 +148,7 @@ class SignUpViewModel: ObservableObject{
         validatePassword()
         
         if !userNameError && !incorrectAge && !phoneNumberError && !emailError && !passwordError{
+            focusedField = nil
             return true
         }else{
             return false
