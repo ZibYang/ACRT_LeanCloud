@@ -15,9 +15,10 @@
 //  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 
 // [NavigationView] reference: https://www.hackingwithswift.com/books/ios-swiftui/making-navigationview-work-in-landscape
-
+// [Haptic] reference: https://www.hackingwithswift.com/books/ios-swiftui/making-vibrations-with-uinotificationfeedbackgenerator-and-core-haptics
 
 import SwiftUI
+import CoreHaptics
 
 struct PrepareView: View {
     @StateObject var mapModel = MapViewModel()
@@ -27,9 +28,6 @@ struct PrepareView: View {
     @StateObject var httpManager: HttpAuth = HttpAuth()
     @StateObject var usdzManagerViewModel = USDZManagerViewModel()
 
-
-    
-
     @State var checkLocationRequest = false
     @State var checkLidarDeviceList = false
     @State var checkUserCapability = false
@@ -38,7 +36,6 @@ struct PrepareView: View {
     
     @State var everythingSetted = false
     @State var everythingIsNotSetYetWarning = false
-    
     @Binding var introduceAgain: Bool
     
     var body: some View {
@@ -70,7 +67,7 @@ struct PrepareView: View {
                     Spacer()
                     UserCircleView()
                         .offset(x: coachingViewModel.isCoaching ? 200 : 0)
-                        .padding(.top, 8)
+                        .padding(.top)
                 }
                 .padding(.trailing)
             }
@@ -161,12 +158,16 @@ struct PrepareView: View {
     var intoARWorldButton: some View{
         Button(action: {
             if !mapModel.permissionDenied{
+                let impact = UINotificationFeedbackGenerator()
+                impact.notificationOccurred(.success)
                 withAnimation(Animation.easeInOut(duration: 0.5)) {
                     everythingSetted.toggle()
                 }
                 // TODO: And model loaded
                 
             }else{
+                let impact = UINotificationFeedbackGenerator()
+                impact.notificationOccurred(.error)
                 everythingIsNotSetYetWarning.toggle()
             }
             coachingViewModel.comeFromPrepareView = true
@@ -188,12 +189,24 @@ struct PrepareView: View {
     var footerButton: some View{
         Button(action: {
             introduceAgain.toggle()
-            
+            let impactLight = UIImpactFeedbackGenerator(style: .light)
+            impactLight.impactOccurred()
         },label: {
             Text("What is ACRT")
             .foregroundColor(.secondary)
         })
     }
+}
+
+extension View {
+
+  func hapticFeedbackOnTap(style: UIImpactFeedbackGenerator.FeedbackStyle = .light) -> some View {
+    self.onTapGesture {
+      let impact = UIImpactFeedbackGenerator(style: style)
+      impact.impactOccurred()
+    }
+  }
+
 }
 
 struct PrepareView_Previews: PreviewProvider {

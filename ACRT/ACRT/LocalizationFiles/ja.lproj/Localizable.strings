@@ -53,13 +53,91 @@
 "Empty input is not acceptable" = "空の入力は受け入れられません";
 "Got it" = "わかった";
 
-/* 准备界面 localizable string*/
-"Are you ready?" = "準備はいいですか？";
-"Launch Requests" = "起動リクエスト";
-"Recommendations" = "推薦";
+/* 用户登陆界面 localizable string */
+"Not now" = "ログインしな";
+"User account name" = "ユーザーアカウント名";
+"Password" = "パスワード";
+"Account" = "アカウント";
+"Email" = "電子メイル";
+"Required" = "必須";
+"Log in" = "ログイン";
+"Log out" = "ログアウト";
+"Sign in" = "パスワードでサインイン";
+"Sign up" = "サインアップ";
+"Forget account or password?" = "アカウントまたはパスワードを忘れるか";
+"Phone Number" = "電話番号";
+"Send" = "送信";
+"join" = "ログイン";
+"Apologize" = "謝る" ;
+"Empty email is not acceptable" = "空の電子メイルは受け入れられません";
+"Empty password is not acceptable" = "空のパスワードは受け入れられません";
+"Got it" = "わかった";
+"Signing in, please wait..." = "ログインして、お待ちください";
+"Registering, please wait..." = "新規ユーザーの登録、お待ちください...";
+"Error" = "間違い";
+"Try it again" = "もう一回やってみよう";
+"Could not find user." = "ユーザーアカウントが見つかりませんでした";
+"The username and password mismatch." = "ユーザー名とパスワードの不一致";
+"Can not reset password now \n Please contact with admin." = "現在パスワードをリセットできません\n 管理者に連絡してください";
+/* 注册 localization string*/
+"Finish" = "終了";
+"Cancel" = "キャンセル";
 
-"Use Device with LiDAR" = "LiDARでデバイスを使用する";
-"LiDAR enhance the ability of realized the world." = "LiDARは、実現された世界の能力を強化します";
+"Basic Information" = "基本情報";
+"Secured Information" = "安全な情報";
+
+"Add photo" = "写真を追加する";
+"Photo" = "写真を撮る";
+"Choose Photo" = "アルバムから写真を選択";
+
+"Account name" = "账户名称";
+"Plases use 4 to 20 letters and numbers" = "请使用4到20位字母和数字组成用户名";
+"This can let us know you well" = "您的年龄信息不会被泄漏";
+"We only accept phone number from China" = "目前只能验证来自中国的手机号码";
+"A email can only sign up once." = "每一个邮箱只能注册一个账号";
+"Plases use 8 to 16 letters and numbers" = "请使用8-16位数字、字母和符号构成密码";
+
+"Please follow the naming rules\n 1. Use letter or number only \n 2. Length between 4 and 20" = "请遵循命名规则: \n 1. 名称只包含字母或者数字 \n 2. 长度在4至20之间";
+"Log in required" = "登陆时使用，必填";
+"User Age" = "用户年龄";
+"Optional" = "可选项";
+"Age can not above 99" = "年龄不可以设置超过99岁";
+"Log in with phone number" = "可使用手机号登陆，必填";
+"Please input right phone number" = "请输入正确的手机号";
+"Varify code" = "验证码";
+"This phone number has been used" = "此手机号已被注册过";
+"Message might have seconds delay" = "验证码发送可能会有几秒钟延迟";
+"Log in with email" = "可使用邮箱登陆，必填";
+"Please input right email" = "请输入正确的邮箱地址";
+
+"Sign up with ACRT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
+"See more..." = "了解更多...";
+"Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "请遵循密码设置规则: \n 1. 以大写字母开头 \n 2. 密码长度大于8位" ;
+"The email is already taken by another user." = "您输入的邮箱已注册";
+"OK" = "好的";
+"Submit" = "提交";
+"Let's Change the World!" = "一起创造城市新视界！";
+/* 更新提示 localization string*/
+"What's new" = "最近更新";
+"MAIC 2021" = "移动应用创新赛";
+"Come and join the 6th MAIC match in Zhejiang University!" = "欢迎大家参加第六届移动应用创新赛！";
+"City Badges" = "城市徽章";
+"We have launched the first batch of 3 city badges!" = "首发三枚城市徽章等你来获得！";
+"Wish we can meet in Apple Park one day." = "当您到访Apple Park，您将获得这枚精致的徽章，希望我们在Apple Park相见！";
+"Welcome to the historical Nanjin and Chendu." = "欢迎到访历史古都南京和熊猫故乡成都，来赢得相应的城市徽章吧";
+"Welcome to the beautiful Shenzhen and Guangzhou." = "欢迎到访美丽的广州和创新之城深圳，来赢得相应的城市徽章吧";
+"Halloween special event" = "万圣节特别活动";
+"Halloween special event is coming, trick or treat?" = "万圣节特别活动来了，不给糖就捣蛋？";
+
+"Today" = "今天";
+"Yesterday" = "昨天";
+/* 准备界面 localizable string*/
+"Are you ready?" = "准备好了吗？";
+"Launch Requests" = "运行要求";
+"Recommendations" = "建议";
+
+"Use Device with LiDAR" = "使用配备LiDAR的设备";
+"LiDAR enhance the ability of realized the world." = "LiDAR增强了对现实的理解能力";
 "iPhone 13 Pro series" = "iPhone 13 Pro系列";
 "iPhone 12 Pro series" = "iPhone 12 Pro系列";
 "iPad Pro 12.9-inch 4/5th-generation" = "12.9 英寸 iPad Pro 第四或五代";
@@ -71,10 +149,14 @@
 
 "Login with Account" = "登陆账号";
 "Log in to get full functionality experiences." = "登陆账号以获得全部的功能体验";
-"Logged-in user is capable of:" = "已登录用户可以进行:";
-"Tourist is capable of:" = "游客可以进行:";
-"Explore and Create" = "探索和创造";
+"Logged-in user can:" = "已登录用户可以进行:";
+"Tourist can:" = "游客可以进行:";
+"explore and create" = "探索和创造";
+"explore" = "探索";
+"Explore" = "探索";
 "Create" = "创造";
+"Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "随时随地，当您完成定位后就可以在城市的指定区域内**尽情探索无穷无尽的奇妙新世界**，可能遇到的是异次元的美食，也可能是神奇的动物，一切都在等着你去发现！";
+"This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "这一次，**不再只做信息的获取者** 您可以通过摆放模型来表达自己的心情、装饰城市，而且这一切都可以被其他小伙伴共享，城市的一切都因你而焕然一新";
 
 "Requirement not fullfill!" = "还有运行条件不满足！";
 "Check it again" = "再检查一下";
@@ -84,6 +166,31 @@
 "Into Augmented City Brain New World" = "进入城市新视界";
 
 "My ART Chest" = "我的艺术档案";
+"%@ 's badge" = "%@的徽章";
+/* AR界面 localizable string*/
+"Slowly move device to locate..." = "缓慢移动设备进行定位...";
+"Enter Creation Mode" = "进入创作模式";
+"Place" = "放置";
+"Current network is not stable" = "当前网络状态不佳";
+"ACRT location services are not available in the current area" = "ACRT无法在当前区域提供定位服务";
+"Sign in so you can turn into create mode without location"="登陆后在未定位成功时也可以进入离线创作模式";
+"You can turn into create mode and re-localize when you are ready" = "您可以进入离线创作模式，等一切就绪后再重新定位";
+"Return and sign in" = "返回注册";
+"Into create mode" = "进入本地创作模式";
+"My models" = "我的模型";
+"Messages" = "情感表达";
+"Letters" = "英文字母";
+"Foundmentals" = "基础模型";
+"Others" = "其他模型";
+
+"Show mesh in reality" = "在配备LiDAR的设备上展示定位背后的原理";
+"Take a snap shot" = "拍照记录下这奇妙的时刻";
+"Explore the magic world" = "点击进入探索模式，尽情探索城市新视界";
+"Change the world now" = "点击进入创作模式，动手改变城市面貌";
+"Clear all model you put" = "一键清除所有放置的模型";
+"Upload objects" = "上传当前场景放置的模型";
+"Downloads objects" = "下载其他用户的模型";
+"Locate again" = "点击进行重新定位、位置校准";
 /* 成就界面 localizable string*/
 "Special Event" = "特别活动";
 "Daily Event" = "每日活动";

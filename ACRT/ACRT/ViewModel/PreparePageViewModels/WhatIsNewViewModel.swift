@@ -25,7 +25,11 @@ class WhatIsNewViewModel{
     }
 }
 
-var whatIsNew = WhatIsNewViewModel(update: [Update(imageName: "update5",
+var whatIsNew = WhatIsNewViewModel(update: [Update(imageName: "update6",
+                                                   updateTitle: "Halloween special event",
+                                                   updateTime: "2021/10/31",
+                                                   details: "Halloween special event is coming, trick or treat?"),
+                                            Update(imageName: "update5",
                                                    updateTitle: "MAIC 2021",
                                                    updateTime: "2021/10/29",
                                                    details: "Come and join the 6th MAIC match in Zhejiang University!"),

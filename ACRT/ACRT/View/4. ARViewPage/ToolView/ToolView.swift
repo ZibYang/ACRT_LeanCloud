@@ -109,8 +109,7 @@ struct ToolView: View {
                 Spacer()
             }
 //            .padding(.top, 10)
-            .padding(.horizontal)
-            .padding(.vertical, 5)
+            .padding()
             .offset(x: coachingViewModel.isCoaching ? -400 : 0)
             Spacer()
         }

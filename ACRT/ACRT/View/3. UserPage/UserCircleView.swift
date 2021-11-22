@@ -24,6 +24,8 @@ struct UserCircleView: View {
     
     var body: some View {
         Button(action: {
+            let impactLight = UIImpactFeedbackGenerator(style: .light)
+            impactLight.impactOccurred()
             showUserPanel.toggle()
         }, label:{
             Image(uiImage: userModel.userImage == nil ? UIImage(systemName: "person.crop.circle")! : userModel.userImage!)

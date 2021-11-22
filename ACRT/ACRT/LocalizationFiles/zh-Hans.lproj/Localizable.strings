@@ -57,8 +57,8 @@
 "Empty email is not acceptable" = "请输入邮箱账号";
 "Empty password is not acceptable" = "请输入密码";
 "Got it" = "好的";
-"Signing in, please wait..." = "正在登陆中，请等待...";
-"Registering, please wait..." = "正在注册新用户，请等待...";
+"Signing in, please wait..." = "正在登陆中，请稍后...";
+"Registering, please wait..." = "正在注册新用户，请稍后...";
 "Error" = "错误";
 "Try it again" = "再试一次";
 "Could not find user." = "登陆用户名错误，登陆失败";
@@ -111,6 +111,8 @@
 "Wish we can meet in Apple Park one day." = "当您到访Apple Park，您将获得这枚精致的徽章，希望我们在Apple Park相见！";
 "Welcome to the historical Nanjin and Chendu." = "欢迎到访历史古都南京和熊猫故乡成都，来赢得相应的城市徽章吧";
 "Welcome to the beautiful Shenzhen and Guangzhou." = "欢迎到访美丽的广州和创新之城深圳，来赢得相应的城市徽章吧";
+"Halloween special event" = "万圣节特别活动";
+"Halloween special event is coming, trick or treat?" = "万圣节特别活动来了，不给糖就捣蛋？";
 
 "Today" = "今天";
 "Yesterday" = "昨天";

@@ -39,8 +39,7 @@ struct PermisionDeniedView: View {
             }
             Button(role: .cancel){
                 isPressed = false
-                UIApplication.shared.open(URL(string:
-                                                UIApplication.openSettingsURLString)!)
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }label:{
                 Text("Turn On in Settings")
             }
