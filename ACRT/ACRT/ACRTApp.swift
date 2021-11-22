@@ -39,6 +39,8 @@ struct ACRTApp: App {
         WindowGroup {
             // MARK: View
             MainView()
+            // HapticTest()
+            // IntroduceLiDARView()
         }
     }
 }

@@ -32,6 +32,8 @@ struct WelcomePage: View {
                 HStack {
                     Spacer()
                     Button("Understand") {
+                        let impactLight = UIImpactFeedbackGenerator(style: .light)
+                        impactLight.impactOccurred()
                         let userDefaults = UserDefaults.standard
                         userDefaults.set(true, forKey: "LaunchedBefore")
                         dismissSheet()

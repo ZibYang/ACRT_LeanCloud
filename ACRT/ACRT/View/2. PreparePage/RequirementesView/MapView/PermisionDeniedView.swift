@@ -22,6 +22,8 @@ struct PermisionDeniedView: View {
     
     var body: some View {
         Button(action: {
+            let impactLight = UIImpactFeedbackGenerator(style: .light)
+            impactLight.impactOccurred()
             isPressed.toggle()
         }, label: {
             HStack {
@@ -33,12 +35,10 @@ struct PermisionDeniedView: View {
         }) // Button
         .alert("ACRT works best with Location Services turned on", isPresented: $isPressed){
             Button(role: .none){
-                isPressed = false
             }label:{
                 Text("Keep it that way")
             }
             Button(role: .cancel){
-                isPressed = false
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             }label:{
                 Text("Turn On in Settings")

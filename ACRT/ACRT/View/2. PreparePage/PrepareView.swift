@@ -19,6 +19,7 @@
 
 import SwiftUI
 import CoreHaptics
+import AVFoundation
 
 struct PrepareView: View {
     @StateObject var mapModel = MapViewModel()
@@ -36,7 +37,11 @@ struct PrepareView: View {
     
     @State var everythingSetted = false
     @State var everythingIsNotSetYetWarning = false
+
+    @State var audioPlayer: AVAudioPlayer!
+
     @Binding var introduceAgain: Bool
+    @State var introduceLiDAR = false
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -106,19 +111,34 @@ struct PrepareView: View {
     
     var useLidarDeviceRecommandation: some View{
         DisclosureGroup(isExpanded: $checkLidarDeviceList, content: {
-            Text("Recommend devices include")
-            Link(destination: URL(string: "https://www.apple.com.cn/iphone/")!,
-                 label: {
-                    EquippedLiDARDevicesView(deviceName: "iPhone 13 Pro series", iconName: "iphone")})
-            Link(destination: URL(string: "https://www.apple.com.cn/iphone/")!,
-                 label: {
-                    EquippedLiDARDevicesView(deviceName: "iPhone 12 Pro series", iconName: "iphone")})
-            Link(destination: URL(string: "https://www.apple.com.cn/ipad-pro/")!,
-                 label: {
-                    EquippedLiDARDevicesView(deviceName: "iPad Pro 12.9-inch 4/5th-generation", iconName: "ipad")})
-            Link(destination: URL(string: "https://www.apple.com.cn/ipad-pro/")!,
-                 label: {
-                    EquippedLiDARDevicesView(deviceName: "iPad Pro 11-inch 2/3th-generation", iconName: "ipad")})
+            if arViewModel.capabilitySatisfied == "satisfied"{
+                HStack(spacing: 10) {
+                    Text("Your devices already equipped with LiDAR")
+                    
+                    Button(action:{
+                        introduceLiDAR.toggle()
+                    }, label:{
+                        Image(systemName: "questionmark.circle")
+                    })
+                }
+                .sheet(isPresented: $introduceLiDAR){
+                    IntroduceLiDARView()
+                }
+            }else{
+                Text("Recommend devices include")
+                Link(destination: URL(string: "https://www.apple.com.cn/iphone/")!,
+                     label: {
+                        EquippedLiDARDevicesView(deviceName: "iPhone 13 Pro series", iconName: "iphone")})
+                Link(destination: URL(string: "https://www.apple.com.cn/iphone/")!,
+                     label: {
+                        EquippedLiDARDevicesView(deviceName: "iPhone 12 Pro series", iconName: "iphone")})
+                Link(destination: URL(string: "https://www.apple.com.cn/ipad-pro/")!,
+                     label: {
+                        EquippedLiDARDevicesView(deviceName: "iPad Pro 12.9-inch 4/5th-generation", iconName: "ipad")})
+                Link(destination: URL(string: "https://www.apple.com.cn/ipad-pro/")!,
+                     label: {
+                        EquippedLiDARDevicesView(deviceName: "iPad Pro 11-inch 2/3th-generation", iconName: "ipad")})
+            }
         }){
             IndicatorView(indicatorImageName: arViewModel.indicatorImageName,
                          indicatorTitle: arViewModel.indicatorTitle,
@@ -166,8 +186,17 @@ struct PrepareView: View {
                 // TODO: And model loaded
                 
             }else{
-                let impact = UINotificationFeedbackGenerator()
-                impact.notificationOccurred(.error)
+                guard let shutterPath = Bundle.main.url(forResource: "errorBeep.wav", withExtension: nil) else{
+                    fatalError("Unable to find tapSound.wav in bundle")
+                }
+                do{
+                    audioPlayer = try AVAudioPlayer(contentsOf: shutterPath)
+                    let impact = UINotificationFeedbackGenerator()
+                    impact.notificationOccurred(.error)
+                    audioPlayer.play()
+                }catch{
+                    print(error.localizedDescription)
+                }
                 everythingIsNotSetYetWarning.toggle()
             }
             coachingViewModel.comeFromPrepareView = true

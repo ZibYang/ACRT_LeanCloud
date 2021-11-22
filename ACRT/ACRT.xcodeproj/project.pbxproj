@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27505D89274B74960060501D /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27505D88274B74960060501D /* FocusEntity */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -70,6 +69,10 @@
 		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
 		9F20527B274A320A00244C20 /* SecurityInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F20527A274A320A00244C20 /* SecurityInfomation.swift */; };
 		9F20527D274A36FB00244C20 /* ARKitInteraction_shutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */; };
+		9FC32647274BAECB006E1ACC /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9FC32646274BAECB006E1ACC /* FocusEntity */; };
+		9FC3264B274BB6CB006E1ACC /* errorBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3264A274BB6CB006E1ACC /* errorBeep.wav */; };
+		9FC3264D274BC5E7006E1ACC /* IntroduceLiDAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC3264C274BC5E7006E1ACC /* IntroduceLiDAR.swift */; };
+		9FC32650274BC7F1006E1ACC /* IntroduceLiDAR.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3264F274BC7F1006E1ACC /* IntroduceLiDAR.mov */; };
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 /* End PBXBuildFile section */
@@ -141,6 +144,9 @@
 		9F20527A274A320A00244C20 /* SecurityInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityInfomation.swift; sourceTree = "<group>"; };
 		9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ARKitInteraction_shutter.mp3; sourceTree = "<group>"; };
 		9F2052E3274B36DF00244C20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9FC3264A274BB6CB006E1ACC /* errorBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = errorBeep.wav; sourceTree = "<group>"; };
+		9FC3264C274BC5E7006E1ACC /* IntroduceLiDAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceLiDAR.swift; sourceTree = "<group>"; };
+		9FC3264F274BC7F1006E1ACC /* IntroduceLiDAR.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IntroduceLiDAR.mov; sourceTree = "<group>"; };
 		9FC82553273D110D00C9894C /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27505D89274B74960060501D /* FocusEntity in Frameworks */,
+				9FC32647274BAECB006E1ACC /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +378,7 @@
 		5A56E91B272F9A250062680E /* 2. PreparePage */ = {
 			isa = PBXGroup;
 			children = (
+				9FC3264A274BB6CB006E1ACC /* errorBeep.wav */,
 				5A56E920272F9A6C0062680E /* RequirementesView */,
 				5A56E91C272F9A460062680E /* PrepareView.swift */,
 			);
@@ -430,7 +437,9 @@
 		5A56E930272FC5BF0062680E /* LiDARDeviceView */ = {
 			isa = PBXGroup;
 			children = (
+				9FC3264F274BC7F1006E1ACC /* IntroduceLiDAR.mov */,
 				5A56E931272FC5D10062680E /* EquippedLiDARDevicesView.swift */,
+				9FC3264C274BC5E7006E1ACC /* IntroduceLiDAR.swift */,
 			);
 			path = LiDARDeviceView;
 			sourceTree = "<group>";
@@ -510,7 +519,7 @@
 			);
 			name = ACRT;
 			packageProductDependencies = (
-				27505D88274B74960060501D /* FocusEntity */,
+				9FC32646274BAECB006E1ACC /* FocusEntity */,
 			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
@@ -544,7 +553,7 @@
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
 			packageReferences = (
-				27505D87274B74960060501D /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				9FC32645274BAECB006E1ACC /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
@@ -560,12 +569,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC32650274BC7F1006E1ACC /* IntroduceLiDAR.mov in Resources */,
 				5A56E90F272BF2E40062680E /* README.md in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
 				5A56E905272BF1FF0062680E /* Assets.xcassets in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 				9F20527D274A36FB00244C20 /* ARKitInteraction_shutter.mp3 in Resources */,
+				9FC3264B274BB6CB006E1ACC /* errorBeep.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +651,7 @@
 				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
 				27ADC926273E5F8C00926996 /* RandomUtils.swift in Sources */,
 				5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */,
+				9FC3264D274BC5E7006E1ACC /* IntroduceLiDAR.swift in Sources */,
 				27B3EC4827316E4E00021DE1 /* ImageUtils.swift in Sources */,
 				27B3EC5A27325F7500021DE1 /* ExploreAnchorManagerViewModel.swift in Sources */,
 				27ADC92C273E9B0400926996 /* AnchorIdentifierHelper.swift in Sources */,
@@ -915,9 +927,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		27505D87274B74960060501D /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		9FC32645274BAECB006E1ACC /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
+			repositoryURL = "https://github.com/ZibYang/FocusEntity";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -926,9 +938,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		27505D88274B74960060501D /* FocusEntity */ = {
+		9FC32646274BAECB006E1ACC /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 27505D87274B74960060501D /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 9FC32645274BAECB006E1ACC /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */
