@@ -25,13 +25,16 @@ struct ToolView: View {
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var arViewModel: ARViewModel
-//    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
     @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
+    @EnvironmentObject var userViewModel : UserViewModel
 
 
     @State var showBottomView = false
     @State var showCameraButton = false
     @State var audioPlayer: AVAudioPlayer!
+    @State var showPersistenceAlert = false
+    @State var persistenceInfo = ""
+
     
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
@@ -206,7 +209,16 @@ struct ToolView: View {
     var uploadButton: some View{
         // MARK: upload button
         Button(action: {
-            sceneManager.shouldUploadSceneToCloud = true
+            if userViewModel.isSignedIn == false {
+                showPersistenceAlert = true
+                persistenceInfo = "Please log in before uploading or downloading"
+            } else if arViewModel.hasBeenLocalized == false {
+                showPersistenceAlert = true
+                persistenceInfo = "Please localize before uploading or downloading"
+            } else {
+                showPersistenceAlert = false
+                sceneManager.shouldUploadSceneToCloud = true
+            }
         }, label:{
             Image(systemName: "icloud.and.arrow.up")
                 .foregroundColor(.white)
@@ -215,13 +227,25 @@ struct ToolView: View {
             .contextMenu{
                 Label("Upload objects", systemImage: "arrow.up.to.line.circle.fill")
             }
+            .alert(isPresented: $showPersistenceAlert) {
+                Alert(title: Text("Hint"), message: Text(persistenceInfo), dismissButton: .default(Text("OK")))
+            }
         
     }
     
     var downloadButton: some View{
         // MARK: download button
         Button(action: {
-            sceneManager.shouldDownloadSceneFromCloud = true
+            if userViewModel.isSignedIn == false {
+                showPersistenceAlert = true
+                persistenceInfo = "Please log in before uploading or downloading"
+            } else if arViewModel.hasBeenLocalized == false {
+                showPersistenceAlert = true
+                persistenceInfo = "Please localize before uploading or downloading"
+            } else {
+                showPersistenceAlert = false
+                sceneManager.shouldDownloadSceneFromCloud = true
+            }
         }, label:{
             Image(systemName: "icloud.and.arrow.down")
                 .foregroundColor(.white)
@@ -229,6 +253,9 @@ struct ToolView: View {
         })
             .contextMenu{
                 Label("Downloads objects", systemImage: "arrow.down.to.line.circle.fill")
+            }
+            .alert(isPresented: $showPersistenceAlert) {
+                Alert(title: Text("Hint"), message: Text(persistenceInfo), dismissButton: .default(Text("OK")))
             }
     }
     

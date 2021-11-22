@@ -34,14 +34,15 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var placementSetting : PlacementSetting
     @EnvironmentObject var sceneManager : SceneManagerViewModel
     @EnvironmentObject var modelDeletionManager: ModelDeletionManagerViewModel
+    @EnvironmentObject var userModel: UserViewModel
+    @EnvironmentObject var persistence: PersistenceHelperViewModel
+
 
 
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
-    var userName : String
     var testBool : Bool = false
     @StateObject var exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
-    @StateObject var persistence: PersistenceHelperViewModel = PersistenceHelperViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()
@@ -152,14 +153,14 @@ struct ARWorldView:  UIViewRepresentable {
                 let anchorName = modelAnchor.anchorName!
                 print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
                 //let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
-                if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userName {
+                if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userModel.userName {
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 } else {
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
-                let anchorName = AnchorIdentifierHelper.encode(userName: userName, modelName: modelAnchor.modelName)
+                let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.modelName)
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
                 self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: false)
@@ -188,11 +189,11 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func handlePersistence(for arView:  CustomARView) {
-        if self.arViewModel.hasBeenLocalized == false || userName == "" {
+        if self.arViewModel.hasBeenLocalized == false || self.userModel.isSignedIn == false {
             return
         }
         if self.sceneManager.shouldUploadSceneToCloud {
-            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userName, poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
+            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userModel.userName, poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
             self.sceneManager.shouldUploadSceneToCloud = false
         } else if self.sceneManager.shouldDownloadSceneFromCloud {
             let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")

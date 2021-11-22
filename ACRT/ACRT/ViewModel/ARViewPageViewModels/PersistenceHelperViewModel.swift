@@ -37,11 +37,15 @@ class PersistenceHelperViewModel: ObservableObject {
     // let SCENE_NAME: String = "default"
     var objects_dict: [String: LCString] = [:]
     
+    var info: String = ""
+    var isDone : Bool = false
     
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
     // So whenever we load a scene from file, we will use the model and ARAnchor pair for placement.
     func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 , in sceneName: String) {
+        self.isDone = false
+        self.info = ""
         print("Save scene to local filesystem.")
         
 //      first check if object is already exist
@@ -85,14 +89,20 @@ class PersistenceHelperViewModel: ObservableObject {
                 _ = LCObject.save(objects, completion: { (result) in
                     switch result {
                     case .success:
+                        self.isDone = true
+                        self.info = "Upload Successfully"
                         print("[LH] upload success !!")
                     case .failure(error: let error):
+                        self.isDone = true
+                        self.info = "Uploading failed"
                         print(error)
                     }
                 })
                 
 
             case .failure(error: let error):
+                self.isDone = true
+                self.info = "Uploading failed"
                 print("[LH] \(error)")
             }
         }
@@ -100,6 +110,8 @@ class PersistenceHelperViewModel: ObservableObject {
     
     func downloadScene(poseARKitToW : simd_float4x4, in sceneName: String) -> [ModelAnchor]{
         print("Load scene from local filesystem.")
+        self.isDone = false
+        self.info = ""
         // return models which is appended into confirmedModel
         
         let query = LCQuery(className: "Objects")
@@ -129,8 +141,11 @@ class PersistenceHelperViewModel: ObservableObject {
                 } else {
                     print("[LH] no query objects in database")
                 }
-
+                self.isDone = true
+                self.info = "download \(objects.count) objects successfully."
             case .failure(error: let error):
+                self.isDone = true
+                self.info = "downloading failed "
                 print("[LH] \(error)")
             }
         }
