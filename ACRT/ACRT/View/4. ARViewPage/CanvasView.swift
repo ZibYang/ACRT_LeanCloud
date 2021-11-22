@@ -21,12 +21,15 @@ struct CanvasView: View {
     @StateObject var placementSetting = PlacementSetting()
     @StateObject var sceneManager = SceneManagerViewModel()
     @StateObject var modelDeletionManager = ModelDeletionManagerViewModel()
+    @StateObject var persistence: PersistenceHelperViewModel = PersistenceHelperViewModel()
     
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var httpManager : HttpAuth
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+    
+
 
 
     @State private var showMesh = false
@@ -39,13 +42,15 @@ struct CanvasView: View {
     
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, userName: userModel.isSignedIn == true ?userModel.userName:"")
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(usdzManagerViewModel)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(modelDeletionManager)
+                .environmentObject(userModel)
+                .environmentObject(persistence)
                 .ignoresSafeArea().onTapGesture(count: 1) {
 
                 }
