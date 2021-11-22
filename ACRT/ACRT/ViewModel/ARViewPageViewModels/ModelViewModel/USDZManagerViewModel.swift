@@ -48,34 +48,34 @@ class USDZManagerViewModel: ObservableObject {
                                                               "qs_Title", //26
                                                               "qs_contact" //27
                                                              ],
-                                                         categoryList: [.other, //1
-                                                                        .other, //2
-                                                                        .other, //3
-                                                                        .other, //4
-                                                                        .other, //5
-                                                                        .other, //5
-                                                                        .other, //6
-                                                                        .other, //7
-                                                                        .other, //8
-                                                                        .other, //9
-                                                                        .other, //10
-                                                                        .other, //11
-                                                                        .other, //12
-                                                                        .other, //13
-                                                                        .other, //14
-                                                                        .other, //15
-                                                                        .other, //16
-                                                                        .other, //17
-                                                                        .other, //18
-                                                                        .other, //19
-                                                                        .other, //20
-                                                                        .other, // 21
-                                                                        .other, //22
-                                                                        .other, //23
-                                                                        .other, //24
-                                                                        .other, //25
-                                                                        .other, //26
-                                                                        .other //27
+                                                         categoryList: [.special, //1
+                                                                        .special, //2
+                                                                        .special, //3
+                                                                        .special, //4
+                                                                        .special, //5
+                                                                        .special, //5
+                                                                        .special, //6
+                                                                        .special, //7
+                                                                        .special, //8
+                                                                        .special, //9
+                                                                        .special, //10
+                                                                        .special, //11
+                                                                        .special, //12
+                                                                        .special, //13
+                                                                        .special, //14
+                                                                        .special, //15
+                                                                        .special, //16
+                                                                        .special, //17
+                                                                        .special, //18
+                                                                        .special, //19
+                                                                        .special, //20
+                                                                        .special, // 21
+                                                                        .special, //22
+                                                                        .special, //23
+                                                                        .special, //24
+                                                                        .special, //25
+                                                                        .special, //26
+                                                                        .special //27
                                                                        ])
     
     var createModelList = USDZModelList(usdzModelNameList:["user_like_blue", //1
@@ -116,7 +116,15 @@ class USDZManagerViewModel: ObservableObject {
 //                                                           "user_message_CRASH!" //20
                                                            
                                                            "user_emoji_smileWithSweat", //1
-                                                           "user_emoji_smile" //2
+                                                           "user_emoji_smile", //2
+                                                           
+                                                           "user_special_pumpkin", //1
+                                                           "user_special_witchHat", //2
+                                                           "user_special_skull", //3
+                                                           "user_special_candy", //4
+                                                           "user_special_bat", //5
+                                                           "user_special_deadHand", //6
+                                                           "user_special_ghost" //7
                                                           ],
                                         categoryList:[.foundmental, //1
                                                       .foundmental, //2
@@ -156,8 +164,15 @@ class USDZManagerViewModel: ObservableObject {
                                                       .message, //19
 //                                                      .message //20
                                                       
-                                                      .emoji,
-                                                      .emoji
+                                                      .emoji, //1 
+                                                      .emoji, //2
+                                                      .special, //1
+                                                      .special, //2
+                                                      .special, //3
+                                                      .special, //4
+                                                      .special, //5
+                                                      .special, //6
+                                                      .special //7
                                                      ])
     
 //    func AreModelLibrariesLoaded() -> Bool {

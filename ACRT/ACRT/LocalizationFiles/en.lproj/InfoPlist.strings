@@ -14,10 +14,10 @@
   Copyright © Augmented City Reality Toolkit. All Right Reserved.
  
 */
-NSLocationWhenInUseUsageDescription = "启用定位服务以获取位置信息，并用于加速初始定位流程";
+NSLocationWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
 
-NSCameraUsageDescription  = "打开城市新视界必须要使用相机";
+NSCameraUsageDescription  = "Camera is essential to set up the AR City View.";
 
-NSPhotoLibraryAddUsageDescription = "将奇妙的新视界保存起来吧";
+NSPhotoLibraryAddDescription = "Save the magical world into your album.";
 
-CFBundleDisplayName = "AR城市视界";
+CFBundleDisplayName = "ACRT";

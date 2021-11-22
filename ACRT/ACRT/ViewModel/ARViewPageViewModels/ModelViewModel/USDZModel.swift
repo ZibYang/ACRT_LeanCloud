@@ -21,7 +21,7 @@ import RealityKit
 import Combine
 
 enum ModelCategory: String, CaseIterable{
-    case emoji, message, foundmental, letter,  other
+    case emoji, special, message, letter, foundmental
     
     var label: String{
         get{
@@ -34,8 +34,8 @@ enum ModelCategory: String, CaseIterable{
                 return "Letters"
             case .foundmental:
                 return "Foundmentals"
-            case .other:
-                return "Others"
+            case .special:
+                return "Special Event"
             }
         }
     }
