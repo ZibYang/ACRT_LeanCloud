@@ -19,3 +19,6 @@ NSLocationWhenInUseUsageDescription = "启用定位服务以获取位置信息�
 NSCameraUsageDescription  = "打开城市新视界必须要使用相机";
 
 NSPhotoLibraryUsageDescription = "将奇妙的新视界保存起来吧";
+
+NSPhotoLibraryAdditionsDescription = "将奇妙的新视界保存起来吧";
+
