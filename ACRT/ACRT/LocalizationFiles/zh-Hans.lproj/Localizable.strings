@@ -174,9 +174,26 @@
 
 "Show mesh in reality" = "在配备LiDAR的设备上展示定位背后的原理";
 "Take a snap shot" = "拍照记录下这奇妙的时刻";
+"It is not recommended to take pictures with mesh" = "不建议保存带有显示激光雷达Mesh的图片";
+"Turn off the mesh" = "关闭Mesh";
+"Show the mesh anyway" = "仍然打开Mesh";
+
 "Explore the magic world" = "点击进入探索模式，尽情探索城市新视界";
 "Change the world now" = "点击进入创作模式，动手改变城市面貌";
 "Clear all model you put" = "一键清除所有放置的模型";
+"Hint" = "提示";
+"All models have been deleted" = "所有添加的模型已经被清除";
+"No model can be delete" = "当前没有模型可以被清除";
+"Long press or " = "长按删除，或点击";
+
+"Occlusion is the key for AR scene." = "展示遮挡关系是AR真实性的关键";
+"Please log in before uploading or downloading" = "请登陆后进行上传或加载";
+"Please localize before uploading or downloading" = "请完成场景定位后进行上传或下载";
+"Log in now" = "即刻登陆";
+"Localize now" = "即刻定位";
+"Don't log in now" = "暂不登陆";
+"Don't localize now" = "暂不定位";
+
 "Upload objects" = "上传当前场景放置的模型";
 "Downloads objects" = "下载其他用户的模型";
 "Locate again" = "点击进行重新定位、位置校准";

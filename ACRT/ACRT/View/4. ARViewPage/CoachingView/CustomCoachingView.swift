@@ -63,18 +63,15 @@ struct CustomCoachingView: View {
                         // MARK: If sign in or not sign in
                         Button(action: {
                             withAnimation(Animation.easeInOut(duration: 0.8)){
+                                let impactLight = UIImpactFeedbackGenerator(style: .light)
                                 if userModel.isSignedIn{
                                     coachingViewModel.isCoaching = false
                                     placementSetting.isInCreationMode = true
                                     placementSetting.openModelList.toggle()
                                 }else{
-                                    if coachingViewModel.comeFromPrepareView == true {
-                                        coachingViewModel.isCoaching = false
-                                        goBack.toggle()
-                                    } else {
-                                        coachingViewModel.isCoaching = false
-                                    }
+                                    goBack.toggle()
                                 }
+                                impactLight.impactOccurred()
                             }
                         }, label: {
                             HStack {

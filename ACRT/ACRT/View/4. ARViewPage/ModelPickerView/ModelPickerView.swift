@@ -36,6 +36,8 @@ struct ModelPickerView: View {
             .navigationBarTitle(Text("My models"), displayMode: .large)
             .navigationBarItems(trailing:
                   Button(action: {
+                    let impactLight = UIImpactFeedbackGenerator(style: .light)
+                    impactLight.impactOccurred()
                     dismissSheet()
                 }, label: {
                     Text("Cancel")

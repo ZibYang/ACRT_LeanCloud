@@ -19,10 +19,11 @@ import SwiftUI
 
 struct ModelSelectedView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
-
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
     var body: some View {
-        HStack(spacing: 30) {
+        HStack(spacing: 10) {
             Button(action: {
+                impactLight.impactOccurred()
                 placementSetting.openModelList = true
             }, label: {
                 ZStack{
@@ -32,36 +33,44 @@ struct ModelSelectedView: View {
                         .frame(width:100)
                 }
             })
+            HStack() {
+                placeButton
             
-            placeButton
-            
-            cancelButton
+                HintText
+            }
         }
     }
     
-    var cancelButton: some View{
-        Button(action: {
-            
-        }, label: {
-            Text("Cancel")
-        })
-            .frame(width: 80,height: 40)
-            .background(.ultraThinMaterial)
-            .foregroundColor(.red)
-            .cornerRadius(10)
+    var HintText: some View{
+        HStack() {
+            Text("Long press or ")
+                .font(.caption)
+            Image(systemName: "trash.square.fill")
+        }
+        .frame(height: 45)
+        .padding(.horizontal)
+        .background(.ultraThinMaterial)
+        .foregroundColor(.white)
+        .cornerRadius(10)
     }
     
     var placeButton: some View{
         Button(action: {
+            impactLight.impactOccurred()
             let modelAnchor = ModelAnchor(modelName: placementSetting.selectedModel, transform: nil, anchorName: nil)
             print("DEBUG(BCH): append \(modelAnchor.modelName)")
 
             self.placementSetting.modelWaitingForPlacement.append(modelAnchor)
 //                        self.placementSetting.selectedModel = nil
         }, label: {
-            Text("Place")
+            HStack {
+                Text("Place")
+                Image(systemName: "circle.circle")
+            }
+            .font(.caption)
         })
-            .frame(width: 80,height: 40)
+            .disabled(placementSetting.selectedModel == "")
+            .frame(width: 80,height: 45)
             .background(.ultraThinMaterial)
             .cornerRadius(10)
     }
@@ -71,9 +80,16 @@ struct ModelSelectedView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
             ModelSelectedView()
+            
             ModelSelectedView()
                 .preferredColorScheme(.dark)
         }
         .environmentObject(PlacementSetting())
+
+        
+        ModelSelectedView()
+            .environmentObject(PlacementSetting())
+            .preferredColorScheme(.dark)
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

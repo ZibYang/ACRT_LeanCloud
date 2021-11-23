@@ -32,15 +32,19 @@ struct ToolView: View {
     @State var showBottomView = false
     @State var showCameraButton = false
     @State var audioPlayer: AVAudioPlayer!
-    @State var showPersistenceAlert = false
-    @State var persistenceInfo = ""
-
+    
+    @State var showPersistenceSignInAlert = false
+    @State var showPersistenceLocalizeAlert = false
     
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
+    @Binding var showOcclusion: Bool
     @Binding var goBack: Bool
     
     @State private var snapshotBackgroundOpacity = 0.0
+    
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
+    let impactMedium = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
         ZStack {
@@ -86,8 +90,9 @@ struct ToolView: View {
         VStack {
             // MARK: Top tool
             HStack {
-                // quit Button
+                // MARK: Quit Button
                 Button(action: {
+                    impactLight.impactOccurred()
                     withAnimation(Animation.easeInOut(duration: 0.8)){
                         goBack.toggle()
                     }
@@ -97,13 +102,14 @@ struct ToolView: View {
                 }, label:{
                     Image(systemName: "arrow.backward")
                         .foregroundColor(.white)
-                        .frame(width: 40, height: 40)
+                        .frame(width: 30, height: 30)
                 })
                     .padding(.all, 6)
-                    .background(.ultraThinMaterial)
+                    .background(Material.ultraThinMaterial)
                     .cornerRadius(10)
                     
-                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton)
+                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion)
+                    .padding(.horizontal, 6)
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
                     .cornerRadius(10)
@@ -124,9 +130,9 @@ struct ToolView: View {
             // MARK: Left center tool
             HStack {
                 LeftToolView(showCameraButton: $showCameraButton)
-                    .padding(.all, 5)
+                    .padding(.all, 2)
                     .background(.ultraThinMaterial)
-                    .cornerRadius(10)
+                    .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
                     .environmentObject(placementSetting)
                     .environmentObject(arViewModel)
                     .environmentObject(httpManager)
@@ -142,23 +148,24 @@ struct ToolView: View {
             Spacer()
         }
         .offset(x: coachingViewModel.isCoaching ? -150 : 0)
+        .offset(x: showCameraButton ? -150 : 0)
     }
     
     
     var relocationButton: some View{
         //MARK: relocation Button
         Button(action: {
+            impactLight.impactOccurred()
             httpManager.statusLoc = 0
             placementSetting.isInCreationMode = false
-            coachingViewModel.comeFromPrepareView = false
             showCameraButton = false
             coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
         }, label:{
             Image(systemName: "location")
                 .foregroundColor(.white)
-                .frame(width: 40, height: 40)
+                .frame(width: 34, height: 34)
         })
-            .padding(.all, 6)
+            .padding(.all, 5)
             .background(.ultraThinMaterial)
             .cornerRadius(10)
             .contextMenu{
@@ -179,56 +186,80 @@ struct ToolView: View {
                     
                     clearSceneButton
                 }
-                .padding(.all, 6)
-                .background(.ultraThinMaterial)
-                .cornerRadius(10)
             }
             .padding(.horizontal)
             .offset(x: coachingViewModel.isCoaching ? 150 : 0)
             .offset(x: placementSetting.isInCreationMode ? 0 : 150)
+            .offset(x: showCameraButton ? 150 : 0)
             Spacer()
-            
-
+        }
+        .alert("Please log in before uploading or downloading", isPresented: $showPersistenceSignInAlert) {
+            Button(role: .none){
+            }label:{
+                Text("Don't log in now")
+            }
+            Button(role: .cancel){
+                userViewModel.showUserPanel.toggle()
+            }label:{
+                Text("Log in now")
+            }
+        }
+        .alert("Please localize before uploading or downloading", isPresented: $showPersistenceLocalizeAlert) {
+            Button(role: .none){
+            }label:{
+                Text("Don't localize now")
+            }
+            Button(role: .cancel){
+                httpManager.statusLoc = 0
+                placementSetting.isInCreationMode = false
+                coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
+            }label:{
+                Text("Localize now")
+            }
         }
     }
     
     var clearSceneButton: some View{
         //MARK: clear Button
         Button(action: {
+            impactLight.impactOccurred()
             self.sceneManager.ClearCreativeAnchors()
-            
         }, label:{
             Image(systemName: "trash")
                 .foregroundColor(.white)
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
         })
+            .padding(.all, 6)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
             .contextMenu{
                 Label("Clear all model you put", systemImage: "trash.circle.fill")
+            }
+            .alert(isPresented: $sceneManager.deleteHint){
+                Alert(title: Text("Hint"), message: Text(LocalizedStringKey(sceneManager.deleteHintMessage)), dismissButton: .default(Text("OK")))
             }
     }
     var uploadButton: some View{
         // MARK: upload button
         Button(action: {
+            impactLight.impactOccurred()
             if userViewModel.isSignedIn == false {
-                showPersistenceAlert = true
-                persistenceInfo = "Please log in before uploading or downloading"
+                showPersistenceSignInAlert.toggle()
             } else if arViewModel.hasBeenLocalized == false {
-                showPersistenceAlert = true
-                persistenceInfo = "Please localize before uploading or downloading"
+                showPersistenceLocalizeAlert.toggle()
             } else {
-                showPersistenceAlert = false
                 sceneManager.shouldUploadSceneToCloud = true
             }
         }, label:{
             Image(systemName: "icloud.and.arrow.up")
                 .foregroundColor(.white)
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
         })
+            .padding(.all, 6)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
             .contextMenu{
                 Label("Upload objects", systemImage: "arrow.up.to.line.circle.fill")
-            }
-            .alert(isPresented: $showPersistenceAlert) {
-                Alert(title: Text("Hint"), message: Text(persistenceInfo), dismissButton: .default(Text("OK")))
             }
         
     }
@@ -236,27 +267,26 @@ struct ToolView: View {
     var downloadButton: some View{
         // MARK: download button
         Button(action: {
+            impactLight.impactOccurred()
             if userViewModel.isSignedIn == false {
-                showPersistenceAlert = true
-                persistenceInfo = "Please log in before uploading or downloading"
+                showPersistenceSignInAlert.toggle()
             } else if arViewModel.hasBeenLocalized == false {
-                showPersistenceAlert = true
-                persistenceInfo = "Please localize before uploading or downloading"
+                showPersistenceLocalizeAlert.toggle()
             } else {
-                showPersistenceAlert = false
                 sceneManager.shouldDownloadSceneFromCloud = true
             }
         }, label:{
             Image(systemName: "icloud.and.arrow.down")
                 .foregroundColor(.white)
-                .frame(width: 40, height: 40)
+                .frame(width: 30, height: 30)
         })
+            .padding(.all, 6)
+            .background(.ultraThinMaterial)
+            .cornerRadius(10)
             .contextMenu{
                 Label("Downloads objects", systemImage: "arrow.down.to.line.circle.fill")
             }
-            .alert(isPresented: $showPersistenceAlert) {
-                Alert(title: Text("Hint"), message: Text(persistenceInfo), dismissButton: .default(Text("OK")))
-            }
+
     }
     
     var snapShotButton: some View{
@@ -264,6 +294,7 @@ struct ToolView: View {
             Spacer()
             // MARK: SnapShot button
             Button(action: {
+                impactMedium.impactOccurred()
                 guard let shutterPath = Bundle.main.url(forResource: "ARKitInteraction_shutter.mp3", withExtension: nil) else{
                     fatalError("Unable to find ARKitInteraction_shutter.mp3 in bundle")
                 }
@@ -277,7 +308,7 @@ struct ToolView: View {
                 withAnimation(Animation.easeInOut(duration: 1.0)){
                     snapshotBackgroundOpacity = 0.0
                 }
-                withAnimation(Animation.easeInOut(duration: 0.8)){
+                withAnimation(Animation.easeInOut(duration: 0.6)){
                     snapShot.toggle()
                 }
                 print("snapshort")
@@ -300,38 +331,26 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
-                .environmentObject(PlacementSetting())
-                .environmentObject(SceneManagerViewModel())
-                .environmentObject(CoachingViewModel())
-                .environmentObject(HttpAuth())
-                .environmentObject(ARViewModel())
-                .environmentObject(USDZManagerViewModel())
-                .environmentObject(ModelDeletionManagerViewModel())
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false))
+                
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
-                    .environmentObject(PlacementSetting())
-                    .environmentObject(SceneManagerViewModel())
-                    .environmentObject(CoachingViewModel())
-                    .environmentObject(HttpAuth())
-                    .environmentObject(ARViewModel())
-                    .environmentObject(USDZManagerViewModel())
-                    .environmentObject(ModelDeletionManagerViewModel())
+                ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false))
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), goBack: .constant(false))
-                .environmentObject(PlacementSetting())
-                .environmentObject(SceneManagerViewModel())
-                .environmentObject(CoachingViewModel())
-                .environmentObject(HttpAuth())
-                .environmentObject(ARViewModel())
-                .environmentObject(USDZManagerViewModel())
-                .environmentObject(ModelDeletionManagerViewModel())
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false))
+
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
         }
+        .environmentObject(PlacementSetting())
+        .environmentObject(SceneManagerViewModel())
+        .environmentObject(CoachingViewModel())
+        .environmentObject(HttpAuth())
+        .environmentObject(ARViewModel())
+        .environmentObject(ModelDeletionManagerViewModel())
+        .environmentObject(UserViewModel())
     }
 }

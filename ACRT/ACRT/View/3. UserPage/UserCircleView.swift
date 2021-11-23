@@ -20,13 +20,11 @@ import SwiftUI
 struct UserCircleView: View {
     @EnvironmentObject var userModel: UserViewModel
     
-    @State var showUserPanel = false
-    
     var body: some View {
         Button(action: {
             let impactLight = UIImpactFeedbackGenerator(style: .light)
             impactLight.impactOccurred()
-            showUserPanel.toggle()
+            userModel.showUserPanel.toggle()
         }, label:{
             Image(uiImage: userModel.userImage == nil ? UIImage(systemName: "person.crop.circle")! : userModel.userImage!)
                 .renderingMode(userModel.userImage == nil ? .template : .original)
@@ -38,7 +36,7 @@ struct UserCircleView: View {
                 .background(.ultraThinMaterial)
                 .clipShape(Circle())
         })
-            .sheet(isPresented: $showUserPanel){
+            .sheet(isPresented: $userModel.showUserPanel){
                 if userModel.isSignedIn{
                     UserLoggedinView()
                 }else{

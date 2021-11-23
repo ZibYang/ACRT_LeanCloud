@@ -29,9 +29,7 @@ struct CanvasView: View {
     @EnvironmentObject var httpManager : HttpAuth
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
     
-
-
-
+    @State var showOcclusion = false
     @State private var showMesh = false
     @State var snapShot = false
     @State var requestNow = true
@@ -42,7 +40,7 @@ struct CanvasView: View {
     
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot)
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, showOcclusion: $showOcclusion)
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(usdzManagerViewModel)
@@ -51,10 +49,11 @@ struct CanvasView: View {
                 .environmentObject(modelDeletionManager)
                 .environmentObject(userModel)
                 .environmentObject(persistence)
-                .ignoresSafeArea().onTapGesture(count: 1) {
+                .ignoresSafeArea()
+                .onTapGesture(count: 1) {
 
                 }
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, goBack: $goBack)
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)

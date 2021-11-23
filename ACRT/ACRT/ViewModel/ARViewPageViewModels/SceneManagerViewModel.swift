@@ -13,7 +13,9 @@ class SceneManagerViewModel: ObservableObject {
     var shouldUploadSceneToCloud: Bool = false
     var shouldDownloadSceneFromCloud: Bool = false
     @Published var anchorEntities: [AnchorEntity] = []
-
+    @Published var deleteHint = false
+    @Published var deleteHintMessage = ""
+    @Published var createdModelCount = 0
     
     lazy var persistenceUrl: URL = {
         do {
@@ -24,13 +26,20 @@ class SceneManagerViewModel: ObservableObject {
     }()
     
     func ClearCreativeAnchors() {
+        createdModelCount = 0
         for anchorEntity in anchorEntities {
             if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != "admin" {
                 print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
+                createdModelCount += 1
                 anchorEntity.removeFromParent()
             }
-            
         }
+        if createdModelCount != 0{
+            deleteHintMessage = "All models have been deleted"
+        }else{
+            deleteHintMessage = "No model can be delete"
+        }
+        deleteHint.toggle()
     }
     
     func ClearWholeAnchors() {

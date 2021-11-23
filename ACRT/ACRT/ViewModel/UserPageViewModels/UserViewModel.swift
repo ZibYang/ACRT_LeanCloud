@@ -42,6 +42,8 @@ class UserViewModel: ObservableObject{
     
     @Published var signInError = false
     
+    @Published var showUserPanel = false
+    
     //MARK: For prepareView
     let indicatorImageName = "AccountRequire"
     let indicatorTitle = "Login with Account"

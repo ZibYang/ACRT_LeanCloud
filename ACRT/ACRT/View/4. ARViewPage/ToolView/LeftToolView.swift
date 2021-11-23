@@ -22,7 +22,8 @@ struct LeftToolView: View {
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var httpManager: HttpAuth
     @Binding var showCameraButton : Bool 
-
+    
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
 
 //    @State private var selectedToolName = "Explore"
     
@@ -41,10 +42,10 @@ struct LeftToolView: View {
     
     var exploreTool: some View{
         Button(action: {
+            impactLight.impactOccurred()
             if arViewModel.hasBeenLocalized == false{
                 httpManager.statusLoc = 0
                 placementSetting.isInCreationMode = false
-                coachingViewModel.comeFromPrepareView = false
                 showCameraButton = false
                 coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
             }
@@ -54,19 +55,18 @@ struct LeftToolView: View {
                     placementSetting.isInCreationMode = false
                 }
             }
-            
-            
 
         }, label:{
             Image(systemName: "magnifyingglass")
                 .foregroundColor(placementSetting.isInCreationMode == false ? .blue : .white)
-                .frame(width: 45, height: 45)
+                .frame(width: 40, height: 40)
         })
             .background( .gray .opacity(placementSetting.isInCreationMode == false ? 0.5 : 0.0))
             .cornerRadius(10)
     }
     var createTool: some View{
         Button(action: {
+            impactLight.impactOccurred()
             withAnimation(Animation.easeInOut(duration: 0.5)){
 //                selectedToolName = "Create"
                 placementSetting.isInCreationMode = true
@@ -75,7 +75,7 @@ struct LeftToolView: View {
         }, label:{
             Image(systemName: "cube")
                 .foregroundColor(placementSetting.isInCreationMode == true ? .blue : .white)
-                .frame(width: 45, height: 45)
+                .frame(width: 40, height: 40)
         })
             .background( .gray .opacity(placementSetting.isInCreationMode == true ? 0.5 : 0.0))
             .cornerRadius(10)

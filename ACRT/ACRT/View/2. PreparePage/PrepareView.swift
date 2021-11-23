@@ -199,7 +199,6 @@ struct PrepareView: View {
                 }
                 everythingIsNotSetYetWarning.toggle()
             }
-            coachingViewModel.comeFromPrepareView = true
             coachingViewModel.isInsideQiushi = mapModel.isInsideQiuShi
             print("DEBUG(BCH): comeFromPrepareView")
         }, label: {
@@ -217,9 +216,9 @@ struct PrepareView: View {
     
     var footerButton: some View{
         Button(action: {
-            introduceAgain.toggle()
             let impactLight = UIImpactFeedbackGenerator(style: .light)
             impactLight.impactOccurred()
+            introduceAgain.toggle()
         },label: {
             Text("What is ACRT")
             .foregroundColor(.secondary)

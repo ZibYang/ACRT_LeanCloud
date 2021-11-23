@@ -28,6 +28,8 @@ import Foundation
 import SwiftUI
 
 struct ARWorldView:  UIViewRepresentable {
+    @StateObject var exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
+    
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var httpManager: HttpAuth
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel 
@@ -36,13 +38,11 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var modelDeletionManager: ModelDeletionManagerViewModel
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var persistence: PersistenceHelperViewModel
-
-
-
+    
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
+    @Binding var showOcclusion: Bool
     var testBool : Bool = false
-    @StateObject var exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
     
     func makeUIView(context: Context) -> ARView {
         let config = ARWorldTrackingConfiguration()
@@ -70,7 +70,7 @@ struct ARWorldView:  UIViewRepresentable {
         
         
         // Scene Understanding
-//        arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
+        // arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
         arViewModel.arView.environment.sceneUnderstanding.options.insert(.receivesLighting)
         
         // ARCoachingOverlay
@@ -121,6 +121,11 @@ struct ARWorldView:  UIViewRepresentable {
                 UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
             }
             takeSnapshootNow = false
+        }
+        if showOcclusion{
+            arViewModel.arView.environment.sceneUnderstanding.options.insert(.occlusion)
+        }else{
+            arViewModel.arView.environment.sceneUnderstanding.options.remove(.occlusion)
         }
     }
     

@@ -47,8 +47,9 @@ struct DeletionButton: View {
         }) {
             Image(systemName: systemIconName)
                 .font(.system(size:50, weight: .light, design: .default))
-                .foregroundColor(.white)
+                .foregroundColor(systemIconName == "trash.circle.fill" ? .red : .white)
                 .buttonStyle(PlainButtonStyle())
-        }.frame(width: 75, height: 75)
+        }
+        .frame(width: 85, height: 85)
     }
 }
