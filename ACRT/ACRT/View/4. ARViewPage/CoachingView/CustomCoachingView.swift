@@ -69,6 +69,7 @@ struct CustomCoachingView: View {
                                     placementSetting.isInCreationMode = true
                                     placementSetting.openModelList.toggle()
                                 }else{
+                                    coachingViewModel.isCoaching = false
                                     goBack.toggle()
                                 }
                                 impactLight.impactOccurred()
