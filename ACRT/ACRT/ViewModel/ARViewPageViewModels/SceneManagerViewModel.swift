@@ -27,6 +27,7 @@ class SceneManagerViewModel: ObservableObject {
     
     func ClearCreativeAnchors() {
         createdModelCount = 0
+        let length = anchorEntities.count
         for anchorEntity in anchorEntities {
             if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != "admin" {
                 print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
@@ -34,7 +35,12 @@ class SceneManagerViewModel: ObservableObject {
                 anchorEntity.removeFromParent()
             }
         }
-        print("[Count] \(createdModelCount)")
+        for i in 0..<length {
+            let index  = length - i - 1
+            if AnchorIdentifierHelper.decode(identifier: anchorEntities[index].name)[0] != "admin" {
+                anchorEntities.remove(at: index)
+            }
+        }
         if createdModelCount != 0{
             deleteHintMessage = "All models have been deleted"
         }else{
@@ -49,6 +55,7 @@ class SceneManagerViewModel: ObservableObject {
             anchorEntity.removeFromParent()
             
         }
+        anchorEntities.removeAll()
     }
     
     func offsetAnchors(transform : simd_float4x4) {
