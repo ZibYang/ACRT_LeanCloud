@@ -15,7 +15,7 @@ class SceneManagerViewModel: ObservableObject {
     @Published var anchorEntities: [AnchorEntity] = []
     @Published var deleteHint = false
     @Published var deleteHintMessage = ""
-    @Published var createdModelCount = 0
+    var createdModelCount = 0
     
     lazy var persistenceUrl: URL = {
         do {
@@ -34,6 +34,7 @@ class SceneManagerViewModel: ObservableObject {
                 anchorEntity.removeFromParent()
             }
         }
+        print("[Count] \(createdModelCount)")
         if createdModelCount != 0{
             deleteHintMessage = "All models have been deleted"
         }else{

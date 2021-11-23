@@ -21,14 +21,48 @@ struct ModelPickerView: View {
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
     @EnvironmentObject var placementSetting: PlacementSetting
     
+    private let gridItemLayout = [GridItem(.fixed(150))]
+    
     var body: some View {
         NavigationView {
             ScrollView(showsIndicators: false){
                 VStack{
                     ForEach(ModelCategory.allCases, id: \.self){ category in
                         if let modelsByCategory = usdzManagerViewModel.createModelList.get(category: category){
-                            HorizontalGrid(title: category.label, items: modelsByCategory)
-                                .environmentObject(placementSetting)
+                            
+                            VStack(alignment: .leading){
+                                Divider()
+                                Text(LocalizedStringKey(category.label))
+                                    .font(.headline)
+                                    .padding(.leading)
+                                ScrollView(.horizontal, showsIndicators: false){
+                                    LazyHGrid(rows: gridItemLayout){
+                                        ForEach(0..<modelsByCategory.count){ index in
+                                            let model = modelsByCategory[index]
+                                            Button(action:{
+                                                placementSetting.selectedModel = model.modelName
+                                                print("DEBUG(BCH): select \(placementSetting.selectedModel)")
+                                                dismissSheet()
+                                            }, label:{
+                                                if let unwrapedUIImage = model.modelPreviewImage {
+                                                    Image(uiImage: unwrapedUIImage)
+                                                        .resizable()
+                                                        .frame(width: 100, height: 100)
+                                                        .shadow(radius: 2)
+                                                }else{
+                                                    Image(uiImage: UIImage(systemName: "photo")!)
+                                                        .resizable()
+                                                        .frame(height: 150)
+                                                        .aspectRatio(1.1, contentMode: .fit)
+                                                        .background(Color(UIColor.secondarySystemFill))
+                                                        .cornerRadius(8.0)
+                                                }
+                                            })
+                                                .padding()
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -44,58 +78,10 @@ struct ModelPickerView: View {
                 }))
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        
     }
+
 }
 
-struct HorizontalGrid: View{
-    @Environment(\.presentationMode) var presentationMode
-    let title: String
-    let items: [USDZModel]
-    private let gridItemLayout = [GridItem(.fixed(150))]
-    
-    @EnvironmentObject var placementSetting: PlacementSetting
-    
-    var body: some View{
-        VStack(alignment: .leading){
-            Divider()
-            Text(LocalizedStringKey(title))
-                .font(.headline)
-                .padding(.leading)
-            ScrollView(.horizontal, showsIndicators: false){
-                LazyHGrid(rows: gridItemLayout){
-                    ForEach(0..<items.count){ index in
-                        let model = items[index]
-                        Button(action:{
-                            placementSetting.selectedModel = model.modelName
-                            print("DEBUG(BCH): select \(placementSetting.selectedModel)")
-                            presentationMode.wrappedValue.dismiss()
-                        }, label:{
-                            if let unwrapedUIImage = model.modelPreviewImage {
-                                Image(uiImage: unwrapedUIImage)
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                    //.aspectRatio(1/1, contentMode: .fit)
-                                    //.background(Color(UIColor.secondarySystemFill))
-                                    //.cornerRadius(8.0)
-                                    .shadow(radius: 2)
-                            }else{
-                                Image(uiImage: UIImage(systemName: "photo")!)
-                                    .resizable()
-                                    .frame(height: 150)
-                                    .aspectRatio(1.1, contentMode: .fit)
-                                    .background(Color(UIColor.secondarySystemFill))
-                                    .cornerRadius(8.0)
-                            }
-                        })
-                            .padding()
-                    }
-                }
-            }
-        }
-        
-    }
-}
 
 struct ModelPickerView_Previews: PreviewProvider {
     static var previews: some View {

@@ -37,14 +37,15 @@ class PersistenceHelperViewModel: ObservableObject {
     // let SCENE_NAME: String = "default"
     var objects_dict: [String: LCString] = [:]
     
-    var info: String = ""
-    var isDone : Bool = false
+    var info = ""
+    @Published var uploadIsDone = true
+    @Published var downloadIsDone = true
     
     // ARKit saves the state of the scene and any ARAnchors in the scene.
     // ARKit does not save any models or anchor entities.
     // So whenever we load a scene from file, we will use the model and ARAnchor pair for placement.
     func uploadScene(for arView: CustomARView, at anchorEntities: [AnchorEntity], with usrname : String, poseARKitToW : simd_float4x4 , in sceneName: String) {
-        self.isDone = false
+        self.uploadIsDone = false
         self.info = ""
         print("Save scene to local filesystem.")
         
@@ -89,11 +90,11 @@ class PersistenceHelperViewModel: ObservableObject {
                 _ = LCObject.save(objects, completion: { (result) in
                     switch result {
                     case .success:
-                        self.isDone = true
+                        self.uploadIsDone = true
                         self.info = "Upload Successfully"
                         print("[LH] upload success !!")
                     case .failure(error: let error):
-                        self.isDone = true
+                        self.uploadIsDone = true
                         self.info = "Uploading failed"
                         print(error)
                     }
@@ -101,7 +102,7 @@ class PersistenceHelperViewModel: ObservableObject {
                 
 
             case .failure(error: let error):
-                self.isDone = true
+                self.uploadIsDone = true
                 self.info = "Uploading failed"
                 print("[LH] \(error)")
             }
@@ -110,7 +111,7 @@ class PersistenceHelperViewModel: ObservableObject {
     
     func downloadScene(poseARKitToW : simd_float4x4, in sceneName: String) -> [ModelAnchor]{
         print("Load scene from local filesystem.")
-        self.isDone = false
+        self.downloadIsDone = false
         self.info = ""
         // return models which is appended into confirmedModel
         
@@ -141,10 +142,10 @@ class PersistenceHelperViewModel: ObservableObject {
                 } else {
                     print("[LH] no query objects in database")
                 }
-                self.isDone = true
+                self.downloadIsDone = true
                 self.info = "download \(objects.count) objects successfully."
             case .failure(error: let error):
-                self.isDone = true
+                self.downloadIsDone = true
                 self.info = "downloading failed "
                 print("[LH] \(error)")
             }

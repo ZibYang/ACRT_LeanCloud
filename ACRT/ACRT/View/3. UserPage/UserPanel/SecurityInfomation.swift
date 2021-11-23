@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SecurityInfomation: View {
     @Environment(\.dismiss) var dismissSheet
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         ZStack{
@@ -19,6 +20,7 @@ struct SecurityInfomation: View {
                 HStack {
                     Spacer()
                     Button("Understand") {
+                        impactLight.impactOccurred()
                         dismissSheet()
                     }
                     .padding(.trailing)

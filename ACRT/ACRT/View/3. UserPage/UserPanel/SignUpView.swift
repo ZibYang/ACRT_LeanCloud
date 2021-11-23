@@ -36,6 +36,8 @@ struct SignUpView: View {
     
     @StateObject private var signUpViewModel = SignUpViewModel()
 
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
         ZStack {
             NavigationView{
@@ -100,6 +102,7 @@ struct SignUpView: View {
     
     var cancelButton: some View{
         Button(action: {
+            impactLight.impactOccurred()
             dismissSheet()
         }, label: {
             Text("Cancel")
@@ -109,6 +112,7 @@ struct SignUpView: View {
     // FIXME: Finsh Sign up
     var finishButton: some View{
         Button(action: {
+            impactLight.impactOccurred()
             // check all information is correct
             if signUpViewModel.AllInfomationWithNoError(){
                 userModel.tryToSignUp(photo: signUpViewModel.inputImage,
@@ -134,6 +138,7 @@ struct SignUpView: View {
     var userPhotoPicker: some View{
         VStack {
             Button(action: {
+                impactLight.impactOccurred()
                 signUpViewModel.chosesImgButtonPressed.toggle()
             }, label: {
                 if let userImage = signUpViewModel.image{
@@ -150,6 +155,7 @@ struct SignUpView: View {
                 }
             })
             Button(action: {
+                impactLight.impactOccurred()
                 signUpViewModel.chosesImgButtonPressed.toggle()
             }, label: {
                 Text("Add photo")
@@ -298,6 +304,7 @@ struct SignUpView: View {
                     .font(.caption2)
                 .frame(width:250, height: 50)
                 Button(action: {
+                    impactLight.impactOccurred()
                     signUpViewModel.showMore.toggle()
                 }, label: {
                     Text("See more...")

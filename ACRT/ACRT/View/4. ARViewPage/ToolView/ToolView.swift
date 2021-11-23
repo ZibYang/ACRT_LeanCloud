@@ -20,6 +20,7 @@ import SwiftUI
 import AVFoundation
 
 struct ToolView: View {
+    @EnvironmentObject var persistenceHelperViewModel : PersistenceHelperViewModel
     @EnvironmentObject var placementSetting : PlacementSetting
     @EnvironmentObject var sceneManager : SceneManagerViewModel
     @EnvironmentObject var coachingViewModel : CoachingViewModel
@@ -251,9 +252,14 @@ struct ToolView: View {
                 sceneManager.shouldUploadSceneToCloud = true
             }
         }, label:{
-            Image(systemName: "icloud.and.arrow.up")
-                .foregroundColor(.white)
-                .frame(width: 30, height: 30)
+            if !persistenceHelperViewModel.uploadIsDone{
+                ProgressView()
+                    .frame(width: 30, height: 30)
+            }else{
+                Image(systemName: "icloud.and.arrow.up")
+                    .foregroundColor(userViewModel.isSignedIn == false || arViewModel.hasBeenLocalized == false ? .gray : .white)
+                    .frame(width: 30, height: 30)
+            }
         })
             .padding(.all, 6)
             .background(.ultraThinMaterial)
@@ -261,7 +267,6 @@ struct ToolView: View {
             .contextMenu{
                 Label("Upload objects", systemImage: "arrow.up.to.line.circle.fill")
             }
-        
     }
     
     var downloadButton: some View{
@@ -276,9 +281,14 @@ struct ToolView: View {
                 sceneManager.shouldDownloadSceneFromCloud = true
             }
         }, label:{
-            Image(systemName: "icloud.and.arrow.down")
-                .foregroundColor(.white)
-                .frame(width: 30, height: 30)
+            if !persistenceHelperViewModel.downloadIsDone{
+                ProgressView()
+                    .frame(width: 30, height: 30)
+            }else{
+                Image(systemName: "icloud.and.arrow.down")
+                    .foregroundColor(userViewModel.isSignedIn == false || arViewModel.hasBeenLocalized == false ? .gray : .white)
+                    .frame(width: 30, height: 30)
+            }
         })
             .padding(.all, 6)
             .background(.ultraThinMaterial)

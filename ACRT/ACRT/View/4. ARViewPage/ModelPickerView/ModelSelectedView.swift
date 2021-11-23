@@ -20,8 +20,9 @@ import SwiftUI
 struct ModelSelectedView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
     let impactLight = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 30) {
             Button(action: {
                 impactLight.impactOccurred()
                 placementSetting.openModelList = true
@@ -30,10 +31,10 @@ struct ModelSelectedView: View {
                     Image(placementSetting.selectedModel == "" ? "questionMark_dark" : placementSetting.selectedModel)
                         .resizable()
                         .aspectRatio(1/1, contentMode: .fit)
-                        .frame(width:100)
+                        .frame(width:120)
                 }
             })
-            HStack() {
+            VStack(alignment: .center) {
                 placeButton
             
                 HintText
@@ -43,14 +44,11 @@ struct ModelSelectedView: View {
     
     var HintText: some View{
         HStack() {
-            Text("Long press or ")
-                .font(.caption)
+            Text("Hint: long press model to delet or ")
             Image(systemName: "trash.square.fill")
         }
-        .frame(height: 45)
-        .padding(.horizontal)
-        .background(.ultraThinMaterial)
-        .foregroundColor(.white)
+        .font(.caption)
+        .foregroundColor(.gray)
         .cornerRadius(10)
     }
     
@@ -65,12 +63,13 @@ struct ModelSelectedView: View {
         }, label: {
             HStack {
                 Text("Place")
+                    .gradientForeground(colors: placementSetting.selectedModel == "" ? [.gray] : [.blue, .green])
                 Image(systemName: "circle.circle")
+                    .foregroundColor(placementSetting.selectedModel == "" ? .gray : .green)
             }
-            .font(.caption)
         })
             .disabled(placementSetting.selectedModel == "")
-            .frame(width: 80,height: 45)
+            .frame(width: 100,height: 45)
             .background(.ultraThinMaterial)
             .cornerRadius(10)
     }

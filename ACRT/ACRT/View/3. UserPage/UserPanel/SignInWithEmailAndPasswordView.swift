@@ -35,6 +35,9 @@ struct SignInWithEmailAndPasswordView: View {
     
     @State var signUpNow = false
     @State var fogetPasswordPressed = false
+    
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
         ZStack {
             NavigationView {
@@ -134,6 +137,7 @@ struct SignInWithEmailAndPasswordView: View {
         HStack{
             Spacer()
             Button(action:{
+                impactLight.impactOccurred()
                 fogetPasswordPressed.toggle()
             }, label:{
                 Text("Forget account or password?")
@@ -149,6 +153,7 @@ struct SignInWithEmailAndPasswordView: View {
     
     var signInButton: some View{
         Button(action: {
+            impactLight.impactOccurred()
             hideKeyboard()
             checkAndLogIn()
         }, label: {
@@ -174,6 +179,7 @@ struct SignInWithEmailAndPasswordView: View {
     
     var leadingTollBarItem: some View{
         Button(action: {
+            impactLight.impactOccurred()
             signUpNow.toggle()
         }, label: {
             Text("Sign up")
@@ -185,6 +191,7 @@ struct SignInWithEmailAndPasswordView: View {
     
     var traillingTollBarItem: some View{
         Button(action:{
+            impactLight.impactOccurred()
             dismissLoginSheet()
         }){
             Text("Not now")

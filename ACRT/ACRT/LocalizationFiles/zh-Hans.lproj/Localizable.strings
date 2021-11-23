@@ -130,7 +130,7 @@
 "Your devices already equipped with LiDAR" = "您的设备已配备LiDAR";
 
 "LiDAR Scaner" = "LiDAR扫描仪";
-"The LiDAR Scanner works with the pro cameras, motion sensors, and frameworks in iPhone 12 Pro, iPhone 13 Pro and iPad Pro to measure depth. This combination of hardware, software, and unprecedented innovation lets Apple provide the world’s best device for augmented reality." = "LiDAR 扫描仪可与 iPhone 12 Pro、iPhone 13 Pro 和 iPad Pro 中的专业相机、运动传感器等框架配合使用以准确测量深度。前所未有的硬件、软件创新结合，Apple 向世界提供最好的增强现实设备";
+"The LiDAR Scanner works with the pro cameras, motion sensors, and frameworks in iPhone 12 Pro, iPhone 13 Pro and iPad Pro to measure depth. This combination of hardware, software, and unprecedented innovation lets Apple provide the world’s best device for augmented reality." = "LiDAR 扫描仪可与 iPhone 12 Pro、iPhone 13 Pro 和 iPad Pro 中的专业相机、运动传感器等框架配合使用以准确测量深度。前所未有的硬件、软件创新结合，这是目前Apple 最好的增强现实设备";
 
 "Recommend devices include" = "建议使用的设备包括";
 "Open Map Service" = "开启定位服务";
@@ -184,7 +184,7 @@
 "Hint" = "提示";
 "All models have been deleted" = "所有添加的模型已经被清除";
 "No model can be delete" = "当前没有模型可以被清除";
-"Long press or " = "长按删除，或点击";
+"Hint: long press model to delet or " = "提示：长按模型删除，或点击";
 
 "Occlusion is the key for AR scene." = "展示遮挡关系是AR真实性的关键";
 "Please log in before uploading or downloading" = "请登陆后进行上传或加载";

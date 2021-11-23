@@ -59,6 +59,7 @@ struct CanvasView: View {
                 .environmentObject(coachingViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(modelDeletionManager)
+                .environmentObject(persistence)
 
             if coachingViewModel.isCoaching == true {
                 VStack {

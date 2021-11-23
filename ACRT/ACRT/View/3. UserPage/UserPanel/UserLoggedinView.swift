@@ -22,6 +22,8 @@ struct UserLoggedinView: View {
     @StateObject var awardModel = AwardModel()
     @Environment(\.dismiss) var dismissUserInfoSheet
     
+    let impactLight = UIImpactFeedbackGenerator(style: .light)
+    
     var body: some View {
         NavigationView {
             ScrollView{
@@ -35,6 +37,7 @@ struct UserLoggedinView: View {
             }
             .toolbar{
                 Button(action:{
+                    impactLight.impactOccurred()
                     dismissUserInfoSheet()
                 }){
                     Text("Finish")
@@ -43,6 +46,7 @@ struct UserLoggedinView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
+                        impactLight.impactOccurred()
                         userModel.tryToLogout()
                         dismissUserInfoSheet()
                     }, label: {

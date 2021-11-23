@@ -90,75 +90,78 @@
 "Photo" = "写真を撮る";
 "Choose Photo" = "アルバムから写真を選択";
 
-"Account name" = "账户名称";
-"Plases use 4 to 20 letters and numbers" = "请使用4到20位字母和数字组成用户名";
-"This can let us know you well" = "您的年龄信息不会被泄漏";
-"We only accept phone number from China" = "目前只能验证来自中国的手机号码";
-"A email can only sign up once." = "每一个邮箱只能注册一个账号";
-"Plases use 8 to 16 letters and numbers" = "请使用8-16位数字、字母和符号构成密码";
+"Account name" = "アカウント呼称";
+"Plases use 4 to 20 letters and numbers" = "4から20までの文字と数字を使ってユーザー名を構成してください";
+"This can let us know you well" = "年齢情報は漏れません";
+"We only accept phone number from China" = "今は中国からの携帯電話の番号しか確認できません";
+"A email can only sign up once." = "各メールボックスにはアカウントしか登録できません";
+"Plases use 8 to 16 letters and numbers" = "パスワードは8-16の数字とアルファベットと記号で構成してください";
 
-"Please follow the naming rules\n 1. Use letter or number only \n 2. Length between 4 and 20" = "请遵循命名规则: \n 1. 名称只包含字母或者数字 \n 2. 长度在4至20之间";
-"Log in required" = "登陆时使用，必填";
-"User Age" = "用户年龄";
-"Optional" = "可选项";
-"Age can not above 99" = "年龄不可以设置超过99岁";
-"Log in with phone number" = "可使用手机号登陆，必填";
-"Please input right phone number" = "请输入正确的手机号";
-"Varify code" = "验证码";
-"This phone number has been used" = "此手机号已被注册过";
-"Message might have seconds delay" = "验证码发送可能会有几秒钟延迟";
-"Log in with email" = "可使用邮箱登陆，必填";
-"Please input right email" = "请输入正确的邮箱地址";
+"Please follow the naming rules\n 1. Use letter or number only \n 2. Length between 4 and 20" = "命名規則に従ってください: \n 1. 名前にはアルファベットか数字しか含まれていません。 \n 2. 長さは4から20の間です。";
+"Log in required" = "ログイン時に使用する場合は、必ず";
+"User Age" = "ユーザー年齢";
+"Optional" = "オプション";
+"Age can not above 99" = "年齢は99歳以上の設定はできません";
+"Log in with phone number" = "携帯番号で登録できます。必ず記入してください";
+"Please input right phone number" = "正しい携帯番号を入力してください";
+"This phone number has been used" = "この携帯番号は登録されています";
+"Log in with email" = "メールアドレスで登録できます。必ず記入してください";
+"Please input right email" = "正しいメールアドレスを入力してください";
 
-"Sign up with ACRT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
-"See more..." = "了解更多...";
-"Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "请遵循密码设置规则: \n 1. 以大写字母开头 \n 2. 密码长度大于8位" ;
-"The email is already taken by another user." = "您输入的邮箱已注册";
-"OK" = "好的";
-"Submit" = "提交";
-"Let's Change the World!" = "一起创造城市新视界！";
+"Sign up with ACRT, you data will only be used for basic functionality in this app." = "登録後、あなたの個人情報は必要な時だけ本アプリケーションで使用されます。いかなる第三者機関にも提出されません";
+"See more..." = "もっと...";
+"Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "パスワード設定規則に従ってください: \n 1. 大文字で始まる。 \n 2. パスワードの長さは8ビットより大きいです。" ;
+"The email is already taken by another user." = "入力されたメールアドレスは登録されています";
+"OK" = "はい";
+"Submit" = "送信";
+"Let's Change the World!" = "一緒に都市の新たな視界を創造する。！";
 /* 更新提示 localization string*/
-"What's new" = "最近更新";
-"MAIC 2021" = "移动应用创新赛";
-"Come and join the 6th MAIC match in Zhejiang University!" = "欢迎大家参加第六届移动应用创新赛！";
-"City Badges" = "城市徽章";
-"We have launched the first batch of 3 city badges!" = "首发三枚城市徽章等你来获得！";
-"Wish we can meet in Apple Park one day." = "当您到访Apple Park，您将获得这枚精致的徽章，希望我们在Apple Park相见！";
-"Welcome to the historical Nanjin and Chendu." = "欢迎到访历史古都南京和熊猫故乡成都，来赢得相应的城市徽章吧";
-"Welcome to the beautiful Shenzhen and Guangzhou." = "欢迎到访美丽的广州和创新之城深圳，来赢得相应的城市徽章吧";
-"Halloween special event" = "万圣节特别活动";
-"Halloween special event is coming, trick or treat?" = "万圣节特别活动来了，不给糖就捣蛋？";
+"What's new" = "最近の更新";
+"MAIC 2021" = "モバイルアプリケーションの革新レース";
+"Come and join the 6th MAIC match in Zhejiang University!" = "みんなを歓迎して第6期のモバイルアプリケーションの革新試合に参加します！";
+"City Badges" = "シティーバッジ";
+"We have launched the first batch of 3 city badges!" = "最初の三つの都市のバッジはあなたが獲得するのを待っています！";
+"Wish we can meet in Apple Park one day." = "Apple Parkを訪問すると、この素晴らしいバッジを獲得します。Apple Parkでお会いしたいです！";
+"Welcome to the historical Nanjin and Chendu." = "歴史の古都南京とパンダの故郷の成都を訪問して、相応する都市の徽章を勝ち取りにくるようにしましょう";
+"Welcome to the beautiful Shenzhen and Guangzhou." = "美しい広州と革新の都市深センを訪問して、相応の都市のメダルを勝ち取りにくるようにしましょう";
+"Halloween special event" = "ハロウィン特別イベント";
+"Halloween special event is coming, trick or treat?" = "ハロウィンの特別イベントが来ました。トリックオアトリート？";
 
-"Today" = "今天";
-"Yesterday" = "昨天";
+"Today" = "今日";
+"Yesterday" = "昨日";
 /* 准备界面 localizable string*/
-"Are you ready?" = "准备好了吗？";
-"Launch Requests" = "运行要求";
-"Recommendations" = "建议";
+"Are you ready?" = "準備はできましたか？";
+"Launch Requests" = "プログラムの要求";
+"Recommendations" = "アドバイス";
 
-"Use Device with LiDAR" = "使用配备LiDAR的设备";
-"LiDAR enhance the ability of realized the world." = "LiDAR增强了对现实的理解能力";
-"iPhone 13 Pro series" = "iPhone 13 Pro系列";
-"iPhone 12 Pro series" = "iPhone 12 Pro系列";
-"iPad Pro 12.9-inch 4/5th-generation" = "12.9 英寸 iPad Pro 第四或五代";
-"iPad Pro 11-inch 2/3th-generation" = "11 英寸 iPad Pro 第二或三代";
+"Use Device with LiDAR" = "LiDARを搭載した機器を使用する";
+"LiDAR enhance the ability of realized the world." = "LiDARは現実に対する理解力を強めた";
+"iPhone 13 Pro series" = "iPhone 13 Proシリーズ";
+"iPhone 12 Pro series" = "iPhone 12 Proシリーズ";
+"iPad Pro 12.9-inch 4/5th-generation" = "12.9インチiPad Pro第4または5世代";
+"iPad Pro 11-inch 2/3th-generation" = "11インチiPad Pro第2または3世代";
 
-"Recommend devices include" = "建议使用的设备包括";
-"Open Map Service" = "开启定位服务";
-"ARCT will use your position to minimize the locate process time." = "ARCT将使用地理信息以加速定位速度";
+"Recommend devices include" = "推奨されているデバイスは";
+"Open Map Service" = "位置サービスを開く";
+"ARCT will use your position to minimize the locate process time." = "ARCTは地理情報を使って位置決め速度を速めます";
 
-"Login with Account" = "登陆账号";
-"Log in to get full functionality experiences." = "登陆账号以获得全部的功能体验";
-"Logged-in user can:" = "已登录用户可以进行:";
-"Tourist can:" = "游客可以进行:";
-"explore and create" = "探索和创造";
-"explore" = "探索";
+"LiDAR Scaner" = "LiDARスキャナー";
+"The LiDAR Scanner works with the pro cameras, motion sensors, and frameworks in iPhone 12 Pro, iPhone 13 Pro and iPad Pro to measure depth. This combination of hardware, software, and unprecedented innovation lets Apple provide the world’s best device for augmented reality." = "LiDARスキャナーは、iPhone 12 Pro、iPhone 13 Pro、iPad Proの専門カメラ、スポーツセンサなどのフレームワークと組み合わせて、深さを正確に測定することができます。未曽有のハードウェア、ソフトウェア革新の組み合わせは、現在のAppleの最高の強化現実的なデバイスです。";
+
+"Your devices already equipped with LiDAR" = "このデバイスはLiDARを装備しています";
+
+"Login with Account" = "アカウントに登録する";
+"Log in to get full functionality experiences." = "アカウントに登録して、全部の機能体験を獲得します";
+"Logged-in user can:" = "ログインしたユーザが:";
+"Tourist can:" = "観光客は:";
+"explore and create" = "探索と創造をできます";
+"explore" = "探索をできます";
 "Explore" = "探索";
-"Create" = "创造";
-"Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "随时随地，当您完成定位后就可以在城市的指定区域内**尽情探索无穷无尽的奇妙新世界**，可能遇到的是异次元的美食，也可能是神奇的动物，一切都在等着你去发现！";
-"This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "这一次，**不再只做信息的获取者** 您可以通过摆放模型来表达自己的心情、装饰城市，而且这一切都可以被其他小伙伴共享，城市的一切都因你而焕然一新";
+"Create" = "創造";
+"Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "いつでもどこでも、位置付けが完了したら、都市の指定区域内で、**限りがない奇妙な新世界を思い切り探索できます。**出会うのは異次元の美食かもしれません。不思議な動物かもしれません。すべてはあなたを待って発見します。";
+"This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "今回は、**は情報の取得者だけではなく、**モデルを置くことによって自分の気持ちを表現したり、都市を飾ったりすることができます。そして、このすべては他の子供たちに共有されます。都市のすべてはあなたのために変わります。";
 
-"Requirement not fullfill!" = "还有运行条件不满足！";
+"Requirement not fullfill!" = "まだ運行条件が足りないです！";
 "Check it again" = "再检查一下";
 
 "What is ACRT" = "ACRT是什么";
@@ -185,9 +188,26 @@
 
 "Show mesh in reality" = "在配备LiDAR的设备上展示定位背后的原理";
 "Take a snap shot" = "拍照记录下这奇妙的时刻";
+"It is not recommended to take pictures with mesh" = "不建议保存带有显示激光雷达Mesh的图片";
+"Turn off the mesh" = "关闭Mesh";
+"Show the mesh anyway" = "仍然打开Mesh";
+
 "Explore the magic world" = "点击进入探索模式，尽情探索城市新视界";
 "Change the world now" = "点击进入创作模式，动手改变城市面貌";
 "Clear all model you put" = "一键清除所有放置的模型";
+"Hint" = "提示";
+"All models have been deleted" = "所有添加的模型已经被清除";
+"No model can be delete" = "当前没有模型可以被清除";
+"Hint: long press model to delet or " = "提示：长按模型删除，或点击";
+
+"Occlusion is the key for AR scene." = "展示遮挡关系是AR真实性的关键";
+"Please log in before uploading or downloading" = "请登陆后进行上传或加载";
+"Please localize before uploading or downloading" = "请完成场景定位后进行上传或下载";
+"Log in now" = "即刻登陆";
+"Localize now" = "即刻定位";
+"Don't log in now" = "暂不登陆";
+"Don't localize now" = "暂不定位";
+
 "Upload objects" = "上传当前场景放置的模型";
 "Downloads objects" = "下载其他用户的模型";
 "Locate again" = "点击进行重新定位、位置校准";

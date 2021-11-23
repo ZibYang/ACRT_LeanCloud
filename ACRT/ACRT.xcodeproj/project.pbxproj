@@ -86,7 +86,6 @@
 		9FC32695274CAC8C006E1ACC /* user_message_BANG!.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3265D274CAC8A006E1ACC /* user_message_BANG!.usdz */; };
 		9FC32696274CAC8C006E1ACC /* user_message_COOL.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3265E274CAC8A006E1ACC /* user_message_COOL.usdz */; };
 		9FC32697274CAC8C006E1ACC /* qs_Weather.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3265F274CAC8A006E1ACC /* qs_Weather.usdz */; };
-		9FC32698274CAC8C006E1ACC /* user_special_pumpkin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32660274CAC8A006E1ACC /* user_special_pumpkin.usdz */; };
 		9FC32699274CAC8C006E1ACC /* yt_Coffee.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32661274CAC8A006E1ACC /* yt_Coffee.usdz */; };
 		9FC3269A274CAC8C006E1ACC /* user_letter_E.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32662274CAC8A006E1ACC /* user_letter_E.usdz */; };
 		9FC3269B274CAC8C006E1ACC /* qs_Health.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32663274CAC8A006E1ACC /* qs_Health.usdz */; };
@@ -97,7 +96,6 @@
 		9FC326A0274CAC8C006E1ACC /* user_special_candy.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32668274CAC8B006E1ACC /* user_special_candy.usdz */; };
 		9FC326A1274CAC8C006E1ACC /* yt_FrenchFires.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32669274CAC8B006E1ACC /* yt_FrenchFires.usdz */; };
 		9FC326A2274CAC8C006E1ACC /* user_letter_D.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3266A274CAC8B006E1ACC /* user_letter_D.usdz */; };
-		9FC326A3274CAC8C006E1ACC /* user_special_bat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3266B274CAC8B006E1ACC /* user_special_bat.usdz */; };
 		9FC326A4274CAC8C006E1ACC /* yt_KFC.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3266C274CAC8B006E1ACC /* yt_KFC.usdz */; };
 		9FC326A5274CAC8C006E1ACC /* user_like_blue.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3266D274CAC8B006E1ACC /* user_like_blue.usdz */; };
 		9FC326A6274CAC8C006E1ACC /* qs_Swift.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3266E274CAC8B006E1ACC /* qs_Swift.usdz */; };
@@ -129,6 +127,8 @@
 		9FC326C0274CAC8C006E1ACC /* qs_Setting.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32688274CAC8C006E1ACC /* qs_Setting.usdz */; };
 		9FC326C1274CAC8C006E1ACC /* qs_Camera.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32689274CAC8C006E1ACC /* qs_Camera.usdz */; };
 		9FC326C2274CAC8C006E1ACC /* yt_Cocacola.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3268A274CAC8C006E1ACC /* yt_Cocacola.usdz */; };
+		9FC326C5274D030C006E1ACC /* user_special_pumpkin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC326C3274D030C006E1ACC /* user_special_pumpkin.usdz */; };
+		9FC326C6274D030C006E1ACC /* user_special_bat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 9FC326C4274D030C006E1ACC /* user_special_bat.usdz */; };
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 /* End PBXBuildFile section */
@@ -216,7 +216,6 @@
 		9FC3265D274CAC8A006E1ACC /* user_message_BANG!.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = "user_message_BANG!.usdz"; path = "USDZModel/All/user_message_BANG!.usdz"; sourceTree = SOURCE_ROOT; };
 		9FC3265E274CAC8A006E1ACC /* user_message_COOL.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_message_COOL.usdz; path = USDZModel/All/user_message_COOL.usdz; sourceTree = SOURCE_ROOT; };
 		9FC3265F274CAC8A006E1ACC /* qs_Weather.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = qs_Weather.usdz; path = USDZModel/All/qs_Weather.usdz; sourceTree = SOURCE_ROOT; };
-		9FC32660274CAC8A006E1ACC /* user_special_pumpkin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_special_pumpkin.usdz; path = USDZModel/All/user_special_pumpkin.usdz; sourceTree = SOURCE_ROOT; };
 		9FC32661274CAC8A006E1ACC /* yt_Coffee.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = yt_Coffee.usdz; path = USDZModel/All/yt_Coffee.usdz; sourceTree = SOURCE_ROOT; };
 		9FC32662274CAC8A006E1ACC /* user_letter_E.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_letter_E.usdz; path = USDZModel/All/user_letter_E.usdz; sourceTree = SOURCE_ROOT; };
 		9FC32663274CAC8A006E1ACC /* qs_Health.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = qs_Health.usdz; path = USDZModel/All/qs_Health.usdz; sourceTree = SOURCE_ROOT; };
@@ -227,7 +226,6 @@
 		9FC32668274CAC8B006E1ACC /* user_special_candy.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_special_candy.usdz; path = USDZModel/All/user_special_candy.usdz; sourceTree = SOURCE_ROOT; };
 		9FC32669274CAC8B006E1ACC /* yt_FrenchFires.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = yt_FrenchFires.usdz; path = USDZModel/All/yt_FrenchFires.usdz; sourceTree = SOURCE_ROOT; };
 		9FC3266A274CAC8B006E1ACC /* user_letter_D.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_letter_D.usdz; path = USDZModel/All/user_letter_D.usdz; sourceTree = SOURCE_ROOT; };
-		9FC3266B274CAC8B006E1ACC /* user_special_bat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_special_bat.usdz; path = USDZModel/All/user_special_bat.usdz; sourceTree = SOURCE_ROOT; };
 		9FC3266C274CAC8B006E1ACC /* yt_KFC.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = yt_KFC.usdz; path = USDZModel/All/yt_KFC.usdz; sourceTree = SOURCE_ROOT; };
 		9FC3266D274CAC8B006E1ACC /* user_like_blue.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_like_blue.usdz; path = USDZModel/All/user_like_blue.usdz; sourceTree = SOURCE_ROOT; };
 		9FC3266E274CAC8B006E1ACC /* qs_Swift.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = qs_Swift.usdz; path = USDZModel/All/qs_Swift.usdz; sourceTree = SOURCE_ROOT; };
@@ -259,6 +257,8 @@
 		9FC32688274CAC8C006E1ACC /* qs_Setting.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = qs_Setting.usdz; path = USDZModel/All/qs_Setting.usdz; sourceTree = SOURCE_ROOT; };
 		9FC32689274CAC8C006E1ACC /* qs_Camera.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = qs_Camera.usdz; path = USDZModel/All/qs_Camera.usdz; sourceTree = SOURCE_ROOT; };
 		9FC3268A274CAC8C006E1ACC /* yt_Cocacola.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = yt_Cocacola.usdz; path = USDZModel/All/yt_Cocacola.usdz; sourceTree = SOURCE_ROOT; };
+		9FC326C3274D030C006E1ACC /* user_special_pumpkin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_special_pumpkin.usdz; path = USDZModel/All/user_special_pumpkin.usdz; sourceTree = SOURCE_ROOT; };
+		9FC326C4274D030C006E1ACC /* user_special_bat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = user_special_bat.usdz; path = USDZModel/All/user_special_bat.usdz; sourceTree = SOURCE_ROOT; };
 		9FC82553273D110D00C9894C /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
@@ -333,12 +333,12 @@
 				9FC3265E274CAC8A006E1ACC /* user_message_COOL.usdz */,
 				9FC3267D274CAC8C006E1ACC /* user_message_OMG!.usdz */,
 				9FC32681274CAC8C006E1ACC /* user_message_YES!.usdz */,
-				9FC3266B274CAC8B006E1ACC /* user_special_bat.usdz */,
 				9FC32668274CAC8B006E1ACC /* user_special_candy.usdz */,
 				9FC32680274CAC8C006E1ACC /* user_special_deadHand.usdz */,
 				9FC3266F274CAC8B006E1ACC /* user_special_ghost.usdz */,
-				9FC32660274CAC8A006E1ACC /* user_special_pumpkin.usdz */,
 				9FC3267E274CAC8C006E1ACC /* user_special_skull.usdz */,
+				9FC326C4274D030C006E1ACC /* user_special_bat.usdz */,
+				9FC326C3274D030C006E1ACC /* user_special_pumpkin.usdz */,
 				9FC32672274CAC8B006E1ACC /* user_special_witchHat.usdz */,
 				9FC32685274CAC8C006E1ACC /* yt_BugerKing.usdz */,
 				9FC3268A274CAC8C006E1ACC /* yt_Cocacola.usdz */,
@@ -757,7 +757,6 @@
 				9FC326A5274CAC8C006E1ACC /* user_like_blue.usdz in Resources */,
 				9FC326AF274CAC8C006E1ACC /* user_letter_P.usdz in Resources */,
 				9FC3268C274CAC8C006E1ACC /* qs_Phone.usdz in Resources */,
-				9FC32698274CAC8C006E1ACC /* user_special_pumpkin.usdz in Resources */,
 				9FC326B9274CAC8C006E1ACC /* user_message_YES!.usdz in Resources */,
 				9FC3269B274CAC8C006E1ACC /* qs_Health.usdz in Resources */,
 				9FC32692274CAC8C006E1ACC /* user_letter_C.usdz in Resources */,
@@ -768,6 +767,7 @@
 				9FC326A8274CAC8C006E1ACC /* qs_AppleMusic.usdz in Resources */,
 				5A56E924272F9B6A0062680E /* Localizable.strings in Resources */,
 				5A56E908272BF1FF0062680E /* Preview Assets.xcassets in Resources */,
+				9FC326C6274D030C006E1ACC /* user_special_bat.usdz in Resources */,
 				9FC326AC274CAC8C006E1ACC /* qs_AppStore.usdz in Resources */,
 				9FC326A4274CAC8C006E1ACC /* yt_KFC.usdz in Resources */,
 				9FC326AD274CAC8C006E1ACC /* qs_iBook.usdz in Resources */,
@@ -785,8 +785,8 @@
 				9FC3268E274CAC8C006E1ACC /* user_love_red.usdz in Resources */,
 				9FC326A2274CAC8C006E1ACC /* user_letter_D.usdz in Resources */,
 				9FC326A0274CAC8C006E1ACC /* user_special_candy.usdz in Resources */,
-				9FC326A3274CAC8C006E1ACC /* user_special_bat.usdz in Resources */,
 				9FC326BA274CAC8C006E1ACC /* user_letter_A.usdz in Resources */,
+				9FC326C5274D030C006E1ACC /* user_special_pumpkin.usdz in Resources */,
 				5A4215A5273149BF000C9F5B /* InfoPlist.strings in Resources */,
 				9FC326B4274CAC8C006E1ACC /* qs_findMy.usdz in Resources */,
 				9FC326BC274CAC8C006E1ACC /* user_emoji_smile.usdz in Resources */,
