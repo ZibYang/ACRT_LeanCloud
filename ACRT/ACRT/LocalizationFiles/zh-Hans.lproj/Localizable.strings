@@ -71,7 +71,7 @@
 "Basic Information" = "基本信息";
 "Secured Information" = "保密信息";
 
-"Add photo" = "添加头像";
+"Add photo(required)" = "添加头像(必须)";
 "Photo" = "拍摄";
 "Choose Photo" = "从相册中选择";
 
@@ -229,3 +229,15 @@
 "MAIC" = "MAIC 2021";
 "Owl" = "夜猫子";
 "Morning" = "早起达人";
+
+"Privacy" = "隐私";
+"Privacy is a fundamental human right. It’s also one of Apple's core values and so are we. Your devices are important to so many parts of your life. What you share from those experiences, and who you share it with, should be up to you. In our app you have full control over your information. It’s not always easy. But that’s the kind of innovation we believe in." = "隐私是一项基本人权。它是 Apple 的核心价值观之一，也是我们的核型价值观之一。您的设备对您生活的许多方面都很重要，您从这些经历中分享的内容以及与谁分享，应该取决于 您。在我们的应用程序中，您可以完全控制自己的信息。实现这些并不总是那么容易。但这就是我们所相信的创新";
+
+"Your location history is history" = "你的定位记录永远都是历史";
+
+"In our app, we doesn’t associate your data with your account, and we doesn’t keep a history of where you’ve been."
+= "在我们的应用程序中，我们不会将您的地理位置数据与您的帐户相关联，也不会保留您去过地方的历史记录";
+
+"Your picture stays a mystery" = "你的图片是永远的秘密";
+
+"Your photo will directly save into your album with protect by Apple, and we won't save it in our severs." = "你的图片将直接保存在相册中并受到Apple的保护，而且我们不会保存您的任何照片信息";

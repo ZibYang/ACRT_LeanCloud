@@ -86,7 +86,7 @@
 "Basic Information" = "基本情報";
 "Secured Information" = "安全な情報";
 
-"Add photo" = "写真を追加する";
+"Add photo(required)" = "写真を追加する(必須)";
 "Photo" = "写真を撮る";
 "Choose Photo" = "アルバムから写真を選択";
 
@@ -108,9 +108,9 @@
 "Log in with email" = "メールアドレスで登録できます。必ず記入してください";
 "Please input right email" = "正しいメールアドレスを入力してください";
 
-"Sign up with ACRT, you data will only be used for basic functionality in this app." = "登録後、あなたの個人情報は必要な時だけ本アプリケーションで使用されます。いかなる第三者機関にも提出されません";
+"Sign up with ACRT, you data will only be used for basic functionality in this app." = "登録後、個人情報は必要な時だけ使用されます。いかなる第三者機関にも提出されません";
 "See more..." = "もっと...";
-"Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "パスワード設定規則に従ってください: \n 1. 大文字で始まる。 \n 2. パスワードの長さは8ビットより大きいです。" ;
+"Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "パスワード設定規則に従ってください: \n 1. 大アルファベットで始まる。 \n 2. パスワードの長さは8ビットより大きいです。" ;
 "The email is already taken by another user." = "入力されたメールアドレスは登録されています";
 "OK" = "はい";
 "Submit" = "送信";
@@ -162,70 +162,70 @@
 "This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "今回は、**は情報の取得者だけではなく、**モデルを置くことによって自分の気持ちを表現したり、都市を飾ったりすることができます。そして、このすべては他の子供たちに共有されます。都市のすべてはあなたのために変わります。";
 
 "Requirement not fullfill!" = "まだ運行条件が足りないです！";
-"Check it again" = "再检查一下";
+"Check it again" = "もう一度チェックします";
 
-"What is ACRT" = "ACRT是什么";
+"What is ACRT" = "ACRTは何ですか";
 
-"Into Augmented City Brain New World" = "进入城市新视界";
+"Into Augmented City Brain New World" = "都市の新視界に入る";
 
-"My ART Chest" = "我的艺术档案";
-"%@ 's badge" = "%@的徽章";
+"My ART Chest" = "芸術ファイル";
+"%@ 's badge" = "%@のバッジ";
 /* AR界面 localizable string*/
-"Slowly move device to locate..." = "缓慢移动设备进行定位...";
-"Enter Creation Mode" = "进入创作模式";
-"Place" = "放置";
-"Current network is not stable" = "当前网络状态不佳";
-"ACRT location services are not available in the current area" = "ACRT无法在当前区域提供定位服务";
-"Sign in so you can turn into create mode without location"="登陆后在未定位成功时也可以进入离线创作模式";
-"You can turn into create mode and re-localize when you are ready" = "您可以进入离线创作模式，等一切就绪后再重新定位";
-"Return and sign in" = "返回注册";
-"Into create mode" = "进入本地创作模式";
-"My models" = "我的模型";
-"Messages" = "情感表达";
-"Letters" = "英文字母";
-"Foundmentals" = "基础模型";
-"Others" = "其他模型";
+"Slowly move device to locate..." = "デバイスをゆっくりと動かして見つけます...";
+"Enter Creation Mode" = "クリエイティブモードに入る";
+"Place" = "置きます";
+"Current network is not stable" = "現在のネットワークステータスは不良です";
+"ACRT location services are not available in the current area" = "現在のエリアで位置情報サービスを提供できません";
+"Sign in so you can turn into create mode without location"="ログイン後、ポジショニングが成功しなかったときにオフライン作成モードに入ることができます";
+"You can turn into create mode and re-localize when you are ready" = "オフライン作成モードに入り、すべての準備ができたら再配置できます";
+"Return and sign in" = "登録に戻る";
+"Into create mode" = "ローカル作成モードに入る";
+"My models" = "私のモデル";
+"Messages" = "感情的な表現";
+"Letters" = "英語のアルファベット";
+"Foundmentals" = "ベースモデル";
+"Others" = "他の";
 
-"Show mesh in reality" = "在配备LiDAR的设备上展示定位背后的原理";
-"Take a snap shot" = "拍照记录下这奇妙的时刻";
-"It is not recommended to take pictures with mesh" = "不建议保存带有显示激光雷达Mesh的图片";
-"Turn off the mesh" = "关闭Mesh";
-"Show the mesh anyway" = "仍然打开Mesh";
+"Show mesh in reality" = "メッシュを実際に表示する";
+"Take a snap shot" = "スナップショットを撮る";
+"It is not recommended to take pictures with mesh" = "メッシュで写真を撮ることはお勧めしません";
+"Turn off the mesh" = "メッシュを閉じる";
+"Show the mesh anyway" = "メッシュまだ開いている";
 
-"Explore the magic world" = "点击进入探索模式，尽情探索城市新视界";
-"Change the world now" = "点击进入创作模式，动手改变城市面貌";
-"Clear all model you put" = "一键清除所有放置的模型";
-"Hint" = "提示";
-"All models have been deleted" = "所有添加的模型已经被清除";
-"No model can be delete" = "当前没有模型可以被清除";
-"Hint: long press model to delet or " = "提示：长按模型删除，或点击";
+"Explore the magic world" = "クリックして探索モードに入り、街の新しい地平線を探索して楽しんでください";
+"Change the world now" = "クリックしてクリエイティブモードに入り、手で街の顔を変えます";
+"Clear all model you put" = "配置されたすべてのモデルをワンクリックでクリア";
+"Hint" = "ヒント";
+"All models have been deleted" = "追加されたすべてのモデルがクリアされました";
+"No model can be delete" = "現在、クリアできるモデルはありません";
+"Hint: long press model to delet or " = "ヒント：モデルを長押しして削除するか、右側をクリックします";
 
-"Occlusion is the key for AR scene." = "展示遮挡关系是AR真实性的关键";
-"Please log in before uploading or downloading" = "请登陆后进行上传或加载";
-"Please localize before uploading or downloading" = "请完成场景定位后进行上传或下载";
-"Log in now" = "即刻登陆";
-"Localize now" = "即刻定位";
-"Don't log in now" = "暂不登陆";
-"Don't localize now" = "暂不定位";
+"Occlusion is the key for AR scene." = "閉塞関係を示すことがARの信憑性の鍵です";
+"Please log in before uploading or downloading" = "アップロードまたはロードするにはログインしてください";
+"Please localize before uploading or downloading" = "シーンのポジショニングが完了したら、アップロードまたはダウンロードしてください";
+"Log in now" = "今すぐログイン";
+"Localize now" = "今すぐポジション";
+"Don't log in now" = "まだログインしないでください";
+"Don't localize now" = "まだ配置されていません";
 
-"Upload objects" = "上传当前场景放置的模型";
-"Downloads objects" = "下载其他用户的模型";
-"Locate again" = "点击进行重新定位、位置校准";
+"Upload objects" = "現在のシーンに配置されたモデルをアップロードします";
+"Downloads objects" = "他のユーザーのモデルをダウンロードする";
+"Locate again" = "クリックして再配置、位置キャリブレーション";
 /* 成就界面 localizable string*/
-"Special Event" = "特别活动";
-"Daily Event" = "每日活动";
-"LandMark" = "城市活动";
+"Special Event" = "特別イベント";
+"Daily Event" = "日々の活動";
+"LandMark" = "市の活動";
 /*  1. landmark 地标成就 */
 "Hangzhou" = "杭州";
 "Shanghai" = "上海";
 "Beijing" = "北京";
-"Shenzhen" = "深圳";
-"Guangzhou" = "广州";
+"Shenzhen" = "深セン";
+"Guangzhou" = "広州";
 "Chengdu" = "成都";
 "Nanjing" = "南京";
-"Changsha" = "长沙";
-"Xiamen" = "厦门";
-"Dalian" = "大连";
+"Changsha" = "長沙";
+"Xiamen" = "厦門";
+"Dalian" = "大連";
 /* Will do */
 "Kunmin" = "昆明";
 "Tianjin" = "天津";
@@ -241,5 +241,17 @@
 "Chongqin" = "重庆";
 /*  2. User 使用成就 */
 "MAIC" = "MAIC 2021";
-"Owl" = "夜猫子";
-"Morning" = "早起达人";
+"Owl" = "フクロウ";
+"Morning" = "早起きな人";
+
+"Privacy" = "プライバシー";
+"Privacy is a fundamental human right. It’s also one of Apple's core values and so are we. Your devices are important to so many parts of your life. What you share from those experiences, and who you share it with, should be up to you. In our app you have full control over your information. It’s not always easy. But that’s the kind of innovation we believe in." = "プライバシーは基本的人権です。これはAppleのコアバリューの1つでもあり、私たちもそうです。あなたのデバイスはあなたの人生の非常に多くの部分にとって重要です。あなたがそれらの経験から共有するもの、そしてあなたがそれを共有する人は、あなた。私たちのアプリでは、あなたはあなたの情報を完全に制御できます。それは必ずしも簡単ではありません。しかし、それは私たちが信じている種類の革新です";
+
+"Your location history is history" = "ロケーションレコードは常に履歴です";
+
+"In our app, we doesn’t associate your data with your account, and we doesn’t keep a history of where you’ve been."
+= "アプリケーションでは、あなたの地理的位置データをあなたのアカウントに関連付けたり、あなたが行ったことのある場所の履歴を保持したりすることはありません";
+
+"Your picture stays a mystery" = "写真は永遠の秘密です";
+
+"Your photo will directly save into your album with protect by Apple, and we won't save it in our severs." = "あなたの写真はアルバムに直接保存され、Appleによって保護されます。また、あなたの写真情報は保存されません";

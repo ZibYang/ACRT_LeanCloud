@@ -158,7 +158,7 @@ struct SignUpView: View {
                 impactLight.impactOccurred()
                 signUpViewModel.chosesImgButtonPressed.toggle()
             }, label: {
-                Text("Add photo")
+                Text("Add photo(required)")
                     .font(.footnote)
             })
         }

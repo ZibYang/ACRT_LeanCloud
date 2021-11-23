@@ -1,0 +1,23 @@
+/*
+ InfoPlist.strings
+ ACRT
+        _         ____
+       / \      |  __  \
+      / _ \     | |   \ \      ____     _______
+     / / \ \    | |___/ /    /  ___ \ / __   __ \
+    / /___\ \   |  ___ \    / /          / /
+   / /     \ \  | |   \ \   \ \ ___     / /
+  / /       \ \ | |    \ \   \ ____ /  / /          Team
+ 
+  Created by ARCT_ZJU_Lab509 on 2021/7/12.
+ 
+  Copyright © Augmented City Reality Toolkit. All Right Reserved.
+ 
+*/
+NSLocationWhenInUseUsageDescription = "位置情報サービスを有効にして位置情報を取得し、それを使用して最初の位置情報プロセスを高速化します";
+
+NSCameraUsageDescription  = "ARシティビューを設定するにはカメラが不可欠です.";
+
+NSPhotoLibraryAddDescription = "魔法の世界をアルバムに保存する.";
+
+CFBundleDisplayName = "ARシティ";
