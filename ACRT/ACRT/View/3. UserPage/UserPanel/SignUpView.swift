@@ -304,6 +304,7 @@ struct SignUpView: View {
                     .font(.caption2)
                 .frame(width:250, height: 50)
                 Button(action: {
+                    hideKeyboard()
                     impactLight.impactOccurred()
                     signUpViewModel.showMore.toggle()
                 }, label: {

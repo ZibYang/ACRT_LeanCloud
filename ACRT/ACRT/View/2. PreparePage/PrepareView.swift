@@ -149,18 +149,15 @@ struct PrepareView: View {
     
     var userLoginRecommandation: some View{
         DisclosureGroup(isExpanded: $checkUserCapability, content: {
-            UserCapabilityView(labelImage: "checkmark.circle",
-                               labelText: "Logged-in user can:",
-                               buttonText: "explore and create",
-                               capabilityLevel: $userModel.capabilitySatisfied,
-                               buttonTapped: $introduceExporeAndCreate)
-                    
-            UserCapabilityView(labelImage: "exclamationmark.circle",
-                               labelText: "Tourist can:",
-                               buttonText: "explore",
-                               capabilityLevel: $userModel.capabilitySatisfied,
-                               buttonTapped: $introduceExpore)
-            
+            if userModel.capabilitySatisfied == "satisfied"{
+                UserCapabilityView(labelImage: "checkmark.circle",
+                                   labelText: "Logged-in user can: explore and create",
+                                   buttonTapped: $introduceExporeAndCreate)
+            }else{
+                UserCapabilityView(labelImage: "exclamationmark.circle",
+                                   labelText: "Tourist can: explore",
+                                   buttonTapped: $introduceExpore)
+            }
         }){
             IndicatorView(indicatorImageName: userModel.indicatorImageName,
                          indicatorTitle: userModel.indicatorTitle,

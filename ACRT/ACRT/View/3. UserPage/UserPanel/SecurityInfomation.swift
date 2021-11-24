@@ -38,7 +38,7 @@ struct SecurityInfomation: View {
                 HStack{
                     Image(systemName: "person.crop.circle.badge.exclamationmark")
                         .resizable()
-                        .aspectRatio(1.1, contentMode: .fit)
+                        .aspectRatio(1.15, contentMode: .fit)
                         .frame(width: 50, height: 50)
                         .symbolRenderingMode(.multicolor)
                         .foregroundColor(.indigo)

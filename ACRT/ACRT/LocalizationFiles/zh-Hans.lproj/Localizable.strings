@@ -138,10 +138,8 @@
 
 "Login with Account" = "登陆账号";
 "Log in to get full functionality experiences." = "登陆账号以获得全部的功能体验";
-"Logged-in user can:" = "已登录用户可以进行:";
-"Tourist can:" = "游客可以进行:";
-"explore and create" = "探索和创造";
-"explore" = "探索";
+"Logged-in user can: explore and create" = "已登录用户可以:探索和创造";
+"Tourist can: explore" = "游客可以:探索";
 "Explore" = "探索";
 "Create" = "创造";
 "Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "随时随地，当您完成定位后就可以在城市的指定区域内**尽情探索无穷无尽的奇妙新世界**，可能遇到的是异次元的美食，也可能是神奇的动物，一切都在等着你去发现！";

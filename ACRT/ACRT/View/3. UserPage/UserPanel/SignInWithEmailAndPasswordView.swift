@@ -72,10 +72,10 @@ struct SignInWithEmailAndPasswordView: View {
                 }
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading){
-                        leadingTollBarItem
+                        traillingTollBarItem
                     }
                     ToolbarItem(placement: .navigationBarTrailing){
-                        traillingTollBarItem
+                        leadingTollBarItem
                     }
                 }
                 .navigationTitle(Text("Log in"))
@@ -154,7 +154,6 @@ struct SignInWithEmailAndPasswordView: View {
     var signInButton: some View{
         Button(action: {
             impactLight.impactOccurred()
-            hideKeyboard()
             checkAndLogIn()
         }, label: {
             Text("Log in")
@@ -200,6 +199,7 @@ struct SignInWithEmailAndPasswordView: View {
     }
     
     func checkAndLogIn(){
+        hideKeyboard()
         if inputAccount.isEmpty{
             emptyEmail.toggle()
             focusedField = .account

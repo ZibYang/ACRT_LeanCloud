@@ -114,7 +114,7 @@
 "The email is already taken by another user." = "入力されたメールアドレスは登録されています";
 "OK" = "はい";
 "Submit" = "送信";
-"Let's Change the World!" = "一緒に都市の新たな視界を創造する。！";
+"Let's Change the World!" = "一緒に都市の新たな視界を創造する！";
 /* 更新提示 localization string*/
 "What's new" = "最近の更新";
 "MAIC 2021" = "モバイルアプリケーションの革新レース";
@@ -152,14 +152,12 @@
 
 "Login with Account" = "アカウントに登録する";
 "Log in to get full functionality experiences." = "アカウントに登録して、全部の機能体験を獲得します";
-"Logged-in user can:" = "ログインしたユーザが:";
-"Tourist can:" = "観光客は:";
-"explore and create" = "探索と創造をできます";
-"explore" = "探索をできます";
+"Logged-in user can: explore and create" = "ログインしたユーザが探索と創造をできます";
+"Tourist can: explore" = "観光客は探索をできます";
 "Explore" = "探索";
 "Create" = "創造";
-"Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "いつでもどこでも、位置付けが完了したら、都市の指定区域内で、**限りがない奇妙な新世界を思い切り探索できます。**出会うのは異次元の美食かもしれません。不思議な動物かもしれません。すべてはあなたを待って発見します。";
-"This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "今回は、**は情報の取得者だけではなく、**モデルを置くことによって自分の気持ちを表現したり、都市を飾ったりすることができます。そして、このすべては他の子供たちに共有されます。都市のすべてはあなたのために変わります。";
+"Anytime, anywhere, after you lift up your mobile phone to complete the positioning, **you can explore endless wonders in the designated area of the city.** It may be a different-dimensional food or a magical animal. Everything is waiting for you!" = "いつでもどこでも、位置付けが完了したら、都市の指定区域内で、 **限りがない奇妙な新世界を思い切り探索できます。** 出会うのは異次元の美食かもしれません。不思議な動物かもしれません。すべてはあなたを待って発見します。";
+"This time, **no longer to be just a person who obtains information!** You can express your emotion by placing models, decorating the city and so on, and everything will be renewed because of you!" = "今回は、 **情報の取得者だけではなく、** モデルを置くことによって自分の気持ちを表現したり、都市を飾ったりすることができます。そして、このすべては他の子供たちに共有されます。都市のすべてはあなたのために変わります。";
 
 "Requirement not fullfill!" = "まだ運行条件が足りないです！";
 "Check it again" = "もう一度チェックします";

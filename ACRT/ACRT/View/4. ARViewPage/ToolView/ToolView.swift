@@ -192,6 +192,7 @@ struct ToolView: View {
             .offset(x: coachingViewModel.isCoaching ? 150 : 0)
             .offset(x: placementSetting.isInCreationMode ? 0 : 150)
             .offset(x: showCameraButton ? 150 : 0)
+            .offset(x: modelDeletionManager.entitySelectedForDeletion == nil ? 0 : 150)
             Spacer()
         }
         .alert("Please log in before uploading or downloading", isPresented: $showPersistenceSignInAlert) {

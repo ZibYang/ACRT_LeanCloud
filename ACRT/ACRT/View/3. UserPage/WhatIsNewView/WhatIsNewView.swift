@@ -55,8 +55,7 @@ struct WhatIsNewView: View {
             return "Yesterday"
         }else{
             return update.updateTime.formatted(.dateTime.day().month().year())
-        }
-        
+        }        
     }
 }
                                   
