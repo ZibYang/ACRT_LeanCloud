@@ -29,7 +29,7 @@ class SceneManagerViewModel: ObservableObject {
         createdModelCount = 0
         let length = anchorEntities.count
         for anchorEntity in anchorEntities {
-            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != "admin" {
+            if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] != rootUserName {
                 print("Removing anchorEntity with id :\(String(describing: anchorEntity.anchorIdentifier))")
                 createdModelCount += 1
                 anchorEntity.removeFromParent()
@@ -37,7 +37,7 @@ class SceneManagerViewModel: ObservableObject {
         }
         for i in 0..<length {
             let index  = length - i - 1
-            if AnchorIdentifierHelper.decode(identifier: anchorEntities[index].name)[0] != "admin" {
+            if AnchorIdentifierHelper.decode(identifier: anchorEntities[index].name)[0] != rootUserName {
                 anchorEntities.remove(at: index)
             }
         }

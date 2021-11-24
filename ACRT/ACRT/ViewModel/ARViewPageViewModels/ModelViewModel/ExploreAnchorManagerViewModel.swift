@@ -114,7 +114,7 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         for anchor in modelAnchorList {
             var modelAnchor = getTransformedModelAnchor(modelAnchor: anchor, T_arkit_w: poseARKitToW)
             if modelAnchor.transform != nil {
-                modelAnchor.anchorName =  AnchorIdentifierHelper.encode(userName: "admin", modelName: modelAnchor.modelName)
+                modelAnchor.anchorName =  AnchorIdentifierHelper.encode(userName: rootUserName, modelName: modelAnchor.modelName)
                 transformedModelAnchors.append(modelAnchor)
             }
             print("modelAnchor\(modelAnchor.modelName) .transform \(modelAnchor.transform)")

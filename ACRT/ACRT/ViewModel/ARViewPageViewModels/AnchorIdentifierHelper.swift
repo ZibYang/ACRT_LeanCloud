@@ -9,7 +9,9 @@
 import Foundation
 
 private let anchorIdentifierDelimiter : String = "|"
+public let rootUserName = "admin"
 class AnchorIdentifierHelper {
+    
     class func encode(userName: String, modelName :String) -> String {
         let date = Date()
         let formatter = DateFormatter()
