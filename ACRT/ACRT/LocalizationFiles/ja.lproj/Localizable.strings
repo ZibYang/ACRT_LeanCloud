@@ -112,6 +112,8 @@
 "See more..." = "もっと...";
 "Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "パスワード設定規則に従ってください: \n 1. 大アルファベットで始まる。 \n 2. パスワードの長さは8ビットより大きいです。" ;
 "The email is already taken by another user." = "入力されたメールアドレスは登録されています";
+"Mobile phone number has already been taken." = "入力された携帯番号は登録されています";
+
 "OK" = "はい";
 "Submit" = "送信";
 "Let's Change the World!" = "一緒に都市の新たな視界を創造する！";
