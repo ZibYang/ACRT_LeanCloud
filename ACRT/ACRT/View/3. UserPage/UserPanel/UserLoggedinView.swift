@@ -74,22 +74,17 @@ struct UserLoggedinView: View {
     }
     
     var userImageView: some View{
-        ZStack{
-            Image(systemName: "circle.fill")
-                .resizable()
-                .angularGradientGlow(colors: [Color(#colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)),Color(#colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)),Color(#colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)),Color(#colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)),Color(#colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)),Color(#colorLiteral(red: 0.5818830132, green: 0.2156915367, blue: 1, alpha: 1))])
-                .frame(width: 90, height: 90)
-                .blur(radius: 10)
-            Image(uiImage: userModel.userImage == nil ? UIImage(systemName: "person.crop.circle")! : userModel.userImage!)
-                .renderingMode(userModel.userImage == nil ? .template : .original)
-                .resizable()
-                .aspectRatio(contentMode: userModel.userImage == nil ? .fit : .fill)
-                .foregroundColor(.gray)
-                .opacity(userModel.userImage == nil ? 0.5 : 1.0)
-                .frame(width: 90, height: 90)
-                .cornerRadius(50)
-                .overlay(Circle().stroke(Color.white, lineWidth: 1.0))
-        }
+        
+        Image(uiImage: userModel.userImage == nil ? UIImage(systemName: "person.crop.circle")! : userModel.userImage!)
+            .renderingMode(userModel.userImage == nil ? .template : .original)
+            .resizable()
+            .aspectRatio(contentMode: userModel.userImage == nil ? .fit : .fill)
+            .foregroundColor(.gray)
+            .opacity(userModel.userImage == nil ? 0.5 : 1.0)
+            .frame(width: 90, height: 90)
+            .cornerRadius(50)
+            .overlay(Circle().stroke(Color.white, lineWidth: 1.0))
+        
     }
     
     var userInfoView: some View{

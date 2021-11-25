@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "Person=George, Skin Tone=White, Posture=11 Party.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "user.jpeg",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -52,8 +52,12 @@ struct SignInWithEmailAndPasswordView: View {
                     Section(content: {
                         signInButton
                     }, footer: {
-                        fogetPasswordSheet
+                        VStack {
+                            fogetPasswordSheet
+                            SignInWithAppleButtonView()
+                        }
                     }) // Button Section
+                    
                     
                     Section(header: Text("What's new"), content: {
                         ForEach(whatIsNew.updates, id:\.self){updateMessage in

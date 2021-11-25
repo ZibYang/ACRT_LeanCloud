@@ -75,6 +75,7 @@
 		9FC82554273D110D00C9894C /* HalfSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82553273D110D00C9894C /* HalfSheet.swift */; };
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 		9FF5DE93274F2FC6005BC439 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9FF5DE92274F2FC6005BC439 /* FocusEntity */; };
+		9FF5DE96274F32A4005BC439 /* SignInWithAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5DE95274F32A4005BC439 /* SignInWithAppleButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,8 @@
 		9FC3273A274D2C5F006E1ACC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9FC82553273D110D00C9894C /* HalfSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfSheet.swift; sourceTree = "<group>"; };
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
+		9FF5DE94274F3047005BC439 /* ACRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ACRT.entitlements; sourceTree = "<group>"; };
+		9FF5DE95274F32A4005BC439 /* SignInWithAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EA644E134854EEEBD6DAD6 /* Pods-ACRT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.release.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +225,7 @@
 				5A3E1A5D2731097E00B170B2 /* UserLoggedinView.swift */,
 				5A3E1A5F2731098A00B170B2 /* SignInWithEmailAndPasswordView.swift */,
 				5A42159C27311B9D000C9F5B /* SignUpView.swift */,
+				9FF5DE95274F32A4005BC439 /* SignInWithAppleButtonView.swift */,
 			);
 			path = UserPanel;
 			sourceTree = "<group>";
@@ -324,6 +328,7 @@
 		5A56E8FF272BF1FE0062680E /* ACRT */ = {
 			isa = PBXGroup;
 			children = (
+				9FF5DE94274F3047005BC439 /* ACRT.entitlements */,
 				27505D8A274D195F0060501D /* USDZModels */,
 				27B3EC4D27316F4000021DE1 /* Info.plist */,
 				5A3E1A6527310A8900B170B2 /* Model */,
@@ -687,6 +692,7 @@
 				9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */,
 				5ADF209427329CDD00CF0E4A /* Award.swift in Sources */,
 				27ADC924273E49E900926996 /* PersistenceHelperViewModel.swift in Sources */,
+				9FF5DE96274F32A4005BC439 /* SignInWithAppleButtonView.swift in Sources */,
 				27ADC955273FD31900926996 /* ModelDeletionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ACRT/ACRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ACRT/Preview Content\"";
@@ -876,6 +883,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ACRT/ACRT.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ACRT/Preview Content\"";

@@ -16,6 +16,7 @@
 
 import SwiftUI
 import LeanCloud
+import AuthenticationServices // for sign with Apple
 
 class UserViewModel: ObservableObject{
     @Published var capabilitySatisfied = "optional"
@@ -50,7 +51,68 @@ class UserViewModel: ObservableObject{
     let indicatorDescription = "Log in to get full functionality experiences."
     
     init(){
-        updateUserInfo()
+        let userDefault = UserDefaults.standard
+        if userDefault.bool(forKey: "LogInFromApple"){
+            self.userName = "Mystery"
+            self.userImage = UIImage(named: "user")
+            self.capabilitySatisfied = "satisfied"
+            self.isSignedIn = true
+        }else{
+            updateUserInfo()
+        }
+    }
+    
+    func configure(_ request: ASAuthorizationAppleIDRequest){
+        _ = request.nonce
+        // request.requestedScopes = [.fullName]
+    }
+    
+    func handle(_ authResult: Result<ASAuthorization, Error>){
+        switch authResult{
+        case .success(let auth):
+            print(auth)
+            switch auth.credential{
+            case let appleIdCredentials as ASAuthorizationAppleIDCredential:
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(true, forKey: "LogInFromApple")
+                // 可选
+                // "identity_token":  "IDENTITY TOKEN",
+                // "code":            "AUTHORIZATION CODE"
+                signInErrorMessage = ""
+                signInProcessing.toggle()
+                processingMessage = "Signing in, please wait..."
+                let appleData = ["uid": appleIdCredentials.user ]
+                let user = LCUser()
+                user.logIn(authData: appleData, platform: .apple) { (result) in
+                    switch result {
+                    case .success:
+                        self.signInProcessing.toggle()
+                        if let user = LCApplication.default.currentUser{
+                            self.userName = "Mystery"
+                            self.userImage = UIImage(named: "user")
+                            self.capabilitySatisfied = "satisfied"
+                            self.isSignedIn = true
+                        }else{
+                            self.capabilitySatisfied = "optional"
+                            self.isSignedIn = false
+                        }
+                        assert(user.objectId != nil)
+                    case .failure(error: let error):
+                        self.signInProcessing.toggle()
+                        if let errorInfo = error.reason{
+                            self.signInErrorMessage += errorInfo
+                        }
+                        self.signInError.toggle()
+                        print(error)
+                    }
+                }
+                break
+            default:
+                print(auth.credential)
+            }
+        case .failure(let error):
+            print(error)
+        }
     }
     
     func tryToSignUp(photo: UIImage?, username: String, password: String, email: String, phone: String, age: String){
@@ -219,6 +281,8 @@ class UserViewModel: ObservableObject{
     
     func tryToLogout(){
         LCUser.logOut()
+        let userDefault = UserDefaults.standard
+        userDefault.set(false, forKey: "LogInFromApple")
         self.capabilitySatisfied = "optional"
         isSignedIn = false
         userImage = nil
