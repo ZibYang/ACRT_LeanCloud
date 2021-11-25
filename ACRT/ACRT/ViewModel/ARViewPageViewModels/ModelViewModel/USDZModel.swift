@@ -43,7 +43,7 @@ enum ModelCategory: String, CaseIterable{
 
 class USDZModel{
     var modelName: String
-    var modelEntity: ModelEntity?
+    var modelEntity: Entity?
     var modelPreviewImage: UIImage?
     var category: ModelCategory
     
@@ -63,12 +63,40 @@ class USDZModel{
 //            })
     }
     
+    func createRealityURL(filename: String,
+                          fileExtension: String,
+                          sceneName:String) -> URL? {
+        // Create a URL that points to the specified Reality file.
+        guard let realityFileURL = Bundle.main.url(forResource: filename,
+                                                   withExtension: fileExtension) else {
+            print("Error finding Reality file \(filename).\(fileExtension)")
+            return nil
+        }
+
+        // Append the scene name to the URL to point to
+        // a single scene within the file.
+        let realityFileSceneURL = realityFileURL.appendingPathComponent(sceneName,
+                                                                        isDirectory: false)
+        print("realityFileSceneURL.url : \(realityFileURL.description)")
+        return realityFileSceneURL
+    }
+    
     func asyncLoadModelEntity(handler : @escaping(_ completed : Bool, _ error: Error?)->Void) {
-        let fileName = self.modelName+".usdz"
-        self.cancellable = ModelEntity.loadModelAsync(named: fileName)
+        let fileNameArr = self.modelName.components(separatedBy: ".")
+        if fileNameArr.count != 2 {
+            print("Error: the format of \(self.modelName) is incorrect")
+            return
+        }
+        guard let url = createRealityURL(filename: fileNameArr[0], fileExtension: fileNameArr[1], sceneName: "") else {
+            print("Warnning: can not create url \(self.modelName)")
+            return
+        }
+        self.cancellable = Entity.loadAsync(contentsOf: url)
             .sink(receiveCompletion : {loadCompletion in
-                print("1")
-                handler(false,nil)
+                if case let .failure(error) = loadCompletion {
+                    print("Error: can not load \(url.description)")
+                    handler(false,error)
+                }
             }, receiveValue:{modelEntity in
                 
                 handler(true,nil)

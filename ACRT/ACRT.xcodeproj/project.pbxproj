@@ -58,6 +58,7 @@
 		27505E56274DEECF0060501D /* qs_Phone.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27505E24274DEECF0060501D /* qs_Phone.usdz */; };
 		27505E57274DEECF0060501D /* qs_Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 27505E25274DEECF0060501D /* qs_Title.usdz */; };
 		27505E5A274DEF4D0060501D /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 27505E59274DEF4D0060501D /* FocusEntity */; };
+		27505E70274F86D90060501D /* fanfare.reality in Resources */ = {isa = PBXBuildFile; fileRef = 27505E6F274F86D90060501D /* fanfare.reality */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -178,6 +179,7 @@
 		27505E23274DEECF0060501D /* user_love_red.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_love_red.usdz; sourceTree = "<group>"; };
 		27505E24274DEECF0060501D /* qs_Phone.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Phone.usdz; sourceTree = "<group>"; };
 		27505E25274DEECF0060501D /* qs_Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Title.usdz; sourceTree = "<group>"; };
+		27505E6F274F86D90060501D /* fanfare.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = fanfare.reality; sourceTree = "<group>"; };
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		27505D8A274D195F0060501D /* USDZModels */ = {
 			isa = PBXGroup;
 			children = (
+				27505E6F274F86D90060501D /* fanfare.reality */,
 				27505DFF274DEECE0060501D /* APPLE_LOGO.usdz */,
 				27505E11274DEECE0060501D /* qs_AppleLogo_left.usdz */,
 				27505E04274DEECE0060501D /* qs_AppleLogo_right.usdz */,
@@ -735,6 +738,7 @@
 				27505E3F274DEECF0060501D /* qs_Camera.usdz in Resources */,
 				27505E52274DEECF0060501D /* user_letter_L.usdz in Resources */,
 				27505E36274DEECF0060501D /* qs_AppleLogo_right.usdz in Resources */,
+				27505E70274F86D90060501D /* fanfare.reality in Resources */,
 				9FC32652274C78D2006E1ACC /* IntroduceLiDAR.mov in Resources */,
 				27505E31274DEECF0060501D /* APPLE_LOGO.usdz in Resources */,
 				27505E26274DEECF0060501D /* user_letter_E.usdz in Resources */,
