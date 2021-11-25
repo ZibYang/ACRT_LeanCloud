@@ -174,12 +174,12 @@ struct ARWorldView:  UIViewRepresentable {
         
     }
     
-    private func place(_ modelEntity: ModelEntity, for transform: simd_float4x4, with anchorName: String, in arView : ARView, enableGesture: Bool) {
+    private func place(_ modelEntity: Entity, for transform: simd_float4x4, with anchorName: String, in arView : ARView, enableGesture: Bool) {
         let clonedEntity = modelEntity.clone(recursive: true)
         
         clonedEntity.generateCollisionShapes(recursive: true)
         if enableGesture == true {
-            arView.installGestures([.translation, .rotation], for: clonedEntity)
+//            arView.installGestures([.translation, .rotation], for: clonedEntity)
         }
         
         let anchorEntity = AnchorEntity(world: transform)
