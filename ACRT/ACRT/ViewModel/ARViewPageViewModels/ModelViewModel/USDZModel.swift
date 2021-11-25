@@ -53,7 +53,7 @@ class USDZModel{
     init(modelName: String, category: ModelCategory){
         self.modelName = modelName
         self.category = category
-        self.modelPreviewImage = UIImage(named: modelName)
+        self.modelPreviewImage = UIImage(named: "sheet_"+modelName)
 //        let fileName = self.modelName+".usdz"
 //
 //        self.cancellable = ModelEntity.loadModelAsync(named: fileName)

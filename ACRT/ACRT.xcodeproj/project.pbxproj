@@ -76,6 +76,7 @@
 		9FC82572273E09CB00C9894C /* ModelSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC82571273E09CB00C9894C /* ModelSelectedView.swift */; };
 		9FF5DE93274F2FC6005BC439 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 9FF5DE92274F2FC6005BC439 /* FocusEntity */; };
 		9FF5DE96274F32A4005BC439 /* SignInWithAppleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5DE95274F32A4005BC439 /* SignInWithAppleButtonView.swift */; };
+		9FF5DE9C274F7632005BC439 /* UseToolGuidenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF5DE9B274F7632005BC439 /* UseToolGuidenceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,6 +154,7 @@
 		9FC82571273E09CB00C9894C /* ModelSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectedView.swift; sourceTree = "<group>"; };
 		9FF5DE94274F3047005BC439 /* ACRT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ACRT.entitlements; sourceTree = "<group>"; };
 		9FF5DE95274F32A4005BC439 /* SignInWithAppleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonView.swift; sourceTree = "<group>"; };
+		9FF5DE9B274F7632005BC439 /* UseToolGuidenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseToolGuidenceView.swift; sourceTree = "<group>"; };
 		AA74D5CBEBA4FB1EA301736B /* Pods-ACRT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.debug.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.debug.xcconfig"; sourceTree = "<group>"; };
 		B2EA644E134854EEEBD6DAD6 /* Pods-ACRT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACRT.release.xcconfig"; path = "Target Support Files/Pods-ACRT/Pods-ACRT.release.xcconfig"; sourceTree = "<group>"; };
 		BA7F4D52FA1DC80E61785D25 /* Pods_ACRT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ACRT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -284,6 +286,7 @@
 				5A4215AF27315E1D000C9F5B /* TopToolView.swift */,
 				5A4215B127315EDE000C9F5B /* LeftToolView.swift */,
 				5A4215B3273161CC000C9F5B /* ToolView.swift */,
+				9FF5DE9B274F7632005BC439 /* UseToolGuidenceView.swift */,
 			);
 			path = ToolView;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */,
 				5A56E932272FC5D10062680E /* EquippedLiDARDevicesView.swift in Sources */,
 				5A56E903272BF1FE0062680E /* MainView.swift in Sources */,
+				9FF5DE9C274F7632005BC439 /* UseToolGuidenceView.swift in Sources */,
 				5A3E1A5E2731097E00B170B2 /* UserLoggedinView.swift in Sources */,
 				5A3E1A602731098A00B170B2 /* SignInWithEmailAndPasswordView.swift in Sources */,
 				5ADF209A27329D9A00CF0E4A /* SingleRoundAwardView.swift in Sources */,

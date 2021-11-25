@@ -23,21 +23,35 @@ struct ModelSelectedView: View {
     
     var body: some View {
         HStack(spacing: 30) {
-            Button(action: {
-                impactLight.impactOccurred()
-                placementSetting.openModelList = true
-            }, label: {
-                ZStack{
-                    Image(placementSetting.selectedModel == "" ? "questionMark_dark" : placementSetting.selectedModel)
-                        .resizable()
-                        .aspectRatio(1/1, contentMode: .fit)
-                        .frame(width:120)
+            if placementSetting.selectedModel == ""{
+                Button(action: {
+                    impactLight.impactOccurred()
+                    placementSetting.openModelList = true
+                }, label: {
+                    ZStack{
+                        Image("questionMark_dark")
+                            .resizable()
+                            .aspectRatio(1/1, contentMode: .fit)
+                            .frame(width:120)
+                    }
+                })
+            }else{
+                Button(action: {
+                    impactLight.impactOccurred()
+                    placementSetting.openModelList = true
+                }, label: {
+                    ZStack{
+                        Image(placementSetting.selectedModel)
+                            .resizable()
+                            .aspectRatio(1/1, contentMode: .fit)
+                            .frame(width:120)
+                    }
+                })
+                VStack(alignment: .center) {
+                    placeButton
+                
+                    HintText
                 }
-            })
-            VStack(alignment: .center) {
-                placeButton
-            
-                HintText
             }
         }
     }

@@ -363,5 +363,6 @@ struct ToolView_Previews: PreviewProvider {
         .environmentObject(ARViewModel())
         .environmentObject(ModelDeletionManagerViewModel())
         .environmentObject(UserViewModel())
+        .environmentObject(PersistenceHelperViewModel())
     }
 }
