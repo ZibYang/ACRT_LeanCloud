@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct UseToolGuidenceView: View {
+    @Binding var showGuidence: Bool
     @State var step = 0
     
     var body: some View {
@@ -17,7 +18,12 @@ struct UseToolGuidenceView: View {
             
             LeftToolIntroduce
             
+            RightToolIntroduce
+            
+            BottomToolIntroduce
+            
             controllPannel
+                .padding(.horizontal)
             
         }
     }
@@ -25,76 +31,116 @@ struct UseToolGuidenceView: View {
     var controllPannel: some View{
         VStack{
             Spacer()
-            HStack(spacing: 30){
-                Button(action: {
-                    withAnimation(Animation.easeInOut(duration: 0.3)) {
-                        step -= 1
+            ZStack(alignment: .bottom) {
+                HStack {
+                    Button(action: {
+                        let userDefaults = UserDefaults.standard
+                        userDefaults.set(true, forKey: "ShowGuidence")
+                        withAnimation(Animation.easeInOut(duration: 0.3)){
+                            showGuidence.toggle()
+                        }
+                    }, label: {
+                        Text("Skip")
+                    })
+                    Spacer()
+                }
+                .padding()
+                HStack(spacing: 30){
+                    Spacer()
+                    VStack{
+                        Button(action: {
+                            withAnimation(Animation.easeInOut(duration: 0.3)) {
+                                step -= 1
+                            }
+                        }, label: {
+                            Text("Previous")
+                                .foregroundColor(step == 0 ? .gray : .blue)
+                        })
+                            .padding(.bottom)
+                            .disabled(step == 0)
+                        Button(action: {
+                            if step == 10{
+                                let userDefaults = UserDefaults.standard
+                                userDefaults.set(true, forKey: "ShowGuidence")
+                                withAnimation(Animation.easeInOut(duration: 0.3)){
+                                    showGuidence.toggle()
+                                }
+                            }else{
+                                withAnimation(Animation.easeInOut(duration: 0.3)) {
+                                    step += 1
+                                }
+                            }
+                        }, label: {
+                            Text(step == 10 ? "Finish" : "Next")
+                        })
+                            .padding(.bottom)
                     }
-                }, label: {
-                    Text("Previous")
-                        .foregroundColor(step == 0 ? .gray : .blue)
-                })
-                    .disabled(step == 0)
-                Button(action: {
-                    withAnimation(Animation.easeInOut(duration: 0.3)) {
-                        step += 1
-                    }
-                }, label: {
-                    Text("Next")
-                })
+                }
             }
         }
     }
+    
     var topToolIntroduce: some View{
         VStack {
             ZStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    Image(systemName: "arrow.backward")
-                        .frame(width: 42, height: 42)
-                        .background(Material.ultraThinMaterial)
-                        .cornerRadius(10)
-                    Text("Go back to the menu.")
-                        .font(.footnote)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Image(systemName: "arrow.backward")
+                            .frame(width: 42, height: 42)
+                            .background(.gray)
+                            .cornerRadius(10)
+                        Text("Go back to the menu.")
+                            .font(.footnote)
+                    }
+                    Spacer()
                 }
-                .offset(x: -114)
                 .foregroundColor(.white)
                 .opacity(step == 0 ? 1 : 0)
                 
-                VStack(alignment: .leading) {
-                    Image(systemName: "building.2")
-                        .frame(width: 42, height: 42)
-                        .background(Material.ultraThinMaterial)
-                        .cornerRadius(10, corners: [.topLeft, .bottomLeft])
-                    Text("Switch occlusion.")
-                        .font(.footnote)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Image(systemName: "building.2")
+                            .frame(width: 42, height: 42)
+                            .padding(.horizontal, 3)
+                            .background(.gray)
+                            .cornerRadius(10, corners: [.topLeft, .bottomLeft])
+                        Text("Switch occlusion.")
+                            .font(.footnote)
+                    }
+                    Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: -76)
+                .offset(x: 51)
                 .opacity(step == 1 ? 1 : 0)
                 
-                VStack(alignment: .leading) {
-                    Image(systemName: "square.grid.3x3.square")
-                        .frame(width: 42, height: 42)
-                        .background(Material.ultraThinMaterial)
-                    Text("Show mesh.")
-                        .font(.footnote)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Image(systemName: "square.grid.3x3.square")
+                            .frame(width: 42, height: 42)
+                            .background(.gray)
+                        Text("Show mesh.")
+                            .font(.footnote)
+                    }
+                    Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: -46)
+                .offset(x: 97)
                 .opacity(step == 2 ? 1 : 0)
                 
-                VStack(alignment: .leading) {
-                    Image(systemName: "camera")
-                        .frame(width: 42, height: 42)
-                        .background(Material.ultraThinMaterial)
-                        .cornerRadius(10, corners: [.topRight, .bottomRight])
-                    Text("Take a photo.")
-                        .font(.footnote)
+                HStack {
+                    VStack(alignment: .leading) {
+                        Image(systemName: "camera")
+                            .frame(width: 42, height: 42)
+                            .background(.gray)
+                            .cornerRadius(10, corners: [.topRight, .bottomRight])
+                        Text("Take a photo.")
+                            .font(.footnote)
+                    }
+                    Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: 3)
+                .offset(x: 139)
                 .opacity(step == 3 ? 1 : 0)
-                Spacer()
             }
             .padding()
             Spacer()
@@ -109,7 +155,7 @@ struct UseToolGuidenceView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .frame(width: 40, height: 40)
-                            .background(Material.ultraThinMaterial)
+                            .background(.gray)
                             .cornerRadius(10)
                         Text("Tap it into explore mood which will automaticlly perform localization if user havn't localized.")
                             .font(.footnote)
@@ -121,7 +167,7 @@ struct UseToolGuidenceView: View {
                     HStack {
                         Image(systemName:  "cube")
                             .frame(width: 40, height: 40)
-                            .background(Material.ultraThinMaterial)
+                            .background(.gray)
                             .cornerRadius(10)
                         Text("Tap it into create mood and it will show the right hand menu as well.")
                             .font(.footnote)
@@ -133,7 +179,7 @@ struct UseToolGuidenceView: View {
                     HStack {
                         Image(systemName:  "location")
                             .frame(width: 44, height: 44)
-                            .background(Material.ultraThinMaterial)
+                            .background(.gray)
                             .cornerRadius(10)
                         Text("Tap it to perform re-location at anytime.")
                             .font(.footnote)
@@ -149,6 +195,73 @@ struct UseToolGuidenceView: View {
             Spacer()
         }
     }
+    
+    var RightToolIntroduce: some View{
+        VStack{
+            Spacer()
+            HStack{
+                VStack(alignment: .trailing) {
+                    HStack() {
+                        Spacer()
+                        Text("Tap it to download the models created by other people, it might be so much fun to find.")
+                            .font(.footnote)
+                            .multilineTextAlignment(.trailing)
+                        Image(systemName: "icloud.and.arrow.down")
+                            .frame(width: 40, height: 40)
+                            .background(.gray)
+                            .cornerRadius(10)
+                    }
+                    .foregroundColor(.white)
+                    .opacity(step == 7 ? 1 : 0)
+                    
+                    HStack {
+                        Spacer()
+                        Text("Tap it to upload your models into the cloud so everyone can see your creation.")
+                            .font(.footnote)
+                            .multilineTextAlignment(.trailing)
+                        Image(systemName: "icloud.and.arrow.up")
+                            .frame(width: 40, height: 40)
+                            .background(.gray)
+                            .cornerRadius(10)
+                    }
+                    .foregroundColor(.white)
+                    .opacity(step == 8 ? 1 : 0)
+                    
+                    HStack {
+                        Spacer()
+                        Text("Tap it to delete every model in the scene, it will save you a lot of time.")
+                            .font(.footnote)
+                            .multilineTextAlignment(.trailing)
+                        Image(systemName: "trash")
+                            .frame(width: 40, height: 40)
+                            .background(.gray)
+                            .cornerRadius(10)
+                    }
+                    .foregroundColor(.white)
+                    .opacity(step == 9 ? 1 : 0)
+                }
+            }
+            .padding()
+            Spacer()
+        }
+    }
+    
+    var BottomToolIntroduce: some View{
+        VStack{
+            Spacer()
+            VStack {
+                Text("Tap it to choose the model")
+                    .font(.footnote)
+                    .foregroundColor(.white)
+                Image("placeHolder")
+                    .resizable()
+                    .aspectRatio(1/1, contentMode: .fit)
+                    .frame(width:120)
+            }
+            .opacity(step == 10 ? 1 : 0)
+            
+        }
+    }
 }
 
 struct UseToolGuidenceView_Previews: PreviewProvider {
@@ -157,12 +270,31 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
             ModelSelectedView()
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            Color.black
+                .opacity(0.5)
+                
+            UseToolGuidenceView(showGuidence: .constant(true))
+        }
+        .environmentObject(PlacementSetting())
+        .environmentObject(SceneManagerViewModel())
+        .environmentObject(CoachingViewModel())
+        .environmentObject(HttpAuth())
+        .environmentObject(ARViewModel())
+        .environmentObject(ModelDeletionManagerViewModel())
+        .environmentObject(UserViewModel())
+        .environmentObject(PersistenceHelperViewModel())
+        ZStack {
+            ModelSelectedView()
+            RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
+                .ignoresSafeArea()
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
             Color.black
                 .opacity(0.6)
                 
-            UseToolGuidenceView()
+            UseToolGuidenceView(showGuidence: .constant(true))
         }
+        .previewDevice("iPhone 13")
         .environmentObject(PlacementSetting())
         .environmentObject(SceneManagerViewModel())
         .environmentObject(CoachingViewModel())

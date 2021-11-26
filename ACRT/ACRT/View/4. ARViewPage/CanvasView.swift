@@ -34,6 +34,10 @@ struct CanvasView: View {
     @State var snapShot = false
     @State var requestNow = true
     @State var showQuitButton = false
+    
+    // Into Guidence
+    @State var showGuidence = false
+    @State var showGuidenceHint = false
 
     @Binding var goBack: Bool
     @State var showModelPicker = false
@@ -53,7 +57,7 @@ struct CanvasView: View {
                 .onTapGesture(count: 1) {
 
                 }
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack)
+            ToolView(snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)
@@ -63,12 +67,23 @@ struct CanvasView: View {
 
             if coachingViewModel.isCoaching == true {
                 VStack {
-                    CustomCoachingView(goBack: $goBack)
+                    CustomCoachingView(goBack: $goBack, showGuidenceHint: $showGuidenceHint)
                         .environmentObject(coachingViewModel)
                         .environmentObject(placementSetting)
                         .environmentObject(userModel)
                 }
                 .background(Color.black.opacity(0.5))
+            }
+        }
+        .alert("Hello freshman, let's walk you throgh and see how this app work.", isPresented: $showGuidenceHint) {
+            Button(role: .none){
+            }label:{
+                Text("Thanks, I already know it")
+            }
+            Button(role: .cancel){
+                showGuidence.toggle()
+            }label:{
+                Text("OK, let go")
             }
         }
         .statusBar(hidden: true)

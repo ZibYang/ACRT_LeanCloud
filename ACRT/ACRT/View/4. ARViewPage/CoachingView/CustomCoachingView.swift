@@ -26,6 +26,8 @@ struct CustomCoachingView: View {
     @State var animate: Bool = false
     
     @Binding var goBack: Bool
+    @Binding var showGuidenceHint: Bool
+    
     var animation: Animation{
         Animation.linear(duration: 2.0)
         .repeatForever()
@@ -67,7 +69,13 @@ struct CustomCoachingView: View {
                                 if userModel.isSignedIn{
                                     coachingViewModel.isCoaching = false
                                     placementSetting.isInCreationMode = true
-                                    placementSetting.openModelList.toggle()
+                                    // placementSetting.openModelList.toggle()
+                                    let userDefaults = UserDefaults.standard
+                                    if userDefaults.bool(forKey: "ShowGuidence") != true{
+                                        showGuidenceHint.toggle()
+                                    }else{
+                                        userDefaults.set(true, forKey: "ShowGuidence")
+                                    }
                                 }else{
                                     coachingViewModel.isCoaching = false
                                     goBack.toggle()
@@ -120,7 +128,7 @@ struct transitionEffect: GeometryEffect {
 struct CustomCoachingView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            CustomCoachingView(goBack: .constant(false))
+            CustomCoachingView(goBack: .constant(false), showGuidenceHint: .constant(false))
                 .background(.ultraThickMaterial)
         }
         .preferredColorScheme(.dark)

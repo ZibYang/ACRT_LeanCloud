@@ -16,10 +16,9 @@ class CoachingViewModel : ObservableObject {
     var maxWaitForLoc : Double  = 3
     
     
+    
     func StartLocalizationAndModelLoadingAsync(httpManager : HttpAuth,
-                                               arViewModel: ARViewModel
-                                               ) {
-        
+                                               arViewModel: ARViewModel) {
         if httpManager.statusLoc == 1 {
             return
         }
@@ -46,9 +45,6 @@ class CoachingViewModel : ObservableObject {
                 }
             }
             if(self.isCoaching) {
-//                while(!usdzManagerViewModel.AreExploreModelLibrariesLoaded()) {
-//                    sleep(1)
-//                }
                 DispatchQueue.main.async {
                     print("DEBUG(BCH): arViewModel isCoaching close")
                     self.isCoaching = false

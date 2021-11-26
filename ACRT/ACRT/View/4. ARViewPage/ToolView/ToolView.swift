@@ -41,6 +41,7 @@ struct ToolView: View {
     @Binding var showMesh: Bool
     @Binding var showOcclusion: Bool
     @Binding var goBack: Bool
+    @Binding var showGuidence: Bool
     
     @State private var snapshotBackgroundOpacity = 0.0
     
@@ -60,6 +61,7 @@ struct ToolView: View {
             rightToolGroup
             
             snapShotButton
+
             if modelDeletionManager.entitySelectedForDeletion == nil {
                 placeModelView
             } else {
@@ -70,11 +72,14 @@ struct ToolView: View {
                         .environmentObject(modelDeletionManager)
                         .padding()
                 }
-                
             }
-            
+            if showGuidence{
+                Color.black
+                    .opacity(0.7)
+                    .ignoresSafeArea()
+                UseToolGuidenceView(showGuidence: $showGuidence)
+            }
         }
-        
     }
     
     var placeModelView: some View{
@@ -342,16 +347,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
                 
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false))
+                ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false))
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false))
+            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false))
 
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
