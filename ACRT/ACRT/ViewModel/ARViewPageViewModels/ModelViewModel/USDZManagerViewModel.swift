@@ -125,7 +125,8 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_special_bat.usdz", //5
                                                            "user_special_deadHand.usdz", //6
                                                            "user_special_ghost.usdz", //7
-                                                           "fanfare.reality"
+                                                           "fanfare.reality",
+                                                           "Message.reality"
                                                           ],
                                         categoryList:[.foundmental, //1
                                                       .foundmental, //2
@@ -174,7 +175,8 @@ class USDZManagerViewModel: ObservableObject {
                                                       .special, //5
                                                       .special, //6
                                                       .special, //7
-                                                    .special
+                                                    .special,
+                                                      .special
                                                      ])
     
 //    func AreModelLibrariesLoaded() -> Bool {
