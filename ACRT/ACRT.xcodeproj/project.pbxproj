@@ -69,6 +69,7 @@
 		9F118CE6273908E30054A252 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F118CE5273908E30054A252 /* SignUpViewModel.swift */; };
 		9F20527B274A320A00244C20 /* SecurityInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F20527A274A320A00244C20 /* SecurityInfomation.swift */; };
 		9F20527D274A36FB00244C20 /* ARKitInteraction_shutter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */; };
+		9F3020732750850B002F359D /* showAwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3020722750850B002F359D /* showAwardView.swift */; };
 		9FC3264B274BB6CB006E1ACC /* errorBeep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9FC3264A274BB6CB006E1ACC /* errorBeep.wav */; };
 		9FC3264D274BC5E7006E1ACC /* IntroduceLiDAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FC3264C274BC5E7006E1ACC /* IntroduceLiDAR.swift */; };
 		9FC32652274C78D2006E1ACC /* IntroduceLiDAR.mov in Resources */ = {isa = PBXBuildFile; fileRef = 9FC32651274C78D2006E1ACC /* IntroduceLiDAR.mov */; };
@@ -146,6 +147,7 @@
 		9F20527A274A320A00244C20 /* SecurityInfomation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityInfomation.swift; sourceTree = "<group>"; };
 		9F20527C274A36FB00244C20 /* ARKitInteraction_shutter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ARKitInteraction_shutter.mp3; sourceTree = "<group>"; };
 		9F2052E3274B36DF00244C20 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9F3020722750850B002F359D /* showAwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showAwardView.swift; sourceTree = "<group>"; };
 		9FC3264A274BB6CB006E1ACC /* errorBeep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = errorBeep.wav; sourceTree = "<group>"; };
 		9FC3264C274BC5E7006E1ACC /* IntroduceLiDAR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceLiDAR.swift; sourceTree = "<group>"; };
 		9FC32651274C78D2006E1ACC /* IntroduceLiDAR.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IntroduceLiDAR.mov; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 			children = (
 				5ADF209727329D2D00CF0E4A /* AwardView.swift */,
 				5ADF209927329D9A00CF0E4A /* SingleRoundAwardView.swift */,
+				9F3020722750850B002F359D /* showAwardView.swift */,
 			);
 			path = AwardView;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				5A3E1A6727310A9200B170B2 /* Update.swift in Sources */,
 				27ADC926273E5F8C00926996 /* RandomUtils.swift in Sources */,
 				5A3E1A6927310B1200B170B2 /* WhatIsNewViewModel.swift in Sources */,
+				9F3020732750850B002F359D /* showAwardView.swift in Sources */,
 				9FC3264D274BC5E7006E1ACC /* IntroduceLiDAR.swift in Sources */,
 				27B3EC4827316E4E00021DE1 /* ImageUtils.swift in Sources */,
 				27B3EC5A27325F7500021DE1 /* ExploreAnchorManagerViewModel.swift in Sources */,

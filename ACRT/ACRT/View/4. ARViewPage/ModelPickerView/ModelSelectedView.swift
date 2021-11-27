@@ -14,6 +14,7 @@
 
 //  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 //
+// [StringSeparate] reference: https://www.hackingwithswift.com/example-code/strings/how-to-split-a-string-into-an-array-componentsseparatedby
 
 import SwiftUI
 
@@ -41,7 +42,7 @@ struct ModelSelectedView: View {
                     placementSetting.openModelList = true
                 }, label: {
                     ZStack{
-                        Image(placementSetting.selectedModel)
+                        Image(placementSetting.selectedModel.components(separatedBy: ".")[0])
                             .resizable()
                             .aspectRatio(1/1, contentMode: .fit)
                             .frame(width:120)
@@ -84,7 +85,8 @@ struct ModelSelectedView: View {
         })
             .disabled(placementSetting.selectedModel == "")
             .frame(width: 100,height: 45)
-            .background(.ultraThinMaterial)
+            .background(.white
+                            .opacity(0.3))
             .cornerRadius(10)
     }
 }

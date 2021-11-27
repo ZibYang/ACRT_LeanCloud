@@ -240,3 +240,21 @@
 "Your picture stays a mystery" = "你的图片是永远的秘密";
 
 "Your photo will directly save into your album with protect by Apple, and we won't save it in our severs." = "你的图片将直接保存在相册中并受到Apple的保护，而且我们不会保存您的任何照片信息";
+
+
+/*Guidence View*/
+"Hello freshman, let's walk you throgh and see how this app work." = "在正式进入新视界之前，让我们先来一起熟悉一下各个工具如何使用吧";
+
+"Thanks, I already know it" = "谢谢，我已经了解了";
+"OK, let go" = "好的";
+"Go back to the menu." = "这是返回按钮";
+"Switch occlusion." = "如果您的设备支持LiDAR则可以点击这里打开遮挡";
+"Show mesh." = "如果您的设备支持LiDAR则可以点击这里显示Mesh";
+"Take a photo." = "当您想记录神奇的世界时，点击这里即可拍照";
+"Tap it into explore mood which will automaticlly perform localization if user havn't localized." = "点击这里进入探索模式，当然如果您没有成功定位的话需要首先进行定位，成功后才能进行探索噢";
+"Tap it into create mood and it will show the right hand menu as well." = "点击这里进入创作模式，如果您已经登陆，那即使没有定位成功也可以进行本地创作噢";
+"Tap it to perform re-location at anytime." = "当您觉得定位出现误差时，随时点击进行重新定位";
+"Tap it to download the models created by other people, it might be so much fun to find." = "当您处于创作模式时，可以点击下载，查看世界中其他用户的奇思妙作";
+"Tap it to upload your models into the cloud so everyone can see your creation." = "当您处于创作模式时，可以点击上传，让其他用户去探索你的创意";
+"Tap it to delete every model in the scene, it will save you a lot of time." = "当您处于创作模式时，点击对模型进行一键删除（注意删除后无法恢复噢）";
+"Tap it to choose the model." = "最后，就是模型选择按钮，点击这里选择你喜欢的模型";

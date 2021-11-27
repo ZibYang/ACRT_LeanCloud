@@ -82,6 +82,9 @@ struct PrepareView: View {
         .environmentObject(coachingViewModel)
         .environmentObject(httpManager)
         .environmentObject(usdzManagerViewModel)
+//        .sheet(isPresented: $mapModel.hangZhouAward){
+//            showAwardView()
+//        }
         
     }
     

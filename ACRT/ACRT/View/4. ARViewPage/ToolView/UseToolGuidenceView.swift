@@ -250,7 +250,7 @@ struct UseToolGuidenceView: View {
         VStack{
             Spacer()
             VStack {
-                Text("Tap it to choose the model")
+                Text("Tap it to choose the model.")
                     .font(.footnote)
                     .foregroundColor(.white)
                 Image("placeHolder")
