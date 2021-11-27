@@ -78,9 +78,9 @@ class USDZManagerViewModel: ObservableObject {
                                                                         .special //27
                                                                        ])
     
-    var createModelList = USDZModelList(usdzModelNameList:["user_like_blue.usdz", //1
-                                                           "user_like_red.usdz", //2
-                                                           "user_love_red.usdz", //3
+    var createModelList = USDZModelList(usdzModelNameList:["user_like_blue.reality", //1
+                                                           "user_like_red.reality", //2
+                                                           "user_love_red.reality", //3
                                                            "user_love_white.usdz", //4
                                                            
                                                             "user_letter_A.usdz", //1
