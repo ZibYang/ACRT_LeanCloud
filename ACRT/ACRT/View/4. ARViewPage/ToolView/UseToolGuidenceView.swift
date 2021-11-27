@@ -22,6 +22,8 @@ struct UseToolGuidenceView: View {
             
             BottomToolIntroduce
             
+            BottomToolIntroduce2
+            
             controllPannel
                 .padding(.horizontal)
             
@@ -59,7 +61,7 @@ struct UseToolGuidenceView: View {
                             .padding(.bottom)
                             .disabled(step == 0)
                         Button(action: {
-                            if step == 10{
+                            if step == 11{
                                 let userDefaults = UserDefaults.standard
                                 userDefaults.set(true, forKey: "ShowGuidence")
                                 withAnimation(Animation.easeInOut(duration: 0.3)){
@@ -71,7 +73,7 @@ struct UseToolGuidenceView: View {
                                 }
                             }
                         }, label: {
-                            Text(step == 10 ? "Finish" : "Next")
+                            Text(step == 11 ? "Finish" : "Next")
                         })
                             .padding(.bottom)
                     }
@@ -110,7 +112,7 @@ struct UseToolGuidenceView: View {
                     Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: 51)
+                .offset(x: 50)
                 .opacity(step == 1 ? 1 : 0)
                 
                 HStack {
@@ -124,7 +126,7 @@ struct UseToolGuidenceView: View {
                     Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: 97)
+                .offset(x: 99)
                 .opacity(step == 2 ? 1 : 0)
                 
                 HStack {
@@ -139,7 +141,7 @@ struct UseToolGuidenceView: View {
                     Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: 139)
+                .offset(x: 142)
                 .opacity(step == 3 ? 1 : 0)
             }
             .padding()
@@ -241,7 +243,7 @@ struct UseToolGuidenceView: View {
                     .opacity(step == 9 ? 1 : 0)
                 }
             }
-            .padding()
+            .padding(17)
             Spacer()
         }
     }
@@ -259,6 +261,23 @@ struct UseToolGuidenceView: View {
                     .frame(width:120)
             }
             .opacity(step == 10 ? 1 : 0)
+            
+        }
+    }
+    
+    var BottomToolIntroduce2: some View{
+        VStack{
+            Spacer()
+            VStack {
+                Text("Top sign means the model have animation.")
+                    .font(.footnote)
+                    .foregroundColor(.white)
+                Image("placeHolder2")
+                    .resizable()
+                    .aspectRatio(1/1, contentMode: .fit)
+                    .frame(width:120)
+            }
+            .opacity(step == 11 ? 1 : 0)
             
         }
     }

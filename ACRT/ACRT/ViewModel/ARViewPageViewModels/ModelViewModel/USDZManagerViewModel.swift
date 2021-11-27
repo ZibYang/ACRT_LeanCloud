@@ -81,7 +81,7 @@ class USDZManagerViewModel: ObservableObject {
     var createModelList = USDZModelList(usdzModelNameList:["user_like_blue.reality", //1
                                                            "user_like_red.reality", //2
                                                            "user_love_red.reality", //3
-                                                           "user_love_white.usdz", //4
+                                                           "user_love_white.reality", //4
                                                            
                                                             "user_letter_A.usdz", //1
                                                             "user_letter_B.usdz", //2
@@ -125,7 +125,10 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_special_bat.usdz", //5
                                                            "user_special_deadHand.usdz", //6
                                                            "user_special_ghost.usdz", //7
-                                                           "fanfare.reality"
+                                                           
+                                                           "user_victory_fanfare.reality", // 1
+                                                           "user_victory_crown.reality", //2
+                                                           "user_victory_like.reality" //3
                                                           ],
                                         categoryList:[.foundmental, //1
                                                       .foundmental, //2
@@ -174,7 +177,10 @@ class USDZManagerViewModel: ObservableObject {
                                                       .special, //5
                                                       .special, //6
                                                       .special, //7
-                                                    .special
+                                                      
+                                                      .victory, //1
+                                                      .victory, //2
+                                                      .victory //3
                                                      ])
     
 //    func AreModelLibrariesLoaded() -> Bool {

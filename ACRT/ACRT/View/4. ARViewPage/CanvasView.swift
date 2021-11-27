@@ -79,6 +79,7 @@ struct CanvasView: View {
             Button(role: .none){
             }label:{
                 Text("Thanks, I already know it")
+                    .foregroundColor(.gray)
             }
             Button(role: .cancel){
                 showGuidence.toggle()
