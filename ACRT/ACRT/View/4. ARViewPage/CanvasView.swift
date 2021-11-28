@@ -28,6 +28,7 @@ struct CanvasView: View {
     @EnvironmentObject var coachingViewModel : CoachingViewModel
     @EnvironmentObject var httpManager : HttpAuth
     @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+    @EnvironmentObject var messageModel: MessageViewModel
     
     @State var showOcclusion = false
     @State private var showMesh = false
@@ -52,10 +53,10 @@ struct CanvasView: View {
                 .environmentObject(sceneManager)
                 .environmentObject(modelDeletionManager)
                 .environmentObject(userModel)
+                .environmentObject(messageModel)
                 .environmentObject(persistence)
                 .ignoresSafeArea()
                 .onTapGesture(count: 1) {
-
                 }
             ToolView(snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence)
                 .environmentObject(placementSetting)
@@ -74,6 +75,14 @@ struct CanvasView: View {
                 }
                 .background(Color.black.opacity(0.5))
             }
+            
+            
+            if messageModel.isMessaging == true {
+                MessageView()
+                    .environmentObject(messageModel)
+            }
+            
+            
         }
         .alert("Hello freshman, let's walk you throgh and see how this app work.", isPresented: $showGuidenceHint) {
             Button(role: .none){
@@ -98,7 +107,6 @@ struct CanvasView: View {
                 .environmentObject(placementSetting)
                 .environmentObject(usdzManagerViewModel)
         }
-        
     }
 }
 

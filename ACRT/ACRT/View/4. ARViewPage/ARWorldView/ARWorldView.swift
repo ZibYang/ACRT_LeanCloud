@@ -26,6 +26,7 @@ import RealityKit
 import Foundation
 
 import SwiftUI
+import LeanCloud
 
 struct ARWorldView:  UIViewRepresentable {
     @StateObject var exploreAnchorManager : ExploreAnchorManagerViewModel =  ExploreAnchorManagerViewModel()
@@ -38,6 +39,7 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var modelDeletionManager: ModelDeletionManagerViewModel
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var persistence: PersistenceHelperViewModel
+    @EnvironmentObject var messageModel: MessageViewModel
     
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
@@ -85,10 +87,12 @@ struct ARWorldView:  UIViewRepresentable {
         arViewModel.arView.session.run(config)
         
         arViewModel.arView.modelDeletionManager = modelDeletionManager
+        arViewModel.arView.messageModel = messageModel
         
         placementSetting.sceneObserver = arViewModel.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
             self.updateModels()
             self.updateScene(for: arViewModel.arView)
+            self.updateMessageText(for: arViewModel.arView)
             self.handlePersistence(for: arViewModel.arView)
         })
         
@@ -144,6 +148,52 @@ struct ARWorldView:  UIViewRepresentable {
                 }
             }
         }
+    }
+    
+    private func updateMessageText(for arView: CustomARView) {
+        if arView.is_loading {
+                return
+        }
+            
+        let query = LCQuery(className: "Message")
+        _ = query.find { result in
+            switch result {
+            case .success(objects: let objects):
+//                arView.all_message = ""
+                var new_message = ""
+                for object in objects {
+                    let creator:String = (object.get("creator") as! LCString).value
+                    let message:String = (object.get("message") as! LCString).value
+                        
+//                    print("[meg] get message \(creator): \(message)")
+                    new_message += "\(creator): \(message)\n"
+                }
+//                print("[meg] \(new_message)")
+//                print("[meg] \(arView.all_message)")
+                if new_message != arView.all_message {
+                    for anchor in self.sceneManager.anchorEntities {
+                        if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "Message.reality" {
+//                            let anchor = arView.scene.findEntity(named: anchor.name)
+                            let text = anchor.children[0].children[0].children[0].children[0].children[0].children[0] as! ModelEntity
+                            var textComponent:ModelComponent = (text.components[ModelComponent])!
+                            print("[meg] set \(new_message)")
+                            textComponent.mesh = .generateText(new_message, extrusionDepth: 0.01,
+                                                               font: .systemFont(ofSize: 0.08),
+                                                               containerFrame: CGRect(),
+                                                               alignment: .left,
+                                                               lineBreakMode: .byCharWrapping)
+
+                            text.components.set(textComponent)
+                            arView.all_message = new_message
+                        }
+                    }
+                }
+                arView.is_loading = false
+            case .failure(error: let error):
+                print("[meg] \(error)")
+            }
+        }
+        arView.is_loading = true
     }
     
     private func updateScene(for arView: CustomARView) {

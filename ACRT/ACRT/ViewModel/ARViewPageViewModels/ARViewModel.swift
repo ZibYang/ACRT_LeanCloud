@@ -36,14 +36,13 @@ class ARViewModel: ObservableObject{
     var lastPoseARKitToW: simd_float4x4 = matrix_identity_float4x4
     let scale : Float = 1.0 //old qiushi : 6.7664; shelf : 0.21419, 1022qiushi: 3.34645, 1024:0.858995
     
-
     
     var isLiDAREqiped: Bool{
         return ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)
     }
     
     init(){
-        arView = CustomARView(frame: .zero, modelDeletionManager:nil)
+        arView = CustomARView(frame: .zero, modelDeletionManager:nil, messageModel: nil)
         
         if isLiDAREqiped{
             capabilitySatisfied = "satisfied"
