@@ -24,10 +24,11 @@ import AVFoundation
 struct PrepareView: View {
     @StateObject var mapModel = MapViewModel()
     @StateObject var userModel = UserViewModel()
-    @StateObject var arViewModel = ARViewModel()
     @StateObject var coachingViewModel = CoachingViewModel()
     @StateObject var httpManager: HttpAuth = HttpAuth()
     @StateObject var usdzManagerViewModel = USDZManagerViewModel()
+    @StateObject var messageModel = MessageViewModel()
+    @StateObject var arViewModel = ARViewModel()
 
     @State var checkLocationRequest = false
     @State var checkLidarDeviceList = false
@@ -82,7 +83,7 @@ struct PrepareView: View {
         .environmentObject(coachingViewModel)
         .environmentObject(httpManager)
         .environmentObject(usdzManagerViewModel)
-        
+        .environmentObject(messageModel)
     }
     
     var locationRequest: some View{
