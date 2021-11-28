@@ -20,42 +20,19 @@ import Foundation
 import RealityKit
 import Combine
 
-enum ModelCategory: String, CaseIterable{
-    case emoji, special, message, letter, foundmental
-    
-    var label: String{
-        get{
-            switch self{
-            case .emoji:
-                    return "Emoji"
-            case .message:
-                return "Messages"
-            case .letter:
-                return "Letters"
-            case .foundmental:
-                return "Foundmentals"
-            case .special:
-                return "Special Event"
-            }
-        }
-    }
-}
-
 class USDZModel{
     var modelName: String
     var type: String
     var modelEntity: Entity?
     var modelPreviewImage: UIImage?
-    var category: ModelCategory
     
     private var cancellable: AnyCancellable? = nil
     
     
-    init(modelName: String, category: ModelCategory){
+    init(modelName: String){
         self.modelName = modelName
         self.type = modelName.components(separatedBy: ".")[1]
-        self.category = category
-        self.modelPreviewImage = UIImage(named: "sheet_"+modelName)
+        //self.modelPreviewImage = UIImage(named: "sheet_"+modelName)
 //        let fileName = self.modelName+".usdz"
 //
 //        self.cancellable = ModelEntity.loadModelAsync(named: fileName)
@@ -63,6 +40,10 @@ class USDZModel{
 //            }, receiveValue:{ modelEntity in
 //                self.modelEntity = modelEntity
 //            })
+    }
+    
+    func getBodyOfModelName() -> String {
+        return self.modelName.components(separatedBy: ".")[0]
     }
     
     func createRealityURL(filename: String,
