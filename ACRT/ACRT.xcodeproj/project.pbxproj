@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		273DE6A22752506C00B09FCF /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 273DE6A12752506C00B09FCF /* FocusEntity */; };
-		273DE6A6275250F900B09FCF /* user_like_blue.reality in Resources */ = {isa = PBXBuildFile; fileRef = 273DE6A3275250F900B09FCF /* user_like_blue.reality */; };
-		273DE6A7275250F900B09FCF /* user_love_red.reality in Resources */ = {isa = PBXBuildFile; fileRef = 273DE6A4275250F900B09FCF /* user_love_red.reality */; };
-		273DE6A8275250F900B09FCF /* user_like_red.reality in Resources */ = {isa = PBXBuildFile; fileRef = 273DE6A5275250F900B09FCF /* user_like_red.reality */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -65,9 +61,9 @@
 		5A56E93C2730E0740062680E /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93B2730E0740062680E /* ARViewModel.swift */; };
 		5A56E93E2730E0DE0062680E /* HttpAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93D2730E0DE0062680E /* HttpAuthViewModel.swift */; };
 		5A56E9402730E2A60062680E /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56E93F2730E2A60062680E /* IndicatorView.swift */; };
-		5A5F58E92753A27F0025E482 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5F58E82753A27F0025E482 /* FocusEntity */; };
 		5A5F58EB2753A3CB0025E482 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F58EA2753A3CB0025E482 /* MessageViewModel.swift */; };
 		5A5F58ED2753A3E70025E482 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F58EC2753A3E70025E482 /* MessageView.swift */; };
+		5A5F58F02753B9FA0025E482 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5F58EF2753B9FA0025E482 /* FocusEntity */; };
 		5ADB544627534F9B00D4CC47 /* user_victory_fanfare.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB540627534F9900D4CC47 /* user_victory_fanfare.reality */; };
 		5ADB544727534F9B00D4CC47 /* user_special_bat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB540727534F9900D4CC47 /* user_special_bat.usdz */; };
 		5ADB544827534F9B00D4CC47 /* qs_AppStore.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB540827534F9900D4CC47 /* qs_AppStore.usdz */; };
@@ -120,14 +116,14 @@
 		5ADB547727534F9B00D4CC47 /* qs_AppleMusic.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543727534F9A00D4CC47 /* qs_AppleMusic.usdz */; };
 		5ADB547827534F9B00D4CC47 /* user_letter_B.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543827534F9A00D4CC47 /* user_letter_B.usdz */; };
 		5ADB547927534F9B00D4CC47 /* qs_ARKit.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543927534F9A00D4CC47 /* qs_ARKit.usdz */; };
-		5ADB547A27534F9B00D4CC47 /* qs_title.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543A27534F9B00D4CC47 /* qs_title.reality */; };
+		5ADB547A27534F9B00D4CC47 /* qs_Title.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543A27534F9B00D4CC47 /* qs_Title.reality */; };
 		5ADB547B27534F9B00D4CC47 /* user_special_skull.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543B27534F9B00D4CC47 /* user_special_skull.usdz */; };
 		5ADB547C27534F9B00D4CC47 /* user_victory_like.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543C27534F9B00D4CC47 /* user_victory_like.reality */; };
 		5ADB547D27534F9B00D4CC47 /* user_special_deadHand.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543D27534F9B00D4CC47 /* user_special_deadHand.usdz */; };
 		5ADB547E27534F9B00D4CC47 /* user_message_OMG!.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543E27534F9B00D4CC47 /* user_message_OMG!.usdz */; };
 		5ADB547F27534F9B00D4CC47 /* qs_Contacts.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB543F27534F9B00D4CC47 /* qs_Contacts.usdz */; };
 		5ADB548027534F9B00D4CC47 /* qs_AppleLogo_center.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB544027534F9B00D4CC47 /* qs_AppleLogo_center.usdz */; };
-		5ADB548127534F9B00D4CC47 /* qs_AppleLogo_Right.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB544127534F9B00D4CC47 /* qs_AppleLogo_Right.reality */; };
+		5ADB548127534F9B00D4CC47 /* qs_AppleLogo_right.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB544127534F9B00D4CC47 /* qs_AppleLogo_right.reality */; };
 		5ADB548227534F9B00D4CC47 /* yt_KFC.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB544227534F9B00D4CC47 /* yt_KFC.usdz */; };
 		5ADB548327534F9B00D4CC47 /* qs_iBook.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB544327534F9B00D4CC47 /* qs_iBook.usdz */; };
 		5ADB548427534F9B00D4CC47 /* qs_Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5ADB544427534F9B00D4CC47 /* qs_Title.usdz */; };
@@ -151,9 +147,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		273DE6A3275250F900B09FCF /* user_like_blue.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_like_blue.reality; sourceTree = "<group>"; };
-		273DE6A4275250F900B09FCF /* user_love_red.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_love_red.reality; sourceTree = "<group>"; };
-		273DE6A5275250F900B09FCF /* user_like_red.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_like_red.reality; sourceTree = "<group>"; };
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
@@ -266,14 +259,14 @@
 		5ADB543727534F9A00D4CC47 /* qs_AppleMusic.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleMusic.usdz; sourceTree = "<group>"; };
 		5ADB543827534F9A00D4CC47 /* user_letter_B.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_letter_B.usdz; sourceTree = "<group>"; };
 		5ADB543927534F9A00D4CC47 /* qs_ARKit.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_ARKit.usdz; sourceTree = "<group>"; };
-		5ADB543A27534F9B00D4CC47 /* qs_title.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = qs_title.reality; sourceTree = "<group>"; };
+		5ADB543A27534F9B00D4CC47 /* qs_Title.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = qs_Title.reality; sourceTree = "<group>"; };
 		5ADB543B27534F9B00D4CC47 /* user_special_skull.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_special_skull.usdz; sourceTree = "<group>"; };
 		5ADB543C27534F9B00D4CC47 /* user_victory_like.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_victory_like.reality; sourceTree = "<group>"; };
 		5ADB543D27534F9B00D4CC47 /* user_special_deadHand.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_special_deadHand.usdz; sourceTree = "<group>"; };
 		5ADB543E27534F9B00D4CC47 /* user_message_OMG!.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = "user_message_OMG!.usdz"; sourceTree = "<group>"; };
 		5ADB543F27534F9B00D4CC47 /* qs_Contacts.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Contacts.usdz; sourceTree = "<group>"; };
 		5ADB544027534F9B00D4CC47 /* qs_AppleLogo_center.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_AppleLogo_center.usdz; sourceTree = "<group>"; };
-		5ADB544127534F9B00D4CC47 /* qs_AppleLogo_Right.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = qs_AppleLogo_Right.reality; sourceTree = "<group>"; };
+		5ADB544127534F9B00D4CC47 /* qs_AppleLogo_right.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = qs_AppleLogo_right.reality; sourceTree = "<group>"; };
 		5ADB544227534F9B00D4CC47 /* yt_KFC.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = yt_KFC.usdz; sourceTree = "<group>"; };
 		5ADB544327534F9B00D4CC47 /* qs_iBook.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_iBook.usdz; sourceTree = "<group>"; };
 		5ADB544427534F9B00D4CC47 /* qs_Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Title.usdz; sourceTree = "<group>"; };
@@ -306,7 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A5F58E92753A27F0025E482 /* FocusEntity in Frameworks */,
+				5A5F58F02753B9FA0025E482 /* FocusEntity in Frameworks */,
 				620275983D2E64CD34D73AA7 /* Pods_ACRT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,7 +321,7 @@
 				5ADB544027534F9B00D4CC47 /* qs_AppleLogo_center.usdz */,
 				5ADB542927534F9A00D4CC47 /* qs_AppleLogo_left.reality */,
 				5ADB542A27534F9A00D4CC47 /* qs_AppleLogo_left.usdz */,
-				5ADB544127534F9B00D4CC47 /* qs_AppleLogo_Right.reality */,
+				5ADB544127534F9B00D4CC47 /* qs_AppleLogo_right.reality */,
 				5ADB540F27534F9900D4CC47 /* qs_AppleLogo_right.usdz */,
 				5ADB543727534F9A00D4CC47 /* qs_AppleMusic.usdz */,
 				5ADB540827534F9900D4CC47 /* qs_AppStore.usdz */,
@@ -349,7 +342,7 @@
 				5ADB543427534F9A00D4CC47 /* qs_snow.reality */,
 				5ADB542B27534F9A00D4CC47 /* qs_Swift.usdz */,
 				5ADB541527534F9900D4CC47 /* qs_SwiftChangeTheWorld.usdz */,
-				5ADB543A27534F9B00D4CC47 /* qs_title.reality */,
+				5ADB543A27534F9B00D4CC47 /* qs_Title.reality */,
 				5ADB544427534F9B00D4CC47 /* qs_Title.usdz */,
 				5ADB542627534F9A00D4CC47 /* qs_Weather.usdz */,
 				5ADB541D27534F9A00D4CC47 /* user_emoji_smile.usdz */,
@@ -736,7 +729,7 @@
 			);
 			name = ACRT;
 			packageProductDependencies = (
-				5A5F58E82753A27F0025E482 /* FocusEntity */,
+				5A5F58EF2753B9FA0025E482 /* FocusEntity */,
 			);
 			productName = ACRT;
 			productReference = 5A56E8FD272BF1FE0062680E /* ACRT.app */;
@@ -770,7 +763,7 @@
 			);
 			mainGroup = 5A56E8F4272BF1FE0062680E;
 			packageReferences = (
-				5A5F58E72753A27F0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				5A5F58EE2753B9FA0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 5A56E8FE272BF1FE0062680E /* Products */;
 			projectDirPath = "";
@@ -802,7 +795,7 @@
 				5ADB547327534F9B00D4CC47 /* user_love_red.reality in Resources */,
 				5ADB548327534F9B00D4CC47 /* qs_iBook.usdz in Resources */,
 				5ADB546A27534F9B00D4CC47 /* qs_AppleLogo_left.usdz in Resources */,
-				5ADB547A27534F9B00D4CC47 /* qs_title.reality in Resources */,
+				5ADB547A27534F9B00D4CC47 /* qs_Title.reality in Resources */,
 				5ADB546827534F9B00D4CC47 /* qs_Setting.usdz in Resources */,
 				5ADB546C27534F9B00D4CC47 /* user_letter_O.usdz in Resources */,
 				5ADB547927534F9B00D4CC47 /* qs_ARKit.usdz in Resources */,
@@ -855,7 +848,7 @@
 				5ADB545927534F9B00D4CC47 /* user_message_COOL.usdz in Resources */,
 				5ADB545127534F9B00D4CC47 /* user_message_YES!.usdz in Resources */,
 				9FC3264B274BB6CB006E1ACC /* errorBeep.wav in Resources */,
-				5ADB548127534F9B00D4CC47 /* qs_AppleLogo_Right.reality in Resources */,
+				5ADB548127534F9B00D4CC47 /* qs_AppleLogo_right.reality in Resources */,
 				5ADB547F27534F9B00D4CC47 /* qs_Contacts.usdz in Resources */,
 				5ADB546327534F9B00D4CC47 /* user_letter_H.usdz in Resources */,
 			);
@@ -1216,9 +1209,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5A5F58E72753A27F0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		5A5F58EE2753B9FA0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
+			repositoryURL = "https://github.com/ZibYang/FocusEntity";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
@@ -1227,9 +1220,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5A5F58E82753A27F0025E482 /* FocusEntity */ = {
+		5A5F58EF2753B9FA0025E482 /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5A5F58E72753A27F0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 5A5F58EE2753B9FA0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */
