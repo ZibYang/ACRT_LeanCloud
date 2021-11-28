@@ -16,193 +16,99 @@
 //
 
 import Foundation
+import UIKit
 
 
 class USDZManagerViewModel: ObservableObject {
-    var exploreModelList = USDZModelList(usdzModelNameList:  [// "qs_AppleLogo_left.usdz", //1 x
-                                                              "qs_AppleLogo_left.reality", //1
-                                                              // "qs_AppleLogo_right.usdz", //2 x
-                                                              "qs_AppleLogo_right.reality", //2
-                                                              "qs_AppleMusic.usdz", //3
-                                                              "qs_AppStore.usdz", //4
-                                                              "qs_Calendar.usdz", //5
-                                                              "qs_Camera.usdz", //5
-                                                              "qs_Contacts", //5+
-                                                              "qs_Facetime.usdz", //6
-                                                              "qs_FindMy.usdz", //6+
-                                                              "qs_Health.usdz", //7
-                                                              "qs_Hello.usdz", //8
-                                                              "qs_Home.usdz", //9
-                                                              "qs_iBook.usdz", //10
-                                                              "qs_iMessage.usdz", //11
-                                                              "qs_Phone.usdz", //12
-                                                              "qs_Safari.usdz", //13
-                                                              "qs_Setting.usdz", //14
-                                                              "qs_Swift.usdz", //15
-                                                              "qs_SwiftChangeTheWorld.usdz", //16
-                                                              "qs_Weather.usdz", //17
-                                                              "yt_BugerKing.usdz", //18
-                                                              "yt_BugerKing.usdz", //19
-                                                              "yt_Cocacola.usdz", //20
-                                                              "yt_Coffee.usdz", // 21
-                                                              "yt_FrenchFires.usdz", //22
-                                                              "yt_KFC.usdz", //23
-                                                              "yt_McDonald's.usdz",//24
-                                                              "qs_findMy.usdz", //25
-                                                              // "qs_Title.usdz", //26 x
-                                                              "qs_Title.reality", //26
-                                                              "qs_contact.usdz" //27
-                                                             ],
-                                                         categoryList: [.special, //1
-                                                                        .special, //2
-                                                                        .special, //3
-                                                                        .special, //4
-                                                                        .special, //5
-                                                                        .special, //5
-                                                                        .special, //5+
-                                                                        .special, //6
-                                                                        .special, //6+
-                                                                        .special, //7
-                                                                        .special, //8
-                                                                        .special, //9
-                                                                        .special, //10
-                                                                        .special, //11
-                                                                        .special, //12
-                                                                        .special, //13
-                                                                        .special, //14
-                                                                        .special, //15
-                                                                        .special, //16
-                                                                        .special, //17
-                                                                        .special, //18
-                                                                        .special, //19
-                                                                        .special, //20
-                                                                        .special, // 21
-                                                                        .special, //22
-                                                                        .special, //23
-                                                                        .special, //24
-                                                                        .special, //25
-                                                                        .special, //26
-                                                                        .special //27
-                                                                       ])
+    var exploreModelList = USDZModelList(usdzModelNameList:  ["qs_AppleLogo_left.usdz":.special, //1
+                                                              "qs_AppleLogo_right.usdz":.special, //2
+                                                              "qs_AppleMusic.usdz":.special, //3
+                                                              "qs_AppStore.usdz":.special, //4
+                                                              "qs_Calendar.usdz":.special, //5
+                                                              "qs_Camera.usdz":.special, //5
+                                                              "qs_Facetime.usdz":.special, //6
+                                                              "qs_Health.usdz":.special, //7
+                                                              "qs_Hello.usdz":.special, //8
+                                                              "qs_Home.usdz":.special, //9
+                                                              "qs_iBook.usdz":.special, //10
+                                                              "qs_iMessage.usdz":.special, //11
+                                                              "qs_Phone.usdz":.special, //12
+                                                              "qs_Safari.usdz":.special, //13
+                                                              "qs_Setting.usdz":.special, //14
+                                                              "qs_Swift.usdz":.special, //15
+                                                              "qs_SwiftChangeTheWorld.usdz":.special, //16
+                                                              "qs_Weather.usdz":.special, //17
+                                                              "yt_BugerKing.usdz":.special, //19
+                                                              "yt_Cocacola.usdz":.special, //20
+                                                              "yt_Coffee.usdz":.special, // 21
+                                                              "yt_FrenchFires.usdz":.special, //22
+                                                              "yt_KFC.usdz":.special, //23
+                                                              "yt_McDonald's.usdz":.special,//24
+                                                              "qs_findMy.usdz":.special, //25
+                                                              "qs_Title.usdz":.special, //26
+                                                              "qs_contact.usdz":.special //27
+                                                             ])
     
-    var createModelList = USDZModelList(usdzModelNameList:["user_like_blue.reality", //1
-                                                           "user_like_red.reality", //2
-                                                           "user_love_red.reality", //3
-                                                           "user_love_white.reality", //4
+    var createModelList = USDZModelList(usdzModelNameList:["user_like_blue.reality":.foundmental, //1
+                                                           "user_like_red.reality":.foundmental, //2
+                                                           "user_love_red.reality":.foundmental, //3
+                                                           "user_love_white.usdz":.foundmental, //4
                                                            
-                                                            "user_letter_A.usdz", //1
-                                                            "user_letter_B.usdz", //2
-                                                            "user_letter_C.usdz", //3
-                                                            "user_letter_D.usdz", //4
-                                                            "user_letter_E.usdz", //5
-                                                            "user_letter_F.usdz", //6
-                                                            "user_letter_H.usdz", //7
-                                                            "user_letter_L.usdz", //8
-                                                            "user_letter_O.usdz", //9
-                                                            "user_letter_P.usdz", //10
+                                                            "user_letter_A.usdz":.letter, //1
+                                                            "user_letter_B.usdz":.letter, //2
+                                                            "user_letter_C.usdz":.letter, //3
+                                                            "user_letter_D.usdz":.letter, //4
+                                                            "user_letter_E.usdz":.letter, //5
+                                                            "user_letter_F.usdz":.letter, //6
+                                                            "user_letter_H.usdz":.letter, //7
+                                                            "user_letter_L.usdz":.letter, //8
+                                                            "user_letter_O.usdz":.letter, //9
+                                                            "user_letter_P.usdz":.letter, //10
+                                                                                
+//                                                           "user_message_HELLO!.usdz":.message, //1
+//                                                           "user_message_LOL.usdz":.message, //2
+//                                                           "user_message_OHNO!.usdz":.message, //3
+                                                           "user_message_OMG!.usdz":.message, //4
+//                                                           "user_message_OOPS!.usdz":.message, //5
+//                                                           "user_message_OUCH!.usdz":.message, //6
+//                                                           "user_message_ZZZ...usdz":.message, //7
+//                                                           "user_message_POP!.usdz":.message, //8
+//                                                           "user_message_POW!.usdz":.message, //9
+//                                                           "user_message_SHH!.usdz":.message, //10
+//                                                           "user_message_WTF.usdz":.message, //11
+//                                                           "user_message_YEAH!.usdz":.message, //12
+                                                           "user_message_YES!.usdz":.message, //13
+//                                                           "user_message_YES!2.usdz":.message, //14
+//                                                           "user_message_DAMN!.usdz":.message, //15
+//                                                           "user_message_ZAP!.usdz":.message, //16
+                                                           "user_message_BANG!.usdz":.message, //17
+                                                           "user_message_BOOM!.usdz":.message, //18
+                                                           "user_message_COOL.usdz":.message, //19
+//                                                           "user_message_CRASH!":.message //20
                                                            
-//                                                           "user_message_HELLO!.usdz", //1
-//                                                           "user_message_LOL.usdz", //2
-//                                                           "user_message_OHNO!.usdz", //3
-                                                           "user_message_OMG!.usdz", //4
-//                                                           "user_message_OOPS!.usdz", //5
-//                                                           "user_message_OUCH!.usdz", //6
-//                                                           "user_message_ZZZ...usdz", //7
-//                                                           "user_message_POP!.usdz", //8
-//                                                           "user_message_POW!.usdz", //9
-//                                                           "user_message_SHH!.usdz", //10
-//                                                           "user_message_WTF.usdz", //11
-//                                                           "user_message_YEAH!.usdz", //12
-                                                           "user_message_YES!.usdz", //13
-//                                                           "user_message_YES!2.usdz", //14
-//                                                           "user_message_DAMN!.usdz", //15
-//                                                           "user_message_ZAP!.usdz", //16
-                                                           "user_message_BANG!.usdz", //17
-                                                           "user_message_BOOM!.usdz", //18
-                                                           "user_message_COOL.usdz", //19
-//                                                           "user_message_CRASH!" //20
+                                                           "user_emoji_smileWithSweat.usdz":.emoji, //1
+                                                           "user_emoji_smile.usdz":.emoji, //2
                                                            
-                                                           "user_emoji_smileWithSweat.usdz", //1
-                                                           "user_emoji_smile.usdz", //2
-                                                           
-                                                           "user_special_pumpkin.usdz", //1
-                                                           "user_special_witchHat.usdz", //2
-                                                           "user_special_skull.usdz", //3
-                                                           "user_special_candy.usdz", //4
-                                                           "user_special_bat.usdz", //5
-                                                           "user_special_deadHand.usdz", //6
-                                                           "user_special_ghost.usdz", //7
-                                                           
-                                                           "user_victory_fanfare.reality", // 1
-                                                           "user_victory_crown.reality", //2
-                                                           "user_victory_like.reality" //3
-                                                          ],
-                                        categoryList:[.foundmental, //1
-                                                      .foundmental, //2
-                                                      .foundmental, //3
-                                                      .foundmental, //4
-
-                                                       .letter, //1
-                                                       .letter, //2
-                                                       .letter, //3
-                                                       .letter, //4
-                                                       .letter, //5
-                                                       .letter, //6
-                                                       .letter, //7
-                                                       .letter, //8
-                                                       .letter, //9
-                                                       .letter, //10
-                                                      
-                                                      
-//                                                      .message, //1
-//                                                      .message, //2
-//                                                      .message, //3
-                                                      .message, //4
-//                                                      .message, //5
-//                                                      .message, //6
-//                                                      .message, //7
-//                                                      .message, //8
-//                                                      .message, //9
-//                                                      .message, //10
-//                                                      .message, //11
-//                                                      .message, //12
-                                                      .message, //13
-//                                                      .message, //14
-//                                                      .message, //15
-//                                                      .message, //16
-                                                      .message, //17
-                                                      .message, //18
-                                                      .message, //19
-//                                                      .message //20
-                                                      
-                                                      .emoji, //1 
-                                                      .emoji, //2
-                                                      .special, //1
-                                                      .special, //2
-                                                      .special, //3
-                                                      .special, //4
-                                                      .special, //5
-                                                      .special, //6
-                                                      .special, //7
-                                                      
-                                                      .victory, //1
-                                                      .victory, //2
-                                                      .victory //3
-                                                     ])
-    
-//    func AreModelLibrariesLoaded() -> Bool {
-//        return exploreModelList.AreModelsLoaded() && createModelList.AreModelsLoaded()
-//    }
+                                                           "user_special_pumpkin.usdz":.special, //1
+                                                           "user_special_witchHat.usdz":.special, //2
+                                                           "user_special_skull.usdz":.special, //3
+                                                           "user_special_candy.usdz":.special, //4
+                                                           "user_special_bat.usdz":.special, //5
+                                                           "user_special_deadHand.usdz":.special, //6
+                                                           "user_special_ghost.usdz":.special, //7
+                                                          ], readThumbnails: true)
     
     init() {
         for model in self.exploreModelList.usdzModelList {
-            model.asyncLoadModelEntity(){ completed, error in
+            model.asyncLoadEntity(){ completed, error in
                 if completed {
                     print("DEBUG(BCH): explore load \(model.modelName) sucessfully")
                 }
             }
         }
+        
     }
+ 
     
     func getModel(modelName: String) -> USDZModel? {
         if let usdzModel = getCreateModel(modelName: modelName) {

@@ -28,7 +28,7 @@ struct ModelPickerView: View {
             ScrollView(showsIndicators: false){
                 VStack{
                     ForEach(ModelCategory.allCases, id: \.self){ category in
-                        if let modelsByCategory = usdzManagerViewModel.createModelList.get(category: category){
+                        if let modelsByCategory = usdzManagerViewModel.createModelList.getModelNameByCategory(category: category){
                             
                             VStack(alignment: .leading){
                                 Divider()
@@ -38,13 +38,13 @@ struct ModelPickerView: View {
                                 ScrollView(.horizontal, showsIndicators: false){
                                     LazyHGrid(rows: gridItemLayout){
                                         ForEach(0..<modelsByCategory.count){ index in
-                                            let model = modelsByCategory[index]
+                                            let modelName = modelsByCategory[index]
                                             Button(action:{
-                                                placementSetting.selectedModel = model.modelName
+                                                placementSetting.selectedModel = modelName
                                                 print("DEBUG(BCH): select \(placementSetting.selectedModel)")
                                                 dismissSheet()
                                             }, label:{
-                                                if let unwrapedUIImage = model.modelPreviewImage {
+                                                if let unwrapedUIImage = usdzManagerViewModel.createModelList.getThumbnail(modelName: modelName){
                                                     Image(uiImage: unwrapedUIImage)
                                                         .resizable()
                                                         .frame(width: 100, height: 100)

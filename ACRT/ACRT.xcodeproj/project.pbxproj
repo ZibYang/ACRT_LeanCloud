@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273DE6A22752506C00B09FCF /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 273DE6A12752506C00B09FCF /* FocusEntity */; };
+		273DE6A6275250F900B09FCF /* user_like_blue.reality in Resources */ = {isa = PBXBuildFile; fileRef = 273DE6A3275250F900B09FCF /* user_like_blue.reality */; };
+		273DE6A7275250F900B09FCF /* user_love_red.reality in Resources */ = {isa = PBXBuildFile; fileRef = 273DE6A4275250F900B09FCF /* user_love_red.reality */; };
+		273DE6A8275250F900B09FCF /* user_like_red.reality in Resources */ = {isa = PBXBuildFile; fileRef = 273DE6A5275250F900B09FCF /* user_like_red.reality */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -147,6 +151,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273DE6A3275250F900B09FCF /* user_like_blue.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_like_blue.reality; sourceTree = "<group>"; };
+		273DE6A4275250F900B09FCF /* user_love_red.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_love_red.reality; sourceTree = "<group>"; };
+		273DE6A5275250F900B09FCF /* user_like_red.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = user_like_red.reality; sourceTree = "<group>"; };
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
@@ -1211,7 +1218,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		5A5F58E72753A27F0025E482 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZibYang/FocusEntity";
+			repositoryURL = "git@github.com:1612190130/FocusEntity.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;

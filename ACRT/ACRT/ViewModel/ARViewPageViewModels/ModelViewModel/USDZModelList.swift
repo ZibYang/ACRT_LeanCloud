@@ -19,21 +19,56 @@ import Foundation
 import RealityKit
 import Combine
 
+enum ModelCategory: String, CaseIterable{
+    case emoji, special, message, letter, foundmental
+    
+    var label: String{
+        get{
+            switch self{
+            case .emoji:
+                    return "Emoji"
+            case .message:
+                return "Messages"
+            case .letter:
+                return "Letters"
+            case .foundmental:
+                return "Foundmentals"
+            case .special:
+                return "Special Event"
+            }
+        }
+    }
+}
+
+extension Dictionary where Value: Equatable {
+    func allKeys(forValue val: Value) -> [Key] {
+        return self.filter { $1 == val }.map { $0.0 }
+    }
+}
 
 class USDZModelList {
     
     var usdzModelList : [USDZModel]
+    var categoryList: [String: ModelCategory]
+    var thumbnails: [String: UIImage?]
+
     
-    init(usdzModelNameList: [String], categoryList: [ModelCategory]) {
+    init(usdzModelNameList: [String: ModelCategory], readThumbnails: Bool = false) {
+        categoryList = usdzModelNameList
         usdzModelList = []
-        for index in 0..<usdzModelNameList.count {
-            usdzModelList.append(USDZModel(modelName: usdzModelNameList[index], category: categoryList[index]))
+        thumbnails = [:]
+        for item in usdzModelNameList {
+            let model = USDZModel(modelName: item.key)
+            usdzModelList.append(model)
+            if readThumbnails == true {
+                thumbnails[model.modelName] = UIImage(named: "sheet_"+model.getBodyOfModelName())
+            }
         }
     }
     
-    func get(category: ModelCategory) -> [USDZModel] {
-        return usdzModelList.filter( {$0.category == category})
-    }
+//    func get(category: ModelCategory) -> [USDZModel] {
+//        return usdzModelList.filter( {$0.category == category})
+//    }
     
 //    func getUSDZModelEntity(modelName: String) -> ModelEntity? {
 //        if let model = usdzModelList.filter( {$0.modelName == modelName})[0].modelEntity {
@@ -61,5 +96,22 @@ class USDZModelList {
         }
         return true
     }
+    
+    func getModelNameByCategory(category: ModelCategory) -> [String] {
+        return categoryList.allKeys(forValue: category).sorted()
+    }
+    
+    func getThumbnail(modelName: String) -> UIImage? {
+        let glyphIndex = thumbnails.firstIndex(where: { $0.key == modelName
+        })
+        if let index = glyphIndex {
+            return thumbnails[index].value
+        } else {
+            print("DEBUG(BCH): missing \(modelName)")
+            return nil
+        }
+    }
+    
+    
 
 }

@@ -134,15 +134,16 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateModels() {
-        if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast(),let model = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName) {
+        if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast() {
+            let model = modelAnchor.model
             if model.modelEntity != nil {
-                print("DEBUG(BCH): load \(modelAnchor.modelName) ")
+                print("DEBUG(BCH): load \(modelAnchor.model.modelName) ")
                 self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
             } else {
-                print("DEBUG(BCH): nil model \(modelAnchor.modelName)")
-                model.asyncLoadModelEntity() {  completed, error in
+                print("DEBUG(BCH): nil model \(modelAnchor.model.modelName)")
+                model.asyncLoadEntity() {  completed, error in
                     if completed {
-                        print("DEBUG(BCH): load nil model \(modelAnchor.modelName)")
+                        print("DEBUG(BCH): load nil model \(modelAnchor.model.modelName)")
                         self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
                     }
                 }
@@ -198,7 +199,7 @@ struct ARWorldView:  UIViewRepresentable {
     
     private func updateScene(for arView: CustomARView) {
         arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
-        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName)?.modelEntity {
+        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = modelAnchor.model.modelEntity {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
                 print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")
                 sceneManager.updateAnchorByName(anchorName: modelAnchor.anchorName!, transform: modelAnchor.transform!)
@@ -211,14 +212,14 @@ struct ARWorldView:  UIViewRepresentable {
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userModel.userName {
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
                 } else {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
+                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: true)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
-                let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.modelName)
+                let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.model.modelName)
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: false)
+                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
             }
     }
         
@@ -228,8 +229,10 @@ struct ARWorldView:  UIViewRepresentable {
         let clonedEntity = modelEntity.clone(recursive: true)
         
         clonedEntity.generateCollisionShapes(recursive: true)
-        if enableGesture == true {
-//            arView.installGestures([.translation, .rotation], for: clonedEntity)
+        
+        if enableGesture == true, let clonedModelEntity = clonedEntity as? ModelEntity{
+            print("DEBUG(BCH): enable gesture for \(clonedEntity.name)")
+            arView.installGestures([.rotation, .scale], for: clonedModelEntity)
         }
         
         let anchorEntity = AnchorEntity(world: transform)
@@ -240,7 +243,7 @@ struct ARWorldView:  UIViewRepresentable {
         arView.scene.addAnchor(anchorEntity)
         self.sceneManager.anchorEntities.append(anchorEntity)
 
-        print("Added modelEntity")
+        print("Added modelEntity\(anchorName) \(clonedEntity)")
     }
     
     private func handlePersistence(for arView:  CustomARView) {
@@ -257,6 +260,7 @@ struct ARWorldView:  UIViewRepresentable {
         }
         
         if persistence.anchors.count > 0 {
+            print("DEBUG(BCH): download \(persistence.anchors.count)")
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: persistence.anchors)
             persistence.anchors.removeAll()
             self.sceneManager.shouldDownloadSceneFromCloud = false
@@ -270,6 +274,8 @@ struct ARWorldView:  UIViewRepresentable {
         guard let raycastResult = arView.session.raycast(query).first else {return nil}
         return raycastResult.worldTransform
     }
+    
+    
     
     
 }

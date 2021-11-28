@@ -8,6 +8,7 @@
 
 import Foundation
 import RealityKit
+import UIKit
 
 class SceneManagerViewModel: ObservableObject {
     var shouldUploadSceneToCloud: Bool = false
