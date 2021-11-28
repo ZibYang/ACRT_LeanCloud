@@ -19,13 +19,17 @@ import Foundation
 
 
 class USDZManagerViewModel: ObservableObject {
-    var exploreModelList = USDZModelList(usdzModelNameList:  ["qs_AppleLogo_left.usdz", //1
-                                                              "qs_AppleLogo_right.usdz", //2
+    var exploreModelList = USDZModelList(usdzModelNameList:  [// "qs_AppleLogo_left.usdz", //1 x
+                                                              "qs_AppleLogo_left.reality", //1
+                                                              // "qs_AppleLogo_right.usdz", //2 x
+                                                              "qs_AppleLogo_right.reality", //2
                                                               "qs_AppleMusic.usdz", //3
                                                               "qs_AppStore.usdz", //4
                                                               "qs_Calendar.usdz", //5
                                                               "qs_Camera.usdz", //5
+                                                              "qs_Contacts", //5+
                                                               "qs_Facetime.usdz", //6
+                                                              "qs_FindMy.usdz", //6+
                                                               "qs_Health.usdz", //7
                                                               "qs_Hello.usdz", //8
                                                               "qs_Home.usdz", //9
@@ -45,7 +49,8 @@ class USDZManagerViewModel: ObservableObject {
                                                               "yt_KFC.usdz", //23
                                                               "yt_McDonald's.usdz",//24
                                                               "qs_findMy.usdz", //25
-                                                              "qs_Title.usdz", //26
+                                                              // "qs_Title.usdz", //26 x
+                                                              "qs_Title.reality", //26
                                                               "qs_contact.usdz" //27
                                                              ],
                                                          categoryList: [.special, //1
@@ -54,7 +59,9 @@ class USDZManagerViewModel: ObservableObject {
                                                                         .special, //4
                                                                         .special, //5
                                                                         .special, //5
+                                                                        .special, //5+
                                                                         .special, //6
+                                                                        .special, //6+
                                                                         .special, //7
                                                                         .special, //8
                                                                         .special, //9
