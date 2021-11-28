@@ -43,6 +43,7 @@ enum ModelCategory: String, CaseIterable{
 
 class USDZModel{
     var modelName: String
+    var type: String
     var modelEntity: Entity?
     var modelPreviewImage: UIImage?
     var category: ModelCategory
@@ -52,6 +53,7 @@ class USDZModel{
     
     init(modelName: String, category: ModelCategory){
         self.modelName = modelName
+        self.type = modelName.components(separatedBy: ".")[1]
         self.category = category
         self.modelPreviewImage = UIImage(named: "sheet_"+modelName)
 //        let fileName = self.modelName+".usdz"
@@ -77,30 +79,39 @@ class USDZModel{
         // a single scene within the file.
         let realityFileSceneURL = realityFileURL.appendingPathComponent(sceneName,
                                                                         isDirectory: false)
-        print("realityFileSceneURL.url : \(realityFileURL.description)")
         return realityFileSceneURL
     }
     
-    func asyncLoadModelEntity(handler : @escaping(_ completed : Bool, _ error: Error?)->Void) {
-        let fileNameArr = self.modelName.components(separatedBy: ".")
-        if fileNameArr.count != 2 {
-            print("Error: the format of \(self.modelName) is incorrect")
-            return
-        }
-        guard let url = createRealityURL(filename: fileNameArr[0], fileExtension: fileNameArr[1], sceneName: "") else {
+    func asyncLoadEntity(handler : @escaping(_ completed : Bool, _ error: Error?)->Void) {
+        guard let url = createRealityURL(filename: self.modelName.components(separatedBy: ".")[0], fileExtension: self.type, sceneName: "") else {
             print("Warnning: can not create url \(self.modelName)")
             return
         }
-        self.cancellable = Entity.loadAsync(contentsOf: url)
-            .sink(receiveCompletion : {loadCompletion in
-                if case let .failure(error) = loadCompletion {
-                    print("Error: can not load \(url.description)")
-                    handler(false,error)
-                }
-            }, receiveValue:{modelEntity in
-                
-                handler(true,nil)
-                self.modelEntity = modelEntity
-            })
+        if self.type == "usdz" {
+            self.cancellable = Entity.loadModelAsync(contentsOf: url)
+                .sink(receiveCompletion : {loadCompletion in
+                    if case let .failure(error) = loadCompletion {
+                        print("Error: can not load \(url.description)")
+                        handler(false,error)
+                    }
+                }, receiveValue:{modelEntity in
+                    
+                    handler(true,nil)
+                    self.modelEntity = modelEntity
+                })
+        } else {
+            self.cancellable = Entity.loadAsync(contentsOf: url)
+                .sink(receiveCompletion : {loadCompletion in
+                    if case let .failure(error) = loadCompletion {
+                        print("Error: can not load \(url.description)")
+                        handler(false,error)
+                    }
+                }, receiveValue:{modelEntity in
+                    
+                    handler(true,nil)
+                    self.modelEntity = modelEntity
+                })
+        }
+        
     }
 }

@@ -51,7 +51,10 @@ extension CustomARView {
         let location = recognizer.location(in: self)
         if let entity = self.entity(at: location) as? ModelEntity, let deletionManager = self.modelDeletionManager, let anchor = entity.anchor {
             if AnchorIdentifierHelper.decode(identifier: anchor.name)[0] != rootUserName {
+                print("select \(entity.name)")
                 deletionManager.entitySelectedForDeletion = entity
+            } else {
+                print("select nil")
             }
             
         }

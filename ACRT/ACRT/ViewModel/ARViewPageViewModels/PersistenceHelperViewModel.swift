@@ -69,7 +69,13 @@ class PersistenceHelperViewModel: ObservableObject {
                 var objects: [LCObject] = []
                 for anchorEntity in anchorEntities {
                     if AnchorIdentifierHelper.decode(identifier: anchorEntity.name)[0] == usrname {
-                        let poseWToAnchor = poseARKitToW.inverse * anchorEntity.transformMatrix(relativeTo: nil)
+                        var modelTransform = matrix_identity_float4x4
+                        if anchorEntity.children.count > 0,  let modelEntity = anchorEntity.children[0] as? ModelEntity {
+                            modelTransform = modelEntity.transformMatrix(relativeTo: nil)
+                        } else {
+                            modelTransform = anchorEntity.transformMatrix(relativeTo: nil)
+                        }
+                        let poseWToAnchor = poseARKitToW.inverse * modelTransform
                         // save username , anchor.name , poseWToAnchor
                         var object = LCObject(className: self.CLASS_NAME)
                         if self.objects_dict[anchorEntity.name] != nil {
@@ -133,7 +139,6 @@ class PersistenceHelperViewModel: ObservableObject {
                             return
                         }
                         let poseARKitToModel = poseARKitToW * trans
-                        print("[LH] \(String(describing: poseARKitToModel))")
 
                         let anchor = ModelAnchor(modelName: name, transform : poseARKitToModel, anchorName: object_name)
                         self.anchors.append(anchor)

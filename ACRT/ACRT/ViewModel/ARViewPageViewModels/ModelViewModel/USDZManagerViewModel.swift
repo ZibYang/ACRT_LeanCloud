@@ -183,7 +183,7 @@ class USDZManagerViewModel: ObservableObject {
     
     init() {
         for model in self.exploreModelList.usdzModelList {
-            model.asyncLoadModelEntity(){ completed, error in
+            model.asyncLoadEntity(){ completed, error in
                 if completed {
                     print("DEBUG(BCH): explore load \(model.modelName) sucessfully")
                 }
