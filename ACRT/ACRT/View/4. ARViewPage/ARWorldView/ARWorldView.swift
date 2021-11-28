@@ -130,15 +130,16 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateModels() {
-        if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast(),let model = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName) {
+        if let modelAnchor = self.placementSetting.modelWaitingForPlacement.popLast() {
+            let model = modelAnchor.model
             if model.modelEntity != nil {
-                print("DEBUG(BCH): load \(modelAnchor.modelName) ")
+                print("DEBUG(BCH): load \(modelAnchor.model.modelName) ")
                 self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
             } else {
-                print("DEBUG(BCH): nil model \(modelAnchor.modelName)")
+                print("DEBUG(BCH): nil model \(modelAnchor.model.modelName)")
                 model.asyncLoadEntity() {  completed, error in
                     if completed {
-                        print("DEBUG(BCH): load nil model \(modelAnchor.modelName)")
+                        print("DEBUG(BCH): load nil model \(modelAnchor.model.modelName)")
                         self.placementSetting.modelConfirmedForPlacement.append(modelAnchor)
                     }
                 }
@@ -148,7 +149,7 @@ struct ARWorldView:  UIViewRepresentable {
     
     private func updateScene(for arView: CustomARView) {
         arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
-        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = usdzManagerViewModel.getModel(modelName: modelAnchor.modelName)?.modelEntity {
+        if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = modelAnchor.model.modelEntity {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
                 print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")
                 sceneManager.updateAnchorByName(anchorName: modelAnchor.anchorName!, transform: modelAnchor.transform!)
@@ -165,7 +166,7 @@ struct ARWorldView:  UIViewRepresentable {
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
-                let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.modelName)
+                let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.model.modelName)
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
                 self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)

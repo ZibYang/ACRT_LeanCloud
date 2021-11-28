@@ -71,7 +71,7 @@ struct ModelSelectedView: View {
         Button(action: {
             impactLight.impactOccurred()
             let modelAnchor = ModelAnchor(modelName: placementSetting.selectedModel, transform: nil, anchorName: nil)
-            print("DEBUG(BCH): append \(modelAnchor.modelName)")
+            print("DEBUG(BCH): append \(modelAnchor.model.modelName)")
 
             self.placementSetting.modelWaitingForPlacement.append(modelAnchor)
 //                        self.placementSetting.selectedModel = nil
