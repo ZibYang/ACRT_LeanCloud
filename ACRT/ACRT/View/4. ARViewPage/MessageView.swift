@@ -22,27 +22,52 @@ struct MessageView: View {
     @EnvironmentObject var messageModel : MessageViewModel
     
     var body: some View {
-        VStack{
-            Text("Leave your message here !!")
+        VStack(alignment: .leading){
+            
             Spacer()
-            HStack{
-                Text("Message")
+            VStack(alignment: .leading, spacing: 5) {
+                Button(action:{
+                }, label:{
+                    HStack(spacing: 0) {
+                        Image(systemName: "chevron.backward")
+                        Text("Back")
+                    }
                     .font(.body)
-                    .frame(width:80, alignment: .leading)
-                TextField(LocalizedStringKey("your message"), text: $message)
+                    
+                })
+                Text("Leave your message here")
+                    .font(.headline)
+                    .padding(.leading, 14)
+                HStack{
+                    TextField(LocalizedStringKey("Your message"), text: $message)
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                    Button(action:{
+                        messageModel.uploadMessage(message: message, creator: "root")
+                    }, label:{
+                        Text("Submit")
+                    })
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                }
             }
-            Spacer()
-            Button(action:{
-                messageModel.uploadMessage(message: message, creator: "root")
-            }, label:{
-                Text("Submit")
-            })
+            
         }
+        .padding()
     }
 }
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
         MessageView()
+            .padding()
+            .environmentObject(MessageViewModel())
+        
+        MessageView()
+            .padding()
+            .environmentObject(MessageViewModel())
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

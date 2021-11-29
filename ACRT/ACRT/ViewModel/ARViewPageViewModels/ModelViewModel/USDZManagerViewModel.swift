@@ -96,6 +96,13 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_special_bat.usdz":.special, //5
                                                            "user_special_deadHand.usdz":.special, //6
                                                            "user_special_ghost.usdz":.special, //7
+                                                           
+                                                           "user_victory_crown.usdz":.victory, //1
+                                                           "user_victory_fanfare.usdz":.victory, //2
+                                                           "user_victory_like.usdz":.victory,  //3
+                                                           
+                                                           "user_text_MessageBoard.reality":.text  //3
+                                                           
                                                           ], readThumbnails: true)
     
     init() {

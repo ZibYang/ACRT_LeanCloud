@@ -20,13 +20,17 @@ import RealityKit
 import Combine
 
 enum ModelCategory: String, CaseIterable{
-    case emoji, special, message, letter, foundmental
+    case text, emoji, victory, special, message, letter, foundmental
     
     var label: String{
         get{
             switch self{
+            case .text:
+                return "MessageBoard"
             case .emoji:
-                    return "Emoji"
+                return "Emoji"
+            case .victory:
+                return "Victory"
             case .message:
                 return "Messages"
             case .letter:
