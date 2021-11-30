@@ -118,7 +118,7 @@
 "Today" = "今天";
 "Yesterday" = "昨天";
 /* 准备界面 localizable string*/
-"Are you ready?" = "准备好了吗？";
+"Are you ready!" = "准备好了吗！";
 "Launch Requests" = "运行要求";
 "Recommendations" = "建议";
 
