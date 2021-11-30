@@ -51,8 +51,8 @@ class ARViewModel: ObservableObject{
     
     func RequestLocalization(manager: HttpAuth) {
             let isGrayScale : Bool = true
-            let useSensetime: Bool = true
-            let locIntime: Bool = false
+            let useSensetime: Bool = false
+            let locIntime: Bool = true
             
             guard let arFrame = arView.session.currentFrame else {
                 print("Warning: current frame is nil")
