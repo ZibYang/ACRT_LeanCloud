@@ -153,40 +153,47 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateMessageText(for arView: CustomARView) {
-        var has_message_board = false
-        for anchor in self.sceneManager.anchorEntities {
-            if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
-                has_message_board = true
-                break
-            }
-        }
-        if !has_message_board {
-            return
-        }
-        
         if arView.is_loading {
                 return
+        }
+        
+        var BoardCount = 0
+        for anchor in self.sceneManager.anchorEntities {
+            if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
+                BoardCount += 1
+            }
+        }
+        print("[mes] \(BoardCount) \(arView.messageBoardCount)")
+        
+        if BoardCount == arView.messageBoardCount {
+            if BoardCount == 0 {
+                return
+            }
+        } else {
+            arView.messageBoardCount = BoardCount
+            arView.forceSet = true
         }
             
         let query = LCQuery(className: "Message")
         query.whereKey("createdAt", .descending)
-        query.limit = 12
+        query.limit = 10
         
         _ = query.find { result in
             switch result {
             case .success(objects: let objects):
 //                arView.all_message = ""
                 var new_message = ""
-                for object in objects {
-                    let creator:String = (object.get("creator") as! LCString).value
-                    let message:String = (object.get("message") as! LCString).value
+                let obj_count = objects.count
+                for i in stride(from: obj_count-1, through: 0, by: -1) {
+                    let creator:String = (objects[i].get("creator") as! LCString).value
+                    let message:String = (objects[i].get("message") as! LCString).value
                         
 //                    print("[meg] get message \(creator): \(message)")
                     new_message += "\(creator): \(message)\n"
                 }
 //                print("[meg] \(new_message)")
 //                print("[meg] \(arView.all_message)")
-                if new_message != arView.all_message {
+                if arView.forceSet || new_message != arView.all_message {
                     for anchor in self.sceneManager.anchorEntities {
                         if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
 //                            let anchor = arView.scene.findEntity(named: anchor.name)
@@ -204,6 +211,9 @@ struct ARWorldView:  UIViewRepresentable {
                             text.components.set(textComponent)
                             arView.all_message = new_message
                         }
+                    }
+                    if arView.forceSet {
+                        arView.forceSet = false
                     }
                 }
                 arView.is_loading = false
@@ -291,9 +301,6 @@ struct ARWorldView:  UIViewRepresentable {
         guard let raycastResult = arView.session.raycast(query).first else {return nil}
         return raycastResult.worldTransform
     }
-    
-    
-    
     
 }
 

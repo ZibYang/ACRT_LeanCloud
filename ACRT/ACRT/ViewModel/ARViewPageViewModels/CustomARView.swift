@@ -28,7 +28,8 @@ class CustomARView: ARView {
     var all_message:String = ""
     var is_loading: Bool = false
     var messageModel: MessageViewModel?
-
+    var messageBoardCount = 0
+    var forceSet = false
     
     required init(frame frameRect: CGRect) {
         fatalError("init(frame:) has not been implemented")
