@@ -20,6 +20,7 @@ import SwiftUI
 struct MessageView: View {
     @State var message: String = ""
     @EnvironmentObject var messageModel : MessageViewModel
+    @EnvironmentObject var userModel: UserViewModel
     
     var body: some View {
         VStack(alignment: .leading){
@@ -44,7 +45,7 @@ struct MessageView: View {
                         .background(.ultraThinMaterial)
                         .cornerRadius(15)
                     Button(action:{
-                        messageModel.uploadMessage(message: message, creator: "root")
+                        messageModel.uploadMessage(message: message, creator: userModel.userName)
                     }, label:{
                         Text("Submit")
                     })

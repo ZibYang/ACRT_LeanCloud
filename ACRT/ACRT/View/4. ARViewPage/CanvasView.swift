@@ -80,6 +80,7 @@ struct CanvasView: View {
             if messageModel.isMessaging == true {
                 MessageView()
                     .environmentObject(messageModel)
+                    .environmentObject(userModel)
             }
             
             

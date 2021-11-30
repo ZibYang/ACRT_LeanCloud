@@ -152,11 +152,25 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateMessageText(for arView: CustomARView) {
+        var has_message_board = false
+        for anchor in self.sceneManager.anchorEntities {
+            if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
+                has_message_board = true
+                break
+            }
+        }
+        if !has_message_board {
+            return
+        }
+        
         if arView.is_loading {
                 return
         }
             
         let query = LCQuery(className: "Message")
+        query.whereKey("createdAt", .descending)
+        query.limit = 12
+        
         _ = query.find { result in
             switch result {
             case .success(objects: let objects):
@@ -173,13 +187,15 @@ struct ARWorldView:  UIViewRepresentable {
 //                print("[meg] \(arView.all_message)")
                 if new_message != arView.all_message {
                     for anchor in self.sceneManager.anchorEntities {
-                        if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "Message.reality" {
+                        if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
 //                            let anchor = arView.scene.findEntity(named: anchor.name)
-                            let text = anchor.children[0].children[0].children[0].children[0].children[0].children[0] as! ModelEntity
+
+                            let text = anchor.children[0].children[0].children[1].children[0].children[0].children[0] as! ModelEntity
+                            
                             var textComponent:ModelComponent = (text.components[ModelComponent])!
                             print("[meg] set \(new_message)")
                             textComponent.mesh = .generateText(new_message, extrusionDepth: 0.01,
-                                                               font: .systemFont(ofSize: 0.08),
+                                                               font: .systemFont(ofSize: 0.03),
                                                                containerFrame: CGRect(),
                                                                alignment: .left,
                                                                lineBreakMode: .byCharWrapping)
