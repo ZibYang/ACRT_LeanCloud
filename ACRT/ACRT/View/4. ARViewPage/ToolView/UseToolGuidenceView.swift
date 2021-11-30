@@ -24,6 +24,8 @@ struct UseToolGuidenceView: View {
             
             BottomToolIntroduce2
             
+            LastIntroduce
+            
             controllPannel
                 .padding(.horizontal)
             
@@ -37,19 +39,22 @@ struct UseToolGuidenceView: View {
                 HStack {
                     Button(action: {
                         let userDefaults = UserDefaults.standard
-                        userDefaults.set(true, forKey: "ShowGuidence")
+                        userDefaults.set(true, forKey: "Guidenceshowed")
                         withAnimation(Animation.easeInOut(duration: 0.3)){
                             showGuidence.toggle()
                         }
                     }, label: {
                         Text("Skip")
+                            .frame(width: 70, height: 50)
+                            .background(.gray.opacity(0.5))
+                            .cornerRadius(10)
                     })
                     Spacer()
                 }
                 .padding()
                 HStack(spacing: 30){
                     Spacer()
-                    VStack{
+                    VStack(spacing: 5){
                         Button(action: {
                             withAnimation(Animation.easeInOut(duration: 0.3)) {
                                 step -= 1
@@ -57,13 +62,15 @@ struct UseToolGuidenceView: View {
                         }, label: {
                             Text("Previous")
                                 .foregroundColor(step == 0 ? .gray : .blue)
+                                .frame(width: 100, height: 50)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(15)
                         })
-                            .padding(.bottom)
                             .disabled(step == 0)
                         Button(action: {
-                            if step == 11{
+                            if step == 12{
                                 let userDefaults = UserDefaults.standard
-                                userDefaults.set(true, forKey: "ShowGuidence")
+                                userDefaults.set(true, forKey: "Guidenceshowed")
                                 withAnimation(Animation.easeInOut(duration: 0.3)){
                                     showGuidence.toggle()
                                 }
@@ -73,7 +80,12 @@ struct UseToolGuidenceView: View {
                                 }
                             }
                         }, label: {
-                            Text(step == 11 ? "Finish" : "Next")
+                            Text(step == 12 ? "Finish" : "Next")
+                                .foregroundColor(.green)
+                                .bold()
+                                .frame(width: 100, height: 50)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(15)
                         })
                             .padding(.bottom)
                     }
@@ -209,7 +221,7 @@ struct UseToolGuidenceView: View {
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                         Image(systemName: "icloud.and.arrow.down")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .background(.gray)
                             .cornerRadius(10)
                     }
@@ -222,7 +234,7 @@ struct UseToolGuidenceView: View {
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                         Image(systemName: "icloud.and.arrow.up")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .background(.gray)
                             .cornerRadius(10)
                     }
@@ -235,7 +247,7 @@ struct UseToolGuidenceView: View {
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                         Image(systemName: "trash")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .background(.gray)
                             .cornerRadius(10)
                     }
@@ -280,6 +292,13 @@ struct UseToolGuidenceView: View {
             .opacity(step == 11 ? 1 : 0)
             
         }
+    }
+    var LastIntroduce: some View{
+        Text("Long press to show specific tool's introduction again.")
+            .font(.footnote)
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .opacity(step == 12 ? 1 : 0)
     }
 }
 

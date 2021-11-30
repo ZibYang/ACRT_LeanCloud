@@ -87,6 +87,8 @@ struct CanvasView: View {
         }
         .alert("Hello freshman, let's walk you throgh and see how this app work.", isPresented: $showGuidenceHint) {
             Button(role: .none){
+                let userDefaults = UserDefaults.standard
+                userDefaults.set(true, forKey: "Guidenceshowed")
             }label:{
                 Text("Thanks, I already know it")
                     .foregroundColor(.gray)

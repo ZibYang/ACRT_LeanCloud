@@ -37,6 +37,18 @@ struct TopToolView: View {
             Button(action: {
                 impactLight.impactOccurred()
                 showOcclusion.toggle()
+                withAnimation(Animation.easeInOut){
+                    showHint = true
+                    if showOcclusion{
+                        hintBackground = .green
+                        hintMessage = "Occlusion turn on"
+                        showHintTimeRemaining = 3
+                    }else{
+                        hintBackground = .gray
+                        hintMessage = "Occlusion turn off"
+                        showHintTimeRemaining = 3
+                    }
+                }
             }, label: {
                 Image(systemName: showOcclusion ? "building.2.fill" : "building.2")
                     .foregroundColor(showOcclusion ? .green : .white)
@@ -54,16 +66,28 @@ struct TopToolView: View {
                 }else{
                     impactLight.impactOccurred()
                     showMesh.toggle()
+                    withAnimation(Animation.easeInOut){
+                        showHint = true
+                        if showMesh{
+                            hintBackground = .blue
+                            hintMessage = "Mesh turn on"
+                            showHintTimeRemaining = 3
+                        }else{
+                            hintBackground = .gray
+                            hintMessage = "Mesh turn off"
+                            showHintTimeRemaining = 3
+                        }
+                    }
                 }
             }, label:{
                 Image(systemName: "square.grid.3x3.square")
-                    .foregroundColor(showMesh ? .green : .white)
+                    .foregroundColor(showMesh ? .blue : .white)
                     .frame(width: 30, height: 30)
             })
                 .contextMenu{
                     Label("Show mesh in reality", systemImage: "square.dashed")
                 }
-            // MARK: share Button
+            // MARK: camera Button
             Button(action: {
                 if showMesh{
                     let impact = UINotificationFeedbackGenerator()
@@ -73,11 +97,23 @@ struct TopToolView: View {
                     impactLight.impactOccurred()
                     withAnimation(Animation.easeInOut(duration: 0.5)) {
                         showCamera.toggle()
+                        withAnimation(Animation.easeInOut){
+                            showHint = true
+                            if showCamera{
+                                hintBackground = .orange
+                                hintMessage = "Camera turn on"
+                                showHintTimeRemaining = 3
+                            }else{
+                                hintBackground = .gray
+                                hintMessage = "Camera turn off"
+                                showHintTimeRemaining = 3
+                            }
+                        }
                     }
                 }
             }, label:{
                 Image(systemName: showCamera ?  "camera.fill" : "camera")
-                    .foregroundColor(.white)
+                    .foregroundColor(showCamera ? .orange : .white)
                     .frame(width: 30, height: 30)
             })
                 .contextMenu{
@@ -97,10 +133,22 @@ struct TopToolView: View {
                         showCamera = false
                     }
                     showMesh = true
+                    withAnimation(Animation.easeInOut){
+                        showHint = true
+                        hintBackground = .blue
+                        hintMessage = "Mesh turn on"
+                        showHintTimeRemaining = 3
+                    }
                 }else{
                     showMesh = false
                     withAnimation(Animation.easeInOut(duration: 0.5)) {
                         showCamera = true
+                        withAnimation(Animation.easeInOut){
+                            showHint = true
+                            hintBackground = .orange
+                            hintMessage = "Camera turn on"
+                            showHintTimeRemaining = 3
+                        }
                     }
                 }
             }label:{

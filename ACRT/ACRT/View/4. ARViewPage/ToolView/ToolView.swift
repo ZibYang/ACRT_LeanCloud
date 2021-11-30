@@ -47,7 +47,7 @@ struct ToolView: View {
     @State var showHint = false
     @State var hintBackground = Color.clear
     @State var hintMessage = ""
-    @State var showHintTimeRemaining = 5
+    @State var showHintTimeRemaining = 3
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     let impactLight = UIImpactFeedbackGenerator(style: .light)
@@ -109,6 +109,8 @@ struct ToolView: View {
                     }
                     sceneManager.ClearWholeAnchors()
                     httpManager.statusLoc = 0
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(false, forKey: "SkipPrepareView")
                 }, label:{
                     Image(systemName: "arrow.backward")
                         .foregroundColor(.white)
@@ -132,9 +134,9 @@ struct ToolView: View {
             .padding(.top)
             .offset(x: coachingViewModel.isCoaching ? -400 : 0)
             HStack {
-                Text(hintMessage)
+                Text(LocalizedStringKey(hintMessage))
                     .font(.caption)
-                    .foregroundColor(.white)
+                    .foregroundColor(showHint ? .white : .clear)
                     .padding(5)
                     .padding(.horizontal, 5)
                     .background(showHint ? hintBackground : .clear)
@@ -143,11 +145,13 @@ struct ToolView: View {
             }
             .padding(.leading)
             .onReceive(timer) { time in
-                if self.showHintTimeRemaining > 0 {
-                    self.showHintTimeRemaining -= 1
-                }else{
-                    withAnimation(Animation.easeInOut){
-                        showHint.toggle()
+                if showHint{
+                    if self.showHintTimeRemaining > 0 {
+                        self.showHintTimeRemaining -= 1
+                    }else{
+                        withAnimation(Animation.easeInOut){
+                            showHint = false
+                        }
                     }
                 }
             }
@@ -182,7 +186,6 @@ struct ToolView: View {
         .offset(x: coachingViewModel.isCoaching ? -150 : 0)
         .offset(x: showCameraButton ? -150 : 0)
     }
-    
     
     var relocationButton: some View{
         //MARK: relocation Button
@@ -272,6 +275,7 @@ struct ToolView: View {
                 Alert(title: Text("Hint"), message: Text(LocalizedStringKey(sceneManager.deleteHintMessage)), dismissButton: .default(Text("OK")))
             }
     }
+    
     var uploadButton: some View{
         // MARK: upload button
         Button(action: {
