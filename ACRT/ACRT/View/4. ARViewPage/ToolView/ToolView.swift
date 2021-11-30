@@ -105,7 +105,7 @@ struct ToolView: View {
                 Button(action: {
                     impactLight.impactOccurred()
                     withAnimation(Animation.easeInOut(duration: 0.8)){
-                        goBack.toggle()
+                        goBack = false // refer to everythingSetted
                     }
                     sceneManager.ClearWholeAnchors()
                     httpManager.statusLoc = 0
