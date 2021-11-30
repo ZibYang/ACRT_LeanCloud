@@ -163,7 +163,6 @@ struct ARWorldView:  UIViewRepresentable {
                 BoardCount += 1
             }
         }
-        print("[mes] \(BoardCount) \(arView.messageBoardCount)")
         
         if BoardCount == arView.messageBoardCount {
             if BoardCount == 0 {
@@ -176,7 +175,7 @@ struct ARWorldView:  UIViewRepresentable {
             
         let query = LCQuery(className: "Message")
         query.whereKey("createdAt", .descending)
-        query.limit = 10
+        query.limit = 5
         
         _ = query.find { result in
             switch result {
@@ -186,10 +185,15 @@ struct ARWorldView:  UIViewRepresentable {
                 let obj_count = objects.count
                 for i in stride(from: obj_count-1, through: 0, by: -1) {
                     let creator:String = (objects[i].get("creator") as! LCString).value
-                    let message:String = (objects[i].get("message") as! LCString).value
+                    var message:String = (objects[i].get("message") as! LCString).value
                         
 //                    print("[meg] get message \(creator): \(message)")
-                    new_message += "\(creator): \(message)\n"
+                    var length = message.count
+                    while length > 40 {
+                        message.insert("\n", at: message.index(message.startIndex, offsetBy: 40))
+                        length -= 40
+                    }
+                    new_message += "\(creator) \(message)\n"
                 }
 //                print("[meg] \(new_message)")
 //                print("[meg] \(arView.all_message)")
@@ -225,7 +229,7 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateScene(for arView: CustomARView) {
-        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode && !disableEntity
+        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode && !disableEntity && placementSetting.selectedModel != "" && !messageModel.isMessaging
         if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = modelAnchor.model.modelEntity {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
                 print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")

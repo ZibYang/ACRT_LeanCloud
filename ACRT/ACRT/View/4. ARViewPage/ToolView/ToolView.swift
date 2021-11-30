@@ -41,6 +41,7 @@ struct ToolView: View {
     @Binding var showOcclusion: Bool
     @Binding var goBack: Bool
     @Binding var showGuidence: Bool
+    @Binding var showMessageBoardUseHint: Bool
     
     @State private var snapshotBackgroundOpacity = 0.0
     
@@ -48,6 +49,7 @@ struct ToolView: View {
     @State var hintBackground = Color.clear
     @State var hintMessage = ""
     @State var showHintTimeRemaining = 3
+    
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     let impactLight = UIImpactFeedbackGenerator(style: .light)
@@ -90,10 +92,10 @@ struct ToolView: View {
     var placeModelView: some View{
         VStack{
             Spacer()
-            ModelSelectedView()
+            ModelSelectedView(showMessageBoardUseHint: $showMessageBoardUseHint)
                 .environmentObject(placementSetting)
-                .padding(.horizontal)
         }
+        .edgesIgnoringSafeArea(.bottom)
         .offset(y: placementSetting.isInCreationMode && !showCameraButton ? 0 : 300)
         .offset(y: messageModel.isMessaging ? 300 : 0)
     }
@@ -105,6 +107,7 @@ struct ToolView: View {
                 // MARK: Quit Button
                 Button(action: {
                     impactLight.impactOccurred()
+                    messageModel.isMessaging = false
                     withAnimation(Animation.easeInOut(duration: 0.8)){
                         goBack = false // refer to everythingSetted
                     }
@@ -186,6 +189,7 @@ struct ToolView: View {
         }
         .offset(x: coachingViewModel.isCoaching ? -150 : 0)
         .offset(x: showCameraButton ? -150 : 0)
+        .offset(x: messageModel.isMessaging ? -150 : 0)
     }
     
     var relocationButton: some View{
@@ -228,6 +232,7 @@ struct ToolView: View {
             .offset(x: placementSetting.isInCreationMode ? 0 : 150)
             .offset(x: showCameraButton ? 150 : 0)
             .offset(x: modelDeletionManager.entitySelectedForDeletion == nil ? 0 : 150)
+            .offset(x: messageModel.isMessaging ? 150 : 0)
             Spacer()
         }
         .alert("Please log in before uploading or downloading", isPresented: $showPersistenceSignInAlert) {
@@ -378,16 +383,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false))
                 
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false))
+                ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false), showMessageBoardUseHint: .constant(false))
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false))
 
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")

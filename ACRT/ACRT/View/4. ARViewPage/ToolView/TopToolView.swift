@@ -53,7 +53,7 @@ struct TopToolView: View {
                 Image(showOcclusion ? "occlusion_pick" : "occlusion_unpick")
                     .resizable()
                     .foregroundColor(showOcclusion ? .green : .white)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 18, height: 18)
             })
                 .contextMenu{
                     Label("Occlusion is the key for AR scene.", systemImage: "building.2.crop.circle.fill")

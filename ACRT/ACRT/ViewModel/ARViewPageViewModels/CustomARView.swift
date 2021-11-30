@@ -19,6 +19,7 @@ import RealityKit
 import Foundation
 import FocusEntity
 import ARKit
+import SwiftUI
 
 class CustomARView: ARView {
     
@@ -83,7 +84,9 @@ extension CustomARView {
         if let entity = self.entity(at: location) as? ModelEntity, let deletionManager = self.modelDeletionManager, let anchor = entity.anchor {
             print("[tap] \(anchor.name)")
             if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
-                messageModel?.isMessaging = true
+                withAnimation(Animation.easeInOut){
+                    messageModel?.isMessaging = true
+                }
             }
         }
     }

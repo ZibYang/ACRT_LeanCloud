@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "occlusion_unpick.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "选中-light.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },

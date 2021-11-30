@@ -40,9 +40,13 @@ struct CanvasView: View {
     // Into Guidence
     @State var showGuidence = false
     @State var showGuidenceHint = false
-
-    @Binding var goBack: Bool
     @State var showModelPicker = false
+    @State var showMessageBoardUseHint = false
+    
+    @Binding var goBack: Bool
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let userDefaults = UserDefaults.standard
     
     var body: some View {
         ZStack{
@@ -59,7 +63,7 @@ struct CanvasView: View {
                 .ignoresSafeArea()
                 .onTapGesture(count: 1) {
                 }
-            ToolView(showCameraButton: $disableEntity, snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence)
+            ToolView(showCameraButton: $disableEntity, snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence, showMessageBoardUseHint: $showMessageBoardUseHint)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)
@@ -81,10 +85,38 @@ struct CanvasView: View {
             
             if messageModel.isMessaging == true {
                 MessageView()
+                    .environmentObject(placementSetting)
                     .environmentObject(messageModel)
                     .environmentObject(userModel)
             }
             
+            if showMessageBoardUseHint{
+                if userDefaults.bool(forKey: "KnowHowToUseMessageBoard") == false
+                {
+                    ZStack {
+                        Color.black
+                            .opacity(0.6)
+                            .ignoresSafeArea()
+                        VStack(alignment: .center) {
+                            HStack{
+                                Image(systemName: "hand.tap")
+                                Text("Tap the Message Board to leave your message!")
+                            }
+                            .padding()
+                            HStack{
+                                Button(action: {
+                                    showMessageBoardUseHint.toggle()
+                                    userDefaults.set(true, forKey: "KnowHowToUseMessageBoard")
+                                }, label: {
+                                    Text("OK")
+                                })
+                            }
+                        }
+                        .padding()
+                        .padding(.horizontal)
+                    }
+                }
+            }
             
         }
         .alert("Hello freshman, let's walk you throgh and see how this app work.", isPresented: $showGuidenceHint) {

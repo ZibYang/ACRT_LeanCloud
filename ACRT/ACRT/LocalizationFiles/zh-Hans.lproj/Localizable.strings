@@ -153,7 +153,7 @@
 
 "Into Augmented City Brain New World" = "进入城市新视界";
 
-"My ART Chest" = "我的艺术档案";
+"My ART Chest" = "我的收藏馆";
 "%@ 's badge" = "%@的徽章";
 /* AR界面 localizable string*/
 "Slowly move device to locate..." = "缓慢移动设备进行定位...";
@@ -273,5 +273,6 @@
 "Camera turn on" = "已进入拍照模式";
 "Camera turn off" = "已退出拍照模式";
 
-"Leave your message here" = "请在下面输入你想说的话，并点击提交发送";
+"Leave your message here" = "输入后点击提交发送";
 "Your message" = "想说的话";
+"Tap the Message Board to leave your message!" = "点击留言板去留言噢";
