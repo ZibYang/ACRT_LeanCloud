@@ -22,6 +22,11 @@ struct TopToolView: View {
     @Binding var showCamera: Bool
     @Binding var showOcclusion: Bool
     
+    @Binding var showHint: Bool
+    @Binding var hintMessage: String
+    @Binding var hintBackground: Color
+    @Binding var showHintTimeRemaining: Int
+    
     @State private var cameraHint = false
     private let impactLight = UIImpactFeedbackGenerator(style: .light)
     
@@ -110,7 +115,7 @@ struct TopToolView_Previews: PreviewProvider {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [.gray, .black]), center: .center, startRadius: 10, endRadius: 250)
                 .ignoresSafeArea()
-            TopToolView(showMesh: .constant(false), showCamera: .constant(false), showOcclusion: .constant(true))
+            TopToolView(showMesh: .constant(false), showCamera: .constant(false), showOcclusion: .constant(true), showHint: .constant(false), hintMessage: .constant(""), hintBackground: .constant(Color.clear), showHintTimeRemaining: .constant(0))
         }
     }
 }

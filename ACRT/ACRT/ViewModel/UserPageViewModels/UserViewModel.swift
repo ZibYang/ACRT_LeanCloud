@@ -89,7 +89,7 @@ class UserViewModel: ObservableObject{
                         self.signInProcessing.toggle()
                         if let user = LCApplication.default.currentUser{
                             self.userName = "Mystery"
-                            self.userImage = UIImage(named: "user")
+                            self.randomUserImageByApple()
                             self.capabilitySatisfied = "satisfied"
                             self.isSignedIn = true
                         }else{
@@ -112,6 +112,22 @@ class UserViewModel: ObservableObject{
             }
         case .failure(let error):
             print(error)
+        }
+    }
+    
+    func randomUserImageByApple(){
+        let randomInt = Int.random(in: 1..<5)
+        switch randomInt{
+        case 1:
+            self.userImage = UIImage(named: "user1")
+        case 2:
+            self.userImage = UIImage(named: "user2")
+        case 3:
+            self.userImage = UIImage(named: "user3")
+        case 4:
+            self.userImage = UIImage(named: "user4")
+        default:
+            self.userImage = UIImage(named: "user1")
         }
     }
     

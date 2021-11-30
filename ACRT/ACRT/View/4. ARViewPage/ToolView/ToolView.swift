@@ -29,7 +29,6 @@ struct ToolView: View {
     @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
     @EnvironmentObject var userViewModel : UserViewModel
 
-
     @State var showBottomView = false
     @State var showCameraButton = false
     @State var audioPlayer: AVAudioPlayer!
@@ -44,6 +43,12 @@ struct ToolView: View {
     @Binding var showGuidence: Bool
     
     @State private var snapshotBackgroundOpacity = 0.0
+    
+    @State var showHint = false
+    @State var hintBackground = Color.clear
+    @State var hintMessage = ""
+    @State var showHintTimeRemaining = 5
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     let impactLight = UIImpactFeedbackGenerator(style: .light)
     let impactMedium = UIImpactFeedbackGenerator(style: .medium)
@@ -104,7 +109,6 @@ struct ToolView: View {
                     }
                     sceneManager.ClearWholeAnchors()
                     httpManager.statusLoc = 0
-                    print("pressed")
                 }, label:{
                     Image(systemName: "arrow.backward")
                         .foregroundColor(.white)
@@ -114,7 +118,7 @@ struct ToolView: View {
                     .background(Material.ultraThinMaterial)
                     .cornerRadius(10)
                     
-                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion)
+                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion, showHint: $showHint, hintMessage: $hintMessage, hintBackground: $hintBackground, showHintTimeRemaining:$showHintTimeRemaining)
                     .padding(.horizontal, 6)
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
@@ -124,7 +128,29 @@ struct ToolView: View {
                 Spacer()
             }
 //            .padding(.top, 10)
-            .padding()
+            .padding(.leading)
+            .padding(.top)
+            .offset(x: coachingViewModel.isCoaching ? -400 : 0)
+            HStack {
+                Text(hintMessage)
+                    .font(.caption)
+                    .foregroundColor(.white)
+                    .padding(5)
+                    .padding(.horizontal, 5)
+                    .background(showHint ? hintBackground : .clear)
+                    .cornerRadius(10)
+                Spacer()
+            }
+            .padding(.leading)
+            .onReceive(timer) { time in
+                if self.showHintTimeRemaining > 0 {
+                    self.showHintTimeRemaining -= 1
+                }else{
+                    withAnimation(Animation.easeInOut){
+                        showHint.toggle()
+                    }
+                }
+            }
             .offset(x: coachingViewModel.isCoaching ? -400 : 0)
             Spacer()
         }

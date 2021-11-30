@@ -62,9 +62,14 @@ struct PrepareView: View {
                         }
                         Section(footer: footerButton){
                             intoARWorldButton
+                                .listRowBackground(
+                                    ZStack {
+                                    LinearGradient(gradient: .init(colors: mapModel.permissionDenied ? [.white] : [.blue, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                            .blur(radius: mapModel.permissionDenied ? 0 : 15)
+                                })
                         }
                     } // List
-                    .navigationTitle(LocalizedStringKey("Are you ready?"))
+                    .navigationTitle(LocalizedStringKey("Are you ready!"))
                 } // NavigationView
                 .navigationViewStyle(StackNavigationViewStyle())
             }
@@ -163,7 +168,7 @@ struct PrepareView: View {
             IndicatorView(indicatorImageName: userModel.indicatorImageName,
                          indicatorTitle: userModel.indicatorTitle,
                          indicatorDescriptions: userModel.indicatorDescription,
-                          satisfied: $userModel.capabilitySatisfied)
+                         satisfied: $userModel.capabilitySatisfied)
         }
         .sheet(isPresented: $introduceExpore){
             WhatMeansExploreView()
@@ -202,10 +207,10 @@ struct PrepareView: View {
         }, label: {
             HStack {
                 Image(systemName: "arkit")
-                    .foregroundColor(mapModel.permissionDenied ? .gray : .blue)
                 Text("Into Augmented City Brain New World")
-                    .gradientForeground(colors: mapModel.permissionDenied ?  [.gray] : [.blue, .purple])
+                    .lineLimit(1)
             }
+            .foregroundColor(mapModel.permissionDenied ? .gray : .white)
         })
         .alert("Requirement not fullfill!", isPresented: $everythingIsNotSetYetWarning){
                 Button("Check it again", role: .cancel) {}
