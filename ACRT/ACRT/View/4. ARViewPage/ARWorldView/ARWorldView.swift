@@ -43,6 +43,7 @@ struct ARWorldView:  UIViewRepresentable {
     
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
+    @Binding var disableEntity: Bool
     @Binding var showOcclusion: Bool
     var testBool : Bool = false
     
@@ -214,7 +215,7 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateScene(for arView: CustomARView) {
-        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
+        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode && !disableEntity
         if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = modelAnchor.model.modelEntity {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
                 print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")

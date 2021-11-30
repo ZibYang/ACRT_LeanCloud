@@ -77,8 +77,10 @@ struct CustomCoachingView: View {
                                     userDefaults.set(true, forKey: "GuidenceShowed")
                                     
                                 }else{
+                                    let userDefaults = UserDefaults.standard
+                                    userDefaults.set(false, forKey: "SkipPrepareView")
                                     coachingViewModel.isCoaching = false
-                                    goBack.toggle()
+                                    goBack = false // reference to everyThingReady
                                 }
                                 impactLight.impactOccurred()
                             }

@@ -50,7 +50,8 @@ struct TopToolView: View {
                     }
                 }
             }, label: {
-                Image(systemName: showOcclusion ? "building.2.fill" : "building.2")
+                Image(showOcclusion ? "occlusion_pick" : "occlusion_unpick")
+                    .resizable()
                     .foregroundColor(showOcclusion ? .green : .white)
                     .frame(width: 30, height: 30)
             })

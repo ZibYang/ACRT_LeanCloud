@@ -28,14 +28,14 @@ struct ToolView: View {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
     @EnvironmentObject var userViewModel : UserViewModel
+    @EnvironmentObject var messageModel : MessageViewModel
 
     @State var showBottomView = false
-    @State var showCameraButton = false
     @State var audioPlayer: AVAudioPlayer!
-    
     @State var showPersistenceSignInAlert = false
     @State var showPersistenceLocalizeAlert = false
     
+    @Binding var showCameraButton: Bool
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
     @Binding var showOcclusion: Bool
@@ -95,6 +95,7 @@ struct ToolView: View {
                 .padding(.horizontal)
         }
         .offset(y: placementSetting.isInCreationMode && !showCameraButton ? 0 : 300)
+        .offset(y: messageModel.isMessaging ? 300 : 0)
     }
     
     var topToolGroup: some View{
@@ -377,16 +378,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
                 
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false))
+                ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false))
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false))
 
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
@@ -399,5 +400,6 @@ struct ToolView_Previews: PreviewProvider {
         .environmentObject(ModelDeletionManagerViewModel())
         .environmentObject(UserViewModel())
         .environmentObject(PersistenceHelperViewModel())
+        .environmentObject(MessageViewModel())
     }
 }

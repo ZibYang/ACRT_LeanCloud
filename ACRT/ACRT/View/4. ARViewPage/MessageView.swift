@@ -27,18 +27,10 @@ struct MessageView: View {
             
             Spacer()
             VStack(alignment: .leading, spacing: 5) {
-                Button(action:{
-                }, label:{
-                    HStack(spacing: 0) {
-                        Image(systemName: "chevron.backward")
-                        Text("Back")
-                    }
-                    .font(.body)
-                    
-                })
                 Text("Leave your message here")
                     .font(.headline)
                     .padding(.leading, 14)
+                    .gradientForeground(colors: [.blue,.purple])
                 HStack{
                     TextField(LocalizedStringKey("Your message"), text: $message)
                         .padding()

@@ -308,7 +308,7 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
             ModelSelectedView()
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
             Color.black
                 .opacity(0.5)
                 
@@ -326,7 +326,7 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
             ModelSelectedView()
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
             Color.black
                 .opacity(0.6)
                 

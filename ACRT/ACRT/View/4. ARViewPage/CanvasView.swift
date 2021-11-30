@@ -35,6 +35,7 @@ struct CanvasView: View {
     @State var snapShot = false
     @State var requestNow = true
     @State var showQuitButton = false
+    @State var disableEntity = false
     
     // Into Guidence
     @State var showGuidence = false
@@ -45,7 +46,7 @@ struct CanvasView: View {
     
     var body: some View {
         ZStack{
-            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, showOcclusion: $showOcclusion)
+            ARWorldView(showMesh: $showMesh, takeSnapshootNow: $snapShot, disableEntity: $disableEntity, showOcclusion: $showOcclusion)
                 .environmentObject(arViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(usdzManagerViewModel)
@@ -58,13 +59,14 @@ struct CanvasView: View {
                 .ignoresSafeArea()
                 .onTapGesture(count: 1) {
                 }
-            ToolView(snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence)
+            ToolView(showCameraButton: $disableEntity, snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)
                 .environmentObject(httpManager)
                 .environmentObject(modelDeletionManager)
                 .environmentObject(persistence)
+                .environmentObject(messageModel)
 
             if coachingViewModel.isCoaching == true {
                 VStack {
@@ -101,8 +103,10 @@ struct CanvasView: View {
         }
         .statusBar(hidden: true)
         .onAppear() {
-            httpManager.statusLoc = 0
-            coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
+            withAnimation(Animation.easeInOut){
+                httpManager.statusLoc = 0
+                coachingViewModel.StartLocalizationAndModelLoadingAsync(httpManager: httpManager, arViewModel: arViewModel)
+            }
             // TODO: localization Button
         }
         .halfSheet(showSheet: $placementSetting.openModelList){
@@ -123,6 +127,7 @@ struct CanvasView_Previews: PreviewProvider {
             .environmentObject(PlacementSetting())
             .environmentObject(SceneManagerViewModel())
             .environmentObject(ModelDeletionManagerViewModel())
+            .environmentObject(MessageViewModel())
     }
 }
 
