@@ -27,13 +27,19 @@ struct MessageView: View {
         VStack(spacing: 0){
             
             Spacer()
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Leave your message here")
-                    .font(.headline)
-                    .padding(.leading)
-                    .gradientForeground(colors: [.blue,.purple])
+            VStack(alignment: .leading) {
+                Button(action: {
+                    withAnimation(Animation.easeInOut){
+                        messageModel.isMessaging.toggle()
+                    }
+                }, label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "chevron.backward")
+                        Text("Return")
+                    }
+                })
                 HStack{
-                    TextField(LocalizedStringKey("Your message"), text: $message)
+                    TextField(LocalizedStringKey("Leave your message here"), text: $message)
                         .padding()
                         .background(.ultraThinMaterial)
                         .cornerRadius(15)

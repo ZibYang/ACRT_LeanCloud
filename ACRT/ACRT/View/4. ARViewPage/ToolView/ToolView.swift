@@ -42,7 +42,7 @@ struct ToolView: View {
     @Binding var goBack: Bool
     @Binding var showGuidence: Bool
     @Binding var showMessageBoardUseHint: Bool
-    
+    let haveLiDAR : Bool
     @State private var snapshotBackgroundOpacity = 0.0
     
     @State var showHint = false
@@ -68,7 +68,7 @@ struct ToolView: View {
             rightToolGroup
             
             snapShotButton
-
+            
             if modelDeletionManager.entitySelectedForDeletion == nil {
                 placeModelView
             } else {
@@ -124,7 +124,7 @@ struct ToolView: View {
                     .background(Material.ultraThinMaterial)
                     .cornerRadius(10)
                     
-                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion, showHint: $showHint, hintMessage: $hintMessage, hintBackground: $hintBackground, showHintTimeRemaining:$showHintTimeRemaining)
+                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion, showHint: $showHint, hintMessage: $hintMessage, hintBackground: $hintBackground, showHintTimeRemaining:$showHintTimeRemaining, haveLiDAR: haveLiDAR)
                     .padding(.horizontal, 6)
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
@@ -383,16 +383,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
                 
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false), showMessageBoardUseHint: .constant(false))
+                ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false))
+            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
 
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")

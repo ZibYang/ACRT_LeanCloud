@@ -27,6 +27,7 @@ struct TopToolView: View {
     @Binding var hintBackground: Color
     @Binding var showHintTimeRemaining: Int
     
+    let haveLiDAR: Bool
     @State private var cameraHint = false
     private let impactLight = UIImpactFeedbackGenerator(style: .light)
     
@@ -36,16 +37,23 @@ struct TopToolView: View {
             // MARK: show occlusion Button
             Button(action: {
                 impactLight.impactOccurred()
-                showOcclusion.toggle()
+                
                 withAnimation(Animation.easeInOut){
                     showHint = true
-                    if showOcclusion{
-                        hintBackground = .green
-                        hintMessage = "Occlusion turn on"
-                        showHintTimeRemaining = 3
+                    if haveLiDAR{
+                        showOcclusion.toggle()
+                        if showOcclusion{
+                            hintBackground = .green
+                            hintMessage = "Occlusion turn on"
+                            showHintTimeRemaining = 3
+                        }else{
+                            hintBackground = .gray
+                            hintMessage = "Occlusion turn off"
+                            showHintTimeRemaining = 3
+                        }
                     }else{
                         hintBackground = .gray
-                        hintMessage = "Occlusion turn off"
+                        hintMessage = "Sorry, only devices with LiDAR can function it"
                         showHintTimeRemaining = 3
                     }
                 }
@@ -66,16 +74,22 @@ struct TopToolView: View {
                     cameraHint.toggle()
                 }else{
                     impactLight.impactOccurred()
-                    showMesh.toggle()
                     withAnimation(Animation.easeInOut){
                         showHint = true
-                        if showMesh{
-                            hintBackground = .blue
-                            hintMessage = "Mesh turn on"
-                            showHintTimeRemaining = 3
+                        if haveLiDAR{
+                            showMesh.toggle()
+                            if showMesh{
+                                hintBackground = .blue
+                                hintMessage = "Mesh turn on"
+                                showHintTimeRemaining = 3
+                            }else{
+                                hintBackground = .gray
+                                hintMessage = "Mesh turn off"
+                                showHintTimeRemaining = 3
+                            }
                         }else{
                             hintBackground = .gray
-                            hintMessage = "Mesh turn off"
+                            hintMessage = "Sorry, only devices with LiDAR can function it"
                             showHintTimeRemaining = 3
                         }
                     }
@@ -164,7 +178,7 @@ struct TopToolView_Previews: PreviewProvider {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [.gray, .black]), center: .center, startRadius: 10, endRadius: 250)
                 .ignoresSafeArea()
-            TopToolView(showMesh: .constant(false), showCamera: .constant(false), showOcclusion: .constant(true), showHint: .constant(false), hintMessage: .constant(""), hintBackground: .constant(Color.clear), showHintTimeRemaining: .constant(0))
+            TopToolView(showMesh: .constant(false), showCamera: .constant(false), showOcclusion: .constant(true), showHint: .constant(false), hintMessage: .constant(""), hintBackground: .constant(Color.clear), showHintTimeRemaining: .constant(0), haveLiDAR: false)
         }
     }
 }

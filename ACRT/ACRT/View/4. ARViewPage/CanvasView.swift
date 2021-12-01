@@ -63,7 +63,7 @@ struct CanvasView: View {
                 .ignoresSafeArea()
                 .onTapGesture(count: 1) {
                 }
-            ToolView(showCameraButton: $disableEntity, snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence, showMessageBoardUseHint: $showMessageBoardUseHint)
+            ToolView(showCameraButton: $disableEntity, snapShot: $snapShot ,showMesh: $showMesh, showOcclusion: $showOcclusion, goBack: $goBack, showGuidence: $showGuidence, showMessageBoardUseHint: $showMessageBoardUseHint, haveLiDAR: arViewModel.isLiDAREqiped)
                 .environmentObject(placementSetting)
                 .environmentObject(sceneManager)
                 .environmentObject(coachingViewModel)
@@ -102,6 +102,7 @@ struct CanvasView: View {
                                 Image(systemName: "hand.tap")
                                 Text("Tap the Message Board to leave your message!")
                             }
+                            .foregroundColor(.white)
                             .padding()
                             HStack{
                                 Button(action: {

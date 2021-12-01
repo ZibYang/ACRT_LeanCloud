@@ -28,6 +28,8 @@ struct UseToolGuidenceView: View {
             
             controllPannel
                 .padding(.horizontal)
+                .padding(.bottom)
+                .edgesIgnoringSafeArea(.bottom)
             
         }
     }
@@ -47,7 +49,7 @@ struct UseToolGuidenceView: View {
                         Text("Skip")
                             .frame(width: 70, height: 50)
                             .background(.gray.opacity(0.5))
-                            .cornerRadius(10)
+                            .cornerRadius(12)
                     })
                     Spacer()
                 }
@@ -281,6 +283,8 @@ struct UseToolGuidenceView: View {
             .opacity(step == 10 ? 1 : 0)
             
         }
+        .padding(.bottom)
+        .edgesIgnoringSafeArea(.bottom)
     }
     
     var BottomToolIntroduce2: some View{
@@ -295,9 +299,13 @@ struct UseToolGuidenceView: View {
                     .aspectRatio(1/1, contentMode: .fit)
                     .frame(width:120)
             }
+            .offset(x: -1, y: 1)
             .opacity(step == 11 ? 1 : 0)
             
         }
+        .padding(.bottom)
+        .edgesIgnoringSafeArea(.bottom)
+        
     }
     var LastIntroduce: some View{
         Text("Long press to show specific tool's introduction again.")
@@ -314,7 +322,7 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
             ModelSelectedView(showMessageBoardUseHint: .constant(false))
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
             Color.black
                 .opacity(0.5)
                 
@@ -333,7 +341,7 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
             ModelSelectedView(showMessageBoardUseHint: .constant(false))
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
             Color.black
                 .opacity(0.6)
                 

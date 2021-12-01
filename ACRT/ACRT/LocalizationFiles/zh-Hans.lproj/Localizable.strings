@@ -274,5 +274,6 @@
 "Camera turn off" = "已退出拍照模式";
 
 "Leave your message here" = "输入后点击提交发送";
-"Your message" = "想说的话";
+"Return" = "返回";
 "Tap the Message Board to leave your message!" = "点击留言板去留言噢";
+"Sorry, only devices with LiDAR can function it" = "抱歉，只有配备LiDAR的设备才具备此功能";

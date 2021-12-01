@@ -38,7 +38,7 @@ struct ModelSelectedView: View {
                     }
                 })
             }
-            .padding()
+            .padding(.bottom)
         }else{
             HStack(spacing: 30){
                 Button(action: {
@@ -58,7 +58,7 @@ struct ModelSelectedView: View {
                     HintText
                 }
             }
-            .padding()
+            .padding(.bottom)
             .frame(maxWidth: .infinity)
             .background(.ultraThinMaterial)
             .cornerRadius(15, corners: [.topLeft, .topRight])
@@ -111,9 +111,26 @@ struct ModelSelectedView_Previews: PreviewProvider {
         .environmentObject(PlacementSetting())
 
         
-        ModelSelectedView(showMessageBoardUseHint: .constant(false))
-            .environmentObject(PlacementSetting())
-            .preferredColorScheme(.dark)
-            .previewInterfaceOrientation(.landscapeLeft)
+        ZStack {
+            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
+                .environmentObject(PlacementSetting())
+                .environmentObject(SceneManagerViewModel())
+                .environmentObject(CoachingViewModel())
+                .environmentObject(HttpAuth())
+                .environmentObject(ARViewModel())
+                .environmentObject(ModelDeletionManagerViewModel())
+                .environmentObject(UserViewModel())
+                .environmentObject(PersistenceHelperViewModel())
+                .environmentObject(MessageViewModel())
+                
+            VStack{
+                Spacer()
+                ModelSelectedView(showMessageBoardUseHint: .constant(false))
+                    .environmentObject(PlacementSetting())
+            }
+            .edgesIgnoringSafeArea(.bottom)
+        }
+        .preferredColorScheme(.dark)
+        .previewInterfaceOrientation(.landscapeLeft)
     }
 }
