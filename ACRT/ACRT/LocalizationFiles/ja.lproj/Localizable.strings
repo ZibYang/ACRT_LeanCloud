@@ -14,6 +14,7 @@
   Copyright © 2021 Augmented City Reality Toolkit. All Right Reserved.
  */
 
+"ARCT" = "ARシティ";
 
 /* 欢迎界面 localizable string */
 "Augmented" = "拡張";
@@ -219,7 +220,7 @@
 "Hangzhou" = "杭州";
 "Shanghai" = "上海";
 "Beijing" = "北京";
-"Shenzhen" = "深セン";
+"Shenzhen" = "深圳";
 "Guangzhou" = "広州";
 "Chengdu" = "成都";
 "Nanjing" = "南京";
@@ -255,3 +256,39 @@
 "Your picture stays a mystery" = "写真は永遠の秘密です";
 
 "Your photo will directly save into your album with protect by Apple, and we won't save it in our severs." = "あなたの写真はアルバムに直接保存され、Appleによって保護されます。また、あなたの写真情報は保存されません";
+
+/*Guidence View*/
+"Hello freshman, let's walk you throgh and see how this app work." = "正式に新しい地平に入る前に、各ツールを一緒に使用する方法を理解しましょう";
+
+"Thanks, I already know it" = "ありがとう、もう了解しています";
+"OK, let go" = "わかった！ 見せて";
+"Go back to the menu." = "これは戻るボタンです";
+"Switch occlusion." = "クリックしてオクルージョンを開きます";
+"Show mesh." = "これはグリッドを表示できます";
+"Take a photo." = "写真を撮るにはここです";
+"Tap it into explore mood which will automaticlly perform localization if user havn't localized." = "ここをクリックして探索モードに入ります。もちろん、うまく見つからない場合は、最初に見つける必要があり、成功した後に探索することができます。";
+"Tap it into create mood and it will show the right hand menu as well." = "ここをクリックして作成モードに入ります。ログインしている場合は、ポジショニングが成功しなくてもローカル作成を作成できます。";
+"Tap it to perform re-location at anytime." = "ポジショニングにエラーがあると感じたら、いつでもクリックして再ポジショニングしてください";
+"Tap it to download the models created by other people, it might be so much fun to find." = "クリエイティブモードでは、クリックしてダウンロードし、世界中の他のユーザーのすばらしい作品を見ることができます。";
+"Tap it to upload your models into the cloud so everyone can see your creation." = "クリエイティブモードの場合は、アップロードをクリックして、他のユーザーにあなたの創造性を探求させることができます";
+"Tap it to delete every model in the scene, it will save you a lot of time." = "クリエイティブモードの場合は、クリックして1つのキーでモデルを削除します（削除後に復元することはできません）。";
+"Tap it to choose the model." = "最後に、モデル選択ボタンがあります。ここをクリックして、好きなモデルを選択してください";
+"Top sign means the model have animation." = "上部のマークは、このモデルに興味深い相互作用があることを示しています";
+"Long press to show specific tool's introduction again." = "ツールの概要をもう一度表示するには、任意のツールボタンを長押しします。";
+"Skip" = "スキップ";
+"Next" = "次に";
+"Previous" = "お前";
+
+"Occlusion turn on" = "オクルージョンをオンにします";
+"Occlusion turn off" = "オクルージョンがオフになります";
+"Mesh turn on" = "グリッドが表示されます";
+"Mesh turn off" = "グリッド表示がオフになっている";
+"Camera turn on" = "カメラがオンになります";
+"Camera turn off" = "カメラがオフになります";
+
+"Leave your message here" = "入力後、送信をクリックしてください";
+"Return" = "戻る";
+"Tap the Message Board to leave your message!" = "メッセージボードをタップしてメッセージを書きます";
+"Sorry, only devices with LiDAR can function it" = "申し訳ありませんが、LiDARを搭載したデバイスのみが機能します";
+
+"Victory" = "勝利モデル";

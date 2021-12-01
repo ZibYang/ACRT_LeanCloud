@@ -30,7 +30,7 @@
 		5A3327A42754AF6F001EDC38 /* user_special_skull.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327632754AF6D001EDC38 /* user_special_skull.usdz */; };
 		5A3327A52754AF6F001EDC38 /* qs_Facetime.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327642754AF6D001EDC38 /* qs_Facetime.usdz */; };
 		5A3327A62754AF6F001EDC38 /* user_special_candy.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327652754AF6D001EDC38 /* user_special_candy.usdz */; };
-		5A3327A72754AF6F001EDC38 /* qs_title.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327662754AF6D001EDC38 /* qs_title.reality */; };
+		5A3327A72754AF6F001EDC38 /* qs_Title.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327662754AF6D001EDC38 /* qs_Title.reality */; };
 		5A3327A82754AF6F001EDC38 /* user_special_bat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327672754AF6D001EDC38 /* user_special_bat.usdz */; };
 		5A3327A92754AF6F001EDC38 /* user_letter_D.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327682754AF6D001EDC38 /* user_letter_D.usdz */; };
 		5A3327AA2754AF6F001EDC38 /* qs_Title.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A3327692754AF6D001EDC38 /* qs_Title.usdz */; };
@@ -128,6 +128,7 @@
 		5A5F58EB2753A3CB0025E482 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F58EA2753A3CB0025E482 /* MessageViewModel.swift */; };
 		5A5F58ED2753A3E70025E482 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F58EC2753A3E70025E482 /* MessageView.swift */; };
 		5A5F58F02753B9FA0025E482 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5F58EF2753B9FA0025E482 /* FocusEntity */; };
+		5A78B1C627573DF600608CE2 /* qs_zjuLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */; };
 		5ADF209427329CDD00CF0E4A /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209327329CDD00CF0E4A /* Award.swift */; };
 		5ADF209627329CEE00CF0E4A /* AwardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */; };
 		5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209727329D2D00CF0E4A /* AwardView.swift */; };
@@ -171,7 +172,7 @@
 		5A3327632754AF6D001EDC38 /* user_special_skull.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_special_skull.usdz; sourceTree = "<group>"; };
 		5A3327642754AF6D001EDC38 /* qs_Facetime.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Facetime.usdz; sourceTree = "<group>"; };
 		5A3327652754AF6D001EDC38 /* user_special_candy.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_special_candy.usdz; sourceTree = "<group>"; };
-		5A3327662754AF6D001EDC38 /* qs_title.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = qs_title.reality; sourceTree = "<group>"; };
+		5A3327662754AF6D001EDC38 /* qs_Title.reality */ = {isa = PBXFileReference; lastKnownFileType = file; path = qs_Title.reality; sourceTree = "<group>"; };
 		5A3327672754AF6D001EDC38 /* user_special_bat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_special_bat.usdz; sourceTree = "<group>"; };
 		5A3327682754AF6D001EDC38 /* user_letter_D.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = user_letter_D.usdz; sourceTree = "<group>"; };
 		5A3327692754AF6D001EDC38 /* qs_Title.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_Title.usdz; sourceTree = "<group>"; };
@@ -271,6 +272,7 @@
 		5A56E93F2730E2A60062680E /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		5A5F58EA2753A3CB0025E482 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		5A5F58EC2753A3E70025E482 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_zjuLogo.usdz; sourceTree = "<group>"; };
 		5ADF209327329CDD00CF0E4A /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardViewModel.swift; sourceTree = "<group>"; };
 		5ADF209727329D2D00CF0E4A /* AwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		27505D8A274D195F0060501D /* USDZModels */ = {
 			isa = PBXGroup;
 			children = (
+				5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */,
 				5A33278C2754AF6E001EDC38 /* qs_AppleLogo_center.usdz */,
 				5A3327752754AF6D001EDC38 /* qs_AppleLogo_left.reality */,
 				5A33276B2754AF6D001EDC38 /* qs_AppleLogo_left.usdz */,
@@ -342,7 +345,7 @@
 				5A33278B2754AF6E001EDC38 /* qs_snow.reality */,
 				5A3327602754AF6D001EDC38 /* qs_Swift.usdz */,
 				5A3327762754AF6E001EDC38 /* qs_SwiftChangeTheWorld.usdz */,
-				5A3327662754AF6D001EDC38 /* qs_title.reality */,
+				5A3327662754AF6D001EDC38 /* qs_Title.reality */,
 				5A3327692754AF6D001EDC38 /* qs_Title.usdz */,
 				5A3327902754AF6E001EDC38 /* qs_Weather.usdz */,
 				5A33276E2754AF6D001EDC38 /* user_emoji_smile.usdz */,
@@ -790,7 +793,7 @@
 				5A33279F2754AF6F001EDC38 /* qs_findMy.usdz in Resources */,
 				5A3327AD2754AF6F001EDC38 /* qs_Health.usdz in Resources */,
 				5A3327D02754AF6F001EDC38 /* yt_McDonald's.usdz in Resources */,
-				5A3327A72754AF6F001EDC38 /* qs_title.reality in Resources */,
+				5A3327A72754AF6F001EDC38 /* qs_Title.reality in Resources */,
 				5A3327CD2754AF6F001EDC38 /* qs_AppleLogo_center.usdz in Resources */,
 				5A3327C92754AF6F001EDC38 /* user_letter_O.usdz in Resources */,
 				5A3327A02754AF6F001EDC38 /* user_letter_C.usdz in Resources */,
@@ -834,6 +837,7 @@
 				5A3327AE2754AF6F001EDC38 /* qs_Hello.usdz in Resources */,
 				5A3327CA2754AF6F001EDC38 /* qs_Camera.usdz in Resources */,
 				5A3327C22754AF6F001EDC38 /* user_special_ghost.usdz in Resources */,
+				5A78B1C627573DF600608CE2 /* qs_zjuLogo.usdz in Resources */,
 				5A3327C32754AF6F001EDC38 /* user_special_witchHat.usdz in Resources */,
 				5A3327CF2754AF6F001EDC38 /* user_emoji_smileWithSweat.usdz in Resources */,
 				5A3327CE2754AF6F001EDC38 /* qs_Home.usdz in Resources */,

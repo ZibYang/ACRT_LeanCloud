@@ -300,7 +300,7 @@ struct SignUpView: View {
                 .resizable()
                 .frame(width:25, height: 25)
             ZStack(alignment:. trailing) {
-                Text("Sign up with ACRT, you data will only be used for basic functionality in this app.")
+                Text("Sign up with ARCT, you data will only be used for basic functionality in this app.")
                     .font(.caption2)
                 .frame(width:250, height: 50)
                 Button(action: {

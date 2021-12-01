@@ -20,8 +20,8 @@ import UIKit
 
 
 class USDZManagerViewModel: ObservableObject {
-    var exploreModelList = USDZModelList(usdzModelNameList:  ["qs_AppleLogo_left.usdz":.special, //1
-                                                              "qs_AppleLogo_right.usdz":.special, //2
+    var exploreModelList = USDZModelList(usdzModelNameList:  ["qs_AppleLogo_left.reality":.special, //1
+                                                              "qs_AppleLogo_Right.reality":.special, //2
                                                               "qs_AppleMusic.usdz":.special, //3
                                                               "qs_AppStore.usdz":.special, //4
                                                               "qs_Calendar.usdz":.special, //5
@@ -45,7 +45,7 @@ class USDZManagerViewModel: ObservableObject {
                                                               "yt_KFC.usdz":.special, //23
                                                               "yt_McDonald's.usdz":.special,//24
                                                               "qs_findMy.usdz":.special, //25
-                                                              "qs_Title.usdz":.special, //26
+                                                              "qs_Title.reality":.special, //26
                                                               "qs_contact.usdz":.special, //27
                                                               "qs_AppleLogo_center.usdz":.special,
                                                               "qs_contacts.usdz":.special,

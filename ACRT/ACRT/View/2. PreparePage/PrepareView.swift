@@ -227,7 +227,7 @@ struct PrepareView: View {
             impactLight.impactOccurred()
             introduceAgain.toggle()
         },label: {
-            Text("What is ACRT")
+            Text("What is ARCT")
             .foregroundColor(.secondary)
         })
     }

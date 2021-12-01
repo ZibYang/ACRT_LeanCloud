@@ -20,4 +20,4 @@ NSCameraUsageDescription  = "Camera is essential to set up the AR City View.";
 
 NSPhotoLibraryAddDescription = "Save the magical world into your album.";
 
-CFBundleDisplayName = "ACRT";
+CFBundleDisplayName = "ARCT";
