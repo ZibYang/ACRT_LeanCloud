@@ -34,18 +34,18 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let worldUp =  simd_float3(0,-1,0) // = local y in world axis
         
         
-        let worldRight2 = simd_float3(-0.06977769,  0.0        , -0.99756257) // = local x in world axis
+        let worldRight2 = simd_float3(0.37942337,  0.0        , -0.92522317) // = local x in world axis
         let worldFront2 = normalize(cross(worldRight2, worldUp))
         let rotationMatrix2 : simd_float3x3 = simd_float3x3(columns:(worldRight2, worldUp, worldFront2))
 
-        let model1 = ModelAnchor(modelName: "yt_Cocacola.usdz", pos: simd_float3(-17.161, -12.48, 35.605), rotation: rotationMatrix2, scale: simd_float3(53,53,53))
+        let model1 = ModelAnchor(modelName: "yt_Cocacola.usdz", pos: simd_float3(-18.3617, -12.3888, 33.4656), rotation: rotationMatrix2, scale: simd_float3(60,60,60))
         
         let worldRight1 = simd_float3(0.64459215,  0.0        , -0.76452663) // = local z in world axis
         let worldFront1 = normalize(cross(worldRight1, worldUp))
         let rotationMatrix1 : simd_float3x3 = simd_float3x3(columns:(worldRight1, worldUp, worldFront1))
         
         let model2 = ModelAnchor(modelName: "yt_KFC.usdz", pos: simd_float3(-6.20533, -25.5679, 26.1598), rotation: rotationMatrix1, scale: simd_float3(20,20,20))
-        let model3 = ModelAnchor(modelName: "yt_BugerKing.usdz", pos: simd_float3(-9.1777, -8.37561, 26.72), rotation: rotationMatrix1, scale: simd_float3(20,20,20))
+        let model3 = ModelAnchor(modelName: "yt_BugerKing.usdz", pos: simd_float3(-9.1777, -8.37561, 26.72), rotation: rotationMatrix1, scale: simd_float3(30,30,30))
         
         let worldRight3 = simd_float3(0.80308636, 0.0        , 0.59586265) // = local x in world axis
         let worldFront3 = normalize(cross(worldRight3, worldUp))
