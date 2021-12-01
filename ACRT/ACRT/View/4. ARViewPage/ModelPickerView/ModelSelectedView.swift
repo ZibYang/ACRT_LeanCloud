@@ -22,9 +22,10 @@ struct ModelSelectedView: View {
     @EnvironmentObject var placementSetting : PlacementSetting
     let impactLight = UIImpactFeedbackGenerator(style: .light)
     
+    @Binding var showMessageBoardUseHint: Bool
     var body: some View {
-        HStack(spacing: 30) {
-            if placementSetting.selectedModel == ""{
+        if placementSetting.selectedModel == ""{
+            HStack {
                 Button(action: {
                     impactLight.impactOccurred()
                     placementSetting.openModelList = true
@@ -36,7 +37,10 @@ struct ModelSelectedView: View {
                             .frame(width:120)
                     }
                 })
-            }else{
+            }
+            .padding(.bottom)
+        }else{
+            HStack(spacing: 30){
                 Button(action: {
                     impactLight.impactOccurred()
                     placementSetting.openModelList = true
@@ -54,8 +58,13 @@ struct ModelSelectedView: View {
                     HintText
                 }
             }
+            .padding(.bottom)
+            .frame(maxWidth: .infinity)
+            .background(.ultraThinMaterial)
+            .cornerRadius(15, corners: [.topLeft, .topRight])
         }
     }
+       
     
     var HintText: some View{
         HStack() {
@@ -63,7 +72,7 @@ struct ModelSelectedView: View {
             Image(systemName: "trash.square.fill")
         }
         .font(.caption)
-        .foregroundColor(.gray)
+        .foregroundColor(.white)
         .cornerRadius(10)
     }
     
@@ -75,18 +84,18 @@ struct ModelSelectedView: View {
 
             self.placementSetting.modelWaitingForPlacement.append(modelAnchor)
 //                        self.placementSetting.selectedModel = nil
+            if placementSetting.selectedModel == "user_text_MessageBoard.reality"{
+                showMessageBoardUseHint.toggle()
+            }
         }, label: {
             HStack {
                 Text("Place")
-                    .gradientForeground(colors: placementSetting.selectedModel == "" ? [.gray] : [.blue, .green])
                 Image(systemName: "circle.circle")
-                    .foregroundColor(placementSetting.selectedModel == "" ? .gray : .green)
             }
+            .foregroundColor(.white)
         })
-            .disabled(placementSetting.selectedModel == "")
             .frame(width: 100,height: 45)
-            .background(.white
-                            .opacity(0.3))
+            .background(.blue)
             .cornerRadius(10)
     }
 }
@@ -94,17 +103,34 @@ struct ModelSelectedView: View {
 struct ModelSelectedView_Previews: PreviewProvider {
     static var previews: some View {
         VStack{
-            ModelSelectedView()
+            ModelSelectedView(showMessageBoardUseHint: .constant(false))
             
-            ModelSelectedView()
+            ModelSelectedView(showMessageBoardUseHint: .constant(false))
                 .preferredColorScheme(.dark)
         }
         .environmentObject(PlacementSetting())
 
         
-        ModelSelectedView()
-            .environmentObject(PlacementSetting())
-            .preferredColorScheme(.dark)
-            .previewInterfaceOrientation(.landscapeLeft)
+        ZStack {
+            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
+                .environmentObject(PlacementSetting())
+                .environmentObject(SceneManagerViewModel())
+                .environmentObject(CoachingViewModel())
+                .environmentObject(HttpAuth())
+                .environmentObject(ARViewModel())
+                .environmentObject(ModelDeletionManagerViewModel())
+                .environmentObject(UserViewModel())
+                .environmentObject(PersistenceHelperViewModel())
+                .environmentObject(MessageViewModel())
+                
+            VStack{
+                Spacer()
+                ModelSelectedView(showMessageBoardUseHint: .constant(false))
+                    .environmentObject(PlacementSetting())
+            }
+            .edgesIgnoringSafeArea(.bottom)
+        }
+        .preferredColorScheme(.dark)
+        .previewInterfaceOrientation(.landscapeLeft)
     }
 }

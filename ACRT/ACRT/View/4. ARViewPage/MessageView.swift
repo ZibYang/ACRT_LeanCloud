@@ -20,29 +20,67 @@ import SwiftUI
 struct MessageView: View {
     @State var message: String = ""
     @EnvironmentObject var messageModel : MessageViewModel
+    @EnvironmentObject var userModel: UserViewModel
+    @EnvironmentObject var placementSetting : PlacementSetting
     
     var body: some View {
-        VStack{
-            Text("Leave your message here !!")
+        VStack(spacing: 0){
+            
             Spacer()
-            HStack{
-                Text("Message")
-                    .font(.body)
-                    .frame(width:80, alignment: .leading)
-                TextField(LocalizedStringKey("your message"), text: $message)
+            VStack(alignment: .leading) {
+                Button(action: {
+                    withAnimation(Animation.easeInOut){
+                        messageModel.isMessaging.toggle()
+                    }
+                }, label: {
+                    HStack(spacing: 5) {
+                        Image(systemName: "chevron.backward")
+                        Text("Return")
+                    }
+                })
+                HStack{
+                    TextField(LocalizedStringKey("Leave your message here"), text: $message)
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                        
+                    Button(action:{
+                        let df = DateFormatter()
+                        df.dateStyle = .short
+                        df.timeStyle = .short
+                        messageModel.uploadMessage(message: message, creator: "[\(df.string(from: Date()))] " + userModel.userName + ":\n")
+                        placementSetting.selectedModel = ""
+                    }, label:{
+                        Text("Submit")
+                    })
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(15)
+                }
+                .padding(.horizontal)
+                .ignoresSafeArea(.keyboard)
             }
-            Spacer()
-            Button(action:{
-                messageModel.uploadMessage(message: message, creator: "root")
-            }, label:{
-                Text("Submit")
-            })
+            .padding()
+            .background(.ultraThinMaterial)
+            .cornerRadius(15, corners: [.topLeft, .topRight])
+            
         }
+        .adaptsToKeyboard()
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
 struct MessageView_Previews: PreviewProvider {
     static var previews: some View {
         MessageView()
+            .environmentObject(MessageViewModel())
+            .environmentObject(UserViewModel())
+            .environmentObject(PlacementSetting())
+        MessageView()
+            .preferredColorScheme(.dark)
+            .previewInterfaceOrientation(.landscapeLeft)
+            .environmentObject(MessageViewModel())
+            .environmentObject(UserViewModel())
+            .environmentObject(PlacementSetting())
     }
 }

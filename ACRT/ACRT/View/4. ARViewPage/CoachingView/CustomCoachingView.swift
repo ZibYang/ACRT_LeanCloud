@@ -71,14 +71,16 @@ struct CustomCoachingView: View {
                                     placementSetting.isInCreationMode = true
                                     // placementSetting.openModelList.toggle()
                                     let userDefaults = UserDefaults.standard
-                                    if userDefaults.bool(forKey: "ShowGuidence") != true{
+                                    if userDefaults.bool(forKey: "GuidenceShowed") != true{
                                         showGuidenceHint.toggle()
-                                    }else{
-                                        userDefaults.set(true, forKey: "ShowGuidence")
                                     }
+                                    userDefaults.set(true, forKey: "GuidenceShowed")
+                                    
                                 }else{
+                                    let userDefaults = UserDefaults.standard
+                                    userDefaults.set(false, forKey: "SkipPrepareView")
                                     coachingViewModel.isCoaching = false
-                                    goBack.toggle()
+                                    goBack = false // reference to everyThingReady
                                 }
                                 impactLight.impactOccurred()
                             }

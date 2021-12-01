@@ -16,6 +16,7 @@
 
 // [NavigationView] reference: https://www.hackingwithswift.com/books/ios-swiftui/making-navigationview-work-in-landscape
 // [Haptic] reference: https://www.hackingwithswift.com/books/ios-swiftui/making-vibrations-with-uinotificationfeedbackgenerator-and-core-haptics
+// [Background Color] reference: https://www.reddit.com/r/SwiftUI/comments/k4lthn/swiftui_clear_background_of_form_section/
 
 import SwiftUI
 import CoreHaptics
@@ -43,10 +44,11 @@ struct PrepareView: View {
 
     @Binding var introduceAgain: Bool
     @State var introduceLiDAR = false
+    private let userDefaults = UserDefaults.standard
     
     var body: some View {
         ZStack(alignment: .top) {
-            if everythingSetted{
+            if userDefaults.bool(forKey: "SkipPrepareView") == true || everythingSetted{
                 CanvasView(goBack: $everythingSetted)
             }else {
                 NavigationView{
@@ -62,9 +64,14 @@ struct PrepareView: View {
                         }
                         Section(footer: footerButton){
                             intoARWorldButton
+//                                .listRowBackground(
+//                                    ZStack {
+//                                        LinearGradient(gradient: .init(colors: mapModel.permissionDenied ? [Color(UIColor.systemBackground)]: [.green, .blue, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//                                            .blur(radius: mapModel.permissionDenied ? 0 : 15)
+//                                })
                         }
                     } // List
-                    .navigationTitle(LocalizedStringKey("Are you ready?"))
+                    .navigationTitle(LocalizedStringKey("Are you ready!"))
                 } // NavigationView
                 .navigationViewStyle(StackNavigationViewStyle())
             }
@@ -163,7 +170,7 @@ struct PrepareView: View {
             IndicatorView(indicatorImageName: userModel.indicatorImageName,
                          indicatorTitle: userModel.indicatorTitle,
                          indicatorDescriptions: userModel.indicatorDescription,
-                          satisfied: $userModel.capabilitySatisfied)
+                         satisfied: $userModel.capabilitySatisfied)
         }
         .sheet(isPresented: $introduceExpore){
             WhatMeansExploreView()
@@ -178,11 +185,11 @@ struct PrepareView: View {
             if !mapModel.permissionDenied{
                 let impact = UINotificationFeedbackGenerator()
                 impact.notificationOccurred(.success)
+                userDefaults.set(true, forKey: "SkipPrepareView")
+                coachingViewModel.isInsideQiushi = mapModel.isInsideQiuShi
                 withAnimation(Animation.easeInOut(duration: 0.5)) {
                     everythingSetted.toggle()
                 }
-                // TODO: And model loaded
-                
             }else{
                 guard let shutterPath = Bundle.main.url(forResource: "errorBeep.wav", withExtension: nil) else{
                     fatalError("Unable to find tapSound.wav in bundle")
@@ -197,15 +204,17 @@ struct PrepareView: View {
                 }
                 everythingIsNotSetYetWarning.toggle()
             }
-            coachingViewModel.isInsideQiushi = mapModel.isInsideQiuShi
+            
             print("DEBUG(BCH): comeFromPrepareView")
         }, label: {
             HStack {
                 Image(systemName: "arkit")
                     .foregroundColor(mapModel.permissionDenied ? .gray : .blue)
                 Text("Into Augmented City Brain New World")
-                    .gradientForeground(colors: mapModel.permissionDenied ?  [.gray] : [.blue, .purple])
+                    .lineLimit(1)
+                    .gradientForeground(colors: mapModel.permissionDenied ? [.gray] : [.blue, .purple])
             }
+            
         })
         .alert("Requirement not fullfill!", isPresented: $everythingIsNotSetYetWarning){
                 Button("Check it again", role: .cancel) {}
@@ -225,7 +234,6 @@ struct PrepareView: View {
 }
 
 extension View {
-
   func hapticFeedbackOnTap(style: UIImpactFeedbackGenerator.FeedbackStyle = .light) -> some View {
     self.onTapGesture {
       let impact = UIImpactFeedbackGenerator(style: style)
@@ -238,5 +246,10 @@ extension View {
 struct PrepareView_Previews: PreviewProvider {
     static var previews: some View {
         PrepareView(introduceAgain: .constant(false))
+        
+        PrepareView(introduceAgain: .constant(false))
+            .preferredColorScheme(.dark)
+            .previewDevice("iPad Pro (11-inch) (3rd generation)")
+        
     }
 }

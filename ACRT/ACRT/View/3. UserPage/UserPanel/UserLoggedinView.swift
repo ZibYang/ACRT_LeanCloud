@@ -21,19 +21,28 @@ struct UserLoggedinView: View {
     @EnvironmentObject var userModel : UserViewModel
     @StateObject var awardModel = AwardModel()
     @Environment(\.dismiss) var dismissUserInfoSheet
+    @Environment(\.colorScheme) var colorScheme
+    @State private var contentOffset = CGFloat(0)
     
     let impactLight = UIImpactFeedbackGenerator(style: .light)
     
     var body: some View {
         NavigationView {
-            ScrollView{
+            ZStack(alignment: .top) {
+                TrackableScrollView(offsetChanged: { offsetPoint in
+                    contentOffset = offsetPoint.y
+                }) {
+                    // TODO: User Info
+                    AwardView()
+                        .padding(.top, 150)
+                        .padding(.leading, 10)
+                        .environmentObject(awardModel)
+                        
+                }
                 profileView
                     .padding(.leading, 10)
                     .padding(.vertical, 30)
-                // TODO: User Info
-                AwardView()
-                    .padding(.leading, 10)
-                    .environmentObject(awardModel)
+                    .background(.regularMaterial)
             }
             .toolbar{
                 Button(action:{
@@ -56,11 +65,10 @@ struct UserLoggedinView: View {
                 }
             }
             .navigationTitle("My ART Chest")
-            .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
     var profileView: some View{
         HStack(alignment: .center, spacing: 30) {
             userImageView
@@ -108,6 +116,7 @@ struct UserLoggedinView: View {
 struct UserLoggedinView_Previews: PreviewProvider {
     static var previews: some View {
         UserLoggedinView()
+            .preferredColorScheme(.dark)
             .environmentObject(UserViewModel())
         UserLoggedinView()
             .environmentObject(UserViewModel())

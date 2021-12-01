@@ -24,8 +24,12 @@ struct UseToolGuidenceView: View {
             
             BottomToolIntroduce2
             
+            LastIntroduce
+            
             controllPannel
                 .padding(.horizontal)
+                .padding(.bottom)
+                .edgesIgnoringSafeArea(.bottom)
             
         }
     }
@@ -37,19 +41,22 @@ struct UseToolGuidenceView: View {
                 HStack {
                     Button(action: {
                         let userDefaults = UserDefaults.standard
-                        userDefaults.set(true, forKey: "ShowGuidence")
+                        userDefaults.set(true, forKey: "Guidenceshowed")
                         withAnimation(Animation.easeInOut(duration: 0.3)){
                             showGuidence.toggle()
                         }
                     }, label: {
                         Text("Skip")
+                            .frame(width: 70, height: 50)
+                            .background(.gray.opacity(0.5))
+                            .cornerRadius(12)
                     })
                     Spacer()
                 }
                 .padding()
                 HStack(spacing: 30){
                     Spacer()
-                    VStack{
+                    VStack(spacing: 5){
                         Button(action: {
                             withAnimation(Animation.easeInOut(duration: 0.3)) {
                                 step -= 1
@@ -57,13 +64,15 @@ struct UseToolGuidenceView: View {
                         }, label: {
                             Text("Previous")
                                 .foregroundColor(step == 0 ? .gray : .blue)
+                                .frame(width: 100, height: 50)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(15)
                         })
-                            .padding(.bottom)
                             .disabled(step == 0)
                         Button(action: {
-                            if step == 11{
+                            if step == 12{
                                 let userDefaults = UserDefaults.standard
-                                userDefaults.set(true, forKey: "ShowGuidence")
+                                userDefaults.set(true, forKey: "Guidenceshowed")
                                 withAnimation(Animation.easeInOut(duration: 0.3)){
                                     showGuidence.toggle()
                                 }
@@ -73,7 +82,12 @@ struct UseToolGuidenceView: View {
                                 }
                             }
                         }, label: {
-                            Text(step == 11 ? "Finish" : "Next")
+                            Text(step == 12 ? "Finish" : "Next")
+                                .foregroundColor(.green)
+                                .bold()
+                                .frame(width: 100, height: 50)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(15)
                         })
                             .padding(.bottom)
                     }
@@ -101,9 +115,11 @@ struct UseToolGuidenceView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Image(systemName: "building.2")
-                            .frame(width: 42, height: 42)
-                            .padding(.horizontal, 3)
+                        Image("occlusion_unpick")
+                            .resizable()
+                            .frame(width: 18, height: 18)
+                            .padding(12)
+                            .padding(.trailing, -5)
                             .background(.gray)
                             .cornerRadius(10, corners: [.topLeft, .bottomLeft])
                         Text("Switch occlusion.")
@@ -119,6 +135,8 @@ struct UseToolGuidenceView: View {
                     VStack(alignment: .leading) {
                         Image(systemName: "square.grid.3x3.square")
                             .frame(width: 42, height: 42)
+                            .padding(.horizontal, -3)
+                            .padding(.trailing, 6)
                             .background(.gray)
                         Text("Show mesh.")
                             .font(.footnote)
@@ -126,13 +144,15 @@ struct UseToolGuidenceView: View {
                     Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: 99)
+                .offset(x: 87)
                 .opacity(step == 2 ? 1 : 0)
                 
                 HStack {
                     VStack(alignment: .leading) {
                         Image(systemName: "camera")
                             .frame(width: 42, height: 42)
+                            .padding(.leading, -5)
+                            .padding(.trailing, 5)
                             .background(.gray)
                             .cornerRadius(10, corners: [.topRight, .bottomRight])
                         Text("Take a photo.")
@@ -141,7 +161,7 @@ struct UseToolGuidenceView: View {
                     Spacer()
                 }
                 .foregroundColor(.white)
-                .offset(x: 142)
+                .offset(x: 129)
                 .opacity(step == 3 ? 1 : 0)
             }
             .padding()
@@ -209,7 +229,7 @@ struct UseToolGuidenceView: View {
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                         Image(systemName: "icloud.and.arrow.down")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .background(.gray)
                             .cornerRadius(10)
                     }
@@ -222,7 +242,7 @@ struct UseToolGuidenceView: View {
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                         Image(systemName: "icloud.and.arrow.up")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .background(.gray)
                             .cornerRadius(10)
                     }
@@ -235,7 +255,7 @@ struct UseToolGuidenceView: View {
                             .font(.footnote)
                             .multilineTextAlignment(.trailing)
                         Image(systemName: "trash")
-                            .frame(width: 40, height: 40)
+                            .frame(width: 41, height: 41)
                             .background(.gray)
                             .cornerRadius(10)
                     }
@@ -263,6 +283,8 @@ struct UseToolGuidenceView: View {
             .opacity(step == 10 ? 1 : 0)
             
         }
+        .padding(.bottom)
+        .edgesIgnoringSafeArea(.bottom)
     }
     
     var BottomToolIntroduce2: some View{
@@ -277,19 +299,30 @@ struct UseToolGuidenceView: View {
                     .aspectRatio(1/1, contentMode: .fit)
                     .frame(width:120)
             }
+            .offset(x: -1, y: 1)
             .opacity(step == 11 ? 1 : 0)
             
         }
+        .padding(.bottom)
+        .edgesIgnoringSafeArea(.bottom)
+        
+    }
+    var LastIntroduce: some View{
+        Text("Long press to show specific tool's introduction again.")
+            .font(.footnote)
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .opacity(step == 12 ? 1 : 0)
     }
 }
 
 struct UseToolGuidenceView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            ModelSelectedView()
+            ModelSelectedView(showMessageBoardUseHint: .constant(false))
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
             Color.black
                 .opacity(0.5)
                 
@@ -303,11 +336,12 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
         .environmentObject(ModelDeletionManagerViewModel())
         .environmentObject(UserViewModel())
         .environmentObject(PersistenceHelperViewModel())
+        .environmentObject(MessageViewModel())
         ZStack {
-            ModelSelectedView()
+            ModelSelectedView(showMessageBoardUseHint: .constant(false))
             RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                 .ignoresSafeArea()
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
             Color.black
                 .opacity(0.6)
                 
@@ -322,5 +356,6 @@ struct UseToolGuidenceView_Previews: PreviewProvider {
         .environmentObject(ModelDeletionManagerViewModel())
         .environmentObject(UserViewModel())
         .environmentObject(PersistenceHelperViewModel())
+        .environmentObject(MessageViewModel())
     }
 }

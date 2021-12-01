@@ -118,7 +118,7 @@
 "Today" = "今天";
 "Yesterday" = "昨天";
 /* 准备界面 localizable string*/
-"Are you ready?" = "准备好了吗？";
+"Are you ready!" = "准备好了吗！";
 "Launch Requests" = "运行要求";
 "Recommendations" = "建议";
 
@@ -153,7 +153,7 @@
 
 "Into Augmented City Brain New World" = "进入城市新视界";
 
-"My ART Chest" = "我的艺术档案";
+"My ART Chest" = "我的收藏馆";
 "%@ 's badge" = "%@的徽章";
 /* AR界面 localizable string*/
 "Slowly move device to locate..." = "缓慢移动设备进行定位...";
@@ -166,6 +166,8 @@
 "Return and sign in" = "返回注册";
 "Into create mode" = "进入本地创作模式";
 "My models" = "我的模型";
+"MessageBoard" = "留言板";
+"Victory" = "胜利纪念";
 "Messages" = "情感表达";
 "Letters" = "英文字母";
 "Foundmentals" = "基础模型";
@@ -249,7 +251,7 @@
 "OK, let go" = "好的！带我了解一下";
 "Go back to the menu." = "这是返回按钮";
 "Switch occlusion." = "点击这里打开遮挡";
-"Show mesh." = "点击这里显示Mesh";
+"Show mesh." = "点击这里显示网格";
 "Take a photo." = "点击这里即可拍照";
 "Tap it into explore mood which will automaticlly perform localization if user havn't localized." = "点击这里进入探索模式，当然如果您没有成功定位的话需要首先进行定位，成功后才能进行探索噢";
 "Tap it into create mood and it will show the right hand menu as well." = "点击这里进入创作模式，如果您已经登陆，那即使没有定位成功也可以进行本地创作噢";
@@ -259,6 +261,19 @@
 "Tap it to delete every model in the scene, it will save you a lot of time." = "当您处于创作模式时，点击对模型进行一键删除（注意删除后无法恢复噢）";
 "Tap it to choose the model." = "最后，就是模型选择按钮，点击这里选择你喜欢的模型";
 "Top sign means the model have animation." = "顶部的标记代表这个模型具有有趣的交互噢";
+"Long press to show specific tool's introduction again." = "长按任意一个工具按钮就可以再次查看该工具的介绍了噢";
 "Skip" = "跳过";
 "Next" = "下一条";
 "Previous" = "上一条";
+
+"Occlusion turn on" = "已打开遮挡";
+"Occlusion turn off" = "已关闭遮挡";
+"Mesh turn on" = "已显示网格";
+"Mesh turn off" = "已关闭网格显示";
+"Camera turn on" = "已进入拍照模式";
+"Camera turn off" = "已退出拍照模式";
+
+"Leave your message here" = "输入后点击提交发送";
+"Return" = "返回";
+"Tap the Message Board to leave your message!" = "点击留言板去留言噢";
+"Sorry, only devices with LiDAR can function it" = "抱歉，只有配备LiDAR的设备才具备此功能";

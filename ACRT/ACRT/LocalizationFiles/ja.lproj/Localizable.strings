@@ -132,7 +132,7 @@
 "Today" = "今日";
 "Yesterday" = "昨日";
 /* 准备界面 localizable string*/
-"Are you ready?" = "準備はできましたか？";
+"Are you ready!" = "準備はできましたか!";
 "Launch Requests" = "プログラムの要求";
 "Recommendations" = "アドバイス";
 

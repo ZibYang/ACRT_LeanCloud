@@ -43,6 +43,7 @@ struct ARWorldView:  UIViewRepresentable {
     
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
+    @Binding var disableEntity: Bool
     @Binding var showOcclusion: Bool
     var testBool : Bool = false
     
@@ -155,31 +156,58 @@ struct ARWorldView:  UIViewRepresentable {
         if arView.is_loading {
                 return
         }
+        
+        var BoardCount = 0
+        for anchor in self.sceneManager.anchorEntities {
+            if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
+                BoardCount += 1
+            }
+        }
+        
+        if BoardCount == arView.messageBoardCount {
+            if BoardCount == 0 {
+                return
+            }
+        } else {
+            arView.messageBoardCount = BoardCount
+            arView.forceSet = true
+        }
             
         let query = LCQuery(className: "Message")
+        query.whereKey("createdAt", .descending)
+        query.limit = 5
+        
         _ = query.find { result in
             switch result {
             case .success(objects: let objects):
 //                arView.all_message = ""
                 var new_message = ""
-                for object in objects {
-                    let creator:String = (object.get("creator") as! LCString).value
-                    let message:String = (object.get("message") as! LCString).value
+                let obj_count = objects.count
+                for i in stride(from: obj_count-1, through: 0, by: -1) {
+                    let creator:String = (objects[i].get("creator") as! LCString).value
+                    var message:String = (objects[i].get("message") as! LCString).value
                         
 //                    print("[meg] get message \(creator): \(message)")
-                    new_message += "\(creator): \(message)\n"
+                    var length = message.count
+                    while length > 40 {
+                        message.insert("\n", at: message.index(message.startIndex, offsetBy: 40))
+                        length -= 40
+                    }
+                    new_message += "\(creator) \(message)\n"
                 }
 //                print("[meg] \(new_message)")
 //                print("[meg] \(arView.all_message)")
-                if new_message != arView.all_message {
+                if arView.forceSet || new_message != arView.all_message {
                     for anchor in self.sceneManager.anchorEntities {
-                        if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "Message.reality" {
+                        if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
 //                            let anchor = arView.scene.findEntity(named: anchor.name)
-                            let text = anchor.children[0].children[0].children[0].children[0].children[0].children[0] as! ModelEntity
+
+                            let text = anchor.children[0].children[0].children[1].children[0].children[0].children[0] as! ModelEntity
+                            
                             var textComponent:ModelComponent = (text.components[ModelComponent])!
                             print("[meg] set \(new_message)")
                             textComponent.mesh = .generateText(new_message, extrusionDepth: 0.01,
-                                                               font: .systemFont(ofSize: 0.08),
+                                                               font: .systemFont(ofSize: 0.03),
                                                                containerFrame: CGRect(),
                                                                alignment: .left,
                                                                lineBreakMode: .byCharWrapping)
@@ -187,6 +215,9 @@ struct ARWorldView:  UIViewRepresentable {
                             text.components.set(textComponent)
                             arView.all_message = new_message
                         }
+                    }
+                    if arView.forceSet {
+                        arView.forceSet = false
                     }
                 }
                 arView.is_loading = false
@@ -198,7 +229,7 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     private func updateScene(for arView: CustomARView) {
-        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode
+        arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode && !disableEntity && placementSetting.selectedModel != "" && !messageModel.isMessaging
         if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = modelAnchor.model.modelEntity {
             if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
                 print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")
@@ -232,7 +263,7 @@ struct ARWorldView:  UIViewRepresentable {
         
         if enableGesture == true, let clonedModelEntity = clonedEntity as? ModelEntity{
             print("DEBUG(BCH): enable gesture for \(clonedEntity.name)")
-            arView.installGestures([.rotation, .scale], for: clonedModelEntity)
+            arView.installGestures([.rotation, .scale, .translation], for: clonedModelEntity)
         }
         
         let anchorEntity = AnchorEntity(world: transform)
@@ -274,9 +305,6 @@ struct ARWorldView:  UIViewRepresentable {
         guard let raycastResult = arView.session.raycast(query).first else {return nil}
         return raycastResult.worldTransform
     }
-    
-    
-    
     
 }
 

@@ -56,7 +56,7 @@ class USDZManagerViewModel: ObservableObject {
     var createModelList = USDZModelList(usdzModelNameList:["user_like_blue.reality":.foundmental, //1
                                                            "user_like_red.reality":.foundmental, //2
                                                            "user_love_red.reality":.foundmental, //3
-                                                           "user_love_white.usdz":.foundmental, //4
+                                                           "user_love_white.reality":.foundmental, //4
                                                            
                                                             "user_letter_A.usdz":.letter, //1
                                                             "user_letter_B.usdz":.letter, //2
@@ -100,6 +100,13 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_special_bat.usdz":.special, //5
                                                            "user_special_deadHand.usdz":.special, //6
                                                            "user_special_ghost.usdz":.special, //7
+                                                           
+                                                           "user_victory_crown.reality":.victory, //1
+                                                           "user_victory_fanfare.reality":.victory, //2
+                                                           "user_victory_like.reality":.victory,  //3
+                                                           
+                                                           "user_text_MessageBoard.reality":.text  //3
+                                                           
                                                           ], readThumbnails: true)
     
     init() {

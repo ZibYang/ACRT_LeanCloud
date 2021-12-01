@@ -1,6 +1,6 @@
 //
 //  AwardViewModel.swift
-//  ACRT_new
+//  ACRT
 
 //        _         ____
 //       / \      |  __  \
@@ -58,14 +58,39 @@ class AwardModel: ObservableObject{
             }
         }
         
+//        let df = DateFormatter()
+//        df.dateFormat = "yyyy-MM-dd"
+        
         for i in 0..<specialEventAwardName.count{
-            specialEventAward.append(Award(name: specialEventAwardName[i], detail: specialEventAwardDetail[i]))
+            var item = Award(name: specialEventAwardName[i], detail: specialEventAwardDetail[i])
+//            item.granted.toggle()
+//            item.grantedTime = df.date(from: "2021-12-10")
+            specialEventAward.append(item)
         }
         for i in 0..<dailyEventAwardName.count{
-            dailyEventAward.append(Award(name: dailyEventAwardName[i], detail: dailyEventAwardDetail[i]))
+            var item = Award(name: dailyEventAwardName[i], detail: dailyEventAwardDetail[i])
+//            if item.awardName == "Morning" {
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-10-20")
+//            }
+//            if item.awardName == "Owl"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-09-12")
+//            }
+            dailyEventAward.append(item)
+            
         }
         for i in 0..<landmarkAwardName.count{
-            landmarkAward.append(Award(name: landmarkAwardName[i], detail: landmarkAwardDetail[i]))
+            var item = Award(name: landmarkAwardName[i], detail: landmarkAwardDetail[i])
+//            if item.awardName == "Hangzhou" {
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-07-22")
+//            }
+//            if item.awardName == "Shanghai"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-08-02")
+//            }
+            landmarkAward.append(item)
         }
     }
     

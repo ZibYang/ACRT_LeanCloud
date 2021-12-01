@@ -28,22 +28,29 @@ struct ToolView: View {
     @EnvironmentObject var arViewModel: ARViewModel
     @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
     @EnvironmentObject var userViewModel : UserViewModel
-
+    @EnvironmentObject var messageModel : MessageViewModel
 
     @State var showBottomView = false
-    @State var showCameraButton = false
     @State var audioPlayer: AVAudioPlayer!
-    
     @State var showPersistenceSignInAlert = false
     @State var showPersistenceLocalizeAlert = false
     
+    @Binding var showCameraButton: Bool
     @Binding var snapShot: Bool
     @Binding var showMesh: Bool
     @Binding var showOcclusion: Bool
     @Binding var goBack: Bool
     @Binding var showGuidence: Bool
-    
+    @Binding var showMessageBoardUseHint: Bool
+    let haveLiDAR : Bool
     @State private var snapshotBackgroundOpacity = 0.0
+    
+    @State var showHint = false
+    @State var hintBackground = Color.clear
+    @State var hintMessage = ""
+    @State var showHintTimeRemaining = 3
+    
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     let impactLight = UIImpactFeedbackGenerator(style: .light)
     let impactMedium = UIImpactFeedbackGenerator(style: .medium)
@@ -61,7 +68,7 @@ struct ToolView: View {
             rightToolGroup
             
             snapShotButton
-
+            
             if modelDeletionManager.entitySelectedForDeletion == nil {
                 placeModelView
             } else {
@@ -85,11 +92,12 @@ struct ToolView: View {
     var placeModelView: some View{
         VStack{
             Spacer()
-            ModelSelectedView()
+            ModelSelectedView(showMessageBoardUseHint: $showMessageBoardUseHint)
                 .environmentObject(placementSetting)
-                .padding(.horizontal)
         }
+        .edgesIgnoringSafeArea(.bottom)
         .offset(y: placementSetting.isInCreationMode && !showCameraButton ? 0 : 300)
+        .offset(y: messageModel.isMessaging ? 300 : 0)
     }
     
     var topToolGroup: some View{
@@ -99,12 +107,14 @@ struct ToolView: View {
                 // MARK: Quit Button
                 Button(action: {
                     impactLight.impactOccurred()
+                    messageModel.isMessaging = false
                     withAnimation(Animation.easeInOut(duration: 0.8)){
-                        goBack.toggle()
+                        goBack = false // refer to everythingSetted
                     }
                     sceneManager.ClearWholeAnchors()
                     httpManager.statusLoc = 0
-                    print("pressed")
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(false, forKey: "SkipPrepareView")
                 }, label:{
                     Image(systemName: "arrow.backward")
                         .foregroundColor(.white)
@@ -114,7 +124,7 @@ struct ToolView: View {
                     .background(Material.ultraThinMaterial)
                     .cornerRadius(10)
                     
-                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion)
+                TopToolView(showMesh: $showMesh, showCamera: $showCameraButton, showOcclusion: $showOcclusion, showHint: $showHint, hintMessage: $hintMessage, hintBackground: $hintBackground, showHintTimeRemaining:$showHintTimeRemaining, haveLiDAR: haveLiDAR)
                     .padding(.horizontal, 6)
                     .padding(.all, 6)
                     .background(.ultraThinMaterial)
@@ -124,7 +134,31 @@ struct ToolView: View {
                 Spacer()
             }
 //            .padding(.top, 10)
-            .padding()
+            .padding(.leading)
+            .padding(.top)
+            .offset(x: coachingViewModel.isCoaching ? -400 : 0)
+            HStack {
+                Text(LocalizedStringKey(hintMessage))
+                    .font(.caption)
+                    .foregroundColor(showHint ? .white : .clear)
+                    .padding(5)
+                    .padding(.horizontal, 5)
+                    .background(showHint ? hintBackground : .clear)
+                    .cornerRadius(10)
+                Spacer()
+            }
+            .padding(.leading)
+            .onReceive(timer) { time in
+                if showHint{
+                    if self.showHintTimeRemaining > 0 {
+                        self.showHintTimeRemaining -= 1
+                    }else{
+                        withAnimation(Animation.easeInOut){
+                            showHint = false
+                        }
+                    }
+                }
+            }
             .offset(x: coachingViewModel.isCoaching ? -400 : 0)
             Spacer()
         }
@@ -155,8 +189,8 @@ struct ToolView: View {
         }
         .offset(x: coachingViewModel.isCoaching ? -150 : 0)
         .offset(x: showCameraButton ? -150 : 0)
+        .offset(x: messageModel.isMessaging ? -150 : 0)
     }
-    
     
     var relocationButton: some View{
         //MARK: relocation Button
@@ -198,6 +232,7 @@ struct ToolView: View {
             .offset(x: placementSetting.isInCreationMode ? 0 : 150)
             .offset(x: showCameraButton ? 150 : 0)
             .offset(x: modelDeletionManager.entitySelectedForDeletion == nil ? 0 : 150)
+            .offset(x: messageModel.isMessaging ? 150 : 0)
             Spacer()
         }
         .alert("Please log in before uploading or downloading", isPresented: $showPersistenceSignInAlert) {
@@ -246,6 +281,7 @@ struct ToolView: View {
                 Alert(title: Text("Hint"), message: Text(LocalizedStringKey(sceneManager.deleteHintMessage)), dismissButton: .default(Text("OK")))
             }
     }
+    
     var uploadButton: some View{
         // MARK: upload button
         Button(action: {
@@ -347,16 +383,16 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         Group{
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
                 
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.blue, .black]), center: .center, startRadius: 10, endRadius: 300)
                     .ignoresSafeArea()
-                ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false))
+                ToolView(showCameraButton: .constant(false), snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true), goBack: .constant(false), showGuidence:  .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
             }
             .previewInterfaceOrientation(.landscapeLeft)
             
-            ToolView(snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false))
+            ToolView(showCameraButton: .constant(false) ,snapShot: .constant(false),showMesh: .constant(false), showOcclusion: .constant(true),goBack: .constant(false), showGuidence: .constant(false), showMessageBoardUseHint: .constant(false), haveLiDAR: false)
 
                 .preferredColorScheme(.dark)
                 .previewDevice("iPad Pro (12.9-inch) (5th generation)")
@@ -369,5 +405,6 @@ struct ToolView_Previews: PreviewProvider {
         .environmentObject(ModelDeletionManagerViewModel())
         .environmentObject(UserViewModel())
         .environmentObject(PersistenceHelperViewModel())
+        .environmentObject(MessageViewModel())
     }
 }

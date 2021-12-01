@@ -22,6 +22,12 @@ struct TopToolView: View {
     @Binding var showCamera: Bool
     @Binding var showOcclusion: Bool
     
+    @Binding var showHint: Bool
+    @Binding var hintMessage: String
+    @Binding var hintBackground: Color
+    @Binding var showHintTimeRemaining: Int
+    
+    let haveLiDAR: Bool
     @State private var cameraHint = false
     private let impactLight = UIImpactFeedbackGenerator(style: .light)
     
@@ -31,11 +37,31 @@ struct TopToolView: View {
             // MARK: show occlusion Button
             Button(action: {
                 impactLight.impactOccurred()
-                showOcclusion.toggle()
+                
+                withAnimation(Animation.easeInOut){
+                    showHint = true
+                    if haveLiDAR{
+                        showOcclusion.toggle()
+                        if showOcclusion{
+                            hintBackground = .green
+                            hintMessage = "Occlusion turn on"
+                            showHintTimeRemaining = 3
+                        }else{
+                            hintBackground = .gray
+                            hintMessage = "Occlusion turn off"
+                            showHintTimeRemaining = 3
+                        }
+                    }else{
+                        hintBackground = .gray
+                        hintMessage = "Sorry, only devices with LiDAR can function it"
+                        showHintTimeRemaining = 3
+                    }
+                }
             }, label: {
-                Image(systemName: showOcclusion ? "building.2.fill" : "building.2")
+                Image(showOcclusion ? "occlusion_pick" : "occlusion_unpick")
+                    .resizable()
                     .foregroundColor(showOcclusion ? .green : .white)
-                    .frame(width: 30, height: 30)
+                    .frame(width: 18, height: 18)
             })
                 .contextMenu{
                     Label("Occlusion is the key for AR scene.", systemImage: "building.2.crop.circle.fill")
@@ -48,17 +74,35 @@ struct TopToolView: View {
                     cameraHint.toggle()
                 }else{
                     impactLight.impactOccurred()
-                    showMesh.toggle()
+                    withAnimation(Animation.easeInOut){
+                        showHint = true
+                        if haveLiDAR{
+                            showMesh.toggle()
+                            if showMesh{
+                                hintBackground = .blue
+                                hintMessage = "Mesh turn on"
+                                showHintTimeRemaining = 3
+                            }else{
+                                hintBackground = .gray
+                                hintMessage = "Mesh turn off"
+                                showHintTimeRemaining = 3
+                            }
+                        }else{
+                            hintBackground = .gray
+                            hintMessage = "Sorry, only devices with LiDAR can function it"
+                            showHintTimeRemaining = 3
+                        }
+                    }
                 }
             }, label:{
                 Image(systemName: "square.grid.3x3.square")
-                    .foregroundColor(showMesh ? .green : .white)
+                    .foregroundColor(showMesh ? .blue : .white)
                     .frame(width: 30, height: 30)
             })
                 .contextMenu{
                     Label("Show mesh in reality", systemImage: "square.dashed")
                 }
-            // MARK: share Button
+            // MARK: camera Button
             Button(action: {
                 if showMesh{
                     let impact = UINotificationFeedbackGenerator()
@@ -68,11 +112,23 @@ struct TopToolView: View {
                     impactLight.impactOccurred()
                     withAnimation(Animation.easeInOut(duration: 0.5)) {
                         showCamera.toggle()
+                        withAnimation(Animation.easeInOut){
+                            showHint = true
+                            if showCamera{
+                                hintBackground = .orange
+                                hintMessage = "Camera turn on"
+                                showHintTimeRemaining = 3
+                            }else{
+                                hintBackground = .gray
+                                hintMessage = "Camera turn off"
+                                showHintTimeRemaining = 3
+                            }
+                        }
                     }
                 }
             }, label:{
                 Image(systemName: showCamera ?  "camera.fill" : "camera")
-                    .foregroundColor(.white)
+                    .foregroundColor(showCamera ? .orange : .white)
                     .frame(width: 30, height: 30)
             })
                 .contextMenu{
@@ -92,10 +148,22 @@ struct TopToolView: View {
                         showCamera = false
                     }
                     showMesh = true
+                    withAnimation(Animation.easeInOut){
+                        showHint = true
+                        hintBackground = .blue
+                        hintMessage = "Mesh turn on"
+                        showHintTimeRemaining = 3
+                    }
                 }else{
                     showMesh = false
                     withAnimation(Animation.easeInOut(duration: 0.5)) {
                         showCamera = true
+                        withAnimation(Animation.easeInOut){
+                            showHint = true
+                            hintBackground = .orange
+                            hintMessage = "Camera turn on"
+                            showHintTimeRemaining = 3
+                        }
                     }
                 }
             }label:{
@@ -110,7 +178,7 @@ struct TopToolView_Previews: PreviewProvider {
         ZStack {
             RadialGradient(gradient: Gradient(colors: [.gray, .black]), center: .center, startRadius: 10, endRadius: 250)
                 .ignoresSafeArea()
-            TopToolView(showMesh: .constant(false), showCamera: .constant(false), showOcclusion: .constant(true))
+            TopToolView(showMesh: .constant(false), showCamera: .constant(false), showOcclusion: .constant(true), showHint: .constant(false), hintMessage: .constant(""), hintBackground: .constant(Color.clear), showHintTimeRemaining: .constant(0), haveLiDAR: false)
         }
     }
 }

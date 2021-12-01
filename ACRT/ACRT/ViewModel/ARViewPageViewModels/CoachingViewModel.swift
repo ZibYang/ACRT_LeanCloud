@@ -1,8 +1,17 @@
 //
 //  CoachingViewModel.swift
 //  ACRT
-//
-//  Created by baochong on 2021/11/5.
+
+//        _         ____
+//       / \      |  __  \
+//      / _ \     | |   \ \      ____     _______
+//     / / \ \    | |___/ /    /  ___ \ / __   __ \
+//    / /___\ \   |  ___ \    / /          / /
+//   / /     \ \  | |   \ \   \ \ ___     / /
+//  / /       \ \ | |    \ \   \ ____ /  / /          Team
+ 
+//  Created by ARCT_ZJU_Lab509 on 2021/7/5.
+
 //  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 //
 

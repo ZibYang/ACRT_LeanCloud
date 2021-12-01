@@ -1,14 +1,25 @@
 //
 //  CustomARView.swift
-//  FocusEntityPlacer
-//
-//  Created by baochong on 2021/11/5.
+//  ACRT
+
+//        _         ____
+//       / \      |  __  \
+//      / _ \     | |   \ \      ____     _______
+//     / / \ \    | |___/ /    /  ___ \ / __   __ \
+//    / /___\ \   |  ___ \    / /          / /
+//   / /     \ \  | |   \ \   \ \ ___     / /
+//  / /       \ \ | |    \ \   \ ____ /  / /          Team
+ 
+//  Created by ARCT_ZJU_Lab509 on 2021/7/5.
+
+//  Copyright © 2021 Augmented City Reality Toolkit. All rights reserved.
 //
 
 import RealityKit
 import Foundation
 import FocusEntity
 import ARKit
+import SwiftUI
 
 class CustomARView: ARView {
     
@@ -18,7 +29,8 @@ class CustomARView: ARView {
     var all_message:String = ""
     var is_loading: Bool = false
     var messageModel: MessageViewModel?
-
+    var messageBoardCount = 0
+    var forceSet = false
     
     required init(frame frameRect: CGRect) {
         fatalError("init(frame:) has not been implemented")
@@ -71,8 +83,10 @@ extension CustomARView {
         let location = recognizer.location(in: self)
         if let entity = self.entity(at: location) as? ModelEntity, let deletionManager = self.modelDeletionManager, let anchor = entity.anchor {
             print("[tap] \(anchor.name)")
-            if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "Message.reality" {
-                messageModel?.isMessaging = true
+            if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "user_text_MessageBoard.reality" {
+                withAnimation(Animation.easeInOut){
+                    messageModel?.isMessaging = true
+                }
             }
         }
     }
