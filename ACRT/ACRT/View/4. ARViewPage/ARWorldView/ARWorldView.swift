@@ -263,7 +263,7 @@ struct ARWorldView:  UIViewRepresentable {
         
         if enableGesture == true, let clonedModelEntity = clonedEntity as? ModelEntity{
             print("DEBUG(BCH): enable gesture for \(clonedEntity.name)")
-            arView.installGestures([.rotation, .scale], for: clonedModelEntity)
+            arView.installGestures([.rotation, .scale, .translation], for: clonedModelEntity)
         }
         
         let anchorEntity = AnchorEntity(world: transform)
