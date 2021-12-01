@@ -1,6 +1,6 @@
 //
 //  Awards.swift
-//  ACRT_new
+//  ACRT
 
 //        _         ____
 //       / \      |  __  \

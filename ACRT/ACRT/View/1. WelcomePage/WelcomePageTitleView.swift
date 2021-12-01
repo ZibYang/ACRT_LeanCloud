@@ -22,7 +22,7 @@ struct WelcomePageTitleView: View {
             HStack(spacing: 0){
                 Text("Introduce ")
                     .bold()
-                Text("ACRT")
+                Text("ARCT")
                     .bold()
                     
             }

@@ -34,8 +34,8 @@
 "Location Services is off" = "位置情報サービスがオフになっています";
 "Turn On in Settings" = "設定でオンにする";
 "Keep it that way" = "そのままにしている";
-"You'll get a brunch of featues improved when you turn on the Location Services for ACRT" = "ACRTの位置情報サービスをオンにすると、さまざまな機能が向上します";
-"ACRT works best with Location Services turned on" = "ACRTは、位置情報サービスがオンになっている場合に最適に機能します";
+"You'll get a brunch of featues improved when you turn on the Location Services for ARCT" = "ARCTの位置情報サービスをオンにすると、さまざまな機能が向上します";
+"ARCT works best with Location Services turned on" = "ARCTは、位置情報サービスがオンになっている場合に最適に機能します";
 
 /* 用户登陆界面 localizable string */
 "Do not log in" = "ログインしな";
@@ -108,7 +108,7 @@
 "Log in with email" = "メールアドレスで登録できます。必ず記入してください";
 "Please input right email" = "正しいメールアドレスを入力してください";
 
-"Sign up with ACRT, you data will only be used for basic functionality in this app." = "登録後、個人情報は必要な時だけ使用されます。いかなる第三者機関にも提出されません";
+"Sign up with ARCT, you data will only be used for basic functionality in this app." = "登録後、個人情報は必要な時だけ使用されます。いかなる第三者機関にも提出されません";
 "See more..." = "もっと...";
 "Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "パスワード設定規則に従ってください: \n 1. 大アルファベットで始まる。 \n 2. パスワードの長さは8ビットより大きいです。" ;
 "The email is already taken by another user." = "入力されたメールアドレスは登録されています";
@@ -164,7 +164,7 @@
 "Requirement not fullfill!" = "まだ運行条件が足りないです！";
 "Check it again" = "もう一度チェックします";
 
-"What is ACRT" = "ACRTは何ですか";
+"What is ARCT" = "ARCTは何ですか";
 
 "Into Augmented City Brain New World" = "都市の新視界に入る";
 
@@ -175,7 +175,7 @@
 "Enter Creation Mode" = "クリエイティブモードに入る";
 "Place" = "置きます";
 "Current network is not stable" = "現在のネットワークステータスは不良です";
-"ACRT location services are not available in the current area" = "現在のエリアで位置情報サービスを提供できません";
+"ARCT location services are not available in the current area" = "現在のエリアで位置情報サービスを提供できません";
 "Sign in so you can turn into create mode without location"="ログイン後、ポジショニングが成功しなかったときにオフライン作成モードに入ることができます";
 "You can turn into create mode and re-localize when you are ready" = "オフライン作成モードに入り、すべての準備ができたら再配置できます";
 "Return and sign in" = "登録に戻る";

@@ -1,6 +1,6 @@
 //
 //  WelcomePage.swift
-//  ACRT_new
+//  ACRT
 //
 
 //        _         ____
@@ -50,15 +50,15 @@ struct WelcomePage: View {
                                   detail:"A represents the Augmented Reality which enhanced the version of the real physical world, achieved through our iPhone and iPad.",
                                   theColor: Color(red: 0.15, green: 0.39, blue: 0.94))
                     .tag(0)
-                WelcomePageDetail(imageName: "Welcome_C",
-                                  title: "City",
-                                  detail:"C represents the city. This app will bring augmented reality into your city, allowing people to discover different magic in familiar cities.",
-                                  theColor: Color(red: 0.93, green: 0.54, blue: 0.15))
-                    .tag(1)
                 WelcomePageDetail(imageName: "Welcome_R",
                                   title: "Reality",
                                   detail:"R stands for the reality. When virtual and reality mixed up, all familiar objects and scenes will become a whole new experience.",
                                   theColor: Color(red: 0.16, green: 0.91, blue: 0.66))
+                    .tag(1)
+                WelcomePageDetail(imageName: "Welcome_C",
+                                  title: "City",
+                                  detail:"C represents the city. This app will bring augmented reality into your city, allowing people to discover different magic in familiar cities.",
+                                  theColor: Color(red: 0.93, green: 0.54, blue: 0.15))
                     .tag(2)
                 WelcomePageDetail(imageName: "Welcome_T",
                                   title: "Toolkit",

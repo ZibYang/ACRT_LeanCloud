@@ -14,7 +14,7 @@
   Copyright © 2021 Augmented City Reality Toolkit. All Right Reserved.
  */
 
-
+"ARCT" = "AR城市视界";
 /* 欢迎界面 localizable string */
 "Augmented" = "增强";
 "City" = "城市";
@@ -25,8 +25,8 @@
 "Location Services is off" = "定位服务未开启";
 "Turn On in Settings" = "在设置里打开定位服务";
 "Keep it that way" = "保持当前状态";
-"You'll get a brunch of featues improved when you turn on the Location Services for ACRT" = "当你为ACRT打开定位服务后你将能使用更多优化的功能，如厘米级定位、城市创作功能等";
-"ACRT works best with Location Services turned on" = "ACRT在定位服务打开下能获得最佳体验";
+"You'll get a brunch of featues improved when you turn on the Location Services for ARCT" = "当你为AR城市视界打开定位服务后你将能使用更多优化的功能，如厘米级定位、城市创作功能等";
+"ARCT works best with Location Services turned on" = "AR城市视界在定位服务打开下能获得最佳体验";
 
 /* 首次登陆sheet界面 localizable string */
 "Understand" = "了解啦";
@@ -95,7 +95,7 @@
 "Log in with email" = "可使用邮箱登陆，必填";
 "Please input right email" = "请输入正确的邮箱地址";
 
-"Sign up with ACRT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
+"Sign up with ARCT, you data will only be used for basic functionality in this app." = "注册后，您的个人信息将只会在必要时在本应用中被使用，不会提交给任何第三方机构";
 "See more..." = "了解更多...";
 "Please follow the password setting rules\n 1. Start with a capital letter \n 2. Length must exceeds 8 digits" = "请遵循密码设置规则: \n 1. 以大写字母开头 \n 2. 密码长度大于8位" ;
 "The email is already taken by another user." = "您输入的邮箱已注册";
@@ -149,7 +149,7 @@
 "Requirement not fullfill!" = "还有运行条件不满足！";
 "Check it again" = "再检查一下";
 
-"What is ACRT" = "ACRT是什么";
+"What is ARCT" = "AR城市视界是什么";
 
 "Into Augmented City Brain New World" = "进入城市新视界";
 
@@ -160,7 +160,7 @@
 "Enter Creation Mode" = "进入创作模式";
 "Place" = "放置";
 "Current network is not stable" = "当前网络状态不佳";
-"ACRT location services are not available in the current area" = "ACRT无法在当前区域提供定位服务";
+"ARCT location services are not available in the current area" = "AR城市视界无法在当前区域提供定位服务";
 "Sign in so you can turn into create mode without location"="登陆后在未定位成功时也可以进入离线创作模式";
 "You can turn into create mode and re-localize when you are ready" = "您可以进入离线创作模式，等一切就绪后再重新定位";
 "Return and sign in" = "返回注册";

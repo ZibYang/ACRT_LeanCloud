@@ -1,6 +1,6 @@
 //
 //  CustomCoachingView.swift
-//  ACRT_new
+//  ACRT
 
 //        _         ____
 //       / \      |  __  \
@@ -50,8 +50,8 @@ struct CustomCoachingView: View {
             .offset(y:-50)
             if coachingViewModel.showQuitButton{
                 VStack{
-                    Text(coachingViewModel.isInsideQiushi ? "Current network is not stable" : "ACRT location services are not available in the current area")
-
+                    Text(coachingViewModel.isInsideQiushi ? "Current network is not stable" : "ARCT location services are not available in the current area")
+                        .multilineTextAlignment(.center)
                         .foregroundColor(.white)
                         .font(.headline)
                         .padding(.bottom)
