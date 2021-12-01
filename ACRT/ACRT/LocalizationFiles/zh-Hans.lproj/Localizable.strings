@@ -277,3 +277,6 @@
 "Return" = "返回";
 "Tap the Message Board to leave your message!" = "点击留言板去留言噢";
 "Sorry, only devices with LiDAR can function it" = "抱歉，只有配备LiDAR的设备才具备此功能";
+
+"Are you sure to clear all?" = "确定清除所有模型吗";
+"Clear all" = "确定";

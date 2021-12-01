@@ -292,3 +292,7 @@
 "Sorry, only devices with LiDAR can function it" = "申し訳ありませんが、LiDARを搭載したデバイスのみが機能します";
 
 "Victory" = "勝利モデル";
+"MessageBoard" = "伝言板";
+
+"Are you sure to clear all?" = "すべてクリアしてもよろしいですか？";
+"Clear all" = "すべてクリアしてください";

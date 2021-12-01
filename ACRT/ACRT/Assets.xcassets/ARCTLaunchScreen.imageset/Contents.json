@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "ARCTLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "未标题-1_画板 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

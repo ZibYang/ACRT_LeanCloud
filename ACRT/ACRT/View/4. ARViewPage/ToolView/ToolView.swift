@@ -49,6 +49,7 @@ struct ToolView: View {
     @State var hintBackground = Color.clear
     @State var hintMessage = ""
     @State var showHintTimeRemaining = 3
+    @State private var showConfirmation = false
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -265,7 +266,7 @@ struct ToolView: View {
         //MARK: clear Button
         Button(action: {
             impactLight.impactOccurred()
-            self.sceneManager.ClearCreativeAnchors()
+            showConfirmation.toggle()
         }, label:{
             Image(systemName: "trash")
                 .foregroundColor(.white)
@@ -279,6 +280,18 @@ struct ToolView: View {
             }
             .alert(isPresented: $sceneManager.deleteHint){
                 Alert(title: Text("Hint"), message: Text(LocalizedStringKey(sceneManager.deleteHintMessage)), dismissButton: .default(Text("OK")))
+            }
+            .alert("Are you sure to clear all?", isPresented: $showConfirmation){
+                Button(role: .cancel){
+                }label:{
+                    Text("Cancel")
+                }
+                Button(role: .none){
+                    self.sceneManager.ClearCreativeAnchors()
+                }label:{
+                    Text("Clear all")
+                }
+               
             }
     }
     
