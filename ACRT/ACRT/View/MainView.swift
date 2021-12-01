@@ -17,7 +17,7 @@
 //               reference 2: https://cloud.tencent.com/developer/article/1018231
 // [ViewWithSheet] reference: https://www.hackingwithswift.com/quick-start/swiftui/how-to-present-a-new-view-using-sheets
 // [localization] reference: https://developer.apple.com/documentation/bundleresources/information_property_list/nsphotolibraryusagedescription
-// [LaunchScreen] reference: https://www.appcoda.com/launch-screen-swiftui/
+// [LaunchScreen] reference: https://www.youtube.com/watch?v=3CasiUiJPVo
 import SwiftUI
 
 struct MainView: View {
