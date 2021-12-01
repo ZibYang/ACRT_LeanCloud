@@ -129,6 +129,7 @@
 		5A5F58ED2753A3E70025E482 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F58EC2753A3E70025E482 /* MessageView.swift */; };
 		5A5F58F02753B9FA0025E482 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5F58EF2753B9FA0025E482 /* FocusEntity */; };
 		5A78B1C627573DF600608CE2 /* qs_zjuLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */; };
+		5A78B1C82757510800608CE2 /* user_text_MessageBoard.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5A78B1C72757504600608CE2 /* user_text_MessageBoard.reality */; };
 		5ADF209427329CDD00CF0E4A /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209327329CDD00CF0E4A /* Award.swift */; };
 		5ADF209627329CEE00CF0E4A /* AwardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */; };
 		5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209727329D2D00CF0E4A /* AwardView.swift */; };
@@ -273,6 +274,7 @@
 		5A5F58EA2753A3CB0025E482 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		5A5F58EC2753A3E70025E482 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_zjuLogo.usdz; sourceTree = "<group>"; };
+		5A78B1C72757504600608CE2 /* user_text_MessageBoard.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = user_text_MessageBoard.reality; path = ../../../../../Downloads/MessageBoard/user_text_MessageBoard.reality; sourceTree = "<group>"; };
 		5ADF209327329CDD00CF0E4A /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardViewModel.swift; sourceTree = "<group>"; };
 		5ADF209727329D2D00CF0E4A /* AwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 				5A33276F2754AF6D001EDC38 /* user_victory_crown.reality */,
 				5A3327942754AF6F001EDC38 /* user_victory_fanfare.reality */,
 				5A33277B2754AF6E001EDC38 /* user_victory_like.reality */,
+				5A78B1C72757504600608CE2 /* user_text_MessageBoard.reality */,
 				5A33279D2754AF6F001EDC38 /* yt_BugerKing.usdz */,
 				5A3327742754AF6D001EDC38 /* yt_Cocacola.usdz */,
 				5A3327952754AF6F001EDC38 /* yt_Coffee.usdz */,
@@ -541,7 +544,6 @@
 				5A56E918272BFC4B0062680E /* Extension */,
 				5A56E910272BFB190062680E /* View */,
 				5A56E900272BF1FE0062680E /* ACRTApp.swift */,
-				5A56E902272BF1FE0062680E /* MainView.swift */,
 				5A42159E27312B0F000C9F5B /* CustomView */,
 				5A56E904272BF1FF0062680E /* Assets.xcassets */,
 				5A56E906272BF1FF0062680E /* Preview Content */,
@@ -560,6 +562,7 @@
 		5A56E910272BFB190062680E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A56E902272BF1FE0062680E /* MainView.swift */,
 				5A56E911272BFB260062680E /* 1. WelcomePage */,
 				5A56E91B272F9A250062680E /* 2. PreparePage */,
 				5A3E1A58273107CD00B170B2 /* 3. UserPage */,
@@ -805,6 +808,7 @@
 				5A3327A12754AF6F001EDC38 /* qs_Swift.usdz in Resources */,
 				5A3327B82754AF6F001EDC38 /* user_letter_H.usdz in Resources */,
 				5A3327D62754AF6F001EDC38 /* yt_Coffee.usdz in Resources */,
+				5A78B1C82757510800608CE2 /* user_text_MessageBoard.reality in Resources */,
 				5A3327B12754AF6F001EDC38 /* yt_FrenchFires.usdz in Resources */,
 				5A3327D82754AF6F001EDC38 /* qs_iMessage.usdz in Resources */,
 				5A3327D92754AF6F001EDC38 /* user_letter_P.usdz in Resources */,
@@ -1131,13 +1135,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ACRT/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is essential to set up the AR City View.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save the magical world into your album.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1167,13 +1171,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ACRT/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is essential to set up the AR City View.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enable location services to obtain location information and use it to speed up the initial location process.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save the magical world into your album.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

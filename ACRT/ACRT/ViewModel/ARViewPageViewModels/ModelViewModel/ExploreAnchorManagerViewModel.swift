@@ -92,7 +92,7 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let rotationMatrix2 : simd_float3x3 = simd_float3x3(columns:(worldRight2, worldUp2, worldFront2))
 
         let model1 = ModelAnchor(modelName: "qs_AppStore.usdz", pos: simd_float3(62.734833, -1.281104, -0.013874), rotation: rotationMatrix1, scale: simd_float3(30,30,30))
-        let model2 = ModelAnchor(modelName: "qs_AppleLogo_right.reality", pos: simd_float3(60.134, 3.7623, 1.928), rotation: rotationMatrix2, scale: simd_float3(1.5,1.5,1.5))
+        let model2 = ModelAnchor(modelName: "qs_AppleLogo_Right.reality", pos: simd_float3(60.134, 3.7623, 1.928), rotation: rotationMatrix2, scale: simd_float3(1.5,1.5,1.5))
         let model3 = ModelAnchor(modelName: "qs_AppleLogo_left.reality", pos: simd_float3(60.406, 13.3623, 1.928), rotation: rotationMatrix2, scale: simd_float3(1.2,1.2,1.2))
          let model4 = ModelAnchor(modelName: "qs_AppleMusic.usdz", pos: simd_float3(57.474, 13.969, 5.5088), rotation: rotationMatrix1, scale: simd_float3(60,60,60))
          let model5 = ModelAnchor(modelName: "qs_Calendar.usdz", pos: simd_float3(65.32, 18.528, 0.0), rotation: rotationMatrix1, scale: simd_float3(40,40,40))
