@@ -26,14 +26,14 @@ struct ModelSelectedView: View {
     let impactLight = UIImpactFeedbackGenerator(style: .light)
     
     @Binding var showMessageBoardUseHint: Bool
-    @State var rotateRadianAroundX: Int = 0
+    @StateObject var modelOrientationViewModel: ModelOrientationViewModel = ModelOrientationViewModel()
     var body: some View {
         if placementSetting.selectedModel == ""{
             HStack {
                 Button(action: {
                     impactLight.impactOccurred()
                     placementSetting.openModelList = true
-                    rotateRadianAroundX = 0
+                    modelOrientationViewModel.resetStatus()
                 }, label: {
                     ZStack{
                         Image("questionMark_dark")
@@ -49,6 +49,7 @@ struct ModelSelectedView: View {
                 Button(action: {
                     impactLight.impactOccurred()
                     placementSetting.openModelList = true
+                    modelOrientationViewModel.resetStatus()
                 }, label: {
                     ZStack{
                         Image(placementSetting.selectedModel.components(separatedBy: ".")[0])
@@ -102,7 +103,7 @@ struct ModelSelectedView: View {
         Button(action: {
             impactLight.impactOccurred()
             
-            self.placementSetting.place(radian: Float(rotateRadianAroundX) * 1.0 / 180.0 * Float.pi, axis: SIMD3<Float>(1,0,0))
+            self.placementSetting.place(radian: Float(modelOrientationViewModel.rotateRadianAroundX) * 1.0 / 180.0 * Float.pi, axis: SIMD3<Float>(1,0,0))
             
             
             if placementSetting.selectedModel == "user_text_MessageBoard.reality"{
@@ -121,23 +122,11 @@ struct ModelSelectedView: View {
     
     var rotationButton: some View{
         Button(action: {
-            if usdzManagerViewModel.createModelList.isModelVerticalToGround(modelName: placementSetting.selectedModel) {
-                if rotateRadianAroundX != 0 {
-                    rotateRadianAroundX = 0
-                } else {
-                    rotateRadianAroundX = -90
-                }
-            } else {
-                if rotateRadianAroundX != 0 {
-                    rotateRadianAroundX = 0
-                } else {
-                    rotateRadianAroundX = 90
-                }
-            }
+            modelOrientationViewModel.toggleOrientation(isVerticalToGroundPrev: usdzManagerViewModel.createModelList.isModelVerticalToGround(modelName: placementSetting.selectedModel)) 
         }, label: {
             HStack {
                
-                Text(((usdzManagerViewModel.createModelList.isModelVerticalToGround(modelName: placementSetting.selectedModel) && rotateRadianAroundX == 0) || (usdzManagerViewModel.createModelList.isModelVerticalToGround(modelName: placementSetting.selectedModel) == false && rotateRadianAroundX != 0)) ?
+                Text(modelOrientationViewModel.IsVerticalToGroundCurrently(isVerticalToGroundPrev: usdzManagerViewModel.createModelList.isModelVerticalToGround(modelName: placementSetting.selectedModel)) ?
                      "Vertical" : "Horizontal")
             }
             .foregroundColor(.white)

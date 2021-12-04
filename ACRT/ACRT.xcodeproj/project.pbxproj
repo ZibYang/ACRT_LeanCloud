@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		27288A9C275B4F9E0086450D /* user_text_MessageBoard.reality in Resources */ = {isa = PBXBuildFile; fileRef = 27288A9B275B4F9E0086450D /* user_text_MessageBoard.reality */; };
+		27288A9E275B98C60086450D /* ModelOrientationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27288A9D275B98C60086450D /* ModelOrientationViewModel.swift */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -152,6 +153,7 @@
 
 /* Begin PBXFileReference section */
 		27288A9B275B4F9E0086450D /* user_text_MessageBoard.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = user_text_MessageBoard.reality; path = "../../../../Archive/USDZModels(Project)/user_text_MessageBoard.reality"; sourceTree = "<group>"; };
+		27288A9D275B98C60086450D /* ModelOrientationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOrientationViewModel.swift; sourceTree = "<group>"; };
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 				27ADC925273E5F8C00926996 /* RandomUtils.swift */,
 				27ADC92B273E9B0400926996 /* AnchorIdentifierHelper.swift */,
 				27ADC957273FD36700926996 /* ModelDeletionManager.swift */,
+				27288A9D275B98C60086450D /* ModelOrientationViewModel.swift */,
 				278BE1FD2733B29A0080EE53 /* ModelViewModel */,
 			);
 			path = ARViewPageViewModels;
@@ -926,6 +929,7 @@
 				5A56E913272BFB3B0062680E /* WelcomePage.swift in Sources */,
 				5A4215BA27323698000C9F5B /* ModelPickerView.swift in Sources */,
 				5A56E934272FD0920062680E /* UserViewModel.swift in Sources */,
+				27288A9E275B98C60086450D /* ModelOrientationViewModel.swift in Sources */,
 				5A4215B4273161CC000C9F5B /* ToolView.swift in Sources */,
 				5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */,
 				27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */,

@@ -50,55 +50,78 @@ extension Dictionary where Value: Equatable {
     }
 }
 
-class USDZModelList {
+struct ModelContrib {
+    var model : USDZModel
+    var modelCategory: ModelCategory
+    var isVertcalToGround : Bool
+    var thumbnail: UIImage?
     
-    var usdzModelList : [USDZModel]
-    var categoryList: [String: ModelCategory]
-    var thumbnails: [String: UIImage?]
-    var IsVerticalToGround : [String: Bool]
-
-    
-    init(usdzModelNameList: [String: ModelCategory], readThumbnails: Bool = false) {
-        categoryList = usdzModelNameList
-        usdzModelList = []
-        thumbnails = [:]
-        IsVerticalToGround = [:]
-        for item in usdzModelNameList {
-            let model = USDZModel(modelName: item.key)
-            usdzModelList.append(model)
-            if readThumbnails == true {
-                thumbnails[model.modelName] = UIImage(named: "sheet_"+model.getBodyOfModelName())
-            }
-            IsVerticalToGround[item.key] = false
+    init(_ modelName: String, _ modelCategory: ModelCategory, isVertcalToGround: Bool, readThumbnail: Bool = false) {
+        self.model = USDZModel(modelName: modelName)
+        self.modelCategory = modelCategory
+        self.isVertcalToGround = isVertcalToGround
+        if readThumbnail == true {
+            self.thumbnail = UIImage(named: "sheet_"+model.getBodyOfModelName())
+        } else {
+            self.thumbnail = nil
         }
     }
+}
+
+class USDZModelList {
     
-//    func get(category: ModelCategory) -> [USDZModel] {
-//        return usdzModelList.filter( {$0.category == category})
-//    }
+    var usdzModelList : [String: ModelContrib]
     
-//    func getUSDZModelEntity(modelName: String) -> ModelEntity? {
-//        if let model = usdzModelList.filter( {$0.modelName == modelName})[0].modelEntity {
-//            return model
-//        } else {
-//            return nil
+//    init(usdzModelNameList: [String: ModelCategory], readThumbnails: Bool = false) {
+//        categoryList = usdzModelNameList
+//        usdzModelList = []
+//        thumbnails = [:]
+//        IsVerticalToGround = [:]
+//        for item in usdzModelNameList {
+//            let model = USDZModel(modelName: item.key)
+//            usdzModelList.append(model)
+//            if readThumbnails == true {
+//                thumbnails[model.modelName] = UIImage(named: "sheet_"+model.getBodyOfModelName())
+//            }
+//            IsVerticalToGround[item.key] = true
 //        }
 //    }
     
+    init(usdzModelList: [ModelContrib]) {
+        self.usdzModelList=[:]
+        for modelContrib in usdzModelList {
+            self.usdzModelList[modelContrib.model.modelName] = modelContrib
+        }
+    }
+    
+
+    
     func getUSDZModel(modelName: String) -> USDZModel? {
-        for model in self.usdzModelList {
-            if model.modelName == modelName {
-                return model
+        let glyphIndex = usdzModelList.firstIndex(where: { $0.key == modelName
+        })
+        if let index = glyphIndex {
+            return usdzModelList[index].value.model
+        } else {
+            print("DEBUG(BCH): missing \(modelName)")
+            return nil
+        }
+    }
+    
+    func loadModelEntities() {
+        for (modelName, modelContrib) in usdzModelList {
+            modelContrib.model.asyncLoadEntity(){ completed, error in
+                if completed {
+                    print("DEBUG(BCH): explore load \(modelName) sucessfully")
+                }
             }
         }
-        return nil
     }
     
     
     func AreModelsLoaded() -> Bool {
-        for model in usdzModelList {
-            if model.modelEntity == nil {
-                print("model \(model.modelName) does not exist ")
+        for (modelName, modelContrib) in usdzModelList {
+            if modelContrib.model.modelEntity == nil {
+                print("model \(modelName) does not exist ")
                 return false
             }
         }
@@ -106,14 +129,20 @@ class USDZModelList {
     }
     
     func getModelNameByCategory(category: ModelCategory) -> [String] {
-        return categoryList.allKeys(forValue: category).sorted()
+        var selectedNames : [String] = []
+        for (modelName, modelContrib) in usdzModelList {
+            if modelContrib.modelCategory == category {
+                selectedNames.append(modelName)
+            }
+        }
+        return selectedNames.sorted()
     }
     
     func getThumbnail(modelName: String) -> UIImage? {
-        let glyphIndex = thumbnails.firstIndex(where: { $0.key == modelName
+        let glyphIndex = usdzModelList.firstIndex(where: { $0.key == modelName
         })
         if let index = glyphIndex {
-            return thumbnails[index].value
+            return usdzModelList[index].value.thumbnail
         } else {
             print("DEBUG(BCH): missing \(modelName)")
             return nil
@@ -121,10 +150,10 @@ class USDZModelList {
     }
     
     func isModelVerticalToGround(modelName: String) -> Bool {
-        let glyphIndex = IsVerticalToGround.firstIndex(where: { $0.key == modelName
+        let glyphIndex = usdzModelList.firstIndex(where: { $0.key == modelName
         })
         if let index = glyphIndex {
-            return IsVerticalToGround[index].value
+            return usdzModelList[index].value.isVertcalToGround
         } else {
             print("DEBUG(BCH): missing \(modelName)")
             return false
