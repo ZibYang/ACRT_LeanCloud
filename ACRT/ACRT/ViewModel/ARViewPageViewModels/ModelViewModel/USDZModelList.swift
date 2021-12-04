@@ -55,18 +55,21 @@ class USDZModelList {
     var usdzModelList : [USDZModel]
     var categoryList: [String: ModelCategory]
     var thumbnails: [String: UIImage?]
+    var IsVerticalToGround : [String: Bool]
 
     
     init(usdzModelNameList: [String: ModelCategory], readThumbnails: Bool = false) {
         categoryList = usdzModelNameList
         usdzModelList = []
         thumbnails = [:]
+        IsVerticalToGround = [:]
         for item in usdzModelNameList {
             let model = USDZModel(modelName: item.key)
             usdzModelList.append(model)
             if readThumbnails == true {
                 thumbnails[model.modelName] = UIImage(named: "sheet_"+model.getBodyOfModelName())
             }
+            IsVerticalToGround[item.key] = false
         }
     }
     
@@ -91,6 +94,7 @@ class USDZModelList {
         return nil
     }
     
+    
     func AreModelsLoaded() -> Bool {
         for model in usdzModelList {
             if model.modelEntity == nil {
@@ -113,6 +117,17 @@ class USDZModelList {
         } else {
             print("DEBUG(BCH): missing \(modelName)")
             return nil
+        }
+    }
+    
+    func isModelVerticalToGround(modelName: String) -> Bool {
+        let glyphIndex = IsVerticalToGround.firstIndex(where: { $0.key == modelName
+        })
+        if let index = glyphIndex {
+            return IsVerticalToGround[index].value
+        } else {
+            print("DEBUG(BCH): missing \(modelName)")
+            return false
         }
     }
     

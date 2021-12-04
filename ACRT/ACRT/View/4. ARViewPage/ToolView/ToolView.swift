@@ -29,6 +29,8 @@ struct ToolView: View {
     @EnvironmentObject var modelDeletionManager : ModelDeletionManagerViewModel
     @EnvironmentObject var userViewModel : UserViewModel
     @EnvironmentObject var messageModel : MessageViewModel
+    @EnvironmentObject var usdzManagerViewModel : USDZManagerViewModel
+
 
     @State var showBottomView = false
     @State var audioPlayer: AVAudioPlayer!
@@ -95,6 +97,7 @@ struct ToolView: View {
             Spacer()
             ModelSelectedView(showMessageBoardUseHint: $showMessageBoardUseHint)
                 .environmentObject(placementSetting)
+                .environmentObject(usdzManagerViewModel)
         }
         .edgesIgnoringSafeArea(.bottom)
         .offset(y: placementSetting.isInCreationMode && !showCameraButton ? 0 : 300)

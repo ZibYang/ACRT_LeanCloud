@@ -37,6 +37,15 @@ class PlacementSetting : ObservableObject {
         selectedModel = ""
     }
     
+    func place(radian : Float, axis: simd_float3) {
+        let transform: simd_float4x4 = float4x4(simd_quatf(angle: radian , axis: axis))
+        let modelAnchor = ModelAnchor(modelName: self.selectedModel, transform: transform, anchorName: nil)
+        print("DEBUG(BCH): append \(modelAnchor.model.modelName)")
+
+        self.modelWaitingForPlacement.append(modelAnchor)
+//                        self.placementSetting.selectedModel = nil
+    }
+    
 
 
 }

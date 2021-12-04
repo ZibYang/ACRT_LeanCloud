@@ -231,26 +231,28 @@ struct ARWorldView:  UIViewRepresentable {
     private func updateScene(for arView: CustomARView) {
         arView.foucsEntity?.isEnabled = placementSetting.isInCreationMode && !disableEntity && placementSetting.selectedModel != "" && !messageModel.isMessaging
         if let modelAnchor = self.placementSetting.modelConfirmedForPlacement.popLast(), let modelEntity = modelAnchor.model.modelEntity {
-            if modelAnchor.anchorName != nil && modelAnchor.transform != nil && sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
+            if modelAnchor.anchorName != nil && modelAnchor.transform != nil &&  sceneManager.IsAnchorExisted(anchorName: modelAnchor.anchorName!) {
+                // update anchor existed at the scene
                 print("DEBUG(BCH): update \(modelAnchor.anchorName) with transform\n \(modelAnchor.transform)")
                 sceneManager.updateAnchorByName(anchorName: modelAnchor.anchorName!, transform: modelAnchor.transform!)
             }
-            else if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
-                // Anchor needs to be created from placement
-                let anchorName = modelAnchor.anchorName!
-                print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
-                //let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
+            else if let anchorName = modelAnchor.anchorName, let transform = modelAnchor.transform {
+                // Place anchor by transform (place explore models, downloaded models )
+                print("DEBUG(BCH): place \(anchorName) with transform\n \(transform)")
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userModel.userName {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
+                    self.place(modelEntity, for: transform, with: anchorName, in: arView, enableGesture: false)
                 } else {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: true)
+                    self.place(modelEntity, for: transform, with: anchorName, in: arView, enableGesture: true)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
-                // Anchor needs to be created from placement
+                // Place anchor by raycast (place create model)
                 let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.model.modelName)
+                var finalTransform = transform
+                if modelAnchor.transform != nil {
+                    finalTransform = finalTransform * modelAnchor.transform!
+                }
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
-                //let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
+                self.place(modelEntity, for: finalTransform, with: anchorName,  in: arView, enableGesture: true)
             }
     }
         
