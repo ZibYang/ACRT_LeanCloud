@@ -38,20 +38,22 @@ class ExploreAnchorManagerViewModel : ObservableObject {
         let worldFront2 = normalize(cross(worldRight2, worldUp))
         let rotationMatrix2 : simd_float3x3 = simd_float3x3(columns:(worldRight2, worldUp, worldFront2))
 
-        let model1 = ModelAnchor(modelName: "yt_Cocacola.usdz", pos: simd_float3(-18.3617, -12.3888, 33.4656), rotation: rotationMatrix2, scale: simd_float3(60,60,60))
+        let model1 = ModelAnchor(modelName: "yt_Cocacola.usdz", pos: simd_float3(-18.3617, -12.3888, 33.4656), rotation: rotationMatrix2, scale: simd_float3(120,120,120))
         
         let worldRight1 = simd_float3(0.64459215,  0.0        , -0.76452663) // = local z in world axis
         let worldFront1 = normalize(cross(worldRight1, worldUp))
         let rotationMatrix1 : simd_float3x3 = simd_float3x3(columns:(worldRight1, worldUp, worldFront1))
         
-        let model2 = ModelAnchor(modelName: "yt_KFC.usdz", pos: simd_float3(-6.20533, -25.5679, 26.1598), rotation: rotationMatrix1, scale: simd_float3(20,20,20))
+        let model2 = ModelAnchor(modelName: "yt_KFC.usdz", pos: simd_float3(-7.20533, -23.5679, 26.1598), rotation: rotationMatrix1, scale: simd_float3(20,20,20))
         let model3 = ModelAnchor(modelName: "yt_BugerKing.usdz", pos: simd_float3(-9.1777, -8.37561, 26.72), rotation: rotationMatrix1, scale: simd_float3(30,30,30))
         
-        let worldRight3 = simd_float3(0.80308636, 0.0        , 0.59586265) // = local x in world axis
-        let worldFront3 = normalize(cross(worldRight3, worldUp))
+//        let worldRight3 = simd_float3(0.80308636, 0.0        , 0.59586265) // = local x in world axis
+        let worldFront3 = worldRight1
+        let worldRight3 = normalize(cross(worldUp, worldFront3)) // = local x in world axis
+
         let rotationMatrix3 : simd_float3x3 = simd_float3x3(columns:(worldRight3, worldUp, worldFront3))
-        
-        let model4 = ModelAnchor(modelName: "yt_FrenchFires.usdz", pos: simd_float3(-12.7918, -18.0669, 28.6494), rotation: rotationMatrix3, scale: simd_float3(100,100,100))
+        let pos = simd_float3(-12.7918, -18.0669, 28.6494) + worldRight3 * 1
+        let model4 = ModelAnchor(modelName: "yt_FrenchFires.usdz", pos: pos, rotation: rotationMatrix3, scale: simd_float3(90,90,90))
         
         let worldRight4 = simd_float3(0.92654064,  0.0        , -0.37619469) // = local x in world axis
         let worldFront4 = normalize(cross(worldRight4, worldUp))
