@@ -40,6 +40,8 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var persistence: PersistenceHelperViewModel
     @EnvironmentObject var messageModel: MessageViewModel
+    @EnvironmentObject var coachingViewModel : CoachingViewModel
+
     
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
@@ -101,7 +103,7 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        if (self.httpManager.statusLoc == 1) {
+        if (self.httpManager.statusLoc == 1 && self.coachingViewModel.isCoaching == false) {
             self.arViewModel.onLocalizationResult(manager: httpManager)
             if (self.exploreAnchorManager.isRendered == false) {
                 print("DEBUG(BCH): isRendered : \(self.exploreAnchorManager.isRendered)")

@@ -60,6 +60,7 @@ struct CanvasView: View {
                 .environmentObject(userModel)
                 .environmentObject(messageModel)
                 .environmentObject(persistence)
+                .environmentObject(coachingViewModel)
                 .ignoresSafeArea()
                 .onTapGesture(count: 1) {
                 }
