@@ -46,8 +46,9 @@ struct IntroduceLiDARView: View{
                         impactLight.impactOccurred()
                         dismissSheet()
                     }
-                    .padding(.trailing)
+                    
                 }
+                
                 Spacer()
             }
             .padding()

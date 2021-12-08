@@ -33,7 +33,7 @@ struct PermisionDeniedView: View {
             } // HStack
             .foregroundColor(.blue)
         }) // Button
-        .alert("ACRT works best with Location Services turned on", isPresented: $isPressed){
+        .alert("ARCT works best with Location Services turned on", isPresented: $isPressed){
             Button(role: .none){
             }label:{
                 Text("Keep it that way")
@@ -44,7 +44,7 @@ struct PermisionDeniedView: View {
                 Text("Turn On in Settings")
             }
         } message: {
-            Text("You'll get a brunch of featues improved when you turn on the Location Services for ACRT")
+            Text("You'll get a brunch of featues improved when you turn on the Location Services for ARCT")
         }
     } // body
 }
