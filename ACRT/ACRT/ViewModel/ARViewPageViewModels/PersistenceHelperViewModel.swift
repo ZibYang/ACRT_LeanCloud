@@ -24,12 +24,18 @@ import simd
 extension simd_float4x4 {
     init?(_ string: String) {
         let prefix = "simd_float4x4"
-        guard string.hasPrefix(prefix) else { return nil }
+        guard string.hasPrefix(prefix) else {
+            print("[LH] prefix nil")
+            return nil
+        }
 
         let csv = string.dropFirst(prefix.count).components(separatedBy: ",")
         let filtered = csv.map { $0.filter { Array("-01234567890.").contains($0) } }
         let floats = filtered.compactMap(Float.init)
-        guard floats.count == 16 else { return nil }
+        guard floats.count == 16 else {
+            print("[LH] count != 16")
+            return nil
+        }
 
         let f0 = SIMD4<Float>(Array(floats[0...3]))
         let f1 = SIMD4<Float>(Array(floats[4...7]))
@@ -137,15 +143,17 @@ class PersistenceHelperViewModel: ObservableObject {
             switch result {
             case .success(objects: let objects):
                 if objects.count > 0 {
+                    print("[LH] pre download \(objects.count) objects")
                     for i in 0..<objects.count {
                         let object_name:String = (objects[i].get("object_name") as! LCString).value
                         let object_pose:String = (objects[i].get("object_pose") as! LCString).value
                         
-                        print("[LH] get \(object_name) \(object_pose)")
+                        print("[LH] \(i) get \(object_name) \(object_pose)")
 
                         let name = AnchorIdentifierHelper.decode(identifier: object_name)[1]
                         print("[LH] \(name)")
                         guard let trans = simd_float4x4(object_pose) else {
+                            print("[LH] \(i) get trans failed pose: \(object_pose)")
                             return
                         }
                         let poseARKitToModel = poseARKitToW * trans
@@ -157,6 +165,7 @@ class PersistenceHelperViewModel: ObservableObject {
                 } else {
                     print("[LH] no query objects in database")
                 }
+                print("[LH] download \(objects.count) objects successfully.")
                 self.downloadIsDone = true
                 self.info = "download \(objects.count) objects successfully."
             case .failure(error: let error):

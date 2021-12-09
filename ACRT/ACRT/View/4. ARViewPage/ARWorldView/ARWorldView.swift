@@ -48,6 +48,9 @@ struct ARWorldView:  UIViewRepresentable {
     var testBool : Bool = false
     
     func makeUIView(context: Context) -> ARView {
+        
+        arViewModel.hasBeenLocalized = false
+        
         let config = ARWorldTrackingConfiguration()
         
         // Plane Detection
@@ -240,29 +243,36 @@ struct ARWorldView:  UIViewRepresentable {
                 print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
                 //let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userModel.userName {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: false)
+                    if AnchorIdentifierHelper.decode(identifier: anchorName)[0] == rootUserName {
+                        self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: false, enableGesture: false)
+                    } else {
+                        self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: true, enableGesture: false)
+                    }
                 } else {
-                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableGesture: true)
+                    self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: true, enableGesture: true)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
                 // Anchor needs to be created from placement
                 let anchorName = AnchorIdentifierHelper.encode(userName: userModel.userName, modelName: modelAnchor.model.modelName)
                 print("DEBUG(BCH): place \(anchorName) with ray cast transform\n \(transform)")
                 //let anchor = ARAnchor(name:anchorName, transform: transform)
-                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableGesture: true)
+                self.place(modelEntity, for: transform, with: anchorName,  in: arView, enableCollision: true, enableGesture: true)
             }
     }
         
     }
     
-    private func place(_ modelEntity: Entity, for transform: simd_float4x4, with anchorName: String, in arView : ARView, enableGesture: Bool) {
+    private func place(_ modelEntity: Entity, for transform: simd_float4x4, with anchorName: String, in arView : ARView, enableCollision:Bool, enableGesture: Bool) {
         let clonedEntity = modelEntity.clone(recursive: true)
+        if enableCollision == true {
+            clonedEntity.generateCollisionShapes(recursive: true)
+        }
         
-        clonedEntity.generateCollisionShapes(recursive: true)
-        
-        if enableGesture == true, let clonedModelEntity = clonedEntity as? ModelEntity{
+        if enableCollision == true && enableGesture == true {
+            if let clonedModelEntity = clonedEntity as? ModelEntity{
             print("DEBUG(BCH): enable gesture for \(clonedEntity.name)")
             arView.installGestures([.rotation, .scale, .translation], for: clonedModelEntity)
+        }
         }
         
         let anchorEntity = AnchorEntity(world: transform)
