@@ -56,7 +56,7 @@ class HttpAuth : ObservableObject {
     
     var T_ci_w : simd_float4x4!
     let qiuShiUrl: String = "http://arctbch.nat300.top/loc1"
-    let inTimeUrl : String = "http://w3hgqz.natappfree.cc/loc1"
+    let inTimeUrl : String = "http://arctbch.nat300.top/loc1"
     let qiuShiUrlSensetime: String = "https://inception.sensetime.com/api/positioning/v1/sites/hz-lab/floors/jiangtang"
     
     func queryOnline(url: String, strBase64 : String, width: Int, height:Int, intrinsic: simd_float3x3, isGrayScale: Bool, useRawData: Bool,extrinsic: simd_float4x4) {
