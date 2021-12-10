@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274009912762EA6D00FD0A1F /* user_text_MessageBoard.reality in Resources */ = {isa = PBXBuildFile; fileRef = 274009902762EA6C00FD0A1F /* user_text_MessageBoard.reality */; };
 		27ADC9002736950D00926996 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC8FF2736950D00926996 /* CustomARView.swift */; };
 		27ADC9022736957500926996 /* PlacementSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC9012736957500926996 /* PlacementSettingViewModel.swift */; };
 		27ADC922273E45CA00926996 /* SceneManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */; };
@@ -131,7 +132,6 @@
 		5A5F58ED2753A3E70025E482 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A5F58EC2753A3E70025E482 /* MessageView.swift */; };
 		5A5F58F02753B9FA0025E482 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 5A5F58EF2753B9FA0025E482 /* FocusEntity */; };
 		5A78B1C627573DF600608CE2 /* qs_zjuLogo.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */; };
-		5A7A5E152761F508005537B2 /* user_text_MessageBoard.reality in Resources */ = {isa = PBXBuildFile; fileRef = 5A7A5DC82759AC63005537B2 /* user_text_MessageBoard.reality */; };
 		5ADF209427329CDD00CF0E4A /* Award.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209327329CDD00CF0E4A /* Award.swift */; };
 		5ADF209627329CEE00CF0E4A /* AwardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */; };
 		5ADF209827329D2D00CF0E4A /* AwardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADF209727329D2D00CF0E4A /* AwardView.swift */; };
@@ -151,6 +151,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		274009902762EA6C00FD0A1F /* user_text_MessageBoard.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = user_text_MessageBoard.reality; path = "../../../../Archive/USDZModels(Project)/user_text_MessageBoard.reality"; sourceTree = "<group>"; };
 		27ADC8FF2736950D00926996 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 		27ADC9012736957500926996 /* PlacementSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettingViewModel.swift; sourceTree = "<group>"; };
 		27ADC921273E45CA00926996 /* SceneManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManagerViewModel.swift; sourceTree = "<group>"; };
@@ -281,7 +282,6 @@
 		5A5F58EA2753A3CB0025E482 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		5A5F58EC2753A3E70025E482 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = qs_zjuLogo.usdz; sourceTree = "<group>"; };
-		5A7A5DC82759AC63005537B2 /* user_text_MessageBoard.reality */ = {isa = PBXFileReference; lastKnownFileType = file; name = user_text_MessageBoard.reality; path = "../../../../../Downloads/比赛宣传视频/MessageBoard/user_text_MessageBoard.reality"; sourceTree = "<group>"; };
 		5ADF209327329CDD00CF0E4A /* Award.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Award.swift; sourceTree = "<group>"; };
 		5ADF209527329CEE00CF0E4A /* AwardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardViewModel.swift; sourceTree = "<group>"; };
 		5ADF209727329D2D00CF0E4A /* AwardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardView.swift; sourceTree = "<group>"; };
@@ -329,6 +329,7 @@
 		27505D8A274D195F0060501D /* USDZModels */ = {
 			isa = PBXGroup;
 			children = (
+				274009902762EA6C00FD0A1F /* user_text_MessageBoard.reality */,
 				5A78B1C527573DF600608CE2 /* qs_zjuLogo.usdz */,
 				5A33278C2754AF6E001EDC38 /* qs_AppleLogo_center.usdz */,
 				5A3327752754AF6D001EDC38 /* qs_AppleLogo_left.reality */,
@@ -388,7 +389,6 @@
 				5A33276F2754AF6D001EDC38 /* user_victory_crown.reality */,
 				5A3327942754AF6F001EDC38 /* user_victory_fanfare.reality */,
 				5A33277B2754AF6E001EDC38 /* user_victory_like.reality */,
-				5A7A5DC82759AC63005537B2 /* user_text_MessageBoard.reality */,
 				5A33279D2754AF6F001EDC38 /* yt_BugerKing.usdz */,
 				5A3327742754AF6D001EDC38 /* yt_Cocacola.usdz */,
 				5A3327952754AF6F001EDC38 /* yt_Coffee.usdz */,
@@ -796,7 +796,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A3327B42754AF6F001EDC38 /* qs_AppleLogo_right.usdz in Resources */,
-				5A7A5E152761F508005537B2 /* user_text_MessageBoard.reality in Resources */,
+				274009912762EA6D00FD0A1F /* user_text_MessageBoard.reality in Resources */,
 				5A3327BA2754AF6F001EDC38 /* qs_AppleLogo_Right.reality in Resources */,
 				5A3327C82754AF6F001EDC38 /* qs_Phone.usdz in Resources */,
 				5A3327C42754AF6F001EDC38 /* user_like_red.reality in Resources */,

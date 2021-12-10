@@ -40,12 +40,15 @@ struct ARWorldView:  UIViewRepresentable {
     @EnvironmentObject var userModel: UserViewModel
     @EnvironmentObject var persistence: PersistenceHelperViewModel
     @EnvironmentObject var messageModel: MessageViewModel
+    @EnvironmentObject var coachingViewModel : CoachingViewModel
+
     
     @Binding var showMesh: Bool
     @Binding var takeSnapshootNow: Bool
     @Binding var disableEntity: Bool
     @Binding var showOcclusion: Bool
     var testBool : Bool = false
+    var uploadSceneName : String = "QiushiTest1"
     
     func makeUIView(context: Context) -> ARView {
         
@@ -103,7 +106,7 @@ struct ARWorldView:  UIViewRepresentable {
     }
     
     func updateUIView(_ arView: ARView, context: Context) {
-        if (self.httpManager.statusLoc == 1) {
+        if (self.httpManager.statusLoc == 1 && self.coachingViewModel.isCoaching == false) {
             self.arViewModel.onLocalizationResult(manager: httpManager)
             if (self.exploreAnchorManager.isRendered == false) {
                 print("DEBUG(BCH): isRendered : \(self.exploreAnchorManager.isRendered)")
@@ -240,15 +243,16 @@ struct ARWorldView:  UIViewRepresentable {
             else if modelAnchor.anchorName != nil && modelAnchor.transform != nil {
                 // Anchor needs to be created from placement
                 let anchorName = modelAnchor.anchorName!
-                print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
-                //let anchor = ARAnchor(name: anchorName, transform: modelAnchor.transform!)
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userModel.userName {
                     if AnchorIdentifierHelper.decode(identifier: anchorName)[0] == rootUserName {
+                        print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
                         self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: false, enableGesture: false)
                     } else {
+                        print("DEBUG(BCH): place \(anchorName) with collision, transform\n \(modelAnchor.transform)")
                         self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: true, enableGesture: false)
                     }
                 } else {
+                    print("DEBUG(BCH): place \(anchorName) with collision,gesture, transform\n \(modelAnchor.transform)")
                     self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: true, enableGesture: true)
                 }
             }else if let transform = getTransformForPlacement(in: arView) {
@@ -283,7 +287,7 @@ struct ARWorldView:  UIViewRepresentable {
         arView.scene.addAnchor(anchorEntity)
         self.sceneManager.anchorEntities.append(anchorEntity)
 
-        print("Added modelEntity\(anchorName) \(clonedEntity)")
+        print("Added modelEntity\(anchorName) \(anchorEntity)")
     }
     
     private func handlePersistence(for arView:  CustomARView) {
@@ -291,10 +295,10 @@ struct ARWorldView:  UIViewRepresentable {
             return
         }
         if self.sceneManager.shouldUploadSceneToCloud {
-            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userModel.userName, poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
+            persistence.uploadScene(for: arView, at: self.sceneManager.anchorEntities, with: userModel.userName, poseARKitToW: arViewModel.poseARKitToW, in: uploadSceneName)
             self.sceneManager.shouldUploadSceneToCloud = false
         } else if self.sceneManager.shouldDownloadSceneFromCloud {
-            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW, in: "QiushiSensetime")
+            let modelAnchors = persistence.downloadScene(poseARKitToW: arViewModel.poseARKitToW, in: uploadSceneName)
             self.placementSetting.modelWaitingForPlacement.append(contentsOf: modelAnchors)
             self.sceneManager.shouldDownloadSceneFromCloud = false
         }
