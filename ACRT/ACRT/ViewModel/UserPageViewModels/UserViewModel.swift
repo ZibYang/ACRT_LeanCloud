@@ -53,7 +53,7 @@ class UserViewModel: ObservableObject{
     init(){
         let userDefault = UserDefaults.standard
         if userDefault.bool(forKey: "LogInFromApple"){
-            self.userName = "Mystery"
+            self.userName = "Mystery" + randomString(length:1)
             randomUserImageByApple()
             self.capabilitySatisfied = "satisfied"
             self.isSignedIn = true

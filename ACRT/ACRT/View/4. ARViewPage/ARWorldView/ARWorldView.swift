@@ -48,7 +48,7 @@ struct ARWorldView:  UIViewRepresentable {
     @Binding var disableEntity: Bool
     @Binding var showOcclusion: Bool
     var testBool : Bool = false
-    var uploadSceneName : String = "QiushiTest1"
+    var uploadSceneName : String = "QiushiTest2"
     
     func makeUIView(context: Context) -> ARView {
         
