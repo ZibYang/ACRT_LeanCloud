@@ -91,6 +91,46 @@ struct CanvasView: View {
                     .environmentObject(userModel)
             }
             
+            Text("").alert(isPresented: $messageModel.showBurgerKing, content: {
+                Alert(title: Text("Info:"),
+                      message: Text("BurgerKing is on 4th Floor, Enjoy :)"),
+                      dismissButton: Alert.Button.default(
+                        Text("OK"), action: {
+                            messageModel.showBurgerKing = false
+
+                      }
+                    )
+                )
+            })
+            
+            Text("").alert(isPresented: $messageModel.showKFC, content: {
+                Alert(title: Text("Info:"),
+                      message: Text("KFC is on 1st Floor, Enjoy :)"),
+                      dismissButton: Alert.Button.default(
+                        Text("OK"), action: {
+
+                            messageModel.showKFC = false
+
+                      }
+                    )
+                )
+            })
+            
+            Text("").alert(isPresented: $messageModel.showCoffee, content: {
+                Alert(title: Text("Info:"),
+                      message: Text("Starbucks is on 3th Floor, Enjoy :)"),
+                      dismissButton: Alert.Button.default(
+                        Text("OK"), action: {
+
+                            messageModel.showCoffee = false
+
+                      }
+                    )
+                )
+            })
+                
+            
+            
             if showMessageBoardUseHint{
                 if userDefaults.bool(forKey: "KnowHowToUseMessageBoard") == false
                 {

@@ -20,6 +20,10 @@ import LeanCloud
 
 class MessageViewModel : ObservableObject {
     @Published var isMessaging : Bool = false
+    @Published var showCoffee: Bool = false
+    @Published var showKFC: Bool = false
+    @Published var showCocacola: Bool = false
+    @Published var showBurgerKing: Bool = false
     
     func uploadMessage(message: String, creator: String) {
         do {

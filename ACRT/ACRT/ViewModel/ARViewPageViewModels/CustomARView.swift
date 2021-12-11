@@ -88,6 +88,18 @@ extension CustomARView {
                     messageModel?.isMessaging = true
                 }
             }
+            else if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "yt_Coffee.usdz" {
+                messageModel?.showCoffee = true
+            }
+            else if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "yt_KFC.usdz" {
+                messageModel?.showKFC = true
+            }
+            else if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "yt_Cocacola.usdz" {
+                messageModel?.showCocacola = true
+            }
+            else if AnchorIdentifierHelper.decode(identifier: anchor.name)[1] == "yt_BugerKing.usdz" {
+                messageModel?.showBurgerKing = true
+            }
         }
     }
 }

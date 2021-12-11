@@ -246,7 +246,7 @@ struct ARWorldView:  UIViewRepresentable {
                 if AnchorIdentifierHelper.decode(identifier: anchorName)[0] != userModel.userName {
                     if AnchorIdentifierHelper.decode(identifier: anchorName)[0] == rootUserName {
                         print("DEBUG(BCH): place \(anchorName) with transform\n \(modelAnchor.transform)")
-                        self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: false, enableGesture: false)
+                        self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: true, enableGesture: false)
                     } else {
                         print("DEBUG(BCH): place \(anchorName) with collision, transform\n \(modelAnchor.transform)")
                         self.place(modelEntity, for: modelAnchor.transform!, with: anchorName, in: arView, enableCollision: true, enableGesture: false)
