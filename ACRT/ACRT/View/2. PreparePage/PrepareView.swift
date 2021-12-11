@@ -83,6 +83,7 @@ struct PrepareView: View {
                         .padding(.top)
                 }
                 .padding(.trailing)
+                
             }
         } // ZStack
         .environmentObject(userModel)

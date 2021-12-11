@@ -63,32 +63,60 @@ class AwardModel: ObservableObject{
         
         for i in 0..<specialEventAwardName.count{
             var item = Award(name: specialEventAwardName[i], detail: specialEventAwardDetail[i])
-            item.granted.toggle()
-            item.grantedTime = df.date(from: "2021-12-11")
+            if df.string(from: Date()) == "2021-12-12" {
+                item.granted.toggle()
+                item.grantedTime = df.date(from: "2021-12-12")
+            }
+//            item.granted.toggle()
+//            item.grantedTime = df.date(from: "2021-12-11")
             specialEventAward.append(item)
         }
         for i in 0..<dailyEventAwardName.count{
             var item = Award(name: dailyEventAwardName[i], detail: dailyEventAwardDetail[i])
-            if item.awardName == "Morning" {
-                item.granted.toggle()
-                item.grantedTime = df.date(from: "2021-10-20")
-            }
-            if item.awardName == "Owl"{
-                item.granted.toggle()
-                item.grantedTime = df.date(from: "2021-09-12")
-            }
+//            if item.awardName == "Morning" {
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-10-20")
+//            }
+//            if item.awardName == "Owl"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-09-12")
+//            }
             dailyEventAward.append(item)
             
         }
         for i in 0..<landmarkAwardName.count{
             var item = Award(name: landmarkAwardName[i], detail: landmarkAwardDetail[i])
-            if item.awardName == "Hangzhou" {
-                item.granted.toggle()
-                item.grantedTime = df.date(from: "2021-07-22")
-            }
+//            if item.awardName == "Hangzhou" {
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-07-22")
+//            }
 //            if item.awardName == "Shanghai"{
 //                item.granted.toggle()
 //                item.grantedTime = df.date(from: "2021-08-02")
+//            }
+//            if item.awardName == "Beijing"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-08-17")
+//            }
+//            if item.awardName == "Guangzhou"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-09-01")
+//            }
+//            if item.awardName == "Shenzhen"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-09-14")
+//            }
+//            if item.awardName == "Chengdu"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-09-14")
+//            }
+//            if item.awardName == "Nanjing"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-10-21")
+//            }
+//            if item.awardName == "Apple"{
+//                item.granted.toggle()
+//                item.grantedTime = df.date(from: "2021-10-30")
 //            }
             landmarkAward.append(item)
         }

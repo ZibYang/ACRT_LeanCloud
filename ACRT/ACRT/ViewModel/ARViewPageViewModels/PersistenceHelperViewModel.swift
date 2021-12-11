@@ -30,7 +30,7 @@ extension simd_float4x4 {
         }
 
         let csv = string.dropFirst(prefix.count).components(separatedBy: ",")
-        let filtered = csv.map { $0.filter { Array("-01234567890.").contains($0) } }
+        let filtered = csv.map { $0.filter { Array("-+01234567890.e").contains($0) } }
         let floats = filtered.compactMap(Float.init)
         guard floats.count == 16 else {
             print("[LH] count != 16")

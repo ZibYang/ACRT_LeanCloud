@@ -45,7 +45,7 @@ class USDZManagerViewModel: ObservableObject {
                                                               "yt_KFC.usdz":.special, //23
                                                               "yt_McDonald's.usdz":.special,//24
                                                               "qs_findMy.usdz":.special, //25
-                                                              "qs_Title.reality":.special, //26
+                                                              "qs_Title.usdz":.special, //26
                                                               "qs_contact.usdz":.special, //27
                                                               "qs_AppleLogo_center.usdz":.special,
                                                               "qs_contacts.usdz":.special,
