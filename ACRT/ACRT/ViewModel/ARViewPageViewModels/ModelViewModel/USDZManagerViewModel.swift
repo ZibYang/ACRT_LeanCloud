@@ -101,7 +101,6 @@ class USDZManagerViewModel: ObservableObject {
                                                            "user_special_deadHand.usdz":.special, //6
                                                            "user_special_ghost.usdz":.special, //7
                                                            
-                                                           "user_victory_crown.reality":.victory, //1
                                                            "user_victory_fanfare.reality":.victory, //2
                                                            "user_victory_like.reality":.victory,  //3
                                                            

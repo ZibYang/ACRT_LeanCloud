@@ -97,7 +97,7 @@ class ExploreAnchorManagerViewModel : ObservableObject {
          let model4 = ModelAnchor(modelName: "qs_AppleMusic.usdz", pos: simd_float3(57.474, 13.969, 5.5088), rotation: rotationMatrix1, scale: simd_float3(60,60,60))
          let model5 = ModelAnchor(modelName: "qs_Calendar.usdz", pos: simd_float3(65.32, 18.528, 0.0), rotation: rotationMatrix1, scale: simd_float3(40,40,40))
          let model6 = ModelAnchor(modelName: "qs_Hello.usdz", pos: simd_float3(60.135, 9.017, 1), rotation: rotationMatrix1, scale: simd_float3(10,10,10))
-         let model7 = ModelAnchor(modelName: "qs_Title.reality", pos: simd_float3(55.291, 9.056, 9.2607), rotation: rotationMatrix2, scale: simd_float3(3,3,3))
+         let model7 = ModelAnchor(modelName: "qs_Title.usdz", pos: simd_float3(55.291, 9.056, 9.2607), rotation: rotationMatrix1, scale: simd_float3(15,15,15))
         let model8 = ModelAnchor(modelName: "qs_Camera.usdz", pos: simd_float3(55.046, 4.223, 6.4), rotation: rotationMatrix1, scale: simd_float3(12,12,12))
          let model9 = ModelAnchor(modelName: "qs_Swift.usdz", pos: simd_float3(60.92, -9, 2.27), rotation: rotationMatrix1, scale: simd_float3(15,15,15))
          let model10 = ModelAnchor(modelName: "qs_SwiftChangeTheWorld.usdz", pos: simd_float3(60.92, 31.17, 2.27), rotation: rotationMatrix1, scale: simd_float3(4,4,4))
