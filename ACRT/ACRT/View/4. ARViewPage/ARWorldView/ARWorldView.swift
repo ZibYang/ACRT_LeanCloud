@@ -268,8 +268,20 @@ struct ARWorldView:  UIViewRepresentable {
     
     private func place(_ modelEntity: Entity, for transform: simd_float4x4, with anchorName: String, in arView : ARView, enableCollision:Bool, enableGesture: Bool) {
         let clonedEntity = modelEntity.clone(recursive: true)
-        if enableCollision == true {
-            clonedEntity.generateCollisionShapes(recursive: true)
+        if clonedEntity.children.count > 0 {
+            for childEntity in clonedEntity.children {
+                print("DEBUG(BCH): child name \(childEntity.name) from \(anchorName)")
+                if childEntity.name == "Ground Plane" {
+//                        childEntity.removeFromParent()
+                    childEntity.components.remove(CollisionComponent.self)
+                    print("DEBUG(BCH): remove collision component of  \(childEntity.name) from \(anchorName) ")
+
+                } else if enableCollision == true{
+                    childEntity.generateCollisionShapes(recursive: true)
+                }
+            }
+        } else if enableCollision == true {
+           clonedEntity.generateCollisionShapes(recursive: true)
         }
         
         if enableCollision == true && enableGesture == true {
